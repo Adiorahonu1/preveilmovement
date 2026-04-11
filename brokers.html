@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Brokers — Prevail Movement</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Marquee infrastructure ── */
+    .team-section {
+      padding: 100px 0;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .team-header {
+      text-align: center;
+      padding: 0 40px;
+      margin-bottom: 64px;
+    }
+
+    .team-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      background: var(--crimson);
+      border-radius: 14px;
+      margin-bottom: 20px;
+    }
+    .team-badge svg {
+      width: 24px;
+      height: 24px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .team-header h2 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(40px, 6vw, 72px);
+      letter-spacing: 0.03em;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+    .team-header p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Marquee wrapper ── */
+    .marquee-wrapper {
+      position: relative;
+      width: 100%;
+    }
+
+    .marquee-fade {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 180px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    .marquee-fade--left {
+      left: 0;
+      background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
+    }
+    .marquee-fade--right {
+      right: 0;
+      background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
+    }
+
+    .marquee-viewport {
+      overflow: hidden;
+      width: 100%;
+      padding: 12px 0 24px;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+      animation: marquee-run 55s linear infinite;
+    }
+    .marquee-track.is-paused {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-run {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Broker card ── */
+    .broker-card-v2 {
+      flex-shrink: 0;
+      width: 210px;
+      display: flex;
+      flex-direction: column;
+      cursor: default;
+    }
+
+    .broker-card-v2__frame {
+      position: relative;
+      width: 210px;
+      height: 290px;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #5a0e1e;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .broker-card-v2:hover .broker-card-v2__frame {
+      border-color: rgba(255,255,255,0.5);
+      box-shadow: 0 20px 50px rgba(224,31,56,0.2);
+    }
+
+    .broker-card-v2__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .broker-card-v2:hover .broker-card-v2__img {
+      transform: scale(1.03);
+    }
+
+    /* ── Join CTA ── */
+    .join-cta {
+      max-width: 1000px;
+      margin: 80px auto 0;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .join-cta h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(32px, 4vw, 52px);
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+    .join-cta p {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 36px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .marquee-fade { width: 80px; }
+      .team-header { padding: 0 24px; }
+      .join-cta { padding: 0 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="99.png" alt="Prevail Movement">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="founder.html">Meet Our Founder</a></li>
+    <li><a href="brokers.html" class="active">Our Brokers</a></li>
+    <li><a href="licensing.html">Licensing</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="matchup.html">Matchup</a></li>
+  </ul>
+  <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="founder.html">Meet Our Founder</a>
+  <a href="brokers.html" class="active">Our Brokers</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="videos.html">Videos</a>
+  <a href="presentations.html">Presentations</a>
+  <a href="systems.html">Systems</a>
+  <a href="matchup.html">Matchup</a>
+  <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <img class="page-hero__eagle" src="88.png" alt="">
+  <p class="page-hero__label">Licensed and Leading</p>
+  <h1 class="page-hero__title">OUR BROKERS</h1>
+  <p class="page-hero__sub">The leaders driving The Prevail Movement forward</p>
+</div>
+
+<!-- TEAM MARQUEE -->
+<section class="team-section">
+
+  <div class="team-header fade-in">
+    <div class="team-badge">
+      <!-- Person star icon -->
+      <svg viewBox="0 0 24 24">
+        <path d="M16.051 12.616a1 1 0 0 1 1.909.024l.737 1.452a1 1 0 0 0 .737.535l1.634.256a1 1 0 0 1 .588 1.806l-1.172 1.168a1 1 0 0 0-.282.866l.259 1.613a1 1 0 0 1-1.541 1.134l-1.465-.75a1 1 0 0 0-.912 0l-1.465.75a1 1 0 0 1-1.539-1.133l.258-1.613a1 1 0 0 0-.282-.866l-1.156-1.153a1 1 0 0 1 .572-1.822l1.633-.256a1 1 0 0 0 .737-.535z"/>
+        <path d="M8 15H7a4 4 0 0 0-4 4v2"/>
+        <circle cx="10" cy="7" r="4"/>
+      </svg>
+    </div>
+    <p class="section-label">Our Team</p>
+    <h2>MEET THE LEADERS<br>BEHIND THE MOVEMENT</h2>
+    <p>Every broker here started with zero experience. What they had was a decision to show up, get licensed, and commit to the mission.</p>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee-wrapper">
+    <div class="marquee-fade marquee-fade--left"></div>
+    <div class="marquee-fade marquee-fade--right"></div>
+    <div class="marquee-viewport">
+      <div class="marquee-track" id="marqueeTrack">
+
+        <!-- SET A (original) -->
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(11).png" alt="Lorenzo and Crystal Godinez">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="66.png" alt="Carlos and Abby Vallejo">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(14).png" alt="Willy and Daya Pineda">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="67.png" alt="Justin Johnson">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(10).png" alt="Jaime and Kawena Dominguez">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(12).png" alt="Jasmine Oden">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(13).png" alt="John and Eni Bention">
+          </div>
+        </div>
+
+        <div class="broker-card-v2">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(9).png" alt="Haydeh Taraghi">
+          </div>
+        </div>
+
+        <!-- SET B (duplicated for seamless loop) -->
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(11).png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="66.png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(14).png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="67.png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(10).png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(12).png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(13).png" alt="">
+          </div>
+        </div>
+
+        <div class="broker-card-v2" aria-hidden="true">
+          <div class="broker-card-v2__frame">
+            <img class="broker-card-v2__img" src="Untitled%20design%20(9).png" alt="">
+          </div>
+        </div>
+
+      </div><!-- end marquee-track -->
+    </div><!-- end marquee-viewport -->
+  </div><!-- end marquee-wrapper -->
+
+  <!-- JOIN CTA -->
+  <div class="join-cta fade-in">
+    <h3>READY TO JOIN<br>THIS TEAM?</h3>
+    <p>Every leader on this page started where you are right now. The decision is available to you today.</p>
+    <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your R.I. Today</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <img src="99.png" alt="Prevail Movement">
+      </div>
+      <p class="footer__tagline">"Honor God. Pursue Excellence. Develop Leaders. Create Profits."</p>
+    </div>
+    <div>
+      <p class="footer__col-title">Navigate</p>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Resources</p>
+      <ul class="footer__links">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="matchup.html">Matchup</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Contact</p>
+      <ul class="footer__links">
+        <li><a href="#">Austin, Texas</a></li>
+        <li><a href="matchup.html">Book a Call</a></li>
+        <li><a href="#">(575) 571-7057</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+
+  // Marquee pause on hover
+  const track = document.getElementById('marqueeTrack');
+  track.addEventListener('mouseenter', () => track.classList.add('is-paused'));
+  track.addEventListener('mouseleave', () => track.classList.remove('is-paused'));
+
+  // Fade-in on scroll
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

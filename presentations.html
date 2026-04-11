@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presentations — Prevail Movement</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .pres-section {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pres-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .pres-row {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .pres-row:hover { border-color: rgba(192,21,42,0.35); }
+    .pres-row__thumb {
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      min-height: 140px;
+    }
+    .pres-row__thumb-inner {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 8px;
+      padding: 20px;
+    }
+    .pres-row__thumb-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+    }
+    .pres-row__yt {
+      width: 40px;
+      height: 40px;
+      background: #c0152a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pres-row__yt svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
+    .pres-row__body {
+      padding: 24px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+    }
+    .pres-row__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: #fff;
+    }
+    .pres-row__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .pres-row { grid-template-columns: 1fr; }
+      .pres-row__thumb { min-height: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="99.png" alt="Prevail Movement">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="founder.html">Meet Our Founder</a></li>
+    <li><a href="brokers.html">Our Brokers</a></li>
+    <li><a href="licensing.html">Licensing</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="presentations.html" class="active">Presentations</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="matchup.html">Matchup</a></li>
+  </ul>
+  <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="founder.html">Meet Our Founder</a>
+  <a href="brokers.html">Our Brokers</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="videos.html">Videos</a>
+  <a href="presentations.html" class="active">Presentations</a>
+  <a href="systems.html">Systems</a>
+  <a href="matchup.html">Matchup</a>
+  <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <img class="page-hero__eagle" src="88.png" alt="">
+  <p class="page-hero__label">Tools for Your Success</p>
+  <h1 class="page-hero__title">PRESENTATIONS</h1>
+  <p class="page-hero__sub">Watch, download, and master every presentation in the system</p>
+</div>
+
+<!-- PRESENTATIONS -->
+<section class="section section--dark">
+  <div class="pres-section">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <p class="section-label fade-in">Training Resources</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto;">YOUR TRAINING<br>TOOLKIT</h2>
+    </div>
+
+    <div class="pres-list">
+
+      <!-- Fast Start -->
+      <div class="pres-row fade-in">
+        <div class="pres-row__thumb">
+          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#1a0a00,#2d1800);">
+            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <p class="pres-row__thumb-title">FAST START<br>PRESENTATION</p>
+          </div>
+        </div>
+        <div class="pres-row__body">
+          <p class="pres-row__title">Fast Start Presentation</p>
+          <div class="pres-row__actions">
+            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="#" class="btn btn--crimson btn--sm">↓ Download Fast Start</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- B.O.M. -->
+      <div class="pres-row fade-in fade-in--delay-1">
+        <div class="pres-row__thumb">
+          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#001a0a,#002d15);">
+            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <p class="pres-row__thumb-title">BUSINESS OPPORTUNITY<br>MEETING (B.O.M.)</p>
+          </div>
+        </div>
+        <div class="pres-row__body">
+          <p class="pres-row__title">Business Opportunity Meeting (B.O.M.)</p>
+          <div class="pres-row__actions">
+            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="#" class="btn btn--crimson btn--sm">↓ Download B.O.M.</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABCs -->
+      <div class="pres-row fade-in">
+        <div class="pres-row__thumb">
+          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#0d001a,#1a002d);">
+            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <p class="pres-row__thumb-title">ABCs PRESENTATION</p>
+          </div>
+        </div>
+        <div class="pres-row__body">
+          <p class="pres-row__title">ABCs Presentation</p>
+          <div class="pres-row__actions">
+            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="#" class="btn btn--crimson btn--sm">↓ Download ABCs</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Field Training -->
+      <div class="pres-row fade-in fade-in--delay-1">
+        <div class="pres-row__thumb">
+          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#001a1a,#002d2d);">
+            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <p class="pres-row__thumb-title">FIELD TRAINING 2023</p>
+          </div>
+        </div>
+        <div class="pres-row__body">
+          <p class="pres-row__title">Field Training Presentation</p>
+          <div class="pres-row__actions">
+            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="#" class="btn btn--crimson btn--sm">↓ Download Field Training</a>
+            <a href="#" class="btn btn--outline btn--sm">↓ Download (Spanish)</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recruiting Interview -->
+      <div class="pres-row fade-in">
+        <div class="pres-row__thumb">
+          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#1a1500,#2d2200);">
+            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <p class="pres-row__thumb-title">RECRUITING<br>INTERVIEW</p>
+          </div>
+        </div>
+        <div class="pres-row__body">
+          <p class="pres-row__title">Recruiting Interview (R.I.)</p>
+          <div class="pres-row__actions">
+            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="#" class="btn btn--crimson btn--sm">↓ Download R.I.</a>
+            <a href="#" class="btn btn--outline btn--sm">↓ Download R.I. (Spanish)</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PHP Affiliation callout -->
+    <div style="margin-top:60px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:40px 48px;display:flex;gap:32px;align-items:center;flex-wrap:wrap;" class="fade-in">
+      <div style="flex:1;min-width:220px;">
+        <p class="section-label">Our Platform</p>
+        <h3 style="font-family:'Bebas Neue',cursive;font-size:32px;letter-spacing:0.04em;color:#fff;margin-bottom:12px;">POWERED BY PHP AGENCY</h3>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;">Grown from 66 to 45,000+ agents. 160+ offices. Protecting over 660,000 families. Founded by Patrick Bet-David — the #1 channel for entrepreneurs on YouTube.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;">
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">National Life Group</span>
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">AIG</span>
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">Mutual of Omaha</span>
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">North American</span>
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">Foresters Financial</span>
+        <span style="background:var(--surface-2);border:1px solid var(--border);padding:6px 14px;border-radius:4px;font-size:12px;font-weight:700;letter-spacing:0.1em;color:var(--text-muted);">John Hancock</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <img src="99.png" alt="Prevail Movement">
+      </div>
+      <p class="footer__tagline">"Honor God. Pursue Excellence. Develop Leaders. Create Profits."</p>
+    </div>
+    <div>
+      <p class="footer__col-title">Navigate</p>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Resources</p>
+      <ul class="footer__links">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="matchup.html">Matchup</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Contact</p>
+      <ul class="footer__links">
+        <li><a href="#">Austin, Texas</a></li>
+        <li><a href="matchup.html">Book a Call</a></li>
+        <li><a href="#">(575) 571-7057</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

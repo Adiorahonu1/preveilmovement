@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Licensing — Prevail Movement</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .license-actions {
+      max-width: 700px;
+      margin: 0 auto 70px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .license-actions .btn { min-width: 240px; }
+
+    .qr-section {
+      max-width: 1200px;
+      margin: 0 auto 70px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .qr-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+    .qr-box__frame {
+      width: 180px;
+      height: 180px;
+      background: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #333;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .qr-box__label {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .qr-box__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+
+    .steps-list {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .qr-section { grid-template-columns: 1fr; }
+      .license-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="99.png" alt="Prevail Movement">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="founder.html">Meet Our Founder</a></li>
+    <li><a href="brokers.html">Our Brokers</a></li>
+    <li><a href="licensing.html" class="active">Licensing</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="matchup.html">Matchup</a></li>
+  </ul>
+  <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="founder.html">Meet Our Founder</a>
+  <a href="brokers.html">Our Brokers</a>
+  <a href="licensing.html" class="active">Licensing</a>
+  <a href="videos.html">Videos</a>
+  <a href="presentations.html">Presentations</a>
+  <a href="systems.html">Systems</a>
+  <a href="matchup.html">Matchup</a>
+  <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <img class="page-hero__eagle" src="88.png" alt="">
+  <p class="page-hero__label">Start Your Career</p>
+  <h1 class="page-hero__title">LICENSING</h1>
+  <p class="page-hero__sub">Everything you need to get licensed and start earning</p>
+</div>
+
+<!-- MAIN ACTIONS -->
+<section class="section section--dark">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <div style="text-align:center;margin-bottom:56px;">
+      <p class="section-label fade-in">Quick Access</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto 20px;">YOUR LICENSING<br>RESOURCES</h2>
+      <p class="section-sub fade-in fade-in--delay-2" style="margin:0 auto 40px;">Access the official Prevail licensing steps or see a list of newly appointed agents.</p>
+    </div>
+
+    <div class="license-actions fade-in fade-in--delay-2">
+      <a href="#" class="btn btn--crimson btn--lg">Prevail Licensing Steps</a>
+      <a href="#" class="btn btn--outline btn--lg">Newly Appointed Agents</a>
+    </div>
+
+    <!-- QR Section -->
+    <div class="qr-section">
+      <div class="fade-in">
+        <p class="section-label">Scan to Get Started</p>
+        <h3 class="section-title" style="font-size:42px;">SCAN THE<br>QR CODE</h3>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;">Use your phone to scan the QR code and access your licensing portal on the go. Follow the steps, complete your training, and start booking appointments.</p>
+        <a href="matchup.html" class="btn btn--crimson">Book Your Fast Start →</a>
+      </div>
+      <div class="qr-box fade-in fade-in--delay-1">
+        <p class="qr-box__title">PREVAIL LICENSING PORTAL</p>
+        <div class="qr-box__frame">QR CODE<br>PLACEHOLDER</div>
+        <p class="qr-box__label">Scan with your phone camera to access the licensing portal</p>
+      </div>
+    </div>
+
+    <!-- Step-by-step -->
+    <div style="margin-top:70px;">
+      <div style="text-align:center;margin-bottom:48px;">
+        <p class="section-label fade-in">Step by Step</p>
+        <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto;">HOW TO GET<br>LICENSED</h2>
+      </div>
+
+      <div class="steps-list">
+        <div class="step-card fade-in">
+          <div class="step-card__num">01</div>
+          <div>
+            <h4 class="step-card__title">Book Your Recruiting Interview (R.I.)</h4>
+            <p class="step-card__text">Your first step is a 45-minute R.I. with one of our licensed brokers. This is where you learn about the opportunity, ask questions, and decide if Prevail is the right fit for you.</p>
+          </div>
+        </div>
+        <div class="step-card fade-in fade-in--delay-1">
+          <div class="step-card__num">02</div>
+          <div>
+            <h4 class="step-card__title">Complete Your Pre-Licensing Education</h4>
+            <p class="step-card__text">Register for your state's pre-licensing insurance course. This is typically 20–40 hours of self-paced online content. We'll guide you to the right provider.</p>
+          </div>
+        </div>
+        <div class="step-card fade-in fade-in--delay-2">
+          <div class="step-card__num">03</div>
+          <div>
+            <h4 class="step-card__title">Pass Your State Licensing Exam</h4>
+            <p class="step-card__text">Schedule and pass your state's life insurance exam. Our team provides study resources and support to help you pass on your first attempt.</p>
+          </div>
+        </div>
+        <div class="step-card fade-in">
+          <div class="step-card__num">04</div>
+          <div>
+            <h4 class="step-card__title">Submit Your License Application</h4>
+            <p class="step-card__text">Apply for your official state license through the relevant regulatory body. We'll walk you through the paperwork and background check requirements.</p>
+          </div>
+        </div>
+        <div class="step-card fade-in fade-in--delay-1">
+          <div class="step-card__num">05</div>
+          <div>
+            <h4 class="step-card__title">Get Contracted with PHP Agency Carriers</h4>
+            <p class="step-card__text">Once licensed, get contracted with PHP's top carriers — National Life Group, AIG, Mutual of Omaha, North American, and more. You'll have access to products that protect families nationwide.</p>
+          </div>
+        </div>
+        <div class="step-card fade-in fade-in--delay-2">
+          <div class="step-card__num">06</div>
+          <div>
+            <h4 class="step-card__title">Book Your Fast Start Session</h4>
+            <p class="step-card__text">Your 1-hour Fast Start session is your official onboarding into the Prevail system. We cover your first appointment script, your pipeline, and your 90-day game plan.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:56px;" class="fade-in">
+        <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Fast Start →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <img src="99.png" alt="Prevail Movement">
+      </div>
+      <p class="footer__tagline">"Honor God. Pursue Excellence. Develop Leaders. Create Profits."</p>
+    </div>
+    <div>
+      <p class="footer__col-title">Navigate</p>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Resources</p>
+      <ul class="footer__links">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="matchup.html">Matchup</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Contact</p>
+      <ul class="footer__links">
+        <li><a href="#">Austin, Texas</a></li>
+        <li><a href="matchup.html">Book a Call</a></li>
+        <li><a href="#">(575) 571-7057</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

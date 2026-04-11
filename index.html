@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prevail Movement — Honor God. Pursue Excellence. Develop Leaders. Create Profits.</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ═══════════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 680px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      margin-top: var(--nav-h);
+      background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
+    }
+
+    /* Aurora glow */
+    .hero__aurora {
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: 60vh;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(224,31,56,0.28) 0%,
+        rgba(110,18,36,0.18) 40%,
+        transparent 70%);
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: aurora-breathe 8s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes aurora-breathe {
+      0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
+      100% { transform: translate(-50%,-50%) scale(1.15); opacity: 1; }
+    }
+
+    /* Grid texture */
+    .hero__grid {
+      position: absolute;
+      inset: 0;
+      background-size: 60px 60px;
+      background-image:
+        linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
+      pointer-events: none;
+    }
+
+    /* Giant background "PREVAIL" text */
+    .hero__bg-text {
+      position: absolute;
+      bottom: -4vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28vw;
+      line-height: 0.8;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.07);
+      background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, transparent 65%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    /* Eagle watermark */
+    .hero__eagle {
+      position: absolute;
+      opacity: 0.18;
+      width: 900px;
+      height: auto;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      display: block;
+      z-index: 0;
+    }
+
+    /* Content */
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 960px;
+      padding: 0 24px;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 24px;
+      opacity: 0;
+    }
+    .hero__eyebrow::before,
+    .hero__eyebrow::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+    .hero__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(72px, 12vw, 156px);
+      line-height: 0.88;
+      letter-spacing: 0.03em;
+      margin-bottom: 30px;
+      opacity: 0;
+      /* metallic text glow */
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 28px rgba(224,31,56,0.3));
+    }
+    .hero__title .accent {
+      background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 20px rgba(224,31,56,0.5));
+    }
+    .hero__tagline {
+      font-size: clamp(12px, 1.4vw, 15px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 52px;
+      font-weight: 500;
+      opacity: 0;
+    }
+    .hero__ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      opacity: 0;
+    }
+
+    /* Glass pill button */
+    .btn--glass {
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.12), 0 8px 24px rgba(0,0,0,0.2);
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+    .btn--glass:hover {
+      background: rgba(255,255,255,0.15);
+      border-color: rgba(255,255,255,0.5);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.2), 0 12px 32px rgba(0,0,0,0.3);
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: 100px; /* above the marquee strip */
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      z-index: 2;
+      animation: scroll-bounce 2s ease-in-out infinite;
+    }
+    .hero__scroll svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.35); fill: none; stroke-width: 1.5; }
+    @keyframes scroll-bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       DIAGONAL MARQUEE STRIP
+    ═══════════════════════════════════════════════ */
+    .marquee-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
+      padding: 14px 0;
+      z-index: 3;
+      transform: rotate(-1.2deg) scaleX(1.08);
+    }
+    .marquee-strip__track {
+      display: flex;
+      width: max-content;
+      animation: strip-scroll 35s linear infinite;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .marquee-strip__item {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      white-space: nowrap;
+    }
+    .marquee-strip__dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--crimson);
+      flex-shrink: 0;
+    }
+    @keyframes strip-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       STATS — animated counters on white
+    ═══════════════════════════════════════════════ */
+    .stats-section {
+      background: #fff;
+      border-bottom: 1px solid #e8d8df;
+      padding: 56px 40px;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .stat-item {
+      text-align: center;
+      padding: 24px 20px;
+      border-right: 1px solid #e8d8df;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 62px;
+      line-height: 1;
+      letter-spacing: 0.02em;
+      color: var(--crimson);
+    }
+    .stat-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #7a4055;
+      margin-top: 6px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       WHO WE ARE
+    ═══════════════════════════════════════════════ */
+    .who-section {
+      background: var(--bg);
+      padding: 110px 40px;
+      overflow: hidden;
+    }
+    .who-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .who__eagle-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .who__eagle-wrap img {
+      width: 100%;
+      max-width: 420px;
+      opacity: 0.22;
+      filter: drop-shadow(0 0 80px rgba(224,31,56,0.4));
+    }
+
+    /* ═══════════════════════════════════════════════
+       FOUR PILLARS — white section
+    ═══════════════════════════════════════════════ */
+    .pillars-section {
+      background: #fff;
+      padding: 100px 40px;
+    }
+    .pillars-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .pillars-header .section-label { color: var(--crimson); }
+    .pillars-header .section-title { color: #1a0810; }
+
+    .pillars-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .pillar-c {
+      background: #f7f2f4;
+      border: 1px solid #e8d8df;
+      border-radius: 10px;
+      padding: 40px 28px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+    .pillar-c:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(90,14,30,0.1);
+      border-color: rgba(224,31,56,0.3);
+    }
+    .pillar-c__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 72px;
+      line-height: 1;
+      color: rgba(90,14,30,0.08);
+      margin-bottom: -8px;
+    }
+    .pillar-c__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      margin-bottom: 14px;
+    }
+    .pillar-c__text {
+      font-size: 14px;
+      color: #7a4055;
+      line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════════
+       EVENT STRIP — cinematic reveal
+    ═══════════════════════════════════════════════ */
+    .event-strip {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #6e1224 0%, #9e1a34 50%, #6e1224 100%);
+      padding: 100px 40px;
+      text-align: center;
+    }
+    .event-strip__aurora {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(224,31,56,0.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .event-strip__grid {
+      position: absolute;
+      inset: 0;
+      background-size: 50px 50px;
+      background-image:
+        linear-gradient(to right,  rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
+      pointer-events: none;
+    }
+    /* Giant bg text behind event */
+    .event-strip__bgtext {
+      position: absolute;
+      bottom: -6vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22vw;
+      line-height: 0.8;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+      pointer-events: none;
+      user-select: none;
+    }
+    .event-strip__content { position: relative; z-index: 2; }
+    .event-strip__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 14px;
+    }
+    .event-strip__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(56px, 9vw, 110px);
+      line-height: 0.88;
+      color: #fff;
+      letter-spacing: 0.06em;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg,#ffffff 0%,rgba(255,255,255,0.75) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .event-strip__name .accent {
+      background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .event-strip__details {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 44px;
+    }
+    .event-strip__details strong { color: #fff; }
+
+    /* ═══════════════════════════════════════════════
+       TEAM PREVIEW
+    ═══════════════════════════════════════════════ */
+    .team-preview {
+      background: var(--bg);
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .team-preview__bg-text {
+      position: absolute;
+      bottom: -3vh;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20vw;
+      line-height: 0.8;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.04);
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .who-inner { grid-template-columns: 1fr; gap: 40px; }
+      .who__eagle-wrap { display: none; }
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .stat-item { border-right: none; border-bottom: 1px solid #e8d8df; }
+      .stat-item:nth-child(odd)  { border-right: 1px solid #e8d8df; }
+      .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    }
+    @media (max-width: 560px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; }
+      .event-strip { padding: 72px 24px; }
+      .who-section, .pillars-section, .team-preview { padding: 72px 24px; }
+      .stats-section { padding: 44px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="99.png" alt="Prevail Movement">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="founder.html">Meet Our Founder</a></li>
+    <li><a href="brokers.html">Our Brokers</a></li>
+    <li><a href="licensing.html">Licensing</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="matchup.html">Matchup</a></li>
+  </ul>
+  <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html" class="active">Home</a>
+  <a href="founder.html">Meet Our Founder</a>
+  <a href="brokers.html">Our Brokers</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="videos.html">Videos</a>
+  <a href="presentations.html">Presentations</a>
+  <a href="systems.html">Systems</a>
+  <a href="matchup.html">Matchup</a>
+  <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
+</div>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero__aurora"></div>
+  <div class="hero__grid"></div>
+  <div class="hero__bg-text" id="heroBgText">PREVAIL</div>
+  <img class="hero__eagle" src="88.png" alt="" id="heroEagle">
+
+  <div class="hero__content">
+    <p class="hero__eyebrow" id="heroEyebrow">Austin, Texas &nbsp; PHP Agency Partner</p>
+    <h1 class="hero__title" id="heroTitle">
+      THE<br><span class="accent">PREVAIL</span><br>MOVEMENT
+    </h1>
+    <p class="hero__tagline" id="heroTagline">
+      Honor God &nbsp;·&nbsp; Pursue Excellence &nbsp;·&nbsp; Develop Leaders &nbsp;·&nbsp; Create Profits
+    </p>
+    <div class="hero__ctas" id="heroCtas">
+      <a href="matchup.html" class="btn btn--crimson btn--lg magnetic">Join the Movement</a>
+      <a href="founder.html"  class="btn btn--glass  btn--lg magnetic">Meet Our Founder</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    <span>Scroll</span>
+  </div>
+
+  <!-- diagonal marquee strip -->
+  <div class="marquee-strip">
+    <div class="marquee-strip__track">
+      <!-- SET A -->
+      <div class="marquee-strip__item">Honor God<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Pursue Excellence<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Develop Leaders<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Create Profits<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">PHP Agency Partner<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Austin Texas<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">90,000+ Families Protected<span class="marquee-strip__dot"></span></div>
+      <!-- SET B (duplicate for seamless loop) -->
+      <div class="marquee-strip__item">Honor God<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Pursue Excellence<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Develop Leaders<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Create Profits<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">PHP Agency Partner<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Austin Texas<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">90,000+ Families Protected<span class="marquee-strip__dot"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats-section" id="statsSection">
+  <div class="stats-inner">
+    <div class="stat-item" data-target="90000" data-suffix="K+">
+      <div class="stat-num" id="stat0">90K+</div>
+      <div class="stat-label">Families Protected</div>
+    </div>
+    <div class="stat-item" data-target="9" data-suffix="+">
+      <div class="stat-num" id="stat1">9+</div>
+      <div class="stat-label">Licensed Brokers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">PHP</div>
+      <div class="stat-label">Agency Partner</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">ATX</div>
+      <div class="stat-label">Austin, Texas</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ WHO WE ARE ═══ -->
+<section class="who-section" id="whoSection">
+  <div class="who-inner">
+    <div>
+      <p class="section-label" id="whoLabel">Who We Are</p>
+      <h2 class="section-title" id="whoTitle">BUILT ON FOUR<br>UNBREAKABLE<br>PILLARS</h2>
+      <p class="section-sub" id="whoSub">The Prevail Movement is a life insurance organization powered by PHP Agency, dedicated to developing the next generation of financial leaders. We believe entrepreneurship changes lives and we have proven it with over 90,000 families.</p>
+      <div style="margin-top:36px;">
+        <a href="founder.html" class="btn btn--glass magnetic" id="whoBtn">Our Story →</a>
+      </div>
+    </div>
+    <div class="who__eagle-wrap" id="whoEagle">
+      <img src="88.png" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOUR PILLARS ═══ -->
+<section class="pillars-section" id="pillarsSection">
+  <div class="pillars-header">
+    <p class="section-label">Our Foundation</p>
+    <h2 class="section-title">THE FOUR PILLARS</h2>
+  </div>
+  <div class="pillars-grid" id="pillarsGrid">
+    <div class="pillar-c">
+      <div class="pillar-c__num">01</div>
+      <div class="pillar-c__title">Honor God</div>
+      <p class="pillar-c__text">Everything we do is grounded in faith and purpose greater than ourselves.</p>
+    </div>
+    <div class="pillar-c">
+      <div class="pillar-c__num">02</div>
+      <div class="pillar-c__title">Pursue Excellence</div>
+      <p class="pillar-c__text">We hold ourselves to the highest standard in every appointment, every interaction.</p>
+    </div>
+    <div class="pillar-c">
+      <div class="pillar-c__num">03</div>
+      <div class="pillar-c__title">Develop Leaders</div>
+      <p class="pillar-c__text">Leadership development is our mission. We build people who go on to build others.</p>
+    </div>
+    <div class="pillar-c">
+      <div class="pillar-c__num">04</div>
+      <div class="pillar-c__title">Create Profits</div>
+      <p class="pillar-c__text">Financial freedom is the goal. We give you the tools, training, and team to get there.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EVENT STRIP ═══ -->
+<div class="event-strip" id="eventStrip">
+  <div class="event-strip__aurora"></div>
+  <div class="event-strip__grid"></div>
+  <div class="event-strip__bgtext">TAKEOFF</div>
+  <div class="event-strip__content">
+    <p class="event-strip__label">Next Event</p>
+    <h2 class="event-strip__name" id="eventName">
+      PHP<br><span class="accent">TAKE OFF</span>
+    </h2>
+    <p class="event-strip__details">
+      <strong>August 4–7, 2025</strong> &nbsp;·&nbsp; MGM Grand Garden Arena &nbsp;·&nbsp; <strong>Las Vegas, Nevada</strong>
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" id="eventCtas">
+      <a href="matchup.html" class="btn btn--crimson btn--lg magnetic">Register Now</a>
+      <a href="#"            class="btn btn--glass  btn--lg magnetic">Book Hotel</a>
+    </div>
+    <p style="margin-top:22px;font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">
+      Discount tickets: Text Diana at (575) 571-7057
+    </p>
+  </div>
+</div>
+
+<!-- ═══ TEAM PREVIEW ═══ -->
+<section class="team-preview" id="teamSection">
+  <div class="team-preview__bg-text">LEADERS</div>
+  <div class="container" style="position:relative;z-index:1;">
+    <p class="section-label" id="teamLabel">Our Leaders</p>
+    <h2 class="section-title" style="margin:0 auto 20px;" id="teamTitle">
+      MEET THE BROKERS<br>BEHIND THE MOVEMENT
+    </h2>
+    <p class="section-sub" style="margin:0 auto 44px;" id="teamSub">
+      Our team of licensed brokers are building legacies across the country. Every one of them started exactly where you are now.
+    </p>
+    <a href="brokers.html" class="btn btn--crimson btn--lg magnetic" id="teamBtn">Meet the Team</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CINEMATIC FOOTER — curtain reveal via clip-path
+     The wrapper sits in normal flow (height: 100vh).
+     clip-path clips its fixed child to the wrapper's
+     bounding box, creating the curtain-reveal effect
+     as you scroll the wrapper into view.
+═══════════════════════════════════════════════ -->
+<div id="cinematicFooterWrapper" style="
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  clip-path: polygon(0% 0, 100% 0%, 100% 100%, 0 100%);
+">
+
+  <footer id="cinematicFooter" style="
+    position: fixed;
+    bottom: 0; left: 0;
+    width: 100%; height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background: linear-gradient(160deg, #3a0a14 0%, #1c0c14 60%);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    z-index: 0;
+  ">
+
+    <!-- Aurora glow -->
+    <div id="cfAurora" style="
+      position: absolute;
+      left: 50%; top: 50%;
+      transform: translate(-50%,-50%);
+      width: 80vw; height: 60vh;
+      background: radial-gradient(ellipse at 50% 50%,
+        rgba(224,31,56,0.22) 0%,
+        rgba(110,18,36,0.14) 40%,
+        transparent 70%);
+      border-radius: 50%;
+      filter: blur(70px);
+      animation: cfBreathe 8s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    "></div>
+
+    <!-- Grid texture -->
+    <div style="
+      position: absolute; inset: 0;
+      background-size: 60px 60px;
+      background-image:
+        linear-gradient(to right,  rgba(255,255,255,0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.035) 1px, transparent 1px);
+      mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 75%, transparent 100%);
+      pointer-events: none; z-index: 0;
+    "></div>
+
+    <!-- Giant background text -->
+    <div id="cfGiantText" style="
+      position: absolute;
+      bottom: -4vh; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26vw;
+      line-height: 0.75;
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      white-space: nowrap;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(255,255,255,0.06);
+      background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, transparent 60%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    ">PREVAIL</div>
+
+    <!-- ── TOP: diagonal marquee strip ── -->
+    <div style="
+      position: absolute;
+      top: 48px; left: 0; right: 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.28);
+      backdrop-filter: blur(8px);
+      padding: 12px 0;
+      z-index: 10;
+      transform: rotate(-1.5deg) scaleX(1.1);
+    ">
+      <div id="cfMarquee" style="
+        display: flex;
+        width: max-content;
+        animation: cfMarqueeScroll 38s linear infinite;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+      ">
+        <!-- SET A -->
+        <span style="padding:0 28px;white-space:nowrap;">Honor God</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Pursue Excellence</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Develop Leaders</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Create Profits</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">PHP Agency Partner</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Austin Texas</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">90,000+ Families Protected</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <!-- SET B (duplicate) -->
+        <span style="padding:0 28px;white-space:nowrap;">Honor God</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Pursue Excellence</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Develop Leaders</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Create Profits</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">PHP Agency Partner</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Austin Texas</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">90,000+ Families Protected</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+      </div>
+    </div>
+
+    <!-- ── CENTER: main content ── -->
+    <div id="cfCenter" style="
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 24px;
+      margin-top: 80px;
+      text-align: center;
+    ">
+      <!-- Logo -->
+      <img id="cfLogo" src="99.png" alt="Prevail Movement" style="
+        width: 240px;
+        height: 56px;
+        object-fit: cover;
+        object-position: center 42%;
+        margin-bottom: 40px;
+        opacity: 0;
+      ">
+
+      <!-- Metallic heading -->
+      <h2 id="cfHeading" style="
+        font-family: 'Bebas Neue', cursive;
+        font-size: clamp(52px, 8vw, 100px);
+        line-height: 0.9;
+        letter-spacing: 0.03em;
+        margin-bottom: 48px;
+        background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.55) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        filter: drop-shadow(0 0 28px rgba(224,31,56,0.3));
+        opacity: 0;
+      ">READY TO<br><span style="
+        background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      ">JOIN THE MOVEMENT?</span></h2>
+
+      <!-- Glass pill CTAs -->
+      <div id="cfLinks" style="
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        justify-content: center;
+        opacity: 0;
+      ">
+        <a href="matchup.html" class="cf-pill cf-pill--primary magnetic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Book a Call
+        </a>
+        <a href="brokers.html" class="cf-pill cf-pill--ghost magnetic">Meet Our Brokers</a>
+        <a href="licensing.html" class="cf-pill cf-pill--ghost magnetic">Get Licensed</a>
+        <a href="founder.html" class="cf-pill cf-pill--ghost magnetic">Our Story</a>
+      </div>
+    </div>
+
+    <!-- ── BOTTOM BAR ── -->
+    <div style="
+      position: relative;
+      z-index: 20;
+      width: 100%;
+      padding: 24px 48px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      flex-wrap: wrap;
+      gap: 16px;
+    ">
+      <!-- Copyright -->
+      <span style="
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.35);
+      ">© 2025 The Prevail Movement. All rights reserved.</span>
+
+      <!-- PHP badge -->
+      <div style="
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      ">
+        <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;">Proudly affiliated with</span>
+        <span style="
+          background: rgba(255,255,255,0.07);
+          border: 1px solid rgba(255,255,255,0.14);
+          border-radius: 4px;
+          padding: 4px 12px;
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          color: rgba(255,255,255,0.55);
+        ">PHP AGENCY</span>
+      </div>
+
+      <!-- Back to top -->
+      <button id="cfBackTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.07);
+        border: 1px solid rgba(255,255,255,0.14);
+        backdrop-filter: blur(12px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255,255,255,0.5);
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s, transform 0.2s;
+        flex-shrink: 0;
+      ">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </button>
+    </div>
+
+  </footer>
+</div>
+
+<style>
+/* Cinematic footer keyframes */
+@keyframes cfBreathe {
+  0%   { transform: translate(-50%,-50%) scale(1);    opacity: 0.65; }
+  100% { transform: translate(-50%,-50%) scale(1.12); opacity: 1;    }
+}
+@keyframes cfMarqueeScroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes cfHeartbeat {
+  0%,100% { transform: scale(1); }
+  15%,45% { transform: scale(1.22); }
+  30%     { transform: scale(1); }
+}
+
+/* Glass pill styles */
+.cf-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.cf-pill--primary {
+  background: var(--crimson);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 28px rgba(224,31,56,0.35);
+}
+.cf-pill--primary:hover {
+  background: #e83050;
+  box-shadow: 0 14px 36px rgba(224,31,56,0.5);
+}
+.cf-pill--ghost {
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.1), 0 8px 24px rgba(0,0,0,0.2);
+}
+.cf-pill--ghost:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.4);
+  color: #fff;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.18), 0 12px 32px rgba(0,0,0,0.3);
+}
+#cfBackTop:hover {
+  background: rgba(255,255,255,0.14) !important;
+  color: #fff !important;
+  transform: translateY(-3px);
+}
+</style>
+
+<!-- GSAP via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<script>
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* ── Hamburger ── */
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav  = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+
+  /* ─────────────────────────────────────────
+     HERO — staggered entrance
+  ───────────────────────────────────────── */
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  heroTl
+    .to('#heroEyebrow', { opacity: 1, y: 0, duration: 0.7 }, 0.15)
+    .fromTo('#heroTitle',
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.9 }, 0.28)
+    .to('#heroTagline', { opacity: 1, y: 0, duration: 0.7 }, 0.55)
+    .to('#heroCtas',    { opacity: 1, y: 0, duration: 0.6 }, 0.72);
+
+  /* Hero bg-text parallax */
+  gsap.to('#heroBgText', {
+    y: '18vh',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 1.2
+    }
+  });
+
+  /* Eagle parallax (drifts upward slower) */
+  gsap.to('#heroEagle', {
+    y: '-80px',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 2
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     STATS — scroll reveal
+  ───────────────────────────────────────── */
+  gsap.from('.stat-item', {
+    y: 40, opacity: 0,
+    stagger: 0.1,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#statsSection',
+      start: 'top 85%',
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     WHO WE ARE — staggered reveal
+  ───────────────────────────────────────── */
+  gsap.from(['#whoLabel','#whoTitle','#whoSub','#whoBtn'], {
+    y: 50, opacity: 0,
+    stagger: 0.12,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#whoSection',
+      start: 'top 75%',
+    }
+  });
+  gsap.from('#whoEagle', {
+    x: 60, opacity: 0, scale: 0.9,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '#whoSection',
+      start: 'top 75%',
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     PILLARS — stagger cards
+  ───────────────────────────────────────── */
+  gsap.from('.pillars-header *', {
+    y: 36, opacity: 0,
+    stagger: 0.1,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#pillarsSection', start: 'top 80%' }
+  });
+  gsap.from('.pillar-c', {
+    y: 48, opacity: 0,
+    stagger: 0.08,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#pillarsGrid', start: 'top 85%' }
+  });
+
+  /* ─────────────────────────────────────────
+     EVENT STRIP — scale up reveal + bg text
+  ───────────────────────────────────────── */
+  gsap.from('#eventName', {
+    y: 60, opacity: 0, scale: 0.94,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#eventStrip', start: 'top 70%' }
+  });
+  gsap.from('#eventCtas', {
+    y: 30, opacity: 0,
+    duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#eventStrip', start: 'top 65%' },
+    delay: 0.25
+  });
+  /* bg text parallax inside event strip */
+  gsap.to('.event-strip__bgtext', {
+    y: '-6vh',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#eventStrip',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.5
+    }
+  });
+
+  /* ─────────────────────────────────────────
+     TEAM — reveal
+  ───────────────────────────────────────── */
+  gsap.from(['#teamLabel','#teamTitle','#teamSub','#teamBtn'], {
+    y: 44, opacity: 0,
+    stagger: 0.1,
+    duration: 0.8,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '#teamSection', start: 'top 75%' }
+  });
+  gsap.to('.team-preview__bg-text', {
+    y: '-8vh',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#teamSection',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1.8
+    }
+  });
+
+  /* ═════════════════════════════════════════
+     CINEMATIC FOOTER — curtain reveal
+     The wrapper (height:100vh, clip-path) sits
+     in normal flow. As it scrolls into view the
+     clip-path reveals the fixed footer beneath.
+  ═════════════════════════════════════════ */
+  const cfWrapper = document.getElementById('cinematicFooterWrapper');
+
+  // Giant bg text parallax (scrubbed)
+  gsap.fromTo('#cfGiantText',
+    { y: '10vh', scale: 0.85, opacity: 0 },
+    {
+      y: '0vh', scale: 1, opacity: 1,
+      ease: 'power1.out',
+      scrollTrigger: {
+        trigger: cfWrapper,
+        start: 'top 80%',
+        end: 'bottom bottom',
+        scrub: 1
+      }
+    }
+  );
+
+  // Staggered content reveal: logo → heading → pills
+  gsap.fromTo(['#cfLogo', '#cfHeading', '#cfLinks'],
+    { y: 55, opacity: 0 },
+    {
+      y: 0, opacity: 1,
+      stagger: 0.14,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: cfWrapper,
+        start: 'top 42%',
+        end: 'bottom bottom',
+        scrub: 1
+      }
+    }
+  );
+
+  /* ─────────────────────────────────────────
+     MAGNETIC BUTTONS
+  ───────────────────────────────────────── */
+  document.querySelectorAll('.magnetic').forEach(btn => {
+    btn.style.transformStyle = 'preserve-3d';
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width  / 2;
+      const y = e.clientY - r.top  - r.height / 2;
+      gsap.to(btn, {
+        x: x * 0.38,
+        y: y * 0.38,
+        rotationX: -y * 0.1,
+        rotationY:  x * 0.1,
+        scale: 1.06,
+        ease: 'power2.out',
+        duration: 0.4
+      });
+    });
+    btn.addEventListener('mouseleave', () => {
+      gsap.to(btn, {
+        x: 0, y: 0,
+        rotationX: 0, rotationY: 0,
+        scale: 1,
+        ease: 'elastic.out(1, 0.35)',
+        duration: 1.2
+      });
+    });
+  });
+
+</script>
+</body>
+</html>

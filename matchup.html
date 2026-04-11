@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Session — Prevail Movement</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .matchup-header-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto 48px;
+      padding: 0;
+    }
+    .matchup-header-actions a {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .matchup-header-actions a:hover { color: #fff; }
+
+    .appt-grid {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .contact-strip {
+      max-width: 1000px;
+      margin: 60px auto 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .contact-strip__text h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .contact-strip__text p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 720px) {
+      .appt-grid { grid-template-columns: 1fr; }
+      .contact-strip { flex-direction: column; text-align: center; }
+      .matchup-header-actions { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="nav__logo">
+    <img src="99.png" alt="Prevail Movement">
+  </a>
+  <ul class="nav__links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="founder.html">Meet Our Founder</a></li>
+    <li><a href="brokers.html">Our Brokers</a></li>
+    <li><a href="licensing.html">Licensing</a></li>
+    <li><a href="videos.html">Videos</a></li>
+    <li><a href="presentations.html">Presentations</a></li>
+    <li><a href="systems.html">Systems</a></li>
+    <li><a href="matchup.html" class="active">Matchup</a></li>
+  </ul>
+  <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav__mobile" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="founder.html">Meet Our Founder</a>
+  <a href="brokers.html">Our Brokers</a>
+  <a href="licensing.html">Licensing</a>
+  <a href="videos.html">Videos</a>
+  <a href="presentations.html">Presentations</a>
+  <a href="systems.html">Systems</a>
+  <a href="matchup.html" class="active">Matchup</a>
+  <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <img class="page-hero__eagle" src="88.png" alt="">
+  <p class="page-hero__label">Schedule Your Session</p>
+  <h1 class="page-hero__title">MATCHUP</h1>
+  <p class="page-hero__sub">Choose your appointment type and book your session below</p>
+</div>
+
+<!-- BOOKING -->
+<section class="section section--dark">
+
+  <div class="matchup-header-actions fade-in">
+    <a href="#">Sign Up</a>
+    <a href="#">Login</a>
+  </div>
+
+  <div style="text-align:center;margin-bottom:56px;">
+    <p class="section-label fade-in">Select an Appointment</p>
+    <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto 16px;">CHOOSE YOUR<br>SESSION TYPE</h2>
+    <p style="font-size:15px;color:var(--text-muted);max-width:480px;margin:0 auto;" class="fade-in fade-in--delay-2">
+      Not sure which session is right for you? Start with an R.I. if you're new to the opportunity. Already licensed? Book a Fast Start or Field Training.
+    </p>
+  </div>
+
+  <div class="appt-grid">
+
+    <div class="appt-card fade-in">
+      <div class="appt-card__duration">45 Minutes</div>
+      <div class="appt-card__title">R.I.</div>
+      <p class="appt-card__desc">Recruiting Interview — Your first conversation with the Prevail team. We'll walk you through the business opportunity, answer your questions, and see if this is the right fit for you. No pressure, no commitment required.</p>
+      <a href="#" class="btn btn--crimson btn--full">Book Now</a>
+    </div>
+
+    <div class="appt-card fade-in fade-in--delay-1" style="border-color:rgba(192,21,42,0.3);">
+      <div class="appt-card__duration">1 Hour</div>
+      <div class="appt-card__title">FAST START</div>
+      <p class="appt-card__desc">Your official onboarding session as a newly licensed agent. We'll cover your first appointment script, pipeline setup, and your 90-day action plan to hit the ground running inside the Prevail system.</p>
+      <a href="#" class="btn btn--crimson btn--full">Book Now</a>
+    </div>
+
+    <div class="appt-card fade-in fade-in--delay-2">
+      <div class="appt-card__duration">1 Hour</div>
+      <div class="appt-card__title">FIELD TRAINING</div>
+      <p class="appt-card__desc">Live training session for active agents in the field. Sharpen your presentation skills, review your numbers, and get coached by an experienced Prevail leader to level up your performance.</p>
+      <a href="#" class="btn btn--crimson btn--full">Book Now</a>
+    </div>
+
+  </div>
+
+  <!-- Contact strip -->
+  <div class="contact-strip fade-in">
+    <div class="contact-strip__text">
+      <h3>QUESTIONS BEFORE YOU BOOK?</h3>
+      <p>Reach out directly and we'll point you to the right session.</p>
+    </div>
+    <a href="tel:5755717057" class="btn btn--outline btn--lg">(575) 571-7057</a>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <img src="99.png" alt="Prevail Movement">
+      </div>
+      <p class="footer__tagline">"Honor God. Pursue Excellence. Develop Leaders. Create Profits."</p>
+    </div>
+    <div>
+      <p class="footer__col-title">Navigate</p>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Resources</p>
+      <ul class="footer__links">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="matchup.html">Matchup</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Contact</p>
+      <ul class="footer__links">
+        <li><a href="#">Austin, Texas</a></li>
+        <li><a href="matchup.html">Book a Call</a></li>
+        <li><a href="#">(575) 571-7057</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
