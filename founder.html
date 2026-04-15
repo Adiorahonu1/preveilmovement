@@ -402,6 +402,44 @@
       }
       .room-card__label { bottom: 16px; left: 14px; right: 14px; }
     }
+
+    /* ═══════════════════════════════════════
+       BACKGROUND PATHS HERO — FOUNDER PAGE
+    ═══════════════════════════════════════ */
+    .page-hero {
+      height: 560px;
+      background: #07010a;
+    }
+    .page-hero::before {
+      background: radial-gradient(ellipse 75% 50% at 50% 100%, rgba(192,21,42,0.22) 0%, transparent 68%);
+    }
+
+    /* Flowing paths SVG layer */
+    .founder-paths {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .founder-paths svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Hero text entrance */
+    .page-hero__label { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards; }
+    .page-hero__title { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.72s forwards; }
+    .page-hero__sub   { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.92s forwards; }
+    @keyframes fHeroUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 640px) {
+      .page-hero { height: 420px; }
+    }
   </style>
 </head>
 <body>
@@ -438,7 +476,10 @@
 
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <img class="page-hero__eagle" src="88.png" alt="">
+
+  <!-- Background paths (JS-generated SVG, ported from BackgroundPaths React component) -->
+  <div class="founder-paths" id="founderPaths" aria-hidden="true"></div>
+
   <p class="page-hero__label">The Story Behind the Movement</p>
   <h1 class="page-hero__title">MEET OUR FOUNDER</h1>
   <p class="page-hero__sub">From Brooklyn to building a movement that changed 90,000 families</p>
@@ -709,6 +750,88 @@
     });
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   roomCards.forEach(el => roomObserver.observe(el));
+
+  /* ── BACKGROUND PATHS (ported from BackgroundPaths React component) ── */
+  (function () {
+    const wrap = document.getElementById('founderPaths');
+    if (!wrap) return;
+
+    const NS = 'http://www.w3.org/2000/svg';
+
+    /* Build 36 path descriptors for one position side */
+    function buildDescriptors(position) {
+      return Array.from({ length: 36 }, (_, i) => {
+        const x0 = -(380 - i * 5 * position);
+        const y0 = -(189 + i * 6);
+        const x1 = -(312 - i * 5 * position);
+        const y1 =  (216 - i * 6);
+        const x2 =  (152 - i * 5 * position);
+        const y2 =  (343 - i * 6);
+        const x3 =  (616 - i * 5 * position);
+        const y3 =  (470 - i * 6);
+        const x4 =  (684 - i * 5 * position);
+        const y4 =  (875 - i * 6);
+        return {
+          d: `M${x0} ${y0}C${x0} ${y0} ${x1} ${y1} ${x2} ${y2}C${x3} ${y3} ${x4} ${y4} ${x4} ${y4}`,
+          strokeWidth: 0.5 + i * 0.03,
+          baseOpacity: Math.min(0.1 + i * 0.03, 1),
+          duration: (20 + Math.random() * 10) * 1000,
+          phase: Math.random(),
+        };
+      });
+    }
+
+    const descriptors = [...buildDescriptors(1), ...buildDescriptors(-1)];
+
+    /* Create one shared SVG */
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 696 316');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
+
+    /* Create path elements */
+    const pathEls = descriptors.map(({ d, strokeWidth }) => {
+      const el = document.createElementNS(NS, 'path');
+      el.setAttribute('d', d);
+      el.setAttribute('stroke', 'white');
+      el.setAttribute('stroke-width', String(strokeWidth));
+      el.setAttribute('fill', 'none');
+      svg.appendChild(el);
+      return el;
+    });
+
+    wrap.appendChild(svg);
+
+    /* After mount, read each path's length and set up dash animation */
+    const animData = descriptors.map(({ duration, phase, baseOpacity }, i) => {
+      const el = pathEls[i];
+      const len = el.getTotalLength();
+      /* 30% of path visible, rest is gap — matches pathLength: 0.3 in original */
+      const visLen = len * 0.3;
+      el.style.strokeDasharray = `${visLen} ${len + 1}`;
+      return { el, len, visLen, duration, phase, baseOpacity };
+    });
+
+    /* Single RAF loop — marching dashes + opacity breathing */
+    let last = null;
+    function tick(now) {
+      const dt = last ? now - last : 16;
+      last = now;
+
+      animData.forEach((d) => {
+        d.phase = (d.phase + dt / d.duration) % 1;
+        /* dashoffset marches forward (pathOffset [0,1,0]) */
+        d.el.style.strokeDashoffset = String(-d.len * d.phase);
+        /* opacity: 0.3→0.6→0.3 over cycle (matches animate opacity array) */
+        const opMod = 0.3 + 0.3 * Math.sin(Math.PI * 2 * d.phase);
+        d.el.style.opacity = String(d.baseOpacity * (opMod / 0.6));
+      });
+
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="auth.js"></script>
