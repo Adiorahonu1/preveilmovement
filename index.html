@@ -501,23 +501,34 @@
        QUIZ CTA SECTION
     ═══════════════════════════════════════════════ */
     .quiz-cta-section {
-      background: #060103;
+      background: #030001;
       padding: 110px 40px;
       text-align: center;
       position: relative;
       overflow: hidden;
     }
+    #quizSilkCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
     .quiz-cta-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(224,31,56,0.14) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(224,31,56,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 70% 60% at 50% 100%, rgba(224,31,56,0.12) 0%, transparent 70%);
       pointer-events: none;
+      z-index: 1;
     }
     .quiz-cta__inner {
       position: relative;
       max-width: 1100px;
       margin: 0 auto;
+      z-index: 2;
     }
     .quiz-cta__label {
       font-size: 11px;
@@ -1646,6 +1657,7 @@
 
 <!-- ═══ QUIZ CTA SECTION ═══ -->
 <section class="quiz-cta-section" id="quizCta">
+  <canvas id="quizSilkCanvas" aria-hidden="true"></canvas>
   <div class="quiz-cta__inner">
     <p class="quiz-cta__label" id="quizCtaLabel">2-Minute Assessment</p>
     <h2 class="quiz-cta__headline" id="quizCtaHead">WHICH TYPE OF<br>AGENT ARE YOU?</h2>
@@ -2361,6 +2373,106 @@
     y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
     scrollTrigger: { trigger: '#quizCtaFooter', start: 'top 85%' }
   });
+
+  /* ─────────────────────────────────────────
+     SILK CANVAS — Quiz CTA background
+  ───────────────────────────────────────── */
+  (function () {
+    const canvas = document.getElementById('quizSilkCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let time = 0;
+    let rafId = null;
+    let running = false;
+    const SPEED = 0.016;
+    const SCALE = 2.2;
+    const NOISE_I = 0.75;
+
+    function resize () {
+      const rect = canvas.parentElement.getBoundingClientRect();
+      canvas.width  = Math.min(rect.width,  1400);
+      canvas.height = Math.min(rect.height, 800);
+      canvas.style.width  = '100%';
+      canvas.style.height = '100%';
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const noise = (x, y) => {
+      const G = 2.71828;
+      return (G * Math.sin(G * x) * G * Math.sin(G * y) * (1 + x)) % 1;
+    };
+
+    function frame () {
+      if (!running) return;
+      const { width, height } = canvas;
+      const img = ctx.createImageData(width, height);
+      const d   = img.data;
+      const t   = SPEED * time;
+
+      for (let x = 0; x < width; x += 2) {
+        for (let y = 0; y < height; y += 2) {
+          const u = (x / width)  * SCALE;
+          const v = (y / height) * SCALE;
+          let tx = u;
+          let ty = v + 0.03 * Math.sin(8.0 * tx - t);
+
+          const pat = 0.6 + 0.4 * Math.sin(
+            5.0 * (tx + ty +
+              Math.cos(3.0 * tx + 5.0 * ty) +
+              0.02 * t) +
+            Math.sin(20.0 * (tx + ty - 0.1 * t))
+          );
+
+          const intensity = Math.max(0, pat - noise(x, y) / 15 * NOISE_I);
+
+          /* Crimson-to-black silk palette */
+          const r = Math.floor(18 + 175 * intensity);
+          const g = Math.floor(1  +  14 * intensity);
+          const b = Math.floor(3  +  18 * intensity);
+
+          for (let dx = 0; dx < 2; dx++) {
+            for (let dy = 0; dy < 2; dy++) {
+              const i = ((y + dy) * width + (x + dx)) * 4;
+              if (i < d.length - 3) {
+                d[i] = r; d[i+1] = g; d[i+2] = b; d[i+3] = 255;
+              }
+            }
+          }
+        }
+      }
+
+      ctx.putImageData(img, 0, 0);
+
+      /* Vignette overlay — keeps centre readable */
+      const vignette = ctx.createRadialGradient(
+        canvas.width/2, canvas.height/2, 0,
+        canvas.width/2, canvas.height/2, Math.max(canvas.width, canvas.height) * 0.65
+      );
+      vignette.addColorStop(0,   'rgba(3,0,1,0.05)');
+      vignette.addColorStop(0.5, 'rgba(3,0,1,0.25)');
+      vignette.addColorStop(1,   'rgba(3,0,1,0.72)');
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      time++;
+      rafId = requestAnimationFrame(frame);
+    }
+
+    /* Only run when section is in view */
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !running) {
+          running = true;
+          frame();
+        } else if (!e.isIntersecting) {
+          running = false;
+          if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        }
+      });
+    }, { threshold: 0.05 });
+    obs.observe(canvas.parentElement);
+  })();
 
   /* ─────────────────────────────────────────
      TEAM — reveal
