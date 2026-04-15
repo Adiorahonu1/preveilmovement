@@ -283,6 +283,17 @@
       margin: 0 0 12px;
       line-height: 1;
     }
+    .rooms-swipe-hint {
+      display: none;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      margin-top: 16px;
+    }
+    @media (max-width: 560px) {
+      .rooms-swipe-hint { display: block; }
+    }
     .rooms-sub {
       font-family: 'Playfair Display', serif;
       font-size: clamp(13px, 1.2vw, 15px);
@@ -352,12 +363,44 @@
       display: block;
     }
     @media (max-width: 860px) {
-      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
-      .room-card__inner { height: 210px; }
+      .rooms-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 20px;
+        gap: 10px;
+      }
+      .room-card__inner { height: 240px; }
+      .room-card__name { font-size: 15px; }
+      .room-card__role { font-size: 9px; }
     }
-    @media (max-width: 480px) {
-      .rooms-grid { gap: 6px; }
-      .room-card__inner { height: 180px; }
+    @media (max-width: 560px) {
+      .rooms-section { padding: 64px 0 72px; }
+      .rooms-header { padding: 0 20px 40px; }
+      /* Horizontal scroll snap carousel */
+      .rooms-grid {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding: 0 20px 24px;
+        scrollbar-width: none;
+        /* override grid padding from 860px breakpoint */
+        grid-template-columns: unset;
+      }
+      .rooms-grid::-webkit-scrollbar { display: none; }
+      .room-card {
+        flex: 0 0 72vw;
+        max-width: 280px;
+        scroll-snap-align: start;
+      }
+      .room-card__inner { height: 280px; }
+      .room-card__name { font-size: 16px; }
+      .room-card__role { font-size: 10px; letter-spacing: 0.06em; }
+      .room-card__overlay {
+        background: linear-gradient(to top, rgba(8,2,4,0.97) 0%, rgba(8,2,4,0.2) 50%, transparent 72%);
+      }
+      .room-card__label { bottom: 16px; left: 14px; right: 14px; }
     }
   </style>
 </head>
@@ -445,6 +488,7 @@
     <p class="rooms-eyebrow">Credibility</p>
     <h2 class="rooms-title">IN GOOD COMPANY</h2>
     <p class="rooms-sub">She moves in rooms that matter.</p>
+    <p class="rooms-swipe-hint" id="roomsSwipeHint">Swipe to explore →</p>
   </div>
   <div class="rooms-grid" id="roomsGrid">
 
@@ -483,44 +527,44 @@
 
     <div class="room-card">
       <div class="room-card__inner">
-        <img src="media/IMG_5946.JPEG" alt="Financial Services Summit" style="object-position:center 15%;">
+        <img src="media/IMG_5946.JPEG" alt="Cindy Cobos with Tim Grover" style="object-position:center 15%;">
         <div class="room-card__overlay"></div>
         <div class="room-card__label">
-          <span class="room-card__name">Financial Services Summit</span>
-          <span class="room-card__role">Industry Leadership</span>
+          <span class="room-card__name">Tim Grover</span>
+          <span class="room-card__role">Personal Trainer to Michael Jordan and Kobe Bryant</span>
         </div>
       </div>
     </div>
 
     <div class="room-card">
       <div class="room-card__inner">
-        <img src="media/IMG_5673.JPEG" alt="A Mob Story Event" style="object-position:center 25%;">
+        <img src="media/IMG_5673.JPEG" alt="Cindy Cobos with Michael Franzese" style="object-position:center 25%;">
         <div class="room-card__overlay"></div>
         <div class="room-card__label">
-          <span class="room-card__name">A Mob Story</span>
-          <span class="room-card__role">Industry Event</span>
+          <span class="room-card__name">Michael Franzese</span>
+          <span class="room-card__role">Ex Mob Boss and Author of A Mob Story</span>
         </div>
       </div>
     </div>
 
     <div class="room-card">
       <div class="room-card__inner">
-        <img src="media/IMG_9024.jpg" alt="PHP Agency Partner Event" style="object-position:center 20%;">
+        <img src="media/IMG_9024.jpg" alt="Cindy Cobos with Ex-NFL New England Patriots Players" style="object-position:center 20%;">
         <div class="room-card__overlay"></div>
         <div class="room-card__label">
-          <span class="room-card__name">PHP Agency</span>
-          <span class="room-card__role">National Partner Event</span>
+          <span class="room-card__name">Ex-NFL Patriots Players</span>
+          <span class="room-card__role">New England Patriots at PHP Agency Event</span>
         </div>
       </div>
     </div>
 
     <div class="room-card">
       <div class="room-card__inner">
-        <img src="media/96A309CD-AED8-4234-AEAA-8596F5DAF6FD.JPG" alt="Prevail Movement" style="object-position:center 60%;">
+        <img src="media/96A309CD-AED8-4234-AEAA-8596F5DAF6FD.JPG" alt="Cindy Cobos with Eric Thomas" style="object-position:center 60%;">
         <div class="room-card__overlay"></div>
         <div class="room-card__label">
-          <span class="room-card__name">Prevail Movement</span>
-          <span class="room-card__role">Building the Next Generation</span>
+          <span class="room-card__name">Eric Thomas</span>
+          <span class="room-card__role">Motivational Speaker, The Hip Hop Preacher</span>
         </div>
       </div>
     </div>
