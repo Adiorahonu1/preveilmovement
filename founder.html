@@ -241,6 +241,124 @@
       .editorial-details { gap: 16px; }
       .story-pullquote { padding: 24px 20px; }
     }
+
+    /* ═══════════════════════════════════════
+       IN GOOD COMPANY — credibility grid
+    ═══════════════════════════════════════ */
+    .rooms-section {
+      background: #0d0507;
+      padding: 80px 0 88px;
+      overflow: hidden;
+    }
+    .rooms-header {
+      text-align: center;
+      padding: 0 24px 52px;
+    }
+    .rooms-eyebrow {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold, #c9a84c);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .rooms-eyebrow::before,
+    .rooms-eyebrow::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 1px;
+      background: var(--gold, #c9a84c);
+      opacity: 0.5;
+    }
+    .rooms-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(34px, 4.5vw, 58px);
+      letter-spacing: 0.06em;
+      color: #fff;
+      margin: 0 0 12px;
+      line-height: 1;
+    }
+    .rooms-sub {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(13px, 1.2vw, 15px);
+      font-style: italic;
+      color: rgba(255,255,255,0.36);
+    }
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+    /* Stagger reveal */
+    .room-card {
+      opacity: 0;
+      transform: translateY(26px) scale(0.97);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .room-card.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .room-card__inner {
+      position: relative;
+      height: 230px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+    .room-card__inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .room-card__inner:hover img { transform: scale(1.07); }
+    .room-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,2,4,0.94) 0%, rgba(8,2,4,0.15) 55%, transparent 75%);
+    }
+    .room-card__label {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+    }
+    .room-card__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 13.5px;
+      letter-spacing: 0.1em;
+      color: var(--gold, #c9a84c);
+      display: block;
+      line-height: 1.1;
+    }
+    .room-card__role {
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-top: 3px;
+      display: block;
+    }
+    @media (max-width: 860px) {
+      .rooms-grid { grid-template-columns: repeat(2, 1fr); }
+      .room-card__inner { height: 210px; }
+    }
+    @media (max-width: 480px) {
+      .rooms-grid { gap: 6px; }
+      .room-card__inner { height: 180px; }
+    }
   </style>
 </head>
 <body>
@@ -315,6 +433,106 @@
           <p class="editorial-bio">Founder of The Prevail Movement, PHP Agency partner, and mentor to 9+ licensed brokers who have protected over 90,000 families across the country.</p>
         </div>
 
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── IN GOOD COMPANY ── -->
+<section class="rooms-section">
+  <div class="rooms-header">
+    <p class="rooms-eyebrow">Credibility</p>
+    <h2 class="rooms-title">IN GOOD COMPANY</h2>
+    <p class="rooms-sub">She moves in rooms that matter.</p>
+  </div>
+  <div class="rooms-grid" id="roomsGrid">
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_5701.JPG" alt="Cindy Cobos with Steve Wozniak" style="object-position:center 40%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Steve Wozniak</span>
+          <span class="room-card__role">Co-Founder, Apple</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_8657.jpg" alt="Cindy Cobos with Mike Tyson" style="object-position:center 15%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Mike Tyson</span>
+          <span class="room-card__role">World Heavyweight Champion</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_6945.jpg" alt="Cindy Cobos with Patrick Bet-David" style="object-position:center 20%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Patrick Bet-David</span>
+          <span class="room-card__role">Founder, PHP Agency &amp; Valuetainment</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_5946.JPEG" alt="Financial Services Summit" style="object-position:center 15%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Financial Services Summit</span>
+          <span class="room-card__role">Industry Leadership</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_5673.JPEG" alt="A Mob Story Event" style="object-position:center 25%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">A Mob Story</span>
+          <span class="room-card__role">Industry Event</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_9024.jpg" alt="PHP Agency Partner Event" style="object-position:center 20%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">PHP Agency</span>
+          <span class="room-card__role">National Partner Event</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/96A309CD-AED8-4234-AEAA-8596F5DAF6FD.JPG" alt="Prevail Movement" style="object-position:center 60%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Prevail Movement</span>
+          <span class="room-card__role">Building the Next Generation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_5079.jpg" alt="Prevail Leadership Team" style="object-position:center 20%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Prevail Leadership</span>
+          <span class="room-card__role">Team Convention 2025</span>
+        </div>
       </div>
     </div>
 
@@ -434,6 +652,21 @@
     });
   }, { threshold: 0.1 });
   fadeEls.forEach(el => fadeObserver.observe(el));
+
+  // In Good Company — staggered scroll reveal
+  const roomCards = document.querySelectorAll('.room-card');
+  const roomObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const idx = Array.from(roomCards).indexOf(e.target);
+        setTimeout(() => e.target.classList.add('visible'), idx * 90);
+        roomObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  roomCards.forEach(el => roomObserver.observe(el));
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
 </body>
 </html>

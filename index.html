@@ -16,12 +16,48 @@
       min-height: 680px;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      align-items: flex-start;
+      justify-content: flex-end;
+      text-align: left;
       overflow: hidden;
       margin-top: var(--nav-h);
-      background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
+      background: #1a0409;
+    }
+
+    /* Background video */
+    .hero__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      z-index: 0;
+    }
+
+    /* GLSL Hills WebGL canvas */
+    .hero__glsl-hills {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.55;
+      mix-blend-mode: screen;
+    }
+
+    /* Crimson overlay on video */
+    .hero__video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        160deg,
+        rgba(70,8,18,0.78) 0%,
+        rgba(20,2,6,0.88) 55%,
+        rgba(40,6,14,0.82) 100%
+      );
+      z-index: 1;
     }
 
     /* Aurora glow */
@@ -39,6 +75,7 @@
       filter: blur(60px);
       animation: aurora-breathe 8s ease-in-out infinite alternate;
       pointer-events: none;
+      z-index: 2;
     }
     @keyframes aurora-breathe {
       0%   { transform: translate(-50%,-50%) scale(1);   opacity: 0.7; }
@@ -56,6 +93,7 @@
       mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
       -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
       pointer-events: none;
+      z-index: 2;
     }
 
     /* Giant background "PREVAIL" text */
@@ -77,28 +115,30 @@
       background-clip: text;
       pointer-events: none;
       user-select: none;
-      z-index: 0;
+      z-index: 2;
     }
 
     /* Eagle watermark */
     .hero__eagle {
       position: absolute;
-      opacity: 0.18;
+      opacity: 0.12;
       width: 900px;
       height: auto;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
       display: block;
-      z-index: 0;
+      z-index: 2;
     }
 
     /* Content */
     .hero__content {
       position: relative;
-      z-index: 2;
-      max-width: 960px;
-      padding: 0 24px;
+      z-index: 3;
+      max-width: 760px;
+      width: 100%;
+      padding: 0 24px 148px max(40px, calc((100vw - 1280px) / 2 + 48px));
+      overflow: visible;
     }
     .hero__eyebrow {
       display: inline-flex;
@@ -122,11 +162,12 @@
     }
     .hero__title {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(72px, 12vw, 156px);
-      line-height: 0.88;
+      font-size: clamp(64px, 8.5vw, 108px);
+      line-height: 0.9;
       letter-spacing: 0.03em;
       margin-bottom: 30px;
       opacity: 0;
+      overflow: visible;
       /* metallic text glow */
       background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.6) 100%);
       -webkit-background-clip: text;
@@ -153,7 +194,7 @@
     .hero__ctas {
       display: flex;
       gap: 14px;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
       opacity: 0;
     }
@@ -188,7 +229,7 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.35);
-      z-index: 2;
+      z-index: 3;
       animation: scroll-bounce 2s ease-in-out infinite;
     }
     .hero__scroll svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.35); fill: none; stroke-width: 1.5; }
@@ -280,31 +321,53 @@
     }
 
     /* ═══════════════════════════════════════════════
-       WHO WE ARE
+       WHO WE ARE — full-width cinematic video
     ═══════════════════════════════════════════════ */
     .who-section {
-      background: var(--bg);
-      padding: 110px 40px;
+      position: relative;
       overflow: hidden;
-    }
-    .who-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .who__eagle-wrap {
+      min-height: 82vh;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
-    .who__eagle-wrap img {
+    .who__video-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      max-width: 420px;
-      opacity: 0.22;
-      filter: drop-shadow(0 0 80px rgba(224,31,56,0.4));
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 0;
+    }
+    .who__video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(10,2,4,0.86) 0%,
+        rgba(20,4,8,0.68) 50%,
+        rgba(5,1,2,0.42) 100%
+      );
+      z-index: 1;
+    }
+    .who__content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 80px;
+    }
+    .who__content .section-label { color: var(--crimson); }
+    .who__content .section-title {
+      color: #fff;
+      font-size: clamp(52px, 6vw, 88px);
+      line-height: 0.94;
+      margin: 16px 0 28px;
+    }
+    .who__content .section-sub {
+      color: rgba(255,255,255,0.68);
+      max-width: 500px;
+      font-size: 15px;
+      line-height: 1.72;
     }
 
     /* ═══════════════════════════════════════════════
@@ -362,80 +425,198 @@
     }
 
     /* ═══════════════════════════════════════════════
-       EVENT STRIP — cinematic reveal
+       YOUTUBE SECTION
     ═══════════════════════════════════════════════ */
-    .event-strip {
-      position: relative;
+    .yt-section {
+      background: #0a0205;
+      padding: 100px 80px;
+      display: flex;
+      align-items: center;
+      gap: 72px;
       overflow: hidden;
-      background: linear-gradient(135deg, #6e1224 0%, #9e1a34 50%, #6e1224 100%);
-      padding: 100px 40px;
-      text-align: center;
+      position: relative;
     }
-    .event-strip__aurora {
+    .yt-section__glow {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(224,31,56,0.35) 0%, transparent 70%);
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(140,14,40,0.18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .event-strip__grid {
-      position: absolute;
-      inset: 0;
-      background-size: 50px 50px;
-      background-image:
-        linear-gradient(to right,  rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-      pointer-events: none;
-    }
-    /* Giant bg text behind event */
-    .event-strip__bgtext {
-      position: absolute;
-      bottom: -6vh;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 22vw;
-      line-height: 0.8;
-      white-space: nowrap;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.06);
-      pointer-events: none;
-      user-select: none;
-    }
-    .event-strip__content { position: relative; z-index: 2; }
-    .event-strip__label {
+    .yt-section__left { flex: 0 0 52%; }
+    .yt-section__label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 14px;
+      color: var(--crimson);
+      margin-bottom: 18px;
     }
-    .event-strip__name {
+    .yt-section__headline {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(56px, 9vw, 110px);
-      line-height: 0.88;
+      font-size: clamp(64px, 8vw, 108px);
+      line-height: 0.9;
       color: #fff;
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
-      background: linear-gradient(180deg,#ffffff 0%,rgba(255,255,255,0.75) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      margin-bottom: 28px;
     }
-    .event-strip__name .accent {
-      background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .yt-section__sub {
+      font-size: 15px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.58);
+      max-width: 440px;
+      margin-bottom: 40px;
     }
-    .event-strip__details {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.55);
+    .yt-section__stats {
+      display: flex;
+      gap: 36px;
       margin-bottom: 44px;
     }
-    .event-strip__details strong { color: #fff; }
+    .yt-section__gain {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.72);
+      max-width: 420px;
+      margin-bottom: 44px;
+      border-left: 3px solid var(--crimson);
+      padding-left: 18px;
+    }
+    .yt-section__right {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .yt-phone-img {
+      max-height: 1050px;
+      width: auto;
+      filter: drop-shadow(0 40px 100px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(140,14,40,0.15));
+      animation: phoneFloat 5s ease-in-out infinite;
+    }
+    @keyframes phoneFloat {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      33% { transform: translateY(-12px) rotate(0.4deg); }
+      66% { transform: translateY(-6px) rotate(-0.3deg); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       QUIZ CTA SECTION
+    ═══════════════════════════════════════════════ */
+    .quiz-cta-section {
+      background: #060103;
+      padding: 110px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .quiz-cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(224,31,56,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .quiz-cta__inner {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quiz-cta__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 20px;
+    }
+    .quiz-cta__headline {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(56px, 8vw, 104px);
+      line-height: 0.92;
+      color: #fff;
+      margin-bottom: 22px;
+    }
+    .quiz-cta__sub {
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.55);
+      max-width: 500px;
+      margin: 0 auto 56px;
+    }
+    .quiz-types {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 52px;
+    }
+    .quiz-type-card {
+      position: relative;
+      width: 170px;
+      padding: 28px 16px 24px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(224,31,56,0.22);
+      border-radius: 8px;
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      cursor: default;
+    }
+    .quiz-type-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(224,31,56,0.7);
+      box-shadow: 0 20px 60px rgba(224,31,56,0.18);
+    }
+    .quiz-type-card--featured {
+      border-color: var(--gold);
+      background: rgba(232,192,96,0.06);
+      transform: translateY(-6px);
+    }
+    .quiz-type-card--featured:hover {
+      border-color: var(--gold);
+      box-shadow: 0 20px 60px rgba(232,192,96,0.2);
+    }
+    .quiz-type-card__badge {
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #060103;
+      background: var(--gold);
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .quiz-type-card__icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .quiz-type-card__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .quiz-type-card__hook {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.42);
+    }
+    .quiz-cta__footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .quiz-cta__reassurance {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.3);
+      text-transform: uppercase;
+    }
 
     /* ═══════════════════════════════════════════════
        TEAM PREVIEW
@@ -466,22 +647,688 @@
        RESPONSIVE
     ═══════════════════════════════════════════════ */
     @media (max-width: 900px) {
-      .who-inner { grid-template-columns: 1fr; gap: 40px; }
-      .who__eagle-wrap { display: none; }
+      .who__content { padding: 60px 40px; }
       .pillars-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .stat-item { border-right: none; border-bottom: 1px solid #e8d8df; }
       .stat-item:nth-child(odd)  { border-right: 1px solid #e8d8df; }
       .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+      .yt-section { flex-direction: column; padding: 72px 40px; gap: 52px; }
+      .yt-section__left { flex: none; width: 100%; }
+      .yt-phone-img { max-height: 700px; }
+      .quiz-cta-section { padding: 80px 32px; }
+      .quiz-types { gap: 12px; }
+      .quiz-type-card { width: 140px; padding: 22px 12px 20px; }
     }
     @media (max-width: 560px) {
       .pillars-grid { grid-template-columns: 1fr; }
       .stats-inner { grid-template-columns: 1fr; }
       .stat-item { border-right: none; }
-      .event-strip { padding: 72px 24px; }
-      .who-section, .pillars-section, .team-preview { padding: 72px 24px; }
+      .yt-section { padding: 60px 24px; }
+      .yt-phone-img { max-height: 320px; }
+      .quiz-cta-section { padding: 72px 24px; }
+      .quiz-types { gap: 10px; }
+      .quiz-type-card { width: calc(50% - 10px); }
+      .quiz-type-card--featured { transform: none; }
+      .who__content { padding: 48px 24px; }
+      .pillars-section, .team-preview { padding: 72px 24px; }
       .stats-section { padding: 44px 24px; }
     }
+
+    /* ═══════════════════════════════════════════════
+       WHO — FOUNDER PORTRAIT
+    ═══════════════════════════════════════════════ */
+    .who__photo-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.35);
+    }
+    .who__photo {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+    .who__photo-wrap:hover .who__photo { transform: scale(1.03); }
+    .who__photo-vignette {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(90,14,30,0.55) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TEAM — DC PHOTO + MOSAIC
+    ═══════════════════════════════════════════════ */
+    .team-dc-photo {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+    }
+    .team-dc-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      display: block;
+    }
+    .team-dc-photo__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(60,8,20,0.55) 0%, rgba(0,0,0,0.1) 50%, transparent 100%);
+    }
+    .team-dc-photo__caption {
+      position: absolute;
+      bottom: 36px;
+      left: 44px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(26px, 3.5vw, 46px);
+      color: #fff;
+      letter-spacing: 0.08em;
+      line-height: 1;
+    }
+    .team-dc-photo__caption span { color: var(--crimson, #e01f38); }
+
+    .team-mosaic {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+    }
+    .team-mosaic__card {
+      position: relative;
+      overflow: hidden;
+      height: 360px;
+    }
+    .team-mosaic__card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .team-mosaic__card:hover img { transform: scale(1.05); }
+    .team-mosaic__card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,5,7,0.65) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .team-mosaic__card:hover .team-mosaic__card__overlay { opacity: 1; }
+
+    .team-cta-wrap {
+      background: var(--bg);
+      text-align: center;
+      padding: 56px 24px;
+    }
+
+    @media (max-width: 900px) {
+      .who__photo { height: 380px; }
+      .proof-duo { grid-template-columns: 1fr; min-height: auto; }
+      .proof-duo__photo { height: 360px; }
+      .team-mosaic { grid-template-columns: repeat(2, 1fr); }
+      .team-mosaic__card { height: 280px; }
+    }
+    @media (max-width: 560px) {
+      .team-dc-photo { height: 300px; }
+      .proof-team-full { height: 280px; }
+      .team-mosaic__card { height: 240px; }
+      .team-dc-photo__caption { left: 20px; bottom: 24px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO — LEFT ALIGN OVERRIDES
+    ═══════════════════════════════════════════════ */
+    .hero__eyebrow { justify-content: flex-start; }
+    .hero__eyebrow::after { display: none; }
+    @media (max-width: 700px) {
+      .hero__content {
+        padding: 0 24px 140px 28px;
+        max-width: 100%;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════
+       LOGO CAROUSEL (replaces static partners-strip)
+    ═══════════════════════════════════════════════ */
+    .logo-carousel {
+      background: #fff;
+      padding: 40px 0;
+      border-bottom: 1px solid #e8d8df;
+      overflow: hidden;
+    }
+    .logo-carousel__label {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #b08895;
+      margin-bottom: 24px;
+    }
+    .logo-carousel__overflow {
+      overflow: hidden;
+      position: relative;
+    }
+    .logo-carousel__overflow::before,
+    .logo-carousel__overflow::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .logo-carousel__overflow::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+    .logo-carousel__overflow::after  { right: 0; background: linear-gradient(to left, #fff, transparent); }
+    .logo-carousel__track {
+      display: flex;
+      width: max-content;
+      align-items: center;
+      animation: lc-scroll 30s linear infinite;
+    }
+    @keyframes lc-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .lc-badge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 56px;
+      border-right: 1px solid #e8d8df;
+      min-width: 200px;
+      gap: 4px;
+    }
+    .lc-badge__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.18em;
+      color: #1a0409;
+      line-height: 1;
+    }
+    .lc-badge--gold .lc-badge__name { color: #8a6820; }
+    .lc-badge__sub {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #b08895;
+    }
+    .lc-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 52px;
+      border-right: 1px solid #e8d8df;
+      min-width: 180px;
+    }
+    .lc-logo img {
+      height: 72px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.82;
+      transition: opacity 0.2s;
+    }
+    .lc-logo:hover img { opacity: 1; }
+
+    /* ═══════════════════════════════════════════════
+       MISSION STATEMENT SECTION
+    ═══════════════════════════════════════════════ */
+    .mission-section {
+      background: #fff;
+      overflow: hidden;
+    }
+    .mission-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      min-height: 460px;
+    }
+    .mission-shield {
+      background: var(--bg, #09020a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      clip-path: polygon(0 0, 100% 0, 84% 100%, 0 100%);
+    }
+    .mission-shield img {
+      width: 180px;
+      height: auto;
+      opacity: 0.8;
+      filter: brightness(1.1);
+    }
+    .mission-text {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mission-text .section-label { color: #b08895; margin-bottom: 12px; }
+    .mission-heading {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(30px, 3.2vw, 50px);
+      line-height: 1.14;
+      letter-spacing: 0.02em;
+      color: #1a0409;
+      margin: 0 0 24px;
+    }
+    .mission-heading em {
+      color: var(--crimson, #e01f38);
+      font-style: normal;
+    }
+    .mission-body {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #5a3040;
+      max-width: 520px;
+    }
+    .mission-rule {
+      width: 48px;
+      height: 3px;
+      background: var(--crimson, #e01f38);
+      margin-top: 32px;
+    }
+    @media (max-width: 900px) {
+      .mission-inner { grid-template-columns: 1fr; }
+      .mission-shield { clip-path: none; min-height: 220px; }
+      .mission-text { padding: 48px 32px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       FEATURE CAROUSEL — VERTICALS
+    ═══════════════════════════════════════════════ */
+    .fc-section {
+      background: #0d0507;
+      padding: 80px 0 88px;
+      overflow: hidden;
+    }
+    .fc-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .fc-header { text-align: center; margin-bottom: 52px; }
+    .fc-header .section-label { color: rgba(201,168,76,0.75); }
+    .fc-header .section-title { color: #fff; margin: 0 auto; }
+
+    .fc-inner {
+      position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      display: flex;
+      min-height: 560px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* Left — crimson pill panel */
+    .fc-left {
+      width: 42%;
+      background: var(--crimson, #e01f38);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .fc-left::before, .fc-left::after {
+      content: '';
+      position: absolute;
+      inset-x: 0;
+      height: 90px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .fc-left::before { top: 0; background: linear-gradient(to bottom, #e01f38 0%, transparent 100%); }
+    .fc-left::after  { bottom: 0; background: linear-gradient(to top, #e01f38 0%, transparent 100%); }
+
+    .fc-pills-track {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fc-pill {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: 1px solid rgba(255,255,255,0.28);
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.62);
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      transition: background 0.45s, color 0.45s, border-color 0.45s;
+      will-change: transform, opacity;
+    }
+    .fc-pill.is-active {
+      background: #fff;
+      color: var(--crimson, #e01f38);
+      border-color: #fff;
+    }
+    .fc-pill svg {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Right — image cards */
+    .fc-right {
+      flex: 1;
+      background: #100105;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 32px;
+    }
+    .fc-cards {
+      position: relative;
+      width: 300px;
+      height: 400px;
+    }
+    .fc-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 6px solid #0d0507;
+      background: #0d0507;
+      will-change: transform, opacity;
+      transition: transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.45s ease;
+    }
+    .fc-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: filter 0.55s ease;
+    }
+    .fc-card.is-active img { filter: none; }
+    .fc-card:not(.is-active) img { filter: grayscale(1) brightness(0.65) blur(2px); }
+
+    .fc-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .fc-card.is-active .fc-card__overlay { opacity: 1; }
+    .fc-card__badge {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 5px 12px;
+      border-radius: 100px;
+      width: fit-content;
+      margin-bottom: 10px;
+    }
+    .fc-card__desc {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: #fff;
+      line-height: 1.5;
+    }
+    .fc-card__live {
+      position: absolute;
+      top: 20px; left: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .fc-card.is-active .fc-card__live { opacity: 1; }
+    .fc-card__live-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--crimson, #e01f38);
+      box-shadow: 0 0 8px var(--crimson, #e01f38);
+    }
+    .fc-card__live span {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', monospace;
+    }
+
+    /* Dots */
+    .fc-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 7px;
+      z-index: 5;
+    }
+    .fc-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .fc-dot.is-active { background: var(--crimson, #e01f38); transform: scale(1.4); }
+
+    @media (max-width: 860px) {
+      .fc-inner { flex-direction: column; border-radius: 20px; }
+      .fc-left { width: 100%; min-height: 300px; }
+      .fc-right { min-height: 420px; }
+      .fc-cards { width: 240px; height: 320px; }
+    }
+    @media (max-width: 480px) {
+      .fc-cards { width: 200px; height: 275px; }
+      .fc-pill { font-size: 11px; padding: 10px 18px; gap: 8px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       BENTO GALLERY — INSIDE PREVAIL
+    ═══════════════════════════════════════════════ */
+    .bg-section {
+      background: #fff;
+      padding: 80px 0 72px;
+      overflow: hidden;
+    }
+    .bg-header {
+      text-align: center;
+      padding: 0 24px 48px;
+    }
+    .bg-header .section-label { color: #b08895; }
+    .bg-header .section-title { color: #1a0409; }
+    .bg-header__sub {
+      font-size: 14px;
+      color: #b08895;
+      letter-spacing: 0.05em;
+      margin-top: 10px;
+    }
+
+    /* Drag scroll container */
+    .bg-drag-wrap {
+      overflow: hidden;
+      cursor: grab;
+      user-select: none;
+      position: relative;
+    }
+    .bg-drag-wrap.is-dragging { cursor: grabbing; }
+    .bg-drag-wrap::before,
+    .bg-drag-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .bg-drag-wrap::before { left: 0; background: linear-gradient(to right, #fff 30%, transparent); }
+    .bg-drag-wrap::after  { right: 0; background: linear-gradient(to left,  #fff 30%, transparent); }
+
+    .bg-track {
+      display: flex;
+      gap: 14px;
+      padding: 8px 56px 20px;
+      width: max-content;
+    }
+
+    /* Cards */
+    .bg-card {
+      position: relative;
+      height: 360px;
+      border-radius: 16px;
+      overflow: hidden;
+      flex-shrink: 0;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(22px) scale(0.96);
+      transition:
+        opacity 0.6s cubic-bezier(0.22,1,0.36,1),
+        transform 0.6s cubic-bezier(0.22,1,0.36,1),
+        box-shadow 0.3s ease;
+    }
+    .bg-card.bg-wide   { width: 400px; }
+    .bg-card.bg-std    { width: 268px; }
+    .bg-card.bg-narrow { width: 220px; }
+    .bg-card.is-visible { opacity: 1; transform: none; }
+    .bg-card:hover { box-shadow: 0 20px 52px rgba(13,5,7,0.18); }
+
+    .bg-card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.65s ease;
+    }
+    .bg-card:hover img { transform: scale(1.06); }
+
+    .bg-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,5,7,0.88) 0%, rgba(13,5,7,0.25) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.38s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px 20px;
+    }
+    .bg-card:hover .bg-card__overlay { opacity: 1; }
+
+    .bg-card__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      letter-spacing: 0.07em;
+      color: #fff;
+      transform: translateY(8px);
+      transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+    }
+    .bg-card:hover .bg-card__title { transform: none; }
+
+    .bg-card__desc {
+      font-size: 11.5px;
+      color: rgba(255,255,255,0.68);
+      letter-spacing: 0.04em;
+      margin-top: 4px;
+      transform: translateY(8px);
+      opacity: 0;
+      transition: transform 0.38s 0.05s cubic-bezier(0.22,1,0.36,1), opacity 0.38s 0.05s;
+    }
+    .bg-card:hover .bg-card__desc { transform: none; opacity: 1; }
+
+    /* Drag hint */
+    .bg-hint {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: #d4b4be;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .bg-hint::before,
+    .bg-hint::after {
+      content: '';
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: #d4b4be;
+    }
+
+    /* Modal */
+    .bg-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(6,1,3,0.94);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    .bg-modal.open { opacity: 1; pointer-events: all; }
+    .bg-modal__img-wrap {
+      max-width: 920px;
+      width: 100%;
+      transform: scale(0.93) translateY(18px);
+      transition: transform 0.38s cubic-bezier(0.22,1,0.36,1);
+    }
+    .bg-modal.open .bg-modal__img-wrap { transform: none; }
+    .bg-modal__img {
+      width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+    }
+    .bg-modal__close {
+      position: fixed;
+      top: 18px; right: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 50%;
+      width: 42px; height: 42px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8);
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+      transition: background 0.2s, color 0.2s;
+    }
+    .bg-modal__close:hover { background: rgba(255,255,255,0.16); color: #fff; }
   </style>
 </head>
 <body>
@@ -520,6 +1367,11 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
+  <video class="hero__video" autoplay muted loop playsinline preload="auto">
+    <source src="media/Cindy Unity Event SFC 06 - Final.MOV" type="video/quicktime">
+  </video>
+  <div class="hero__video-overlay"></div>
+  <canvas id="heroGLSLCanvas" class="hero__glsl-hills"></canvas>
   <div class="hero__aurora"></div>
   <div class="hero__grid"></div>
   <div class="hero__bg-text" id="heroBgText">PREVAIL</div>
@@ -535,6 +1387,7 @@
     </p>
     <div class="hero__ctas" id="heroCtas">
       <a href="matchup.html" class="btn btn--crimson btn--lg magnetic">Join the Movement</a>
+      <a href="quiz.html"     class="btn btn--gold   btn--lg magnetic">Discover Your Financial Type</a>
       <a href="founder.html"  class="btn btn--glass  btn--lg magnetic">Meet Our Founder</a>
     </div>
   </div>
@@ -570,38 +1423,74 @@
 <!-- ═══ STATS ═══ -->
 <div class="stats-section" id="statsSection">
   <div class="stats-inner">
-    <div class="stat-item" data-target="90000" data-suffix="K+">
-      <div class="stat-num" id="stat0">90K+</div>
-      <div class="stat-label">Families Protected</div>
+    <div class="stat-item" data-target="14" data-prefix="" data-suffix="K+">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Licensed Agents</div>
     </div>
-    <div class="stat-item" data-target="9" data-suffix="+">
-      <div class="stat-num" id="stat1">9+</div>
-      <div class="stat-label">Licensed Brokers</div>
+    <div class="stat-item" data-target="118" data-prefix="" data-suffix="K+">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Families Served</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">PHP</div>
-      <div class="stat-label">Agency Partner</div>
+    <div class="stat-item" data-target="80" data-prefix="" data-suffix="K+">
+      <div class="stat-num">0</div>
+      <div class="stat-label">New Business Partners</div>
     </div>
-    <div class="stat-item">
-      <div class="stat-num">ATX</div>
-      <div class="stat-label">Austin, Texas</div>
+    <div class="stat-item" data-target="127" data-prefix="$" data-suffix="M+">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Submitted in Business</div>
     </div>
   </div>
 </div>
 
+<!-- ═══ LOGO CAROUSEL ═══ -->
+<div class="logo-carousel">
+  <p class="logo-carousel__label">Proudly Affiliated With</p>
+  <div class="logo-carousel__overflow">
+    <div class="logo-carousel__track">
+      <!-- SET A -->
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <!-- SET B (seamless loop duplicate) -->
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
+      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MISSION STATEMENT ═══ -->
+<section class="mission-section">
+  <div class="mission-inner">
+    <div class="mission-shield">
+      <img src="88.png" alt="Prevail Movement Eagle">
+    </div>
+    <div class="mission-text">
+      <p class="section-label">Our Purpose</p>
+      <h2 class="mission-heading">Our mission is to <em>enlighten, empower, and develop</em> the next generation of financial leaders.</h2>
+      <p class="mission-body">We exist to break the barriers between purpose and prosperity. The Prevail Movement is more than an agency. It is a calling built on faith, excellence, and the belief that every family deserves financial protection.</p>
+      <div class="mission-rule"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ WHO WE ARE ═══ -->
 <section class="who-section" id="whoSection">
-  <div class="who-inner">
-    <div>
-      <p class="section-label" id="whoLabel">Who We Are</p>
-      <h2 class="section-title" id="whoTitle">BUILT ON FOUR<br>UNBREAKABLE<br>PILLARS</h2>
-      <p class="section-sub" id="whoSub">The Prevail Movement is a life insurance organization powered by PHP Agency, dedicated to developing the next generation of financial leaders. We believe entrepreneurship changes lives and we have proven it with over 90,000 families.</p>
-      <div style="margin-top:36px;">
-        <a href="founder.html" class="btn btn--glass magnetic" id="whoBtn">Our Story →</a>
-      </div>
-    </div>
-    <div class="who__eagle-wrap" id="whoEagle">
-      <img src="88.png" alt="">
+  <video class="who__video-bg" autoplay muted loop playsinline
+    src="media/Cindy Unity Event SFC 06 - Final.MOV"></video>
+  <div class="who__video-overlay"></div>
+  <div class="who__content">
+    <p class="section-label" id="whoLabel">Who We Are</p>
+    <h2 class="section-title" id="whoTitle">BUILT ON FOUR<br>UNBREAKABLE<br>PILLARS</h2>
+    <p class="section-sub" id="whoSub">The Prevail Movement is a life insurance organization powered by PHP Agency, dedicated to developing the next generation of financial leaders. We believe entrepreneurship changes lives and we have proven it with over 118,000 families.</p>
+    <div style="margin-top:40px;">
+      <a href="founder.html" class="btn btn--glass magnetic" id="whoBtn">Our Story →</a>
     </div>
   </div>
 </section>
@@ -636,43 +1525,332 @@
   </div>
 </section>
 
-<!-- ═══ EVENT STRIP ═══ -->
-<div class="event-strip" id="eventStrip">
-  <div class="event-strip__aurora"></div>
-  <div class="event-strip__grid"></div>
-  <div class="event-strip__bgtext">TAKEOFF</div>
-  <div class="event-strip__content">
-    <p class="event-strip__label">Next Event</p>
-    <h2 class="event-strip__name" id="eventName">
-      PHP<br><span class="accent">TAKE OFF</span>
-    </h2>
-    <p class="event-strip__details">
-      <strong>August 4–7, 2025</strong> &nbsp;·&nbsp; MGM Grand Garden Arena &nbsp;·&nbsp; <strong>Las Vegas, Nevada</strong>
-    </p>
-    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;" id="eventCtas">
-      <a href="matchup.html" class="btn btn--crimson btn--lg magnetic">Register Now</a>
-      <a href="#"            class="btn btn--glass  btn--lg magnetic">Book Hotel</a>
+<!-- ═══ FEATURE CAROUSEL — VERTICALS ═══ -->
+<section class="fc-section" id="verticalsSection">
+  <div class="fc-wrap">
+
+    <div class="fc-header">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">OUR VERTICALS</h2>
     </div>
-    <p style="margin-top:22px;font-size:12px;color:rgba(255,255,255,0.35);letter-spacing:0.1em;">
-      Discount tickets: Text Diana at (575) 571-7057
-    </p>
+
+    <div class="fc-inner">
+
+      <!-- Left: scrolling pill buttons -->
+      <div class="fc-left">
+        <div class="fc-pills-track" id="fcPillsTrack">
+
+          <button class="fc-pill is-active" data-index="0">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Life Insurance
+          </button>
+
+          <button class="fc-pill" data-index="1">
+            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            Financial Planning
+          </button>
+
+          <button class="fc-pill" data-index="2">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Leadership
+          </button>
+
+          <button class="fc-pill" data-index="3">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Join the Movement
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Right: stacked image cards -->
+      <div class="fc-right">
+        <div class="fc-cards" id="fcCards">
+
+          <div class="fc-card is-active" data-index="0">
+            <img src="media/IMG_8387.jpg" alt="Life Insurance">
+            <div class="fc-card__live">
+              <div class="fc-card__live-dot"></div>
+              <span>01 · Life Insurance</span>
+            </div>
+            <div class="fc-card__overlay">
+              <div class="fc-card__badge">Prevail Movement</div>
+              <p class="fc-card__desc">We build licensed life insurance professionals from the ground up. No experience needed.</p>
+            </div>
+          </div>
+
+          <div class="fc-card" data-index="1">
+            <img src="media/IMG_5079.jpg" alt="Financial Planning">
+            <div class="fc-card__live">
+              <div class="fc-card__live-dot"></div>
+              <span>02 · Financial Planning</span>
+            </div>
+            <div class="fc-card__overlay">
+              <div class="fc-card__badge">Prevail Movement</div>
+              <p class="fc-card__desc">We train agents to position life insurance as the cornerstone of a complete financial plan.</p>
+            </div>
+          </div>
+
+          <div class="fc-card" data-index="2">
+            <img src="media/IMG_6588.jpg" alt="Leadership Development">
+            <div class="fc-card__live">
+              <div class="fc-card__live-dot"></div>
+              <span>03 · Leadership</span>
+            </div>
+            <div class="fc-card__overlay">
+              <div class="fc-card__badge">Prevail Movement</div>
+              <p class="fc-card__desc">We develop the next generation of leaders who carry the Prevail standard forward.</p>
+            </div>
+          </div>
+
+          <div class="fc-card" data-index="3">
+            <img src="media/IMG_6643.jpg" alt="Join the Movement">
+            <div class="fc-card__live">
+              <div class="fc-card__live-dot"></div>
+              <span>04 · Join Us</span>
+            </div>
+            <div class="fc-card__overlay">
+              <div class="fc-card__badge">Prevail Movement</div>
+              <p class="fc-card__desc">Build income, impact, and independence with a team that puts faith and family first.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="fc-dots" id="fcDots">
+          <div class="fc-dot is-active" data-index="0"></div>
+          <div class="fc-dot" data-index="1"></div>
+          <div class="fc-dot" data-index="2"></div>
+          <div class="fc-dot" data-index="3"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ YOUTUBE SECTION ═══ -->
+<div class="yt-section" id="ytSection">
+  <div class="yt-section__glow"></div>
+  <div class="yt-section__left">
+    <p class="yt-section__label" id="ytLabel">YouTube</p>
+    <h2 class="yt-section__headline" id="ytHeadline">REAL TALK.<br>REAL GROWTH.</h2>
+    <p class="yt-section__sub" id="ytSub">Building a life of success with purpose, leadership and class. No filters.</p>
+    <p class="yt-section__gain" id="ytStats">Learn how top agents build wealth, lead teams, and create a life of freedom on their terms.</p>
+    <a href="https://www.youtube.com/@cindycobos-nofilters" target="_blank" rel="noopener" class="btn btn--crimson btn--lg magnetic" id="ytBtn">Watch on YouTube</a>
+  </div>
+  <div class="yt-section__right" id="ytPhone">
+    <img src="media/cindy%20phone.png" alt="Cindy Cobos YouTube Channel" class="yt-phone-img" loading="lazy">
   </div>
 </div>
 
-<!-- ═══ TEAM PREVIEW ═══ -->
-<section class="team-preview" id="teamSection">
-  <div class="team-preview__bg-text">LEADERS</div>
-  <div class="container" style="position:relative;z-index:1;">
-    <p class="section-label" id="teamLabel">Our Leaders</p>
-    <h2 class="section-title" style="margin:0 auto 20px;" id="teamTitle">
-      MEET THE BROKERS<br>BEHIND THE MOVEMENT
-    </h2>
-    <p class="section-sub" style="margin:0 auto 44px;" id="teamSub">
-      Our team of licensed brokers are building legacies across the country. Every one of them started exactly where you are now.
-    </p>
-    <a href="brokers.html" class="btn btn--crimson btn--lg magnetic" id="teamBtn">Meet the Team</a>
+<!-- ═══ QUIZ CTA SECTION ═══ -->
+<section class="quiz-cta-section" id="quizCta">
+  <div class="quiz-cta__inner">
+    <p class="quiz-cta__label" id="quizCtaLabel">2-Minute Assessment</p>
+    <h2 class="quiz-cta__headline" id="quizCtaHead">WHICH TYPE OF<br>AGENT ARE YOU?</h2>
+    <p class="quiz-cta__sub" id="quizCtaSub">8 questions reveal your strengths, your style, and the income path built for you.</p>
+    <div class="quiz-types" id="quizTypes">
+      <div class="quiz-type-card">
+        <span class="quiz-type-card__icon">⚡</span>
+        <div class="quiz-type-card__name">Achievement Driver</div>
+        <div class="quiz-type-card__hook">Wired to outperform.</div>
+      </div>
+      <div class="quiz-type-card quiz-type-card--featured">
+        <div class="quiz-type-card__badge">Most Common</div>
+        <span class="quiz-type-card__icon">🔓</span>
+        <div class="quiz-type-card__name">Freedom Seeker</div>
+        <div class="quiz-type-card__hook">You build wealth to own your time.</div>
+      </div>
+      <div class="quiz-type-card">
+        <span class="quiz-type-card__icon">🏛️</span>
+        <div class="quiz-type-card__name">Legacy Builder</div>
+        <div class="quiz-type-card__hook">You play the long game.</div>
+      </div>
+      <div class="quiz-type-card">
+        <span class="quiz-type-card__icon">🤝</span>
+        <div class="quiz-type-card__name">Connected Investor</div>
+        <div class="quiz-type-card__hook">You grow by growing others.</div>
+      </div>
+      <div class="quiz-type-card">
+        <span class="quiz-type-card__icon">📈</span>
+        <div class="quiz-type-card__name">Wealth Creator</div>
+        <div class="quiz-type-card__hook">You turn vision into income.</div>
+      </div>
+    </div>
+    <div class="quiz-cta__footer" id="quizCtaFooter">
+      <a href="quiz.html" class="btn btn--gold btn--lg magnetic">Discover Your Type →</a>
+      <p class="quiz-cta__reassurance">Under 2 minutes · Free · No commitment</p>
+    </div>
   </div>
 </section>
+
+<!-- ═══ RECENT HIGHLIGHTS ═══ -->
+<section class="wins-section">
+  <div class="wins-header">
+    <p class="section-label">What's Happening</p>
+    <h2 class="section-title">RECENT HIGHLIGHTS</h2>
+  </div>
+  <div class="wins-grid">
+    <a href="brokers.html" class="win-card">
+      <div class="win-card__date">April 2026</div>
+      <h3 class="win-card__title">Washington D.C. Representation</h3>
+      <p class="win-card__text">Prevail Movement agents traveled to the nation's capital representing the PHP Agency family on the national stage.</p>
+      <span class="win-card__cta">Meet the Team</span>
+    </a>
+    <a href="brokers.html" class="win-card">
+      <div class="win-card__date">2026</div>
+      <h3 class="win-card__title">60+ Licensed Agents Strong</h3>
+      <p class="win-card__text">The movement has grown to over 60 licensed life insurance agents across Texas and beyond. One mission. Unbreakable.</p>
+      <span class="win-card__cta">Our Brokers</span>
+    </a>
+    <a href="brokers.html" class="win-card">
+      <div class="win-card__date">2026</div>
+      <h3 class="win-card__title">New Marketing Directors</h3>
+      <p class="win-card__text">Lorenzo Godinez, Pablo Negrete, Jaime Dominguez, and Nicholas Ingram elevated to Marketing Director. The next generation is leading.</p>
+      <span class="win-card__cta">View Leadership</span>
+    </a>
+  </div>
+</section>
+
+<!-- ═══ TEAM PREVIEW ═══ -->
+<section id="teamSection" style="background:#0d0507;overflow:hidden;">
+
+  <!-- DC trip — full bleed cinematic -->
+  <div class="team-dc-photo">
+    <img src="media/IMG_9876.JPEG" alt="Prevail Movement team at Washington D.C.">
+    <div class="team-dc-photo__overlay"></div>
+    <div class="team-dc-photo__caption">From Texas <span>to Washington D.C.</span></div>
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:44px 24px 64px;text-align:center;background:#fff;">
+    <a href="brokers.html" class="btn btn--crimson btn--lg magnetic">Meet Our Brokers</a>
+  </div>
+
+</section>
+
+<!-- ═══ INSIDE PREVAIL GALLERY ═══ -->
+<!-- ═══ BENTO GALLERY — INSIDE PREVAIL ═══ -->
+<section class="bg-section" id="insidePrevail">
+  <div class="bg-header">
+    <p class="section-label">Our World</p>
+    <h2 class="section-title">INSIDE PREVAIL</h2>
+    <p class="bg-header__sub">From boardrooms to events, from licensing to leadership.</p>
+  </div>
+
+  <div class="bg-drag-wrap" id="bgDragWrap">
+    <div class="bg-track" id="bgTrack">
+
+      <div class="bg-card bg-wide" data-src="media/cindy.png">
+        <img src="media/cindy.png" alt="Cindy Cobos, Founder" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">The Founder</div>
+          <div class="bg-card__desc">Cindy Cobos. Built from faith and purpose.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_5946.JPEG">
+        <img src="media/IMG_5946.JPEG" alt="Industry Events">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Industry Events</div>
+          <div class="bg-card__desc">Prevail in rooms that matter.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_9024.jpg">
+        <img src="media/IMG_9024.jpg" alt="PHP Agency" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">PHP Agency</div>
+          <div class="bg-card__desc">Proudly affiliated with PHP Agency.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-narrow" data-src="media/IMG_1643.JPG">
+        <img src="media/IMG_1643.JPG" alt="Cindy Cobos, CEO" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">CEO Vision</div>
+          <div class="bg-card__desc">Leading with excellence every day.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-wide" data-src="media/_DSC4161.JPG">
+        <img src="media/_DSC4161.JPG" alt="Marketing Directors" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Marketing Directors</div>
+          <div class="bg-card__desc">The next generation of Prevail leaders.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_9349.JPEG">
+        <img src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Leadership</div>
+          <div class="bg-card__desc">Building teams. Building legacies.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_0667.JPEG">
+        <img src="media/IMG_0667.JPEG" alt="Prevail Agents" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Prevail Agents</div>
+          <div class="bg-card__desc">Licensed. Driven. Unstoppable.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-wide" data-src="media/IMG_1812.JPG">
+        <img src="media/IMG_1812.JPG" alt="Dallas, Texas" style="object-position:center center;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Dallas, Texas</div>
+          <div class="bg-card__desc">Home base. Built in the heart of Texas.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-narrow" data-src="media/IMG_8193.PNG">
+        <img src="media/IMG_8193.PNG" alt="Prevail Leadership" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Leadership</div>
+          <div class="bg-card__desc">Rising to every challenge.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_1641.JPG">
+        <img src="media/IMG_1641.JPG" alt="Cindy Cobos" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">The Mission</div>
+          <div class="bg-card__desc">Pursuing excellence with purpose.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_4712.JPEG">
+        <img src="media/IMG_4712.JPEG" alt="Prevail Agent" style="object-position:center top;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">The Team</div>
+          <div class="bg-card__desc">60+ strong and growing.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_5673.JPEG">
+        <img src="media/IMG_5673.JPEG" alt="Cindy at industry event">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">In Good Company</div>
+          <div class="bg-card__desc">Representing Prevail at the highest level.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <p class="bg-hint">Drag to explore</p>
+</section>
+
+<!-- Bento Gallery Modal -->
+<div class="bg-modal" id="bgModal">
+  <div class="bg-modal__img-wrap">
+    <img class="bg-modal__img" id="bgModalImg" src="" alt="">
+  </div>
+  <button class="bg-modal__close" id="bgModalClose" aria-label="Close">&#x2715;</button>
+</div>
 
 <!-- ═══════════════════════════════════════════════
      CINEMATIC FOOTER — curtain reveal via clip-path
@@ -837,6 +2015,40 @@
         background-clip: text;
       ">JOIN THE MOVEMENT?</span></h2>
 
+      <!-- Contact info -->
+      <div class="cf-contact-row" style="opacity:0;" id="cfContact">
+        <a href="tel:+15755717057" class="cf-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.44 2 2 0 0 1 3.55 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.88-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          (575) 571-7057
+        </a>
+        <span class="cf-contact-item">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Austin, Texas
+        </span>
+      </div>
+
+      <!-- Social links -->
+      <div class="cf-social-row" style="opacity:0;" id="cfSocial">
+        <a href="#" class="cf-social-icon" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="#" class="cf-social-icon" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="cf-social-icon" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.07a4.85 4.85 0 0 1-1-.38z"/></svg>
+        </a>
+        <a href="#" class="cf-social-icon" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="currentColor" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+      </div>
+
+      <!-- Email capture -->
+      <form class="cf-email-form" style="opacity:0;" id="cfEmailForm" onsubmit="return false;">
+        <input type="email" class="cf-email-input" placeholder="Your email address">
+        <button type="submit" class="cf-email-btn">Stay Connected</button>
+      </form>
+
       <!-- Glass pill CTAs -->
       <div id="cfLinks" style="
         display: flex;
@@ -868,6 +2080,12 @@
       flex-wrap: wrap;
       gap: 16px;
     ">
+      <!-- Legal links -->
+      <div style="display:flex;gap:20px;flex-wrap:wrap;">
+        <a href="#" style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">Privacy Policy</a>
+        <a href="#" style="font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='rgba(255,255,255,0.6)'" onmouseout="this.style.color='rgba(255,255,255,0.28)'">Terms of Service</a>
+      </div>
+
       <!-- Copyright -->
       <span style="
         font-size: 11px;
@@ -875,7 +2093,7 @@
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: rgba(255,255,255,0.35);
-      ">© 2025 The Prevail Movement. All rights reserved.</span>
+      ">© 2026 The Prevail Movement. All rights reserved.</span>
 
       <!-- PHP badge -->
       <div style="
@@ -884,16 +2102,8 @@
         gap: 10px;
       ">
         <span style="font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;text-transform:uppercase;">Proudly affiliated with</span>
-        <span style="
-          background: rgba(255,255,255,0.07);
-          border: 1px solid rgba(255,255,255,0.14);
-          border-radius: 4px;
-          padding: 4px 12px;
-          font-size: 11px;
-          font-weight: 700;
-          letter-spacing: 0.14em;
-          color: rgba(255,255,255,0.55);
-        ">PHP AGENCY</span>
+        <span style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:4px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:rgba(255,255,255,0.55);">PHP AGENCY</span>
+        <span style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:4px 12px;font-size:11px;font-weight:700;letter-spacing:0.14em;color:rgba(255,255,255,0.45);">INTEGRITY</span>
       </div>
 
       <!-- Back to top -->
@@ -919,6 +2129,36 @@
 </div>
 
 <style>
+/* ── Recent Wins Section ── */
+.wins-section { background:#08020a; padding:88px 40px; }
+.wins-header { text-align:center; margin-bottom:56px; }
+.wins-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px; max-width:1100px; margin:0 auto; }
+.win-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07); border-left:3px solid var(--crimson,#e01f38); border-radius:12px; padding:32px 28px; transition:background 0.3s,border-left-color 0.3s; text-decoration:none; display:block; }
+.win-card:hover { background:rgba(255,255,255,0.045); border-left-color:#ff4060; }
+.win-card__date { font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(201,168,76,0.75); margin-bottom:10px; }
+.win-card__title { font-family:'Bebas Neue',cursive; font-size:clamp(20px,2.2vw,26px); letter-spacing:0.04em; color:#fff; line-height:1.15; margin:0 0 12px; }
+.win-card__text { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.75; margin:0 0 18px; }
+.win-card__cta { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--crimson,#e01f38); }
+.win-card:hover .win-card__cta { color:#ff4060; }
+
+/* ── Footer Social + Contact + Email ── */
+.cf-social-row { display:flex; gap:12px; justify-content:center; margin:24px 0 16px; }
+.cf-social-icon { width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; color:rgba(255,255,255,0.5); transition:background 0.3s,color 0.3s,border-color 0.3s; text-decoration:none; }
+.cf-social-icon:hover { background:rgba(224,31,56,0.15); border-color:rgba(224,31,56,0.4); color:#fff; }
+.cf-contact-row { display:flex; gap:28px; justify-content:center; flex-wrap:wrap; margin-bottom:28px; }
+.cf-contact-item { display:flex; align-items:center; gap:7px; font-size:12px; color:rgba(255,255,255,0.38); text-decoration:none; letter-spacing:0.04em; transition:color 0.3s; }
+.cf-contact-item:hover { color:rgba(255,255,255,0.72); }
+.cf-email-form { display:flex; max-width:360px; margin:0 auto 36px; border-radius:8px; overflow:hidden; border:1px solid rgba(255,255,255,0.13); }
+.cf-email-input { flex:1; background:rgba(255,255,255,0.06); border:none; padding:13px 16px; font-size:13px; color:#fff; outline:none; font-family:'Inter',sans-serif; }
+.cf-email-input::placeholder { color:rgba(255,255,255,0.28); }
+.cf-email-btn { background:var(--crimson,#e01f38); color:#fff; border:none; padding:13px 20px; font-size:10px; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; cursor:pointer; font-family:'Inter',sans-serif; white-space:nowrap; transition:background 0.3s; }
+.cf-email-btn:hover { background:#ff3050; }
+
+@media (max-width:600px) {
+  .wins-section { padding:60px 20px; }
+  .cf-email-form { max-width:100%; }
+}
+
 /* Cinematic footer keyframes */
 @keyframes cfBreathe {
   0%   { transform: translate(-50%,-50%) scale(1);    opacity: 0.65; }
@@ -978,6 +2218,9 @@
   transform: translateY(-3px);
 }
 </style>
+
+<!-- Three.js for GLSL Hills -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <!-- GSAP via CDN -->
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
@@ -1050,26 +2293,52 @@
     }
   });
 
+  /* Counter animation — counts up from 0 to data-target on scroll */
+  (function () {
+    let counted = false;
+    function runCounters() {
+      if (counted) return;
+      counted = true;
+      document.querySelectorAll('.stat-item[data-target]').forEach(function (item) {
+        const target   = parseInt(item.dataset.target, 10);
+        const prefix   = item.dataset.prefix || '';
+        const suffix   = item.dataset.suffix || '';
+        const numEl    = item.querySelector('.stat-num');
+        if (!numEl) return;
+        const duration = 1800;
+        const startTime = performance.now();
+        function step(now) {
+          const elapsed  = Math.min(now - startTime, duration);
+          const progress = elapsed / duration;
+          const ease     = 1 - Math.pow(1 - progress, 3);
+          const current  = Math.round(ease * target);
+          numEl.textContent = prefix + current + suffix;
+          if (elapsed < duration) requestAnimationFrame(step);
+          else numEl.textContent = prefix + target + suffix;
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    const obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { runCounters(); obs.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    const section = document.getElementById('statsSection');
+    if (section) obs.observe(section);
+  })();
+
   /* ─────────────────────────────────────────
      WHO WE ARE — staggered reveal
   ───────────────────────────────────────── */
-  gsap.from(['#whoLabel','#whoTitle','#whoSub','#whoBtn'], {
-    y: 50, opacity: 0,
-    stagger: 0.12,
-    duration: 0.8,
+  gsap.fromTo(['#whoLabel','#whoTitle','#whoSub','#whoBtn'], { y: 50, opacity: 0 }, {
+    y: 0, opacity: 1,
+    stagger: 0.14,
+    duration: 0.9,
     ease: 'power3.out',
     scrollTrigger: {
       trigger: '#whoSection',
-      start: 'top 75%',
-    }
-  });
-  gsap.from('#whoEagle', {
-    x: 60, opacity: 0, scale: 0.9,
-    duration: 1,
-    ease: 'power3.out',
-    scrollTrigger: {
-      trigger: '#whoSection',
-      start: 'top 75%',
+      start: 'top 72%',
     }
   });
 
@@ -1092,31 +2361,37 @@
   });
 
   /* ─────────────────────────────────────────
-     EVENT STRIP — scale up reveal + bg text
+     YOUTUBE SECTION — fade up + slide in
   ───────────────────────────────────────── */
-  gsap.from('#eventName', {
-    y: 60, opacity: 0, scale: 0.94,
-    duration: 1,
+  gsap.fromTo(['#ytLabel','#ytHeadline','#ytSub','#ytStats','#ytBtn'], { y: 40, opacity: 0 }, {
+    y: 0, opacity: 1,
+    stagger: 0.12,
+    duration: 0.9,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '#eventStrip', start: 'top 70%' }
+    scrollTrigger: { trigger: '#ytSection', start: 'top 70%' }
   });
-  gsap.from('#eventCtas', {
-    y: 30, opacity: 0,
-    duration: 0.7,
+  gsap.fromTo('#ytPhone', { x: 50, opacity: 0 }, {
+    x: 0, opacity: 1,
+    duration: 1.1,
     ease: 'power3.out',
-    scrollTrigger: { trigger: '#eventStrip', start: 'top 65%' },
+    scrollTrigger: { trigger: '#ytSection', start: 'top 65%' },
     delay: 0.25
   });
-  /* bg text parallax inside event strip */
-  gsap.to('.event-strip__bgtext', {
-    y: '-6vh',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '#eventStrip',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: 1.5
-    }
+
+  /* ─────────────────────────────────────────
+     QUIZ CTA — stagger reveal
+  ───────────────────────────────────────── */
+  gsap.fromTo(['#quizCtaLabel','#quizCtaHead','#quizCtaSub'], { y: 36, opacity: 0 }, {
+    y: 0, opacity: 1, stagger: 0.1, duration: 0.85, ease: 'power3.out',
+    scrollTrigger: { trigger: '#quizCta', start: 'top 72%' }
+  });
+  gsap.fromTo('#quizTypes .quiz-type-card', { y: 50, opacity: 0 }, {
+    y: 0, opacity: 1, stagger: 0.09, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '#quizTypes', start: 'top 78%' }
+  });
+  gsap.fromTo('#quizCtaFooter', { y: 24, opacity: 0 }, {
+    y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
+    scrollTrigger: { trigger: '#quizCtaFooter', start: 'top 85%' }
   });
 
   /* ─────────────────────────────────────────
@@ -1163,21 +2438,192 @@
     }
   );
 
-  // Staggered content reveal: logo → heading → pills
-  gsap.fromTo(['#cfLogo', '#cfHeading', '#cfLinks'],
-    { y: 55, opacity: 0 },
+  // Staggered content reveal: logo → heading → contact → pills
+  gsap.fromTo(['#cfLogo', '#cfHeading', '#cfContact', '#cfSocial', '#cfEmailForm', '#cfLinks'],
+    { y: 40, opacity: 0 },
     {
       y: 0, opacity: 1,
-      stagger: 0.14,
+      stagger: 0.12,
+      duration: 0.85,
       ease: 'power3.out',
       scrollTrigger: {
         trigger: cfWrapper,
-        start: 'top 42%',
-        end: 'bottom bottom',
-        scrub: 1
+        start: 'top 72%',
+        toggleActions: 'play none none none'
       }
     }
   );
+
+  /* ─────────────────────────────────────────
+     FEATURE CAROUSEL — VERTICALS
+  ───────────────────────────────────────── */
+  (function () {
+    const ITEM_H   = 72;   // px between pill slots
+    const AUTO_MS  = 3200;
+    const pills    = document.querySelectorAll('.fc-pill');
+    const cards    = document.querySelectorAll('.fc-card');
+    const dots     = document.querySelectorAll('.fc-dot');
+    const N        = pills.length;
+    let   current  = 0;
+    let   timer;
+
+    function wrap(v) { return ((v % N) + N) % N; }
+
+    function update() {
+      pills.forEach((pill, i) => {
+        let d = i - current;
+        if (d >  N / 2) d -= N;
+        if (d < -N / 2) d += N;
+        pill.style.transform = `translateY(${d * ITEM_H}px)`;
+        pill.style.opacity   = Math.max(0, 1 - Math.abs(d) * 0.26).toString();
+        pill.classList.toggle('is-active', i === current);
+      });
+
+      cards.forEach((card, i) => {
+        let d = i - current;
+        if (d >  N / 2) d -= N;
+        if (d < -N / 2) d += N;
+        card.classList.toggle('is-active', d === 0);
+        if (d === 0) {
+          card.style.cssText = 'transform:translateX(0) scale(1) rotate(0deg);opacity:1;z-index:20;pointer-events:auto;';
+        } else if (d === -1) {
+          card.style.cssText = 'transform:translateX(-90px) scale(0.84) rotate(-4deg);opacity:0.35;z-index:10;pointer-events:none;';
+        } else if (d === 1) {
+          card.style.cssText = 'transform:translateX(90px) scale(0.84) rotate(4deg);opacity:0.35;z-index:10;pointer-events:none;';
+        } else {
+          card.style.cssText = 'transform:scale(0.7);opacity:0;z-index:0;pointer-events:none;';
+        }
+      });
+
+      dots.forEach((dot, i) => dot.classList.toggle('is-active', i === current));
+    }
+
+    function goTo(i) { current = wrap(i); update(); }
+    function startTimer() { clearInterval(timer); timer = setInterval(() => goTo(current + 1), AUTO_MS); }
+
+    pills.forEach((pill, i) => {
+      pill.addEventListener('click', () => { goTo(i); startTimer(); });
+      pill.addEventListener('mouseenter', () => clearInterval(timer));
+      pill.addEventListener('mouseleave', startTimer);
+    });
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); startTimer(); });
+    });
+
+    update();
+    startTimer();
+
+    // Scroll reveal for the section
+    gsap.fromTo('.fc-header', { y: 30, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '#verticalsSection', start: 'top 82%' }
+    });
+    gsap.fromTo('.fc-inner', { y: 50, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 1, ease: 'power3.out',
+      scrollTrigger: { trigger: '#verticalsSection', start: 'top 75%' }
+    });
+  })();
+
+  /* ── Bento Gallery — Inside Prevail ── */
+  (function () {
+    const wrap    = document.getElementById('bgDragWrap');
+    const track   = document.getElementById('bgTrack');
+    const modal   = document.getElementById('bgModal');
+    const modalImg = document.getElementById('bgModalImg');
+    const closeBtn = document.getElementById('bgModalClose');
+    const cards   = document.querySelectorAll('.bg-card');
+
+    if (!wrap || !track) return;
+
+    /* ── Drag scroll ── */
+    let isDown = false, startX = 0, scrollLeft = 0, moved = false;
+
+    wrap.addEventListener('mousedown', e => {
+      isDown = true; moved = false;
+      wrap.classList.add('is-dragging');
+      startX = e.pageX - wrap.offsetLeft;
+      scrollLeft = wrap._scrollPos || 0;
+    });
+    document.addEventListener('mouseup', () => {
+      isDown = false;
+      wrap.classList.remove('is-dragging');
+    });
+    document.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - wrap.offsetLeft;
+      const delta = (x - startX) * 1.4;
+      if (Math.abs(delta) > 4) moved = true;
+      const newPos = Math.max(
+        wrap.offsetWidth - track.scrollWidth - 56,
+        Math.min(0, scrollLeft + delta)
+      );
+      wrap._scrollPos = newPos;
+      track.style.transform = `translateX(${newPos}px)`;
+    });
+
+    /* Touch support */
+    let touchStartX = 0, touchScrollLeft = 0;
+    wrap.addEventListener('touchstart', e => {
+      touchStartX = e.touches[0].pageX;
+      touchScrollLeft = wrap._scrollPos || 0;
+    }, { passive: true });
+    wrap.addEventListener('touchmove', e => {
+      const delta = (e.touches[0].pageX - touchStartX) * 1.2;
+      const newPos = Math.max(
+        wrap.offsetWidth - track.scrollWidth - 56,
+        Math.min(0, touchScrollLeft + delta)
+      );
+      wrap._scrollPos = newPos;
+      track.style.transform = `translateX(${newPos}px)`;
+    }, { passive: true });
+
+    /* ── Modal ── */
+    function openModal(src) {
+      modalImg.src = src;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => { modalImg.src = ''; }, 300);
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if (moved) return;
+        openModal(card.dataset.src);
+      });
+    });
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* ── Stagger reveal on scroll ── */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(cards).indexOf(entry.target);
+          setTimeout(() => entry.target.classList.add('is-visible'), idx * 60);
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    cards.forEach(c => revealObs.observe(c));
+  })();
+
+  /* Mission section reveal */
+  gsap.from('.mission-shield', {
+    x: -60, opacity: 0, duration: 0.9,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.mission-section', start: 'top 80%' }
+  });
+  gsap.from('.mission-text > *', {
+    y: 30, opacity: 0, stagger: 0.12, duration: 0.7,
+    ease: 'power3.out',
+    scrollTrigger: { trigger: '.mission-section', start: 'top 78%' }
+  });
 
   /* ─────────────────────────────────────────
      MAGNETIC BUTTONS
@@ -1210,5 +2656,158 @@
   });
 
 </script>
+
+<!-- ═══ GLSL HILLS — Hero WebGL Animation ═══ -->
+<script>
+(function () {
+  'use strict';
+
+  const canvas = document.getElementById('heroGLSLCanvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  /* ── Renderer + Scene + Camera ── */
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
+
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 1, 10000);
+  camera.position.set(0, 16, 125);
+  camera.lookAt(new THREE.Vector3(0, 28, 0));
+
+  const clock = new THREE.Clock();
+
+  /* ── Plane mesh with Perlin-noise GLSL ── */
+  const PLANE_SIZE = 256;
+  const SPEED = 0.45;
+
+  const uniforms = { time: { type: 'f', value: 0 } };
+
+  const mesh = new THREE.Mesh(
+    new THREE.PlaneGeometry(PLANE_SIZE, PLANE_SIZE, PLANE_SIZE, PLANE_SIZE),
+    new THREE.RawShaderMaterial({
+      uniforms,
+      transparent: true,
+      vertexShader: `
+        #define GLSLIFY 1
+        attribute vec3 position;
+        uniform mat4 projectionMatrix;
+        uniform mat4 modelViewMatrix;
+        uniform float time;
+        varying vec3 vPosition;
+
+        mat4 rotateMatrixX(float r) {
+          return mat4(
+            1.0,0.0,0.0,0.0,
+            0.0,cos(r),-sin(r),0.0,
+            0.0,sin(r),cos(r),0.0,
+            0.0,0.0,0.0,1.0
+          );
+        }
+
+        vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+        vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+        vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+        vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+        vec3 fade(vec3 t){return t*t*t*(t*(t*6.0-15.0)+10.0);}
+
+        float cnoise(vec3 P){
+          vec3 Pi0=floor(P),Pi1=Pi0+vec3(1.0);
+          Pi0=mod289(Pi0);Pi1=mod289(Pi1);
+          vec3 Pf0=fract(P),Pf1=Pf0-vec3(1.0);
+          vec4 ix=vec4(Pi0.x,Pi1.x,Pi0.x,Pi1.x);
+          vec4 iy=vec4(Pi0.yy,Pi1.yy);
+          vec4 iz0=Pi0.zzzz,iz1=Pi1.zzzz;
+          vec4 ixy=permute(permute(ix)+iy);
+          vec4 ixy0=permute(ixy+iz0),ixy1=permute(ixy+iz1);
+          vec4 gx0=ixy0*(1.0/7.0),gy0=fract(floor(gx0)*(1.0/7.0))-0.5;
+          gx0=fract(gx0);
+          vec4 gz0=vec4(0.5)-abs(gx0)-abs(gy0);
+          vec4 sz0=step(gz0,vec4(0.0));
+          gx0-=sz0*(step(0.0,gx0)-0.5);gy0-=sz0*(step(0.0,gy0)-0.5);
+          vec4 gx1=ixy1*(1.0/7.0),gy1=fract(floor(gx1)*(1.0/7.0))-0.5;
+          gx1=fract(gx1);
+          vec4 gz1=vec4(0.5)-abs(gx1)-abs(gy1);
+          vec4 sz1=step(gz1,vec4(0.0));
+          gx1-=sz1*(step(0.0,gx1)-0.5);gy1-=sz1*(step(0.0,gy1)-0.5);
+          vec3 g000=vec3(gx0.x,gy0.x,gz0.x),g100=vec3(gx0.y,gy0.y,gz0.y);
+          vec3 g010=vec3(gx0.z,gy0.z,gz0.z),g110=vec3(gx0.w,gy0.w,gz0.w);
+          vec3 g001=vec3(gx1.x,gy1.x,gz1.x),g101=vec3(gx1.y,gy1.y,gz1.y);
+          vec3 g011=vec3(gx1.z,gy1.z,gz1.z),g111=vec3(gx1.w,gy1.w,gz1.w);
+          vec4 norm0=taylorInvSqrt(vec4(dot(g000,g000),dot(g010,g010),dot(g100,g100),dot(g110,g110)));
+          g000*=norm0.x;g010*=norm0.y;g100*=norm0.z;g110*=norm0.w;
+          vec4 norm1=taylorInvSqrt(vec4(dot(g001,g001),dot(g011,g011),dot(g101,g101),dot(g111,g111)));
+          g001*=norm1.x;g011*=norm1.y;g101*=norm1.z;g111*=norm1.w;
+          float n000=dot(g000,Pf0),n100=dot(g100,vec3(Pf1.x,Pf0.yz));
+          float n010=dot(g010,vec3(Pf0.x,Pf1.y,Pf0.z)),n110=dot(g110,vec3(Pf1.xy,Pf0.z));
+          float n001=dot(g001,vec3(Pf0.xy,Pf1.z)),n101=dot(g101,vec3(Pf1.x,Pf0.y,Pf1.z));
+          float n011=dot(g011,vec3(Pf0.x,Pf1.yz)),n111=dot(g111,Pf1);
+          vec3 fade_xyz=fade(Pf0);
+          vec4 n_z=mix(vec4(n000,n100,n010,n110),vec4(n001,n101,n011,n111),fade_xyz.z);
+          vec2 n_yz=mix(n_z.xy,n_z.zw,fade_xyz.y);
+          float n_xyz=mix(n_yz.x,n_yz.y,fade_xyz.x);
+          return 2.2*n_xyz;
+        }
+
+        void main(void){
+          vec3 p=(rotateMatrixX(radians(90.0))*vec4(position,1.0)).xyz;
+          float s1=sin(radians(p.x/128.0*90.0));
+          vec3 np=p+vec3(0.0,0.0,time*-30.0);
+          float n1=cnoise(np*0.08),n2=cnoise(np*0.06),n3=cnoise(np*0.4);
+          vec3 lp=p+vec3(0.0,
+            n1*s1*8.0+n2*s1*8.0+n3*(abs(s1)*2.0+0.5)+pow(s1,2.0)*40.0,
+            0.0);
+          vPosition=lp;
+          gl_Position=projectionMatrix*modelViewMatrix*vec4(lp,1.0);
+        }
+      `,
+      fragmentShader: `
+        precision highp float;
+        #define GLSLIFY 1
+        varying vec3 vPosition;
+        void main(void){
+          float opacity=(96.0-length(vPosition))/256.0*0.55;
+          /* warm rose-gold tint to match Prevail crimson palette */
+          vec3 color=vec3(1.0,0.78,0.72);
+          gl_FragColor=vec4(color,max(opacity,0.0));
+        }
+      `
+    })
+  );
+
+  scene.add(mesh);
+
+  /* ── Resize ── */
+  function resize() {
+    const hero   = document.getElementById('hero');
+    const w      = hero ? hero.offsetWidth  : window.innerWidth;
+    const h      = hero ? hero.offsetHeight : window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  /* ── Render loop — pause when tab is hidden ── */
+  let rafId;
+  function renderLoop() {
+    uniforms.time.value += clock.getDelta() * SPEED;
+    renderer.render(scene, camera);
+    rafId = requestAnimationFrame(renderLoop);
+  }
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) { cancelAnimationFrame(rafId); clock.stop(); }
+    else { clock.start(); renderLoop(); }
+  });
+
+  renderLoop();
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
 </body>
 </html>

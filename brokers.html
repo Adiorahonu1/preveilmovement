@@ -8,19 +8,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* ── Marquee infrastructure ── */
+    /* ── Team section ── */
     .team-section {
       padding: 100px 0;
       overflow: hidden;
       background: var(--bg);
     }
-
     .team-header {
       text-align: center;
       padding: 0 40px;
       margin-bottom: 64px;
     }
-
     .team-badge {
       display: inline-flex;
       align-items: center;
@@ -32,15 +30,12 @@
       margin-bottom: 20px;
     }
     .team-badge svg {
-      width: 24px;
-      height: 24px;
-      stroke: #fff;
-      fill: none;
+      width: 24px; height: 24px;
+      stroke: #fff; fill: none;
       stroke-width: 1.8;
       stroke-linecap: round;
       stroke-linejoin: round;
     }
-
     .team-header h2 {
       font-family: 'Bebas Neue', cursive;
       font-size: clamp(40px, 6vw, 72px);
@@ -57,45 +52,22 @@
       line-height: 1.7;
     }
 
-    /* ── Marquee wrapper ── */
-    .marquee-wrapper {
-      position: relative;
-      width: 100%;
-    }
-
+    /* ── Marquee ── */
+    .marquee-wrapper { position: relative; width: 100%; }
     .marquee-fade {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 180px;
-      z-index: 10;
-      pointer-events: none;
+      position: absolute; top: 0; bottom: 0;
+      width: 180px; z-index: 10; pointer-events: none;
     }
-    .marquee-fade--left {
-      left: 0;
-      background: linear-gradient(to right, var(--bg) 0%, transparent 100%);
-    }
-    .marquee-fade--right {
-      right: 0;
-      background: linear-gradient(to left, var(--bg) 0%, transparent 100%);
-    }
-
-    .marquee-viewport {
-      overflow: hidden;
-      width: 100%;
-      padding: 12px 0 24px;
-    }
-
+    .marquee-fade--left  { left:  0; background: linear-gradient(to right, var(--bg) 0%, transparent 100%); }
+    .marquee-fade--right { right: 0; background: linear-gradient(to left,  var(--bg) 0%, transparent 100%); }
+    .marquee-viewport { overflow: hidden; width: 100%; padding: 12px 0 24px; }
     .marquee-track {
       display: flex;
       gap: 20px;
       width: max-content;
-      animation: marquee-run 55s linear infinite;
+      animation: marquee-run 42s linear infinite;
     }
-    .marquee-track.is-paused {
-      animation-play-state: paused;
-    }
-
+    .marquee-track.is-paused { animation-play-state: paused; }
     @keyframes marquee-run {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -104,37 +76,49 @@
     /* ── Broker card ── */
     .broker-card-v2 {
       flex-shrink: 0;
-      width: 210px;
+      width: 230px;
       display: flex;
       flex-direction: column;
+      gap: 12px;
       cursor: default;
     }
-
     .broker-card-v2__frame {
       position: relative;
-      width: 210px;
-      height: 290px;
+      width: 230px;
+      height: 310px;
       border-radius: 18px;
       overflow: hidden;
       background: #5a0e1e;
-      border: 1px solid rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.12);
       transition: border-color 0.3s, box-shadow 0.3s;
     }
     .broker-card-v2:hover .broker-card-v2__frame {
-      border-color: rgba(255,255,255,0.5);
-      box-shadow: 0 20px 50px rgba(224,31,56,0.2);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: 0 20px 50px rgba(224,31,56,0.22);
     }
-
     .broker-card-v2__img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       transition: transform 0.4s ease;
       display: block;
     }
-    .broker-card-v2:hover .broker-card-v2__img {
-      transform: scale(1.03);
+    .broker-card-v2:hover .broker-card-v2__img { transform: scale(1.04); }
+    .broker-card-v2__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: #fff;
+      line-height: 1.1;
+      padding: 0 4px;
+    }
+    .broker-card-v2__role {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.75);
+      padding: 0 4px;
     }
 
     /* ── Join CTA ── */
@@ -163,6 +147,118 @@
       .marquee-fade { width: 80px; }
       .team-header { padding: 0 24px; }
       .join-cta { padding: 0 24px; }
+    }
+
+    /* ── ContainerScroll — 3D perspective tilt on scroll ── */
+    .cs-section {
+      height: 200vh;
+      background: var(--bg, #09020a);
+      position: relative;
+    }
+    .cs-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px 40px;
+      overflow: hidden;
+      perspective: 1200px;
+    }
+    .cs-header {
+      text-align: center;
+      max-width: 700px;
+      margin-bottom: 32px;
+      will-change: transform;
+    }
+    .cs-header .section-label {
+      margin-bottom: 14px;
+    }
+    .cs-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(42px, 6.5vw, 86px);
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      color: #fff;
+      background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.6) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cs-title em {
+      background: linear-gradient(180deg, var(--crimson, #e01f38) 0%, #ff4060 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: normal;
+    }
+    .cs-title-sub {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-top: 16px;
+    }
+    .cs-card {
+      width: 100%;
+      max-width: 900px;
+      height: clamp(300px, 45vh, 560px);
+      border-radius: 26px;
+      overflow: hidden;
+      border: 3px solid rgba(108,108,108,0.7);
+      background: #1a0409;
+      transform-origin: 50% 0%;
+      will-change: transform;
+      box-shadow:
+        0 9px 20px rgba(0,0,0,0.30),
+        0 37px 37px rgba(0,0,0,0.26),
+        0 84px 50px rgba(0,0,0,0.15),
+        0 0 0 1px rgba(224,31,56,0.08);
+    }
+    .cs-card__inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .cs-card__inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+    .cs-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(60,8,20,0.75) 0%,
+        transparent 50%
+      );
+    }
+    .cs-card__label {
+      position: absolute;
+      bottom: 28px;
+      left: 32px;
+      right: 32px;
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(22px, 3vw, 36px);
+      letter-spacing: 0.08em;
+      color: #fff;
+      line-height: 1;
+    }
+    .cs-card__label em {
+      color: var(--crimson, #e01f38);
+      font-style: normal;
+    }
+    @media (max-width: 700px) {
+      .cs-sticky { padding: 40px 16px 24px; perspective: 800px; }
+      .cs-card { border-radius: 18px; }
     }
   </style>
 </head>
@@ -198,20 +294,29 @@
   <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
 </div>
 
-<!-- PAGE HERO -->
-<div class="page-hero">
-  <img class="page-hero__eagle" src="88.png" alt="">
-  <p class="page-hero__label">Licensed and Leading</p>
-  <h1 class="page-hero__title">OUR BROKERS</h1>
-  <p class="page-hero__sub">The leaders driving The Prevail Movement forward</p>
-</div>
+<!-- CONTAINER SCROLL — 3D tilt reveal -->
+<section class="cs-section" id="csSection">
+  <div class="cs-sticky">
+    <div class="cs-header" id="csHeader">
+      <p class="section-label">The Prevail Movement</p>
+      <h2 class="cs-title">ONE TEAM.<br><em>ONE MISSION.</em></h2>
+      <p class="cs-title-sub">Texas Built &nbsp;·&nbsp; Faith Driven &nbsp;·&nbsp; Family Protected</p>
+    </div>
+    <div class="cs-card" id="csCard">
+      <div class="cs-card__inner">
+        <img src="media/IMG_6643.jpg" alt="Prevail Movement team at conference">
+        <div class="cs-card__overlay"></div>
+        <div class="cs-card__label">60+ Agents. <em>One Flag.</em> Every Conference.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- TEAM MARQUEE -->
 <section class="team-section">
 
   <div class="team-header fade-in">
     <div class="team-badge">
-      <!-- Person star icon -->
       <svg viewBox="0 0 24 24">
         <path d="M16.051 12.616a1 1 0 0 1 1.909.024l.737 1.452a1 1 0 0 0 .737.535l1.634.256a1 1 0 0 1 .588 1.806l-1.172 1.168a1 1 0 0 0-.282.866l.259 1.613a1 1 0 0 1-1.541 1.134l-1.465-.75a1 1 0 0 0-.912 0l-1.465.75a1 1 0 0 1-1.539-1.133l.258-1.613a1 1 0 0 0-.282-.866l-1.156-1.153a1 1 0 0 1 .572-1.822l1.633-.256a1 1 0 0 0 .737-.535z"/>
         <path d="M8 15H7a4 4 0 0 0-4 4v2"/>
@@ -223,116 +328,115 @@
     <p>Every broker here started with zero experience. What they had was a decision to show up, get licensed, and commit to the mission.</p>
   </div>
 
-  <!-- Marquee -->
   <div class="marquee-wrapper">
     <div class="marquee-fade marquee-fade--left"></div>
     <div class="marquee-fade marquee-fade--right"></div>
     <div class="marquee-viewport">
       <div class="marquee-track" id="marqueeTrack">
 
-        <!-- SET A (original) -->
+        <!-- SET A -->
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(11).png" alt="Lorenzo and Crystal Godinez">
+            <img class="broker-card-v2__img" src="media/_DSC4161.JPG" alt="Lorenzo and Crystal Godinez">
           </div>
-        </div>
-
-        <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="66.png" alt="Carlos and Abby Vallejo">
-          </div>
+          <div class="broker-card-v2__name">Lorenzo &amp; Crystal Godinez</div>
+          <div class="broker-card-v2__role">Senior Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(14).png" alt="Willy and Daya Pineda">
+            <img class="broker-card-v2__img" src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete">
           </div>
+          <div class="broker-card-v2__name">Pablo &amp; Marissa Negrete</div>
+          <div class="broker-card-v2__role">Marketing Directors · Waco, TX</div>
         </div>
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="67.png" alt="Justin Johnson">
+            <img class="broker-card-v2__img" src="media/IMG_0667.JPEG" alt="Jaime and Kawena Dominguez">
           </div>
+          <div class="broker-card-v2__name">Jaime &amp; Kawena Dominguez</div>
+          <div class="broker-card-v2__role">Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(10).png" alt="Jaime and Kawena Dominguez">
+            <img class="broker-card-v2__img" src="media/Screenshot_20260410_134617_Facebook.JPEG" alt="Nicholas Ingram">
           </div>
+          <div class="broker-card-v2__name">Nicholas Ingram</div>
+          <div class="broker-card-v2__role">Marketing Director · San Antonio, TX</div>
         </div>
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(12).png" alt="Jasmine Oden">
+            <img class="broker-card-v2__img" src="media/IMG_6588.jpg" alt="The Prevail Movement">
           </div>
+          <div class="broker-card-v2__name">The Prevail Movement</div>
+          <div class="broker-card-v2__role">Austin, Texas</div>
         </div>
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(13).png" alt="John and Eni Bention">
+            <img class="broker-card-v2__img" src="media/IMG_8387.jpg" alt="Gold Bar Recognition">
           </div>
+          <div class="broker-card-v2__name">Gold Bar Recognition</div>
+          <div class="broker-card-v2__role">Excellence Award Ceremony</div>
         </div>
 
-        <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(9).png" alt="Haydeh Taraghi">
-          </div>
-        </div>
-
-        <!-- SET B (duplicated for seamless loop) -->
+        <!-- SET B (duplicate for seamless loop) -->
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(11).png" alt="">
+            <img class="broker-card-v2__img" src="media/_DSC4161.JPG" alt="">
           </div>
-        </div>
-
-        <div class="broker-card-v2" aria-hidden="true">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="66.png" alt="">
-          </div>
+          <div class="broker-card-v2__name">Lorenzo &amp; Crystal Godinez</div>
+          <div class="broker-card-v2__role">Senior Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(14).png" alt="">
+            <img class="broker-card-v2__img" src="media/IMG_9349.JPEG" alt="">
           </div>
+          <div class="broker-card-v2__name">Pablo &amp; Marissa Negrete</div>
+          <div class="broker-card-v2__role">Marketing Directors · Waco, TX</div>
         </div>
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="67.png" alt="">
+            <img class="broker-card-v2__img" src="media/IMG_0667.JPEG" alt="">
           </div>
+          <div class="broker-card-v2__name">Jaime &amp; Kawena Dominguez</div>
+          <div class="broker-card-v2__role">Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(10).png" alt="">
+            <img class="broker-card-v2__img" src="media/Screenshot_20260410_134617_Facebook.JPEG" alt="">
           </div>
+          <div class="broker-card-v2__name">Nicholas Ingram</div>
+          <div class="broker-card-v2__role">Marketing Director · San Antonio, TX</div>
         </div>
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(12).png" alt="">
+            <img class="broker-card-v2__img" src="media/IMG_6588.jpg" alt="">
           </div>
+          <div class="broker-card-v2__name">The Prevail Movement</div>
+          <div class="broker-card-v2__role">Austin, Texas</div>
         </div>
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(13).png" alt="">
+            <img class="broker-card-v2__img" src="media/IMG_8387.jpg" alt="">
           </div>
+          <div class="broker-card-v2__name">Gold Bar Recognition</div>
+          <div class="broker-card-v2__role">Excellence Award Ceremony</div>
         </div>
 
-        <div class="broker-card-v2" aria-hidden="true">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="Untitled%20design%20(9).png" alt="">
-          </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
-      </div><!-- end marquee-track -->
-    </div><!-- end marquee-viewport -->
-  </div><!-- end marquee-wrapper -->
-
-  <!-- JOIN CTA -->
+  <!-- Join CTA -->
   <div class="join-cta fade-in">
     <h3>READY TO JOIN<br>THIS TEAM?</h3>
     <p>Every leader on this page started where you are right now. The decision is available to you today.</p>
@@ -404,6 +508,43 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
+
+  /* ── ContainerScroll — 3D perspective tilt ── */
+  (function () {
+    const section = document.getElementById('csSection');
+    const card    = document.getElementById('csCard');
+    const header  = document.getElementById('csHeader');
+    if (!section || !card) return;
+
+    const isMobile = () => window.innerWidth <= 768;
+
+    function update() {
+      const rect      = section.getBoundingClientRect();
+      const sectionH  = section.offsetHeight;
+      const winH      = window.innerHeight;
+
+      // progress: 0 when section enters viewport, 1 when section bottom exits
+      const scrolled  = -rect.top;
+      const scrollable = sectionH - winH;
+      const progress  = Math.max(0, Math.min(1, scrolled / scrollable));
+
+      // Mirrors framer-motion transforms
+      const rotateX   = 20 * (1 - progress);                        // 20 → 0
+      const scaleFrom = isMobile() ? 0.7 : 1.05;
+      const scaleTo   = isMobile() ? 0.9 : 1.0;
+      const scale     = scaleFrom + (scaleTo - scaleFrom) * progress; // 1.05 → 1
+      const headerY   = -100 * progress;                              // 0 → -100
+
+      card.style.transform   = `rotateX(${rotateX}deg) scale(${scale})`;
+      if (header) header.style.transform = `translateY(${headerY}px)`;
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
 </script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="auth.js"></script>
 </body>
 </html>

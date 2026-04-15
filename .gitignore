@@ -1,0 +1,16 @@
+# System
+.DS_Store
+
+# Browser-incompatible image formats (JPG versions exist)
+media/*.HEIC
+
+# Unused video attempts
+media/cindy.mp4
+media/cindy-transparent.webm
+
+# Redundant large PNG (cindy phone.png is the used asset)
+media/cindy.png
+
+# Sensitive / generated documents
+invoice.html
+invoice.pdf
