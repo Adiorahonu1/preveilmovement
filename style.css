@@ -289,6 +289,32 @@ img { display: block; max-width: 100%; }
 .btn--pill { border-radius: 50px; }
 .btn--full { width: 100%; }
 
+/* ── SHIMMER EFFECT ── */
+@keyframes shimmer-sweep {
+  0%   { transform: translateX(-160%) skewX(-14deg); }
+  28%  { transform: translateX(460%) skewX(-14deg); }
+  100% { transform: translateX(460%) skewX(-14deg); }
+}
+.btn--shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn--shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 50%;
+  background: linear-gradient(
+    105deg,
+    transparent 15%,
+    rgba(255,255,255,0.22) 50%,
+    transparent 85%
+  );
+  transform: translateX(-160%) skewX(-14deg);
+  animation: shimmer-sweep 3s infinite;
+  pointer-events: none;
+}
+
 /* ============================================================
    SECTIONS
    ============================================================ */
@@ -862,4 +888,50 @@ img { display: block; max-width: 100%; }
   .card-grid--3 { grid-template-columns: 1fr; }
   .stat-bar__inner { grid-template-columns: 1fr; }
   .stat-bar__item { border-right: none; }
+}
+
+/* ─────────────────────────────────────────────
+   TABLET — 769px to 1024px only
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .section { padding: 80px 36px; }
+  .section--tight { padding: 52px 36px; }
+  .stat-bar { padding: 36px 36px; }
+  .footer { padding: 52px 36px 36px; }
+}
+
+/* ─────────────────────────────────────────────
+   ULTRA-WIDE — 4K / large monitors (≥ 1920px)
+   Keeps nav and section content from
+   sprawling edge-to-edge on huge screens.
+   ───────────────────────────────────────────── */
+@media (min-width: 1920px) {
+  .nav { padding: 0 max(40px, calc(50vw - 760px)); }
+  .section { padding: 120px max(40px, calc(50vw - 600px)); }
+  .section--tight { padding: 72px max(40px, calc(50vw - 600px)); }
+  .stat-bar { padding: 48px max(40px, calc(50vw - 600px)); }
+  .footer { padding: 72px max(40px, calc(50vw - 640px)) 48px; }
+}
+
+/* ─────────────────────────────────────────────
+   VERY SMALL PHONE — ≤ 375px
+   Prevents overflow and keeps
+   nav / buttons / type readable on
+   iPhone SE, Galaxy A03, etc.
+   ───────────────────────────────────────────── */
+@media (max-width: 375px) {
+  .nav { padding: 0 16px; }
+  .nav__logo img { width: 150px; height: 36px; }
+  .section { padding: 52px 18px; }
+  .section--tight { padding: 36px 18px; }
+  .footer { padding: 40px 18px 24px; }
+  .footer__inner { gap: 20px; }
+  .btn { padding: 12px 22px; font-size: 12px; }
+  .btn--lg { padding: 15px 22px; font-size: 12px; }
+  .btn--sm { padding: 9px 16px; font-size: 10px; }
+  .stat-bar { padding: 24px 18px; }
+  .stat-bar__number { font-size: 40px; }
+  .page-hero { height: 200px; }
+  .page-hero__sub { font-size: 13px; padding: 0 10px; }
+  .footer__bottom { font-size: 11px; gap: 8px; }
 }

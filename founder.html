@@ -404,28 +404,37 @@
     }
 
     /* ═══════════════════════════════════════
-       BACKGROUND PATHS HERO — FOUNDER PAGE
+       BEAMS BACKGROUND HERO — FOUNDER PAGE
     ═══════════════════════════════════════ */
     .page-hero {
       height: 560px;
       background: #07010a;
     }
     .page-hero::before {
-      background: radial-gradient(ellipse 75% 50% at 50% 100%, rgba(192,21,42,0.22) 0%, transparent 68%);
+      background: radial-gradient(ellipse 75% 50% at 50% 100%, rgba(192,21,42,0.18) 0%, transparent 68%);
     }
 
-    /* Flowing paths SVG layer */
+    /* Beams canvas layer */
     .founder-paths {
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
-    .founder-paths svg {
+
+    /* Pulsing overlay (mirrors motion.div in original React component) */
+    @keyframes founderBeamPulse {
+      0%, 100% { opacity: 0.05; }
+      50%       { opacity: 0.18; }
+    }
+    .founder-beam-overlay {
       position: absolute;
       inset: 0;
-      width: 100%;
-      height: 100%;
+      background: #060008;
+      animation: founderBeamPulse 10s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
     }
 
     /* Hero text entrance */
@@ -439,6 +448,321 @@
 
     @media (max-width: 640px) {
       .page-hero { height: 420px; }
+    }
+
+    /* ── Very small phone ≤ 375px ── */
+    @media (max-width: 375px) {
+      .editorial-section { padding: 48px 18px 72px; }
+      .editorial-photo { max-width: 260px; height: 340px; }
+      .editorial-name__first,
+      .editorial-name__last { font-size: 44px; }
+      .editorial-name,
+      .editorial-details { padding-left: 12px; }
+      .editorial-details { gap: 12px; }
+      .editorial-bio { font-size: 13px; max-width: 100%; }
+      .editorial-circle { width: 52px; height: 52px; }
+      .editorial-circle svg { width: 16px; height: 16px; }
+      .story-pullquote { padding: 20px 16px; font-size: 18px; }
+      .story-para { font-size: 15px; }
+      .mentor-box { padding: 20px; flex-direction: column; gap: 12px; }
+      .mentor-box__icon { font-size: 28px; }
+      .rooms-grid { gap: 8px; padding: 0 14px 20px; }
+      .room-card__inner { height: 250px; }
+      .page-hero { height: 340px; }
+    }
+
+    /* ═══════════════════════════════════════
+       STATS STRIP
+    ═══════════════════════════════════════ */
+    .stats-strip {
+      background: linear-gradient(180deg, #0a020a 0%, #0d0507 100%);
+      border-top: 1px solid rgba(224,31,56,0.18);
+      border-bottom: 1px solid rgba(224,31,56,0.18);
+      padding: 64px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stats-strip::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 120% at 50% 50%, rgba(224,31,56,0.08) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .stats-strip__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: center; min-width: 160px; }
+    .stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(56px, 7vw, 84px);
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .stat-plus { color: var(--crimson); }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-top: 12px;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 64px;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .stats-strip { padding: 48px 24px; }
+      .stat-divider { display: none; }
+      .stats-strip__inner { gap: 20px; }
+      .stat-item { min-width: 130px; }
+    }
+
+    /* ═══════════════════════════════════════
+       STORY CHAPTERS
+    ═══════════════════════════════════════ */
+    .story-ch {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 0 22px;
+      margin-bottom: 36px;
+      align-items: start;
+    }
+    .story-ch__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--crimson);
+      opacity: 0.65;
+      padding-top: 5px;
+      line-height: 1;
+    }
+    .story-ch .story-para { margin-bottom: 0; }
+    @media (max-width: 520px) {
+      .story-ch { grid-template-columns: 1fr; gap: 2px 0; }
+      .story-ch__num { font-size: 10px; }
+    }
+
+    /* ═══════════════════════════════════════
+       FOUNDER CLOSING CTA
+    ═══════════════════════════════════════ */
+    .founder-cta {
+      position: relative;
+      background: #04010a;
+      padding: 100px 40px 110px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .founder-cta__glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 55% at 50% 100%, rgba(224,31,56,0.26) 0%, transparent 64%);
+      pointer-events: none;
+    }
+    .founder-cta__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+    }
+    .founder-cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .founder-cta__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(54px, 8vw, 100px);
+      letter-spacing: 0.03em;
+      color: #fff;
+      line-height: 0.92;
+      margin: 16px 0 32px;
+    }
+    .founder-cta__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.46);
+      line-height: 1.8;
+      margin: 0 auto 48px;
+      max-width: 520px;
+    }
+    .founder-cta__btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 520px) {
+      .founder-cta { padding: 80px 24px 90px; }
+      .founder-cta__btns { flex-direction: column; align-items: center; }
+      .founder-cta__btns .btn { width: 100%; justify-content: center; text-align: center; }
+    }
+
+    /* ═══════════════════════════════════════
+       ACHIEVEMENTS SECTION
+    ═══════════════════════════════════════ */
+    .awards-section {
+      background: #080205;
+      padding: 90px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .awards-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .awards-photo {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .awards-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+      transition: transform 0.7s ease;
+    }
+    .awards-photo:hover img { transform: scale(1.04); }
+    .awards-photo__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,2,4,0.65) 0%, transparent 60%);
+    }
+    .awards-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .award-item {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .award-item:first-child { padding-top: 0; }
+    .award-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .award-item__icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(224,31,56,0.1);
+      border: 1px solid rgba(224,31,56,0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+    .award-item__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 19px;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 5px;
+    }
+    .award-item__sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.36);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      line-height: 1.6;
+    }
+    @media (max-width: 860px) {
+      .awards-inner { grid-template-columns: 1fr; gap: 44px; }
+      .awards-photo { aspect-ratio: 16/9; }
+    }
+    @media (max-width: 480px) {
+      .awards-section { padding: 64px 24px; }
+    }
+
+    /* ═══════════════════════════════════════
+       VALUES BLOCK
+    ═══════════════════════════════════════ */
+    .values-section {
+      background: #0a020a;
+      padding: 90px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .values-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 56px;
+    }
+    .value-cell {
+      padding: 40px 30px;
+      background: rgba(255,255,255,0.025);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .value-cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 2px;
+      background: var(--crimson);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+    .value-cell:hover { background: rgba(224,31,56,0.07); }
+    .value-cell:hover::before { transform: scaleX(1); }
+    .value-cell__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      color: var(--crimson);
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+    .value-cell__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .value-cell__sub {
+      font-size: 13px;
+      color: rgba(255,255,255,0.36);
+      line-height: 1.75;
+    }
+    @media (max-width: 860px) {
+      .values-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .values-section { padding: 64px 24px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .value-cell { padding: 32px 24px; }
     }
   </style>
 </head>
@@ -489,7 +813,7 @@
 <section class="section section--dark editorial-section">
   <div class="editorial-wrap">
 
-    <p class="editorial-kicker ec ec-left ec-d1">Founder &amp; Leader &nbsp;·&nbsp; Austin, Texas &nbsp;·&nbsp; PHP Agency Partner</p>
+    <p class="editorial-kicker ec ec-left ec-d1">Founder &amp; Leader &nbsp;·&nbsp; Serving Clients Nationwide &nbsp;·&nbsp; PHP Agency Partner</p>
 
     <div class="editorial-card">
 
@@ -514,12 +838,45 @@
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </a>
+          <a href="https://www.instagram.com/cindycobosg" target="_blank" rel="noopener" class="editorial-circle" aria-label="Cindy Cobos on Instagram">
+            <svg viewBox="0 0 24 24">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="https://www.youtube.com/@cindycobos-nofilters" target="_blank" rel="noopener" class="editorial-circle" aria-label="Cindy Cobos on YouTube">
+            <svg viewBox="0 0 24 24">
+              <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+              <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+            </svg>
+          </a>
           <p class="editorial-bio">Founder of The Prevail Movement, PHP Agency partner, and mentor to 9+ licensed brokers who have protected over 90,000 families across the country.</p>
         </div>
 
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ── STATS STRIP ── -->
+<section class="stats-strip">
+  <div class="stats-strip__inner">
+    <div class="stat-item fade-in">
+      <div class="stat-num"><span class="stat-count" data-target="90000">0</span><span class="stat-plus">+</span></div>
+      <div class="stat-label">Families Protected</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item fade-in fade-in--delay-1">
+      <div class="stat-num"><span class="stat-count" data-target="9">0</span><span class="stat-plus">+</span></div>
+      <div class="stat-label">Licensed Brokers Mentored</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-item fade-in fade-in--delay-2">
+      <div class="stat-num"><span class="stat-count" data-target="50">0</span></div>
+      <div class="stat-label">States Served Nationwide</div>
+    </div>
   </div>
 </section>
 
@@ -621,6 +978,94 @@
       </div>
     </div>
 
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_7491.JPEG" alt="Cindy Cobos at PHP Agency Award Gala" style="object-position:center 30%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">PHP Agency Gala</span>
+          <span class="room-card__role">Award Recognition Ceremony</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_7495.JPEG" alt="Prevail Annual Gala" style="object-position:center 40%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Annual Gala</span>
+          <span class="room-card__role">Prevail Movement Celebration</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_9876.JPEG" alt="Prevail Team at Washington DC" style="object-position:center 35%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">Washington DC</span>
+          <span class="room-card__role">Prevail Leadership Trip</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="room-card">
+      <div class="room-card__inner">
+        <img src="media/IMG_6643.jpg" alt="Prevail Team at PHP National Convention" style="object-position:center 40%;">
+        <div class="room-card__overlay"></div>
+        <div class="room-card__label">
+          <span class="room-card__name">PHP National Convention</span>
+          <span class="room-card__role">Prevail Team</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ── -->
+<section class="awards-section">
+  <div class="awards-inner">
+    <div class="awards-photo fade-in">
+      <img src="media/IMG_7491.JPEG" alt="Cindy Cobos receiving recognition at PHP Agency gala">
+      <div class="awards-photo__overlay"></div>
+    </div>
+    <div>
+      <p class="section-label fade-in">Recognition</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 0 44px;text-align:left;">EARNED<br>EVERY STEP</h2>
+      <div class="awards-list">
+        <div class="award-item fade-in">
+          <div class="award-item__icon">🏅</div>
+          <div>
+            <div class="award-item__title">PHP Agency Gold Bar Achiever</div>
+            <div class="award-item__sub">Top production recognition within PHP Agency — one of the highest performance tiers in the organization</div>
+          </div>
+        </div>
+        <div class="award-item fade-in fade-in--delay-1">
+          <div class="award-item__icon">🦅</div>
+          <div>
+            <div class="award-item__title">National Convention Featured Leader</div>
+            <div class="award-item__sub">Recognized speaker and leader at PHP Agency national events across the country</div>
+          </div>
+        </div>
+        <div class="award-item fade-in fade-in--delay-2">
+          <div class="award-item__icon">🌎</div>
+          <div>
+            <div class="award-item__title">50-State Reach</div>
+            <div class="award-item__sub">Prevail Movement brokers serve families from coast to coast under Cindy's leadership</div>
+          </div>
+        </div>
+        <div class="award-item fade-in">
+          <div class="award-item__icon">👨‍👩‍👧‍👦</div>
+          <div>
+            <div class="award-item__title">90,000+ Families Protected</div>
+            <div class="award-item__sub">Life insurance and retirement solutions delivered to real families who needed them most</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -635,11 +1080,20 @@
       "I never want my family to be separated because of money again."
     </blockquote>
 
-    <p class="story-para fade-in fade-in--delay-2">I was born in Brooklyn, New York, after my parents immigrated from Ecuador, chasing the American dream. They worked super hard, always showing me what it meant to hustle. But when I was in second grade, things got tough. We could not afford to stay in the U.S., so we went back to South America. Even as a kid, I knew that financial freedom was something I needed to figure out.</p>
+    <div class="story-ch fade-in fade-in--delay-2">
+      <span class="story-ch__num">01</span>
+      <p class="story-para">I was born in Brooklyn, New York, after my parents immigrated from Ecuador, chasing the American dream. They worked super hard, always showing me what it meant to hustle. But when I was in second grade, things got tough. We could not afford to stay in the U.S., so we went back to South America. Even as a kid, I knew that financial freedom was something I needed to figure out.</p>
+    </div>
 
-    <p class="story-para fade-in">Like many, I followed the classic success formula: go to school, get good grades, land a good job. I went into the medical field. But it did not take long to realize that a degree does not guarantee financial security. Even doctors and nurses did not always understand money. That is when I started asking: is this going to be my future too?</p>
+    <div class="story-ch fade-in">
+      <span class="story-ch__num">02</span>
+      <p class="story-para">Like many, I followed the classic success formula: go to school, get good grades, land a good job. I went into the medical field. But it did not take long to realize that a degree does not guarantee financial security. Even doctors and nurses did not always understand money. That is when I started asking: is this going to be my future too?</p>
+    </div>
 
-    <p class="story-para fade-in">Then came the moment that changed everything. Someone asked how many languages I spoke. Proudly, I said two: Spanish and English. They shot back: you are missing the most important one. The language of money. I was taken aback, but they were right. If I wanted to get ahead, I had to learn how money really worked.</p>
+    <div class="story-ch fade-in">
+      <span class="story-ch__num">03</span>
+      <p class="story-para">Then came the moment that changed everything. Someone asked how many languages I spoke. Proudly, I said two: Spanish and English. They shot back: you are missing the most important one. The language of money. I was taken aback, but they were right. If I wanted to get ahead, I had to learn how money really worked.</p>
+    </div>
 
     <div class="mentor-box fade-in">
       <div class="mentor-box__icon">🦅</div>
@@ -650,12 +1104,58 @@
       </div>
     </div>
 
-    <p class="story-para fade-in">A friend invited me to a meeting. After six months of hesitation, I finally went and that is where I met Patrick Bet-David. He became my mentor and completely shifted my perspective on life and business. I founded The Prevail Organization, and together we have helped over 90,000 families protect their legacies and retirements. I believe everything rises and falls on leadership. It is not about the money. It is about who you become along the way.</p>
-
-    <div style="margin-top:48px;" class="fade-in">
-      <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Call with Cindy</a>
+    <div class="story-ch fade-in">
+      <span class="story-ch__num">04</span>
+      <p class="story-para">A friend invited me to a meeting. After six months of hesitation, I finally went and that is where I met Patrick Bet-David. He became my mentor and completely shifted my perspective on life and business. I founded The Prevail Organization, and together we have helped over 90,000 families protect their legacies and retirements. I believe everything rises and falls on leadership. It is not about the money. It is about who you become along the way.</p>
     </div>
 
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values-section">
+  <div class="values-inner">
+    <div style="text-align:center;">
+      <p class="section-label fade-in">What We Stand For</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto;">THE FOUR<br>PILLARS</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-cell fade-in">
+        <div class="value-cell__num">01</div>
+        <div class="value-cell__title">Honor God</div>
+        <div class="value-cell__sub">Everything we build, we build with purpose and integrity at the center.</div>
+      </div>
+      <div class="value-cell fade-in fade-in--delay-1">
+        <div class="value-cell__num">02</div>
+        <div class="value-cell__title">Pursue Excellence</div>
+        <div class="value-cell__sub">We do not settle for average. We raise the standard in everything we do.</div>
+      </div>
+      <div class="value-cell fade-in fade-in--delay-2">
+        <div class="value-cell__num">03</div>
+        <div class="value-cell__title">Develop Leaders</div>
+        <div class="value-cell__sub">Our mission is not just production. It is building people who build others.</div>
+      </div>
+      <div class="value-cell fade-in">
+        <div class="value-cell__num">04</div>
+        <div class="value-cell__title">Create Profits</div>
+        <div class="value-cell__sub">Financial freedom is not a bonus. It is the goal. We build income that lasts.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING CTA ── -->
+<section class="founder-cta">
+  <div class="founder-cta__glow" aria-hidden="true"></div>
+  <div class="founder-cta__grid" aria-hidden="true"></div>
+  <div class="founder-cta__inner">
+    <p class="section-label fade-in">Take the next step</p>
+    <h2 class="founder-cta__title fade-in fade-in--delay-1">YOUR STORY<br>STARTS HERE</h2>
+    <p class="founder-cta__sub fade-in fade-in--delay-2">Whether you want to protect your family or build a career that creates lasting impact, Cindy and The Prevail Movement are ready to guide you.</p>
+    <div class="founder-cta__btns fade-in fade-in--delay-2">
+      <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Call with Cindy →</a>
+      <a href="licensing.html" class="btn btn--outline btn--lg">Explore Licensing</a>
+    </div>
   </div>
 </section>
 
@@ -689,7 +1189,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -727,6 +1227,28 @@
   ecEls.forEach(el => ecObserver.observe(el));
 
   // Story section fade-ins
+  // Animated stat counters
+  const statCounts = document.querySelectorAll('.stat-count');
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.target;
+      const duration = 1800;
+      const frameRate = 16;
+      const totalFrames = duration / frameRate;
+      let frame = 0;
+      const timer = setInterval(() => {
+        frame++;
+        const eased = 1 - Math.pow(1 - frame / totalFrames, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString();
+        if (frame >= totalFrames) { el.textContent = target.toLocaleString(); clearInterval(timer); }
+      }, frameRate);
+      counterObs.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  statCounts.forEach(el => counterObs.observe(el));
+
   const fadeEls = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -751,89 +1273,95 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   roomCards.forEach(el => roomObserver.observe(el));
 
-  /* ── BACKGROUND PATHS (ported from BackgroundPaths React component) ── */
+  /* ── BEAMS BACKGROUND (vanilla JS port of BeamsBackground component) ── */
   (function () {
     const wrap = document.getElementById('founderPaths');
     if (!wrap) return;
 
-    const NS = 'http://www.w3.org/2000/svg';
+    /* Canvas — blurred at the element level, matching original style={{ filter:"blur(15px)" }} */
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;inset:0;filter:blur(15px);';
+    wrap.appendChild(canvas);
 
-    /* Build 36 path descriptors for one position side */
-    function buildDescriptors(position) {
-      return Array.from({ length: 36 }, (_, i) => {
-        const x0 = -(380 - i * 5 * position);
-        const y0 = -(189 + i * 6);
-        const x1 = -(312 - i * 5 * position);
-        const y1 =  (216 - i * 6);
-        const x2 =  (152 - i * 5 * position);
-        const y2 =  (343 - i * 6);
-        const x3 =  (616 - i * 5 * position);
-        const y3 =  (470 - i * 6);
-        const x4 =  (684 - i * 5 * position);
-        const y4 =  (875 - i * 6);
-        return {
-          d: `M${x0} ${y0}C${x0} ${y0} ${x1} ${y1} ${x2} ${y2}C${x3} ${y3} ${x4} ${y4} ${x4} ${y4}`,
-          strokeWidth: 0.5 + i * 0.03,
-          baseOpacity: Math.min(0.1 + i * 0.03, 1),
-          duration: (20 + Math.random() * 10) * 1000,
-          phase: Math.random(),
-        };
-      });
+    /* Pulsing overlay div — mirrors the motion.div in the React component */
+    const overlay = document.createElement('div');
+    overlay.className = 'founder-beam-overlay';
+    wrap.appendChild(overlay);
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let W, H, beams = [];
+    const TOTAL = 30; /* MINIMUM_BEAMS(20) × 1.5 */
+
+    function mkBeam() {
+      return {
+        x:          Math.random() * W * 1.5 - W * 0.25,
+        y:          Math.random() * H * 1.5 - H * 0.25,
+        w:          30 + Math.random() * 60,
+        len:        H * 2.5,
+        angle:      -35 + Math.random() * 10,
+        speed:      0.6 + Math.random() * 1.2,
+        opacity:    0.12 + Math.random() * 0.16,
+        hue:        340 + Math.random() * 25, /* crimson range — brand adaptation */
+        pulse:      Math.random() * Math.PI * 2,
+        pulseSpeed: 0.02 + Math.random() * 0.03,
+      };
     }
 
-    const descriptors = [...buildDescriptors(1), ...buildDescriptors(-1)];
-
-    /* Create one shared SVG */
-    const svg = document.createElementNS(NS, 'svg');
-    svg.setAttribute('viewBox', '0 0 696 316');
-    svg.setAttribute('fill', 'none');
-    svg.setAttribute('preserveAspectRatio', 'xMidYMid slice');
-    svg.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;';
-
-    /* Create path elements */
-    const pathEls = descriptors.map(({ d, strokeWidth }) => {
-      const el = document.createElementNS(NS, 'path');
-      el.setAttribute('d', d);
-      el.setAttribute('stroke', 'white');
-      el.setAttribute('stroke-width', String(strokeWidth));
-      el.setAttribute('fill', 'none');
-      svg.appendChild(el);
-      return el;
-    });
-
-    wrap.appendChild(svg);
-
-    /* After mount, read each path's length and set up dash animation */
-    const animData = descriptors.map(({ duration, phase, baseOpacity }, i) => {
-      const el = pathEls[i];
-      const len = el.getTotalLength();
-      /* 30% of path visible, rest is gap — matches pathLength: 0.3 in original */
-      const visLen = len * 0.3;
-      el.style.strokeDasharray = `${visLen} ${len + 1}`;
-      return { el, len, visLen, duration, phase, baseOpacity };
-    });
-
-    /* Single RAF loop — marching dashes + opacity breathing */
-    let last = null;
-    function tick(now) {
-      const dt = last ? now - last : 16;
-      last = now;
-
-      animData.forEach((d) => {
-        d.phase = (d.phase + dt / d.duration) % 1;
-        /* dashoffset marches forward (pathOffset [0,1,0]) */
-        d.el.style.strokeDashoffset = String(-d.len * d.phase);
-        /* opacity: 0.3→0.6→0.3 over cycle (matches animate opacity array) */
-        const opMod = 0.3 + 0.3 * Math.sin(Math.PI * 2 * d.phase);
-        d.el.style.opacity = String(d.baseOpacity * (opMod / 0.6));
-      });
-
-      requestAnimationFrame(tick);
+    function resetBeam(b, i) {
+      const col = i % 3, sp = W / 3;
+      b.y       = H + 100;
+      b.x       = col * sp + sp / 2 + (Math.random() - 0.5) * sp * 0.5;
+      b.w       = 100 + Math.random() * 100;
+      b.speed   = 0.5 + Math.random() * 0.4;
+      b.hue     = 340 + (i * 25) / TOTAL;
+      b.opacity = 0.2 + Math.random() * 0.1;
     }
-    requestAnimationFrame(tick);
+
+    function drawBeam(b) {
+      /* Pulsing opacity — matches original (0.8 + sin(pulse) * 0.2) × opacityMap[strong=1] */
+      const op = b.opacity * (0.8 + Math.sin(b.pulse) * 0.2);
+      ctx.save();
+      ctx.translate(b.x, b.y);
+      ctx.rotate(b.angle * Math.PI / 180);
+      /* Multi-stop gradient — identical to original drawBeam logic */
+      const g = ctx.createLinearGradient(0, 0, 0, b.len);
+      g.addColorStop(0,   `hsla(${b.hue},85%,65%,0)`);
+      g.addColorStop(0.1, `hsla(${b.hue},85%,65%,${op * 0.5})`);
+      g.addColorStop(0.4, `hsla(${b.hue},85%,65%,${op})`);
+      g.addColorStop(0.6, `hsla(${b.hue},85%,65%,${op})`);
+      g.addColorStop(0.9, `hsla(${b.hue},85%,65%,${op * 0.5})`);
+      g.addColorStop(1,   `hsla(${b.hue},85%,65%,0)`);
+      ctx.fillStyle = g;
+      ctx.fillRect(-b.w / 2, 0, b.w, b.len);
+      ctx.restore();
+    }
+
+    function resize() {
+      W = wrap.offsetWidth  || window.innerWidth;
+      H = wrap.offsetHeight || 560;
+      canvas.width  = W;
+      canvas.height = H;
+      beams = Array.from({ length: TOTAL }, mkBeam);
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, W, H);
+      ctx.filter = 'blur(35px)'; /* matches ctx.filter = "blur(35px)" in original animate() */
+      beams.forEach(function (b, i) {
+        b.y     -= b.speed;
+        b.pulse += b.pulseSpeed;
+        if (b.y + b.len < -100) resetBeam(b, i);
+        drawBeam(b);
+      });
+      requestAnimationFrame(animate);
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+    animate();
   })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
 </body>
 </html>

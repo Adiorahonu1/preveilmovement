@@ -86,6 +86,14 @@
       .pres-row { grid-template-columns: 1fr; }
       .pres-row__thumb { min-height: 100px; }
     }
+
+    /* ── Very small phone ≤ 375px ── */
+    @media (max-width: 375px) {
+      .pres-section { padding: 0 18px; }
+      .pres-row__body { padding: 18px 20px; gap: 10px; }
+      .pres-row__title { font-size: 18px; }
+      .pres-row__actions { gap: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -142,16 +150,15 @@
       <!-- Fast Start -->
       <div class="pres-row fade-in">
         <div class="pres-row__thumb">
-          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#1a0a00,#2d1800);">
-            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <p class="pres-row__thumb-title">FAST START<br>PRESENTATION</p>
-          </div>
+          <img src="https://img.youtube.com/vi/1j8ueRV-p-4/hqdefault.jpg" alt="Fast Start Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
+          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Fast Start Presentation</p>
           <div class="pres-row__actions">
-            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="#" class="btn btn--crimson btn--sm">↓ Download Fast Start</a>
+            <a href="https://www.youtube.com/watch?v=1j8ueRV-p-4&t=1s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="https://docs.google.com/presentation/d/1cIuCxHlLSbrzP-cFUmChtGAChMUhKfWG/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener" class="btn btn--crimson btn--sm">↓ Download Fast Start</a>
           </div>
         </div>
       </div>
@@ -159,16 +166,15 @@
       <!-- B.O.M. -->
       <div class="pres-row fade-in fade-in--delay-1">
         <div class="pres-row__thumb">
-          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#001a0a,#002d15);">
-            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <p class="pres-row__thumb-title">BUSINESS OPPORTUNITY<br>MEETING (B.O.M.)</p>
-          </div>
+          <img src="https://img.youtube.com/vi/GlLo6x72Klc/hqdefault.jpg" alt="Business Opportunity Meeting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
+          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Business Opportunity Meeting (B.O.M.)</p>
           <div class="pres-row__actions">
-            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="#" class="btn btn--crimson btn--sm">↓ Download B.O.M.</a>
+            <a href="https://www.youtube.com/watch?v=GlLo6x72Klc&t=8s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="https://docs.google.com/presentation/d/1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus/edit" target="_blank" rel="noopener" class="btn btn--crimson btn--sm">↓ Download B.O.M.</a>
           </div>
         </div>
       </div>
@@ -176,16 +182,13 @@
       <!-- ABCs -->
       <div class="pres-row fade-in">
         <div class="pres-row__thumb">
-          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#0d001a,#1a002d);">
-            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <p class="pres-row__thumb-title">ABCs PRESENTATION</p>
-          </div>
+          <img src="media/Screenshot 2026-04-18 at 01.16.32.png" alt="ABCs Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">ABCs Presentation</p>
           <div class="pres-row__actions">
-            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="#" class="btn btn--crimson btn--sm">↓ Download ABCs</a>
+            <a href="https://docs.google.com/presentation/d/1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ/edit?slide=id.g26fa791646f_0_0#slide=id.g26fa791646f_0_0" target="_blank" rel="noopener" class="btn btn--crimson btn--sm">↓ Download ABCs</a>
           </div>
         </div>
       </div>
@@ -193,17 +196,16 @@
       <!-- Field Training -->
       <div class="pres-row fade-in fade-in--delay-1">
         <div class="pres-row__thumb">
-          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#001a1a,#002d2d);">
-            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <p class="pres-row__thumb-title">FIELD TRAINING 2023</p>
-          </div>
+          <img src="https://img.youtube.com/vi/r3FOfgdOMBM/hqdefault.jpg" alt="Field Training Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
+          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Field Training Presentation</p>
           <div class="pres-row__actions">
-            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="#" class="btn btn--crimson btn--sm">↓ Download Field Training</a>
-            <a href="#" class="btn btn--outline btn--sm">↓ Download (Spanish)</a>
+            <a href="https://www.youtube.com/watch?v=r3FOfgdOMBM&t=6s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+            <a href="https://docs.google.com/presentation/d/1zpe_WfHSu6HuWcoP43p-yOgxArgrdk4c/edit" target="_blank" rel="noopener" class="btn btn--crimson btn--sm">↓ Download Field Training</a>
+            <a href="https://docs.google.com/presentation/d/1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener" class="btn btn--outline btn--sm">↓ Download (Spanish)</a>
           </div>
         </div>
       </div>
@@ -211,17 +213,14 @@
       <!-- Recruiting Interview -->
       <div class="pres-row fade-in">
         <div class="pres-row__thumb">
-          <div class="pres-row__thumb-inner" style="background:linear-gradient(135deg,#1a1500,#2d2200);">
-            <div class="pres-row__yt"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-            <p class="pres-row__thumb-title">RECRUITING<br>INTERVIEW</p>
-          </div>
+          <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="Recruiting Interview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Recruiting Interview (R.I.)</p>
           <div class="pres-row__actions">
-            <a href="#" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="#" class="btn btn--crimson btn--sm">↓ Download R.I.</a>
-            <a href="#" class="btn btn--outline btn--sm">↓ Download R.I. (Spanish)</a>
+            <a href="https://docs.google.com/presentation/d/18Z0z05MXElBoq3dQ9VVcNsaRJf037WMN/edit" target="_blank" rel="noopener" class="btn btn--crimson btn--sm">↓ Download R.I.</a>
+            <a href="https://docs.google.com/presentation/d/1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ/edit?slide=id.p1#slide=id.p1" target="_blank" rel="noopener" class="btn btn--outline btn--sm">↓ Download R.I. (Spanish)</a>
           </div>
         </div>
       </div>
@@ -278,7 +277,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -302,8 +301,6 @@
   }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
-<script>requireAuth();</script>
+
 </body>
 </html>

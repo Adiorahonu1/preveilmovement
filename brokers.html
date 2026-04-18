@@ -65,7 +65,7 @@
       display: flex;
       gap: 20px;
       width: max-content;
-      animation: marquee-run 42s linear infinite;
+      animation: marquee-run 32s linear infinite;
     }
     .marquee-track.is-paused { animation-play-state: paused; }
     @keyframes marquee-run {
@@ -260,6 +260,280 @@
       .cs-sticky { padding: 40px 16px 24px; perspective: 800px; }
       .cs-card { border-radius: 18px; }
     }
+
+    /* ── Very small phone ≤ 375px ── */
+    @media (max-width: 375px) {
+      .cs-sticky { padding: 32px 14px 20px; perspective: 600px; }
+      .cs-card { border-radius: 14px; border-width: 2px; }
+      .cs-title { font-size: 38px; }
+      .cs-title-sub { font-size: 11px; letter-spacing: 0.16em; }
+      .cs-header { margin-bottom: 20px; }
+      .team-header { padding: 0 18px; }
+      .marquee-fade { width: 40px; }
+    }
+
+    /* ═══════════════════════════════════════
+       TEAM STATS BAR
+    ═══════════════════════════════════════ */
+    .brokers-stats {
+      background: #060108;
+      border-bottom: 1px solid rgba(224,31,56,0.15);
+      padding: 60px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .brokers-stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 120% at 50% 50%, rgba(224,31,56,0.07) 0%, transparent 68%);
+      pointer-events: none;
+    }
+    .brokers-stats__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .bs-stat { text-align: center; min-width: 140px; }
+    .bs-stat__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(52px, 6.5vw, 80px);
+      color: #fff;
+      line-height: 1;
+      letter-spacing: 0.02em;
+    }
+    .bs-stat__plus { color: var(--crimson); }
+    .bs-stat__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.32);
+      margin-top: 12px;
+    }
+    .bs-divider {
+      width: 1px;
+      height: 60px;
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+    @media (max-width: 600px) {
+      .brokers-stats { padding: 44px 24px; }
+      .bs-divider { display: none; }
+    }
+
+    /* ═══════════════════════════════════════
+       PILLARS SECTION
+    ═══════════════════════════════════════ */
+    .pillars-section {
+      background: #07010a;
+      padding: 88px 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .pillars-inner { max-width: 1100px; margin: 0 auto; }
+    .pillars-header { text-align: center; margin-bottom: 56px; }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .pillar {
+      padding: 44px 36px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.025);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .pillar:hover {
+      background: rgba(224,31,56,0.07);
+      border-color: rgba(224,31,56,0.28);
+    }
+    .pillar__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      color: var(--crimson);
+      opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    .pillar__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .pillar__text {
+      font-size: 14px;
+      color: rgba(255,255,255,0.44);
+      line-height: 1.8;
+    }
+    @media (max-width: 768px) {
+      .pillars-section { padding: 64px 24px; }
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══════════════════════════════════════
+       STATIC BROKER GRID
+    ═══════════════════════════════════════ */
+    .broker-grid-section {
+      background: #04010a;
+      padding: 80px 40px 100px;
+    }
+    .broker-grid-inner { max-width: 1100px; margin: 0 auto; }
+    .broker-grid-header { text-align: center; margin-bottom: 56px; }
+    .broker-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 24px;
+    }
+    .sg-card {
+      flex: 0 0 calc(33.333% - 24px);
+      max-width: 340px;
+      min-width: 260px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+    }
+    .sg-card:hover {
+      border-color: rgba(224,31,56,0.38);
+      transform: translateY(-6px);
+      box-shadow: 0 28px 64px rgba(224,31,56,0.14);
+    }
+    .sg-card__frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .sg-card__frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+    .sg-card:hover .sg-card__frame img { transform: scale(1.04); }
+    .sg-card__fade {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,2,10,0.7) 0%, transparent 50%);
+    }
+    .sg-card__body { padding: 22px 24px 28px; }
+    .sg-card__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 5px;
+    }
+    .sg-card__role {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(201,168,76,0.8);
+      margin-bottom: 3px;
+    }
+    .sg-card__location {
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 20px;
+    }
+    .sg-card__btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: transparent;
+      border: 1px solid rgba(224,31,56,0.45);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s;
+    }
+    .sg-card__btn:hover {
+      background: var(--crimson);
+      border-color: var(--crimson);
+    }
+    @media (max-width: 900px) {
+      .sg-card { flex: 0 0 calc(50% - 24px); }
+    }
+    @media (max-width: 560px) {
+      .broker-grid-section { padding: 64px 20px 80px; }
+      .sg-card { flex: 0 0 100%; max-width: 100%; }
+    }
+
+    /* ═══════════════════════════════════════
+       BROKERS CLOSING CTA
+    ═══════════════════════════════════════ */
+    .brokers-cta {
+      position: relative;
+      background: #04010a;
+      padding: 100px 40px 110px;
+      text-align: center;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .brokers-cta__glow {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 55% at 50% 100%, rgba(224,31,56,0.26) 0%, transparent 64%);
+      pointer-events: none;
+    }
+    .brokers-cta__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+    }
+    .brokers-cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .brokers-cta__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(52px, 8vw, 96px);
+      letter-spacing: 0.03em;
+      color: #fff;
+      line-height: 0.92;
+      margin: 16px 0 32px;
+    }
+    .brokers-cta__sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.46);
+      line-height: 1.8;
+      margin: 0 auto 48px;
+      max-width: 520px;
+    }
+    .brokers-cta__btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    @media (max-width: 520px) {
+      .brokers-cta { padding: 80px 24px 90px; }
+      .brokers-cta__btns { flex-direction: column; align-items: center; }
+      .brokers-cta__btns .btn { width: 100%; justify-content: center; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -308,6 +582,26 @@
         <div class="cs-card__overlay"></div>
         <div class="cs-card__label">60+ Agents. <em>One Flag.</em> Every Conference.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM STATS ── -->
+<section class="brokers-stats">
+  <div class="brokers-stats__inner">
+    <div class="bs-stat fade-in">
+      <div class="bs-stat__num"><span class="bs-count" data-target="9">0</span><span class="bs-stat__plus">+</span></div>
+      <div class="bs-stat__label">Licensed Brokers</div>
+    </div>
+    <div class="bs-divider"></div>
+    <div class="bs-stat fade-in fade-in--delay-1">
+      <div class="bs-stat__num"><span class="bs-count" data-target="90000">0</span><span class="bs-stat__plus">+</span></div>
+      <div class="bs-stat__label">Families Protected</div>
+    </div>
+    <div class="bs-divider"></div>
+    <div class="bs-stat fade-in fade-in--delay-2">
+      <div class="bs-stat__num">PHP</div>
+      <div class="bs-stat__label">Agency Certified Partners</div>
     </div>
   </div>
 </section>
@@ -369,18 +663,10 @@
 
         <div class="broker-card-v2">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_6588.jpg" alt="The Prevail Movement">
+            <img class="broker-card-v2__img" src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
           </div>
-          <div class="broker-card-v2__name">The Prevail Movement</div>
-          <div class="broker-card-v2__role">Austin, Texas</div>
-        </div>
-
-        <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_8387.jpg" alt="Gold Bar Recognition">
-          </div>
-          <div class="broker-card-v2__name">Gold Bar Recognition</div>
-          <div class="broker-card-v2__role">Excellence Award Ceremony</div>
+          <div class="broker-card-v2__name">Haydeh Taraghi</div>
+          <div class="broker-card-v2__role">Marketing Director</div>
         </div>
 
         <!-- SET B (duplicate for seamless loop) -->
@@ -418,31 +704,139 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_6588.jpg" alt="">
+            <img class="broker-card-v2__img" src="media/IMG_8193.PNG" alt="">
           </div>
-          <div class="broker-card-v2__name">The Prevail Movement</div>
-          <div class="broker-card-v2__role">Austin, Texas</div>
+          <div class="broker-card-v2__name">Haydeh Taraghi</div>
+          <div class="broker-card-v2__role">Marketing Director</div>
         </div>
 
-        <div class="broker-card-v2" aria-hidden="true">
-          <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_8387.jpg" alt="">
-          </div>
-          <div class="broker-card-v2__name">Gold Bar Recognition</div>
-          <div class="broker-card-v2__role">Excellence Award Ceremony</div>
-        </div>
 
       </div>
     </div>
   </div>
 
-  <!-- Join CTA -->
-  <div class="join-cta fade-in">
-    <h3>READY TO JOIN<br>THIS TEAM?</h3>
-    <p>Every leader on this page started where you are right now. The decision is available to you today.</p>
-    <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your R.I. Today</a>
-  </div>
 
+</section>
+
+<!-- ── PILLARS ── -->
+<section class="pillars-section">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <p class="section-label fade-in">The Prevail Standard</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto;">WHAT SETS THIS<br>TEAM APART</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar fade-in">
+        <div class="pillar__num">01</div>
+        <div class="pillar__title">LICENSED AND TRAINED</div>
+        <p class="pillar__text">Every broker on this team holds a state license and goes through rigorous training to serve families with confidence and integrity.</p>
+      </div>
+      <div class="pillar fade-in fade-in--delay-1">
+        <div class="pillar__num">02</div>
+        <div class="pillar__title">FAITH DRIVEN</div>
+        <p class="pillar__text">We are not just selling policies. We build trust, protect legacies, and operate with a mission that goes beyond a paycheck.</p>
+      </div>
+      <div class="pillar fade-in fade-in--delay-2">
+        <div class="pillar__num">03</div>
+        <div class="pillar__title">INCOME FROM DAY ONE</div>
+        <p class="pillar__text">The Prevail system creates real earning potential fast. Whether you join as an agent or protect your family as a client, the opportunity is here.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BROKER GRID ── -->
+<section class="broker-grid-section">
+  <div class="broker-grid-inner">
+    <div class="broker-grid-header">
+      <p class="section-label fade-in">The Team</p>
+      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto 16px;">MEET EVERY<br>LEADER</h2>
+      <p class="section-sub fade-in fade-in--delay-2" style="margin:0 auto;">Connect directly with a Prevail broker and take the next step.</p>
+    </div>
+    <div class="broker-grid">
+
+      <div class="sg-card fade-in">
+        <div class="sg-card__frame">
+          <img src="media/_DSC4161.JPG" alt="Lorenzo and Crystal Godinez">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Lorenzo &amp; Crystal Godinez</div>
+          <div class="sg-card__role">Senior Marketing Directors</div>
+          <div class="sg-card__location">Austin, TX</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in fade-in--delay-1">
+        <div class="sg-card__frame">
+          <img src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Pablo &amp; Marissa Negrete</div>
+          <div class="sg-card__role">Marketing Directors</div>
+          <div class="sg-card__location">Waco, TX</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in fade-in--delay-2">
+        <div class="sg-card__frame">
+          <img src="media/IMG_0667.JPEG" alt="Jaime and Kawena Dominguez">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Jaime &amp; Kawena Dominguez</div>
+          <div class="sg-card__role">Marketing Directors</div>
+          <div class="sg-card__location">Austin, TX</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in">
+        <div class="sg-card__frame">
+          <img src="media/Screenshot_20260410_134617_Facebook.JPEG" alt="Nicholas Ingram">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Nicholas Ingram</div>
+          <div class="sg-card__role">Marketing Director</div>
+          <div class="sg-card__location">San Antonio, TX</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in fade-in--delay-1">
+        <div class="sg-card__frame">
+          <img src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Haydeh Taraghi</div>
+          <div class="sg-card__role">Marketing Director</div>
+          <div class="sg-card__location">&nbsp;</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CLOSING CTA ── -->
+<section class="brokers-cta">
+  <div class="brokers-cta__glow" aria-hidden="true"></div>
+  <div class="brokers-cta__grid" aria-hidden="true"></div>
+  <div class="brokers-cta__inner">
+    <p class="section-label fade-in">Ready to move</p>
+    <h2 class="brokers-cta__title fade-in fade-in--delay-1">BECOME PART<br>OF THIS MOVEMENT</h2>
+    <p class="brokers-cta__sub fade-in fade-in--delay-2">Join a team that operates with purpose, builds income with integrity, and protects families for a living.</p>
+    <div class="brokers-cta__btns fade-in fade-in--delay-2">
+      <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your R.I. Today →</a>
+      <a href="licensing.html" class="btn btn--outline btn--lg">Explore Licensing</a>
+    </div>
+  </div>
 </section>
 
 <!-- FOOTER -->
@@ -475,7 +869,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -501,6 +895,26 @@
   const track = document.getElementById('marqueeTrack');
   track.addEventListener('mouseenter', () => track.classList.add('is-paused'));
   track.addEventListener('mouseleave', () => track.classList.remove('is-paused'));
+
+  // Animated stat counters
+  const bsCounts = document.querySelectorAll('.bs-count');
+  const bsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const target = +el.dataset.target;
+      const totalFrames = 1800 / 16;
+      let frame = 0;
+      const timer = setInterval(() => {
+        frame++;
+        const eased = 1 - Math.pow(1 - frame / totalFrames, 3);
+        el.textContent = Math.floor(eased * target).toLocaleString();
+        if (frame >= totalFrames) { el.textContent = target.toLocaleString(); clearInterval(timer); }
+      }, 16);
+      bsObs.unobserve(el);
+    });
+  }, { threshold: 0.4 });
+  bsCounts.forEach(el => bsObs.observe(el));
 
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
@@ -544,7 +958,5 @@
     update();
   })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
 </body>
 </html>

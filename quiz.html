@@ -3,17 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>What's Your Financial Personality? | Prevail Movement</title>
+  <title>Find Your Financial Type | Prevail Movement</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-
-    /* ══════════════════════════════════════════
-       QUIZ GLOBAL
-    ══════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     .quiz-wrap {
       min-height: 100vh;
@@ -21,21 +16,18 @@
       font-family: 'Inter', sans-serif;
     }
 
-    /* screen visibility */
     .quiz-screen { display: none; }
     .quiz-screen.is-active {
       display: flex;
       flex-direction: column;
-      animation: screenIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: qIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
-    @keyframes screenIn {
-      from { opacity: 0; transform: translateY(18px); }
+    @keyframes qIn {
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ══════════════════════════════════════════
-       SCREEN 0 — INTRO
-    ══════════════════════════════════════════ */
+    /* ── INTRO ── */
     .quiz-intro {
       position: relative;
       min-height: 100vh;
@@ -45,338 +37,269 @@
       background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
       overflow: hidden;
     }
-
-    .quiz-intro__aurora {
+    .quiz-intro__glow {
       position: absolute;
-      left: 50%; top: 45%;
+      left: 50%; top: 50%;
       transform: translate(-50%, -50%);
       width: 80vw; height: 60vh;
-      background: radial-gradient(ellipse at 50% 50%,
-        rgba(224,31,56,0.30) 0%,
-        rgba(110,18,36,0.18) 40%,
-        transparent 70%);
+      background: radial-gradient(ellipse, rgba(224,31,56,0.18) 0%, transparent 65%);
       border-radius: 50%;
       filter: blur(60px);
-      animation: aurora-breathe 8s ease-in-out infinite alternate;
       pointer-events: none;
     }
-
-    .quiz-intro__grid {
-      position: absolute; inset: 0;
-      background-size: 60px 60px;
-      background-image:
-        linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .quiz-intro__bg-text {
-      position: absolute;
-      bottom: -4vh; left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Bebas Neue', cursive;
-      font-size: 28vw; line-height: 0.8;
-      white-space: nowrap;
-      color: transparent;
-      -webkit-text-stroke: 1px rgba(255,255,255,0.07);
-      background: linear-gradient(180deg, rgba(255,255,255,0.09) 0%, transparent 65%);
-      -webkit-background-clip: text; background-clip: text;
-      pointer-events: none; user-select: none; z-index: 0;
-    }
-
-    .quiz-intro__content {
-      position: relative; z-index: 2;
-      max-width: 600px;
+    .quiz-intro__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
       width: 100%;
+      margin: 0 auto;
       text-align: center;
     }
-
-    .quiz-intro__eyebrow {
+    .quiz-badge {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 20px;
+      color: var(--crimson);
+      border: 1px solid rgba(224,31,56,0.35);
+      padding: 7px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
     }
-    .quiz-intro__eyebrow::before,
-    .quiz-intro__eyebrow::after {
-      content: '';
-      display: block;
-      width: 24px; height: 1px;
-      background: rgba(255,255,255,0.25);
+    .quiz-intro__eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
     }
-
     .quiz-intro__title {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(52px, 9vw, 96px);
+      font-size: clamp(56px, 12vw, 100px);
       line-height: 0.9;
-      letter-spacing: 0.03em;
-      margin-bottom: 18px;
-      background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.65) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 28px rgba(224,31,56,0.28));
+      letter-spacing: 0.02em;
+      color: #fff;
+      margin-bottom: 12px;
     }
-    .quiz-intro__title .accent {
-      background: linear-gradient(180deg, var(--gold) 0%, #c8a040 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
+    .quiz-intro__title span { color: var(--crimson); }
     .quiz-intro__sub {
-      font-size: 15px;
-      font-weight: 400;
-      line-height: 1.65;
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 36px;
-      max-width: 480px;
-      margin-left: auto; margin-right: auto;
+      font-size: 16px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 500px;
+      margin: 0 auto 48px;
     }
 
-    /* Form card */
-    .quiz-form-card {
-      background: rgba(255,255,255,0.07);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 16px;
-      padding: 36px 32px;
-      text-align: left;
+    /* Types preview grid */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-bottom: 44px;
     }
-
-    .quiz-form-card h3 {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 22px;
-      letter-spacing: 0.06em;
-      color: #fff;
-      margin-bottom: 20px;
+    .type-chip {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px 10px 16px;
       text-align: center;
-    }
-
-    .quiz-field {
-      margin-bottom: 14px;
-    }
-    .quiz-field label {
-      display: block;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 7px;
-    }
-    .quiz-field input {
-      width: 100%;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px;
-      padding: 13px 16px;
-      font-size: 15px;
-      font-family: 'Inter', sans-serif;
-      color: #fff;
-      outline: none;
       transition: border-color 0.2s, background 0.2s;
     }
-    .quiz-field input::placeholder { color: rgba(255,255,255,0.28); }
-    .quiz-field input:focus {
-      border-color: var(--gold);
-      background: rgba(255,255,255,0.09);
+    .type-chip--hot {
+      border-color: rgba(224,31,56,0.5);
+      background: rgba(224,31,56,0.1);
     }
-    .quiz-field input.error { border-color: var(--crimson); }
+    .type-chip__icon {
+      font-size: 26px;
+      line-height: 1;
+      display: block;
+      margin-bottom: 10px;
+    }
+    .type-chip__name {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.4;
+    }
+    .type-chip--hot .type-chip__name { color: #fff; }
+    .type-chip__badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      background: rgba(224,31,56,0.15);
+      border-radius: 100px;
+      padding: 3px 8px;
+    }
 
-    .quiz-field-error {
-      font-size: 11px;
-      color: #ff6b7a;
-      margin-top: 5px;
-      display: none;
+    .quiz-start-note {
+      margin-top: 14px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.22);
     }
 
-    .quiz-start-btn {
-      width: 100%;
-      margin-top: 20px;
-      padding: 16px 32px;
-      background: linear-gradient(135deg, var(--gold) 0%, #c8a040 100%);
-      border: none;
-      border-radius: 50px;
-      font-family: 'Bebas Neue', cursive;
-      font-size: 18px;
-      letter-spacing: 0.12em;
-      color: #1a0a0a;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      box-shadow: 0 8px 28px rgba(232,192,96,0.25);
-    }
-    .quiz-start-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(232,192,96,0.38);
-    }
-    .quiz-start-btn:active { transform: translateY(0); }
-
-    .quiz-privacy {
-      display: flex;
+    /* ── QUESTION SCREEN ── */
+    .quiz-question {
+      min-height: 100vh;
       align-items: center;
       justify-content: center;
-      gap: 7px;
-      margin-top: 14px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.35);
+      padding: calc(var(--nav-h) + 40px) 24px 80px;
+      background: var(--bg);
     }
-    .quiz-privacy svg { width: 12px; height: 12px; opacity: 0.5; }
-
-    /* ══════════════════════════════════════════
-       PROGRESS BAR
-    ══════════════════════════════════════════ */
-    .quiz-progress-wrap {
-      position: fixed;
-      top: var(--nav-h);
-      left: 0; right: 0;
-      z-index: 90;
-      background: rgba(58,10,20,0.92);
-      backdrop-filter: blur(8px);
-      padding: 10px 24px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
+    .quiz-question__inner {
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
     }
 
-    .quiz-progress-bar-track {
-      flex: 1;
+    /* Progress */
+    .quiz-progress {
+      margin-bottom: 44px;
+    }
+    .quiz-progress__track {
       height: 3px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 99px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      margin-bottom: 12px;
       overflow: hidden;
     }
-    .quiz-progress-bar-fill {
+    .quiz-progress__fill {
       height: 100%;
-      background: linear-gradient(90deg, var(--crimson), var(--gold));
-      border-radius: 99px;
-      transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+      background: linear-gradient(90deg, var(--crimson), #ff4060);
+      border-radius: 3px;
+      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .quiz-progress-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      white-space: nowrap;
-    }
-
-    /* ══════════════════════════════════════════
-       SCREEN 1-8 — QUESTIONS
-    ══════════════════════════════════════════ */
-    .quiz-q-screen {
-      min-height: 100vh;
-      background: var(--bg);
-      padding: calc(var(--nav-h) + 70px) 24px 80px;
+    .quiz-progress__meta {
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
     }
-
-    .quiz-q-inner {
-      width: 100%;
-      max-width: 660px;
-    }
-
-    .quiz-q-number {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.28em;
+    .quiz-progress__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+    .quiz-progress__label strong { color: rgba(255,255,255,0.65); font-weight: 700; }
+    .quiz-progress__pct {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--crimson);
+    }
+
+    /* Question text */
+    .quiz-q-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 13px;
+      letter-spacing: 0.2em;
       color: var(--crimson);
       margin-bottom: 14px;
     }
-
     .quiz-q-text {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(30px, 5vw, 48px);
+      font-size: clamp(30px, 5.5vw, 50px);
       line-height: 1.05;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.02em;
       color: #fff;
-      margin-bottom: 30px;
+      margin-bottom: 32px;
     }
 
-    .quiz-options-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 28px;
+    /* Options */
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
     }
-
     .quiz-option {
       display: flex;
       align-items: flex-start;
-      gap: 14px;
-      padding: 18px 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1.5px solid rgba(255,255,255,0.10);
+      gap: 16px;
+      padding: 18px 20px;
+      background: rgba(255,255,255,0.04);
+      border: 1.5px solid rgba(255,255,255,0.09);
       border-radius: 10px;
       cursor: pointer;
-      transition: all 0.18s ease;
+      transition: background 0.18s, border-color 0.18s, transform 0.15s;
       text-align: left;
       width: 100%;
       font-family: 'Inter', sans-serif;
     }
     .quiz-option:hover {
-      background: rgba(224,31,56,0.1);
-      border-color: rgba(224,31,56,0.45);
+      background: rgba(224,31,56,0.09);
+      border-color: rgba(224,31,56,0.4);
       transform: translateY(-2px);
     }
     .quiz-option.selected {
-      background: rgba(224,31,56,0.15);
+      background: rgba(224,31,56,0.14);
       border-color: var(--crimson);
-      box-shadow: 0 0 0 1px rgba(224,31,56,0.3), inset 0 0 20px rgba(224,31,56,0.06);
+      box-shadow: 0 0 0 1px rgba(224,31,56,0.25);
     }
-
     .quiz-option__letter {
       font-family: 'Bebas Neue', cursive;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
-      color: var(--crimson);
+      color: rgba(255,255,255,0.25);
       flex-shrink: 0;
       min-width: 18px;
       margin-top: 1px;
+      transition: color 0.18s;
     }
+    .quiz-option.selected .quiz-option__letter,
+    .quiz-option:hover .quiz-option__letter { color: var(--crimson); }
     .quiz-option.selected .quiz-option__letter { color: #fff; }
-
     .quiz-option__text {
       font-size: 14px;
-      line-height: 1.5;
-      color: rgba(255,255,255,0.7);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.62);
       font-weight: 400;
+      transition: color 0.18s;
     }
     .quiz-option:hover .quiz-option__text,
     .quiz-option.selected .quiz-option__text { color: #fff; }
 
-    .quiz-back-link {
-      display: inline-flex;
+    /* Next button */
+    .quiz-next-row {
+      display: flex;
       align-items: center;
-      gap: 7px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: rgba(255,255,255,0.35);
+      gap: 24px;
+    }
+    .quiz-next-btn {
+      opacity: 0.3;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .quiz-next-btn.enabled {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .quiz-back-btn {
       background: none;
       border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: color 0.18s;
       font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: color 0.18s;
+      padding: 0;
     }
-    .quiz-back-link:hover { color: rgba(255,255,255,0.7); }
-    .quiz-back-link svg { width: 14px; height: 14px; }
+    .quiz-back-btn:hover { color: rgba(255,255,255,0.6); }
 
-    /* ══════════════════════════════════════════
-       SCREEN 9 — LOADING
-    ══════════════════════════════════════════ */
+    /* ── LOADING SCREEN ── */
     .quiz-loading {
       min-height: 100vh;
       background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
@@ -388,346 +311,193 @@
       position: relative;
       overflow: hidden;
     }
-
-    .quiz-loading__aurora {
+    .quiz-loading__glow {
       position: absolute;
       left: 50%; top: 50%;
       transform: translate(-50%, -50%);
       width: 70vw; height: 50vh;
-      background: radial-gradient(ellipse, rgba(232,192,96,0.15) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(224,31,56,0.2) 0%, transparent 65%);
       border-radius: 50%;
       filter: blur(60px);
-      animation: aurora-breathe 4s ease-in-out infinite alternate;
+      pointer-events: none;
+      animation: pulse 2s ease-in-out infinite;
     }
-
-    .quiz-loader-ring {
-      width: 72px; height: 72px;
-      border: 2.5px solid rgba(232,192,96,0.18);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      position: relative; z-index: 2;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .quiz-loading__title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(28px, 5vw, 44px);
-      letter-spacing: 0.14em;
-      color: #fff;
-      position: relative; z-index: 2;
-      animation: pulse-text 1.8s ease-in-out infinite;
-    }
-    @keyframes pulse-text {
-      0%, 100% { opacity: 0.65; }
-      50%       { opacity: 1; }
-    }
-
-    .quiz-loading__sub {
-      font-size: 13px;
-      color: rgba(255,255,255,0.42);
-      letter-spacing: 0.06em;
-      position: relative; z-index: 2;
-      min-height: 20px;
-      transition: opacity 0.4s;
-    }
-
-    /* ══════════════════════════════════════════
-       SCREEN 10 — RESULT
-    ══════════════════════════════════════════ */
-    .quiz-result { min-height: 100vh; }
-
-    /* Zone A — dark hero band */
-    .quiz-result-hero {
+    @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+    .quiz-loading__icon {
       position: relative;
-      padding: calc(var(--nav-h) + 70px) 24px 80px;
-      min-height: 70vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      z-index: 1;
+      font-size: 56px;
+      line-height: 1;
+      animation: spin3d 2s ease-in-out infinite;
+    }
+    @keyframes spin3d {
+      0%, 100% { transform: rotateY(0deg); }
+      50% { transform: rotateY(180deg); }
+    }
+    .quiz-loading__title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      color: #fff;
+    }
+    .quiz-loading__bar {
+      position: relative;
+      z-index: 1;
+      width: 200px;
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
       overflow: hidden;
     }
+    .quiz-loading__fill {
+      height: 100%;
+      background: var(--crimson);
+      border-radius: 3px;
+      animation: loadFill 1.8s ease-in-out forwards;
+    }
+    @keyframes loadFill { from { width: 0; } to { width: 100%; } }
 
-    .quiz-result-hero.type-protector,
-    .quiz-result-hero.type-builder {
+    /* ── RESULT SCREEN ── */
+    .quiz-result {
+      min-height: 100vh;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: calc(var(--nav-h) + 50px) 24px 100px;
       background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
+      position: relative;
+      overflow: hidden;
     }
-    .quiz-result-hero.type-pioneer,
-    .quiz-result-hero.type-freedom {
-      background: linear-gradient(160deg, #5a3800 0%, #3a0c1a 55%, #4a1a00 100%);
-    }
-
-    .quiz-result-hero__aurora {
+    .quiz-result__glow {
       position: absolute;
-      left: 50%; top: 50%;
-      transform: translate(-50%, -50%);
-      width: 80vw; height: 60vh;
+      right: -100px; top: 0;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(224,31,56,0.22) 0%, transparent 65%);
       border-radius: 50%;
-      filter: blur(70px);
-      animation: aurora-breathe 8s ease-in-out infinite alternate;
+      filter: blur(80px);
       pointer-events: none;
     }
-    .type-protector .quiz-result-hero__aurora,
-    .type-builder   .quiz-result-hero__aurora {
-      background: radial-gradient(ellipse, rgba(224,31,56,0.25) 0%, transparent 70%);
+    .quiz-result__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
     }
-    .type-pioneer .quiz-result-hero__aurora,
-    .type-freedom .quiz-result-hero__aurora {
-      background: radial-gradient(ellipse, rgba(232,192,96,0.22) 0%, transparent 70%);
-    }
-
-    .quiz-result-hero__grid {
-      position: absolute; inset: 0;
-      background-size: 60px 60px;
-      background-image:
-        linear-gradient(to right,  rgba(255,255,255,0.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,0.04) 1px, transparent 1px);
-      mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-      -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%, black 80%, transparent 100%);
-      pointer-events: none;
-    }
-
-    .quiz-result-hero__content {
-      position: relative; z-index: 2;
-      max-width: 800px;
-    }
-
-    .quiz-result-eyebrow {
+    .quiz-result__eyebrow {
       font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 16px;
-    }
-
-    .quiz-result-type-name {
-      font-family: 'Bebas Neue', cursive;
-      font-size: clamp(64px, 12vw, 130px);
-      line-height: 0.88;
-      letter-spacing: 0.04em;
+      color: var(--crimson);
       margin-bottom: 20px;
     }
-    .type-protector .quiz-result-type-name,
-    .type-builder   .quiz-result-type-name {
-      background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.65) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 30px rgba(224,31,56,0.35));
-    }
-    .type-pioneer .quiz-result-type-name,
-    .type-freedom .quiz-result-type-name {
-      background: linear-gradient(180deg, var(--gold) 0%, #c8a040 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      filter: drop-shadow(0 0 30px rgba(232,192,96,0.35));
-    }
-
-    .quiz-result-tagline {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: clamp(16px, 2.5vw, 22px);
-      color: rgba(255,255,255,0.75);
-      margin-bottom: 24px;
-      line-height: 1.4;
-    }
-
-    .quiz-result-pillar-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 18px;
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      border: 1px solid;
-    }
-    .type-protector .quiz-result-pillar-badge,
-    .type-builder   .quiz-result-pillar-badge {
-      color: var(--crimson);
-      border-color: rgba(224,31,56,0.4);
-      background: rgba(224,31,56,0.1);
-    }
-    .type-pioneer .quiz-result-pillar-badge,
-    .type-freedom .quiz-result-pillar-badge {
-      color: var(--gold);
-      border-color: rgba(232,192,96,0.4);
-      background: rgba(232,192,96,0.1);
-    }
-    .quiz-result-pillar-badge::before {
-      content: '';
+    .quiz-result__icon {
+      font-size: 72px;
+      line-height: 1;
+      margin-bottom: 20px;
       display: block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: currentColor;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.15));
     }
-
-    /* Zone B — white/light section */
-    .quiz-result-body {
-      background: #ffffff;
-      padding: 70px 24px 80px;
+    .quiz-result__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(52px, 10vw, 84px);
+      line-height: 0.92;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 14px;
     }
-
-    .quiz-result-body-inner {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .quiz-result-description {
-      font-size: 17px;
-      line-height: 1.72;
-      color: #3a1020;
+    .quiz-result__tagline {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.55);
+      font-style: italic;
       margin-bottom: 32px;
-      font-weight: 400;
     }
-
-    .quiz-result-future-label {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 13px;
-      color: var(--crimson);
-      letter-spacing: 0.06em;
-      margin-bottom: 12px;
-      text-transform: uppercase;
+    .quiz-result__divider {
+      width: 56px;
+      height: 3px;
+      background: var(--crimson);
+      border-radius: 3px;
+      margin-bottom: 28px;
     }
-    .quiz-result-future {
+    .quiz-result__desc {
       font-size: 15px;
-      line-height: 1.7;
-      color: #7a4055;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.85;
       margin-bottom: 44px;
-      padding: 24px;
-      background: #f7f2f4;
-      border-radius: 12px;
-      border-left: 3px solid var(--crimson);
+      max-width: 580px;
     }
 
-    /* CTA pair */
-    .quiz-cta-pair {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 48px;
+    /* Path cards */
+    .quiz-result__paths {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 44px;
     }
-
-    /* Share section */
-    .quiz-share-wrap {
-      border-top: 1px solid #e8d8df;
-      padding-top: 36px;
+    .result-path {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 26px;
     }
-    .quiz-share-label {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+    .result-path__label {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #b8809a;
-      margin-bottom: 16px;
+      color: var(--crimson);
+      margin-bottom: 10px;
     }
-    .quiz-share-btns {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 24px;
-    }
-    .quiz-share-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 9px 18px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 600;
+    .result-path__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 17px;
       letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: all 0.18s;
-      border: 1.5px solid;
-      text-decoration: none;
-    }
-    .quiz-share-btn--twitter {
-      background: #000;
-      border-color: #000;
       color: #fff;
+      margin-bottom: 10px;
     }
-    .quiz-share-btn--twitter:hover { background: #1a1a1a; }
-    .quiz-share-btn--facebook {
-      background: #1877f2;
-      border-color: #1877f2;
-      color: #fff;
+    .result-path__text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.7;
     }
-    .quiz-share-btn--facebook:hover { background: #1565d8; }
-    .quiz-share-btn--copy {
-      background: transparent;
-      border-color: #e8d8df;
-      color: #7a4055;
-    }
-    .quiz-share-btn--copy:hover { border-color: #c8a0b8; color: #4a1020; }
 
-    .quiz-retake {
-      display: block;
+    /* CTAs */
+    .quiz-result__ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .quiz-result__retake {
       font-size: 12px;
-      color: #b8809a;
-      text-align: center;
+      color: rgba(255,255,255,0.25);
       cursor: pointer;
       background: none;
       border: none;
-      font-family: 'Inter', sans-serif;
-      transition: color 0.18s;
+      font-family: inherit;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      padding: 0;
     }
-    .quiz-retake:hover { color: #7a4055; }
+    .quiz-result__retake:hover { color: rgba(255,255,255,0.5); }
 
-    /* ══════════════════════════════════════════
-       RESULT FOOTER STRIP
-    ══════════════════════════════════════════ */
-    .quiz-footer-strip {
-      background: #3a0a14;
-      padding: 24px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .quiz-footer-strip img { height: 28px; width: auto; opacity: 0.7; }
-    .quiz-footer-strip span {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.28);
-    }
-
-    /* ══════════════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════════════ */
+    /* ── RESPONSIVE ── */
     @media (max-width: 600px) {
-      .quiz-options-grid { grid-template-columns: 1fr; }
-      .quiz-form-card { padding: 24px 20px; }
-      .quiz-cta-pair { flex-direction: column; align-items: center; }
-      .quiz-cta-pair .btn { width: 100%; max-width: 320px; justify-content: center; }
-      .quiz-result-hero { min-height: 60vh; }
-      .quiz-footer-strip { justify-content: center; text-align: center; }
+      .types-grid { grid-template-columns: repeat(3, 1fr); }
+      .quiz-result__paths { grid-template-columns: 1fr; }
+      .quiz-options { gap: 8px; }
     }
-    @media (max-width: 400px) {
-      .quiz-share-btns { flex-direction: column; align-items: center; }
-      .quiz-share-btn { width: 100%; max-width: 260px; justify-content: center; }
+    @media (max-width: 380px) {
+      .types-grid { grid-template-columns: repeat(2, 1fr); }
+      .quiz-intro__title { font-size: 52px; }
     }
-
   </style>
 </head>
-<body class="quiz-wrap">
+<body>
 
-<!-- ════════════════════════════════════════
-     NAV
-════════════════════════════════════════ -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <a href="index.html" class="nav__logo">
     <img src="99.png" alt="Prevail Movement">
@@ -740,12 +510,10 @@
     <li><a href="videos.html">Videos</a></li>
     <li><a href="presentations.html">Presentations</a></li>
     <li><a href="systems.html">Systems</a></li>
-    <li><a href="quiz.html" class="active">Take the Quiz</a></li>
+    <li><a href="matchup.html">Matchup</a></li>
   </ul>
   <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
-  <button class="nav__hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav__mobile" id="mobileNav">
   <a href="index.html">Home</a>
@@ -755,593 +523,445 @@
   <a href="videos.html">Videos</a>
   <a href="presentations.html">Presentations</a>
   <a href="systems.html">Systems</a>
-  <a href="quiz.html" class="active">Take the Quiz</a>
+  <a href="matchup.html">Matchup</a>
   <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
 </div>
 
-<!-- ════════════════════════════════════════
-     PROGRESS BAR (hidden by default)
-════════════════════════════════════════ -->
-<div class="quiz-progress-wrap" id="progressWrap" style="display:none;">
-  <div class="quiz-progress-bar-track">
-    <div class="quiz-progress-bar-fill" id="progressFill" style="width:0%"></div>
-  </div>
-  <span class="quiz-progress-label" id="progressLabel">1 of 8</span>
-</div>
+<div class="quiz-wrap">
 
-<!-- ════════════════════════════════════════
-     SCREEN 0 — INTRO
-════════════════════════════════════════ -->
-<div class="quiz-screen quiz-intro is-active" id="screen-intro">
-  <div class="quiz-intro__aurora"></div>
-  <div class="quiz-intro__grid"></div>
-  <div class="quiz-intro__bg-text">PREVAIL</div>
+  <!-- ════════════════════════════════════
+       SCREEN 0 — INTRO
+  ════════════════════════════════════ -->
+  <div class="quiz-screen is-active" id="screen-intro">
+    <div class="quiz-intro">
+      <div class="quiz-intro__glow"></div>
+      <div class="quiz-intro__inner">
 
-  <div class="quiz-intro__content">
-    <div class="quiz-intro__eyebrow">Prevail Movement</div>
+        <span class="quiz-badge">2-Minute Assessment</span>
+        <p class="quiz-intro__eyebrow">Financial Personality Quiz</p>
+        <h1 class="quiz-intro__title">WHICH TYPE<br>ARE <span>YOU?</span></h1>
+        <p class="quiz-intro__sub">8 questions reveal your strengths, your style, and the path that is built for you. Whether you are exploring a career in financial services or finding the right protection plan for your family.</p>
 
-    <h1 class="quiz-intro__title">
-      What's Your<br>
-      <span class="accent">Financial</span><br>
-      Personality?
-    </h1>
-
-    <p class="quiz-intro__sub">
-      Answer 8 quick questions and discover the financial type that shapes your future, and exactly what to do about it.
-    </p>
-
-    <div class="quiz-form-card">
-      <h3>Get Your Free Results</h3>
-
-      <div class="quiz-field">
-        <label for="inputName">Your First Name</label>
-        <input type="text" id="inputName" placeholder="Enter your first name" autocomplete="given-name">
-        <div class="quiz-field-error" id="nameError">Please enter your name</div>
-      </div>
-
-      <div class="quiz-field">
-        <label for="inputEmail">Your Email Address</label>
-        <input type="email" id="inputEmail" placeholder="Enter your email" autocomplete="email">
-        <div class="quiz-field-error" id="emailError">Please enter a valid email</div>
-      </div>
-
-      <button class="quiz-start-btn" id="startBtn">
-        Reveal My Financial Type &rarr;
-      </button>
-
-      <p class="quiz-privacy">
-        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-        No spam. Your results are private and secure.
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     SCREEN 1-8 — QUESTIONS (single template)
-════════════════════════════════════════ -->
-<div class="quiz-screen quiz-q-screen" id="screen-question">
-  <div class="quiz-q-inner">
-    <div class="quiz-q-number" id="qNumber">Question 1 of 8</div>
-    <div class="quiz-q-text" id="qText"></div>
-    <div class="quiz-options-grid" id="qOptions"></div>
-    <button class="quiz-back-link" id="backBtn">
-      <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <polyline points="15,18 9,12 15,6"/>
-      </svg>
-      Back
-    </button>
-  </div>
-</div>
-
-<!-- ════════════════════════════════════════
-     SCREEN 9 — LOADING
-════════════════════════════════════════ -->
-<div class="quiz-screen quiz-loading" id="screen-loading">
-  <div class="quiz-loading__aurora"></div>
-  <div class="quiz-loader-ring"></div>
-  <div class="quiz-loading__title">Analyzing Your Results</div>
-  <div class="quiz-loading__sub" id="loadingSub">Mapping your financial DNA...</div>
-</div>
-
-<!-- ════════════════════════════════════════
-     SCREEN 10 — RESULT
-════════════════════════════════════════ -->
-<div class="quiz-screen quiz-result" id="screen-result">
-
-  <!-- Zone A: dark hero -->
-  <div class="quiz-result-hero" id="resultHero">
-    <div class="quiz-result-hero__aurora"></div>
-    <div class="quiz-result-hero__grid"></div>
-    <div class="quiz-result-hero__content">
-      <div class="quiz-result-eyebrow">Your Financial Personality Is</div>
-      <div class="quiz-result-type-name" id="resultTypeName"></div>
-      <div class="quiz-result-tagline" id="resultTagline"></div>
-      <div class="quiz-result-pillar-badge" id="resultPillarBadge"></div>
-    </div>
-  </div>
-
-  <!-- Zone B: white body -->
-  <div class="quiz-result-body">
-    <div class="quiz-result-body-inner">
-
-      <p class="quiz-result-description" id="resultDescription"></p>
-
-      <div class="quiz-result-future-label">What This Means for Your Financial Future</div>
-      <div class="quiz-result-future" id="resultFuture"></div>
-
-      <div class="quiz-cta-pair">
-        <a href="matchup.html" class="btn btn--crimson btn--pill btn--lg" id="resultPrimaryCta"></a>
-        <a href="matchup.html" class="btn btn--outline btn--pill btn--lg" id="resultSecondaryCta"></a>
-      </div>
-
-      <div class="quiz-share-wrap">
-        <div class="quiz-share-label">Share Your Result</div>
-        <div class="quiz-share-btns">
-          <a class="quiz-share-btn quiz-share-btn--twitter" id="shareTwitter" target="_blank" rel="noopener">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.261 5.635 5.903-5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-            Share on X
-          </a>
-          <a class="quiz-share-btn quiz-share-btn--facebook" id="shareFacebook" target="_blank" rel="noopener">
-            <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-            Share on Facebook
-          </a>
-          <button class="quiz-share-btn quiz-share-btn--copy" id="copyLinkBtn">
-            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy Link
-          </button>
+        <div class="types-grid">
+          <div class="type-chip type-chip--hot">
+            <span class="type-chip__icon">⚡</span>
+            <div class="type-chip__name">Achievement Driver</div>
+            <span class="type-chip__badge">Most Common</span>
+          </div>
+          <div class="type-chip">
+            <span class="type-chip__icon">🔓</span>
+            <div class="type-chip__name">Freedom Seeker</div>
+          </div>
+          <div class="type-chip">
+            <span class="type-chip__icon">🏛️</span>
+            <div class="type-chip__name">Legacy Builder</div>
+          </div>
+          <div class="type-chip">
+            <span class="type-chip__icon">🤝</span>
+            <div class="type-chip__name">Connected Investor</div>
+          </div>
+          <div class="type-chip">
+            <span class="type-chip__icon">📈</span>
+            <div class="type-chip__name">Wealth Creator</div>
+          </div>
         </div>
-        <button class="quiz-retake" id="retakeBtn">Not quite right? Retake the quiz</button>
-      </div>
 
+        <button class="btn btn--crimson btn--lg" onclick="startQuiz()">Start the Quiz →</button>
+        <p class="quiz-start-note">No email required. Results in under 2 minutes.</p>
+
+      </div>
     </div>
   </div>
 
-  <!-- Footer strip -->
-  <div class="quiz-footer-strip">
-    <a href="index.html"><img src="99.png" alt="Prevail Movement"></a>
-    <span>© 2025 The Prevail Movement. Powered by PHP Agency.</span>
+  <!-- ════════════════════════════════════
+       SCREEN 1 — QUESTION
+  ════════════════════════════════════ -->
+  <div class="quiz-screen" id="screen-question">
+    <div class="quiz-question">
+      <div class="quiz-question__inner">
+
+        <div class="quiz-progress">
+          <div class="quiz-progress__track">
+            <div class="quiz-progress__fill" id="progressFill" style="width:0%"></div>
+          </div>
+          <div class="quiz-progress__meta">
+            <div class="quiz-progress__label">Question <strong id="qNumDisplay">1</strong> of 8</div>
+            <div class="quiz-progress__pct" id="qPct">0%</div>
+          </div>
+        </div>
+
+        <div class="quiz-q-num" id="qNum">01 / 08</div>
+        <div class="quiz-q-text" id="qText"></div>
+
+        <div class="quiz-options" id="qOptions"></div>
+
+        <div class="quiz-next-row">
+          <button class="btn btn--crimson btn--lg quiz-next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
+          <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" style="display:none">← Back</button>
+        </div>
+
+      </div>
+    </div>
   </div>
 
-</div><!-- /screen-result -->
+  <!-- ════════════════════════════════════
+       SCREEN 2 — LOADING
+  ════════════════════════════════════ -->
+  <div class="quiz-screen" id="screen-loading">
+    <div class="quiz-loading">
+      <div class="quiz-loading__glow"></div>
+      <div class="quiz-loading__icon" id="loadingIcon">⚡</div>
+      <div class="quiz-loading__title">ANALYZING YOUR RESULTS</div>
+      <div class="quiz-loading__bar"><div class="quiz-loading__fill"></div></div>
+    </div>
+  </div>
 
-<!-- ════════════════════════════════════════
-     SCRIPT
-════════════════════════════════════════ -->
+  <!-- ════════════════════════════════════
+       SCREEN 3 — RESULT
+  ════════════════════════════════════ -->
+  <div class="quiz-screen" id="screen-result">
+    <div class="quiz-result">
+      <div class="quiz-result__glow"></div>
+      <div class="quiz-result__inner">
+        <div class="quiz-result__eyebrow">Your Result</div>
+        <span class="quiz-result__icon" id="resultIcon"></span>
+        <h2 class="quiz-result__name" id="resultName"></h2>
+        <div class="quiz-result__tagline" id="resultTagline"></div>
+        <div class="quiz-result__divider"></div>
+        <p class="quiz-result__desc" id="resultDesc"></p>
+        <div class="quiz-result__paths" id="resultPaths"></div>
+        <div class="quiz-result__ctas">
+          <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Fast Start →</a>
+          <a href="licensing.html" class="btn btn--outline btn--lg">Get Licensed</a>
+        </div>
+        <button class="quiz-result__retake" onclick="retakeQuiz()">Retake the quiz</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">
+        <img src="99.png" alt="Prevail Movement">
+      </div>
+      <p class="footer__tagline">"Honor God. Pursue Excellence. Develop Leaders. Create Profits."</p>
+    </div>
+    <div>
+      <p class="footer__col-title">Navigate</p>
+      <ul class="footer__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Resources</p>
+      <ul class="footer__links">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="matchup.html">Matchup</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer__col-title">Contact</p>
+      <ul class="footer__links">
+        <li><span>Serving Clients Nationwide</span></li>
+        <li><a href="matchup.html">Book a Call</a></li>
+        <li><a href="tel:+15755717057">(575) 571-7057</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
+  </div>
+</footer>
+
 <script>
-/* ── CONFIG ─────────────────────────────── */
-const CONFIG = {
-  WEBHOOK_URL:    'YOUR_N8N_WEBHOOK_URL',   // replace with your n8n webhook
-  QUIZ_URL:       'https://prevailmovement.com/quiz.html',
-  CALL_URL:       'matchup.html',
-  HASHTAGS:       '%23PrevailMovement%20%23FinancialPersonality',
-  DEBUG:          false,
-};
+  /* ── Nav ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
 
-/* ── STATE ──────────────────────────────── */
-const STATE = {
-  name:    '',
-  email:   '',
-  current: 1,
-  answers: {},
-  scores:  { P:0, B:0, Pi:0, F:0 },
-  result:  null,
-};
+  /* ════════════════════════════════════
+     QUIZ DATA
+  ════════════════════════════════════ */
 
-/* ── QUESTIONS ──────────────────────────── */
-const QUESTIONS = [
-  {
-    id: 'q1',
-    text: 'What matters most to you right now?',
-    options: [
-      { letter:'A', text:'Making sure my family is safe and cared for no matter what happens', type:'P' },
-      { letter:'B', text:'Building wealth and financial security over the long run', type:'B' },
-      { letter:'C', text:'Creating something of my own that I can pass down', type:'Pi' },
-      { letter:'D', text:'Having the freedom to work on my own terms and timeline', type:'F' },
-    ]
-  },
-  {
-    id: 'q2',
-    text: 'How do you feel when you think about the future?',
-    options: [
-      { letter:'A', text:'Hopeful but anxious. I want to know my loved ones will be okay', type:'P' },
-      { letter:'B', text:'Excited. I see potential and I want to maximize it', type:'B' },
-      { letter:'C', text:'Driven. I feel called to build something bigger than just a paycheck', type:'Pi' },
-      { letter:'D', text:'Restless. I know there is more out there and I want to find it', type:'F' },
-    ]
-  },
-  {
-    id: 'q3',
-    text: 'When you picture financial success, what does it look like?',
-    options: [
-      { letter:'A', text:'Stability. Bills paid, savings growing, family protected', type:'P' },
-      { letter:'B', text:'Growth. Net worth climbing, assets working for me', type:'B' },
-      { letter:'C', text:'Impact. Leading a team and creating income for others', type:'Pi' },
-      { letter:'D', text:'Independence. Waking up without an alarm and choosing my own schedule', type:'F' },
-    ]
-  },
-  {
-    id: 'q4',
-    text: 'What is your biggest financial concern today?',
-    options: [
-      { letter:'A', text:'What would happen to my family if something happened to me', type:'P' },
-      { letter:'B', text:'Not growing my wealth fast enough to meet my goals', type:'B' },
-      { letter:'C', text:'Staying stuck in a position where someone else controls my income', type:'Pi' },
-      { letter:'D', text:'Trading hours for dollars with no end in sight', type:'F' },
-    ]
-  },
-  {
-    id: 'q5',
-    text: 'How do you approach a big financial decision?',
-    options: [
-      { letter:'A', text:'I research the safest option first. Protection is the priority', type:'P' },
-      { letter:'B', text:'I run the numbers and look for the highest long-term return', type:'B' },
-      { letter:'C', text:'I ask: does this get me closer to owning something of my own', type:'Pi' },
-      { letter:'D', text:'I ask: does this give me more time, flexibility, or autonomy', type:'F' },
-    ]
-  },
-  {
-    id: 'q6',
-    text: 'Which of these describes your relationship with risk?',
-    options: [
-      { letter:'A', text:'I prefer certainty. I would rather give up upside to guarantee the downside is covered', type:'P' },
-      { letter:'B', text:'Calculated risk is fine. I do my homework and then I commit fully', type:'B' },
-      { letter:'C', text:'I am comfortable with risk if it means building something real', type:'Pi' },
-      { letter:'D', text:'I take risks when the alternative is staying stuck where I am', type:'F' },
-    ]
-  },
-  {
-    id: 'q7',
-    text: 'What would you do with an extra $1,000 a month?',
-    options: [
-      { letter:'A', text:'Shore up an emergency fund and make sure my family has a safety net', type:'P' },
-      { letter:'B', text:'Put it to work. Invest it, grow it, and let it compound', type:'B' },
-      { letter:'C', text:'Reinvest it into growing a side income or a business', type:'Pi' },
-      { letter:'D', text:'Use it to reduce my work hours or buy back my time', type:'F' },
-    ]
-  },
-  {
-    id: 'q8',
-    text: 'Which statement feels most like you?',
-    options: [
-      { letter:'A', text:'I am the provider. The people I love depend on me and I take that seriously', type:'P' },
-      { letter:'B', text:'I am the investor. I believe every dollar should be working as hard as I do', type:'B' },
-      { letter:'C', text:'I am the builder. I want to lead, mentor, and create opportunity for others', type:'Pi' },
-      { letter:'D', text:'I am the escapee. I am done letting a company own my time and potential', type:'F' },
-    ]
-  },
-];
-
-/* ── RESULTS ────────────────────────────── */
-const RESULTS = {
-  P: {
-    key:         'protector',
-    name:        'The Protector',
-    tagline:     'You lead with love. Now make sure your love lasts.',
-    pillar:      'Honor God',
-    typeClass:   'type-protector',
-    description: 'You are the kind of person who puts everyone else first: the provider, the protector, the one who makes sure everyone around you is taken care of. You do not need to be told why financial security matters because you already feel it in your gut every single day. Your faith drives you to do right by the people who depend on you, and that instinct is one of the most powerful forces for good in the world.',
-    future:      'Your financial priority is not accumulation for its own sake. It is protection that gives your family a foundation to stand on no matter what life brings. A life insurance strategy built around your values can ensure that the people you love are never left vulnerable, even on your hardest day. Cindy and the Prevail team specialize in helping Protectors like you put the right plan in place so your love for your family becomes a legacy.',
-    primaryCta:  'Book a Protection Planning Call',
-    secondaryCta:'Learn How Prevail Protects Families',
-    shareText:   "I just discovered I am a Protector, someone who leads with love and puts family first. Take the Prevail Movement Financial Personality Quiz to discover yours:",
-  },
-  B: {
-    key:         'builder',
-    name:        'The Builder',
-    tagline:     'You play the long game. Let us show you how to win it.',
-    pillar:      'Pursue Excellence',
-    typeClass:   'type-builder',
-    description: 'You are driven by compound growth, not just in money but in discipline, habits, and the life you are building brick by brick. You understand that excellence is not an event, it is a standard you hold yourself to every single day. You are not waiting for someone to hand you an opportunity because you are too busy creating your own.',
-    future:      'Builders need financial tools that grow with them, not products that just protect the status quo but vehicles that accelerate momentum and preserve what they build. Life insurance products designed for wealth accumulation can become a core part of a Builder\'s financial architecture. Cindy works with Builders to design strategies that align with your growth mindset and your long-term vision.',
-    primaryCta:  'Book a Wealth Strategy Call',
-    secondaryCta:'Explore Life Insurance as a Growth Tool',
-    shareText:   "I just discovered I am a Builder, driven by compound growth and long-game thinking. Take the Prevail Movement Financial Personality Quiz to discover yours:",
-  },
-  Pi: {
-    key:         'pioneer',
-    name:        'The Pioneer',
-    tagline:     'You were born to lead. We will show you how to build an empire.',
-    pillar:      'Develop Leaders',
-    typeClass:   'type-pioneer',
-    description: 'You are not interested in following a path someone else made. You are here to blaze your own trail and bring others along with you. Leadership is not something you do as a job title, it is something you do because you cannot help it. People naturally look to you for direction, and you see gaps in the world not as problems but as opportunities to build something that matters.',
-    future:      'Pioneers do not just want a paycheck, they want ownership. The financial industry is one of the few places where someone with your drive can build a real business with real leverage. As a licensed broker under the Prevail Movement, you can build a team, create income streams, and develop leaders of your own. Cindy built this movement for people exactly like you, and she is ready to show you the blueprint.',
-    primaryCta:  'Apply to Join the Movement',
-    secondaryCta:'See How Brokers Build with Prevail',
-    shareText:   "I just discovered I am a Pioneer, born to lead and build something bigger than a paycheck. Take the Prevail Movement Financial Personality Quiz to discover yours:",
-  },
-  F: {
-    key:         'freedom',
-    name:        'The Freedom Seeker',
-    tagline:     'You know there is more. We built the door. You just have to walk through it.',
-    pillar:      'Create Profits',
-    typeClass:   'type-freedom',
-    description: 'You are done trading your best hours for someone else\'s dream, done watching the clock, done waiting for a raise that never quite covers what you are worth. You do not want luxury, you want options. The two biggest options are time and income that is not tied to a single employer. You can already feel that the traditional path is not going to get you where you are going.',
-    future:      'Life insurance is one of the only legitimate paths where someone can replace a full-time income within months, not years, with the right training and the right team. Prevail Movement was built to help Freedom Seekers like you get licensed, get trained, and start generating income on their own schedule. Your first step is a conversation with Cindy to find out if you qualify.',
-    primaryCta:  'See If You Qualify to Join Prevail',
-    secondaryCta:'Learn How Brokers Earn with Prevail',
-    shareText:   "I just discovered I am a Freedom Seeker, done trading hours for dollars and ready for something real. Take the Prevail Movement Financial Personality Quiz to discover yours:",
-  },
-};
-
-/* ── DOM REFS ───────────────────────────── */
-const $  = id => document.getElementById(id);
-const screens = {
-  intro:    $('screen-intro'),
-  question: $('screen-question'),
-  loading:  $('screen-loading'),
-  result:   $('screen-result'),
-};
-
-/* ── SCREEN MANAGEMENT ──────────────────── */
-function showScreen(key) {
-  Object.values(screens).forEach(s => {
-    s.classList.remove('is-active');
-    s.style.display = 'none';
-  });
-  const target = screens[key];
-  target.style.display = 'flex';
-  void target.offsetWidth;
-  target.classList.add('is-active');
-
-  const showProgress = key === 'question';
-  $('progressWrap').style.display = showProgress ? 'flex' : 'none';
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-/* ── QUESTION RENDERING ─────────────────── */
-function showQuestion(n) {
-  const q = QUESTIONS[n - 1];
-  STATE.current = n;
-
-  $('qNumber').textContent = `Question ${n} of 8`;
-  $('qText').textContent    = q.text;
-
-  $('progressFill').style.width  = ((n - 1) / 8 * 100) + '%';
-  $('progressLabel').textContent = `${n} of 8`;
-
-  const grid = $('qOptions');
-  grid.innerHTML = '';
-  q.options.forEach(opt => {
-    const btn = document.createElement('button');
-    btn.className = 'quiz-option';
-    btn.dataset.letter = opt.letter;
-    btn.dataset.type   = opt.type;
-    btn.innerHTML = `
-      <span class="quiz-option__letter">${opt.letter}</span>
-      <span class="quiz-option__text">${opt.text}</span>
-    `;
-    // restore prior selection
-    if (STATE.answers[q.id] === opt.letter) {
-      btn.classList.add('selected');
+  /* Type index: 0=Achievement 1=Freedom 2=Legacy 3=Connected 4=Wealth */
+  const TYPES = [
+    {
+      id:      'achievement',
+      icon:    '⚡',
+      name:    'Achievement Driver',
+      tagline: 'You are built to lead and wired to win.',
+      desc:    'You thrive on performance, recognition, and results. Whether you are building a career in financial services or protecting what you have earned, average is not in your vocabulary. You set aggressive targets, push until you exceed them, and then reset the bar higher. People around you either keep up or get inspired.',
+      agentTitle: 'AS AN AGENT',
+      agentText:  'You are a natural producer. You drive income through competitive fire and relentless effort. In this field your ambition puts you at the top of leaderboards fast and opens the door to leadership before most people even feel ready.',
+      clientTitle: 'AS A CLIENT',
+      clientText:  'You need a financial strategy that keeps pace with your ambition. Maximum coverage, maximum growth potential, and a plan that protects everything you are building at full speed so nothing can slow you down.'
+    },
+    {
+      id:      'freedom',
+      icon:    '🔓',
+      name:    'Freedom Seeker',
+      tagline: 'You build wealth to own your time.',
+      desc:    'You are not just chasing income. You are engineering a life you own. Flexibility, autonomy, and freedom from obligation drive every decision you make. You measure success not in dollars alone but in options. The ability to work from anywhere, set your own schedule, and answer to no one is the goal.',
+      agentTitle: 'AS AN AGENT',
+      agentText:  'You are drawn to this field because freedom is on the other side of it. Build your own schedule, your own income, and your own organization. No one else sets your ceiling in financial services and that is exactly how you like it.',
+      clientTitle: 'AS A CLIENT',
+      clientText:  'You want protection that preserves your options, not just your assets. Products that ensure your lifestyle continues on your terms no matter what life brings. Income protection and cash value vehicles align with how you think.'
+    },
+    {
+      id:      'legacy',
+      icon:    '🏛️',
+      name:    'Legacy Builder',
+      tagline: 'You play the long game.',
+      desc:    'You think in decades, not quarters. You are driven by what you leave behind more than what you accumulate today. Family, foundation, and long term protection are at the core of every financial decision you make. Consistency and patience are your greatest strengths and they compound over time.',
+      agentTitle: 'AS AN AGENT',
+      agentText:  'You are not here for a quick win. You are building something that lasts. Your patience, consistency, and long term thinking make you the kind of leader people follow for years. You become the foundation others build on.',
+      clientTitle: 'AS A CLIENT',
+      clientText:  'You are focused on generational wealth and family protection. Life insurance, retirement strategies, and wealth transfer tools are your language. You want a plan that outlives you and keeps your family secure long after you are gone.'
+    },
+    {
+      id:      'connected',
+      icon:    '🤝',
+      name:    'Connected Investor',
+      tagline: 'You grow by growing others.',
+      desc:    'Your greatest asset is your network. You build trust naturally and your sphere of influence expands because people know you deliver. You understand that relationships are the foundation of every great business and every great financial plan. When you win, you make sure the people around you win too.',
+      agentTitle: 'AS AN AGENT',
+      agentText:  'In this field your referral network becomes your pipeline and your team becomes your legacy. You thrive in an organization that rewards relationship building because you know how to bring people in and bring them up. Your network is your net worth.',
+      clientTitle: 'AS A CLIENT',
+      clientText:  'You believe in mutual growth. You are interested in financial tools that help your entire family and community level up together. Referral programs, family coverage plans, and shared financial strategies are built for someone like you.'
+    },
+    {
+      id:      'wealth',
+      icon:    '📈',
+      name:    'Wealth Creator',
+      tagline: 'You are in the game to build real lasting wealth.',
+      desc:    'You approach money like an engineer. You want to understand the vehicles, optimize the returns, and build a system where your money works harder than you do. Strategy, data, and patience are your toolkit. You are not impressed by hype but you are very impressed by compounding returns and tax efficiency.',
+      agentTitle: 'AS AN AGENT',
+      agentText:  'You approach financial services like an investment opportunity. You will take time to deeply understand every product and build a long term practice that generates serious compounding returns. You are the agent other agents call for advice.',
+      clientTitle: 'AS A CLIENT',
+      clientText:  'You want sophisticated financial strategies built for accumulation. Index products, cash value life insurance, and tax advantaged vehicles align perfectly with how you think about building and protecting wealth over time.'
     }
-    btn.addEventListener('click', () => selectAnswer(n, opt.letter, opt.type, q.id));
-    grid.appendChild(btn);
-  });
-
-  $('backBtn').style.visibility = n > 1 ? 'visible' : 'hidden';
-  showScreen('question');
-}
-
-/* ── ANSWER SELECTION ───────────────────── */
-function selectAnswer(n, letter, type, qId) {
-  STATE.answers[qId] = letter;
-
-  // highlight selected
-  document.querySelectorAll('.quiz-option').forEach(b => {
-    b.classList.toggle('selected', b.dataset.letter === letter);
-  });
-
-  // auto-advance after short pause
-  setTimeout(() => {
-    if (n < 8) {
-      showQuestion(n + 1);
-    } else {
-      // last question answered
-      $('progressFill').style.width = '100%';
-      calculateResult();
-      showLoadingScreen();
-    }
-  }, 340);
-}
-
-/* ── BACK ───────────────────────────────── */
-$('backBtn').addEventListener('click', () => {
-  if (STATE.current > 1) showQuestion(STATE.current - 1);
-});
-
-/* ── CALCULATE ──────────────────────────── */
-function calculateResult() {
-  const scores = { P:0, B:0, Pi:0, F:0 };
-  Object.entries(STATE.answers).forEach(([qId, letter]) => {
-    const q   = QUESTIONS.find(q => q.id === qId);
-    const opt = q.options.find(o => o.letter === letter);
-    if (opt) scores[opt.type]++;
-  });
-  STATE.scores = scores;
-
-  // cascade tiebreak: P > B > Pi > F
-  const order = ['P','B','Pi','F'];
-  let winner = order[0];
-  order.forEach(k => { if (scores[k] > scores[winner]) winner = k; });
-  STATE.result = winner;
-  if (CONFIG.DEBUG) console.log('Scores:', scores, 'Result:', winner);
-}
-
-/* ── LOADING SCREEN ─────────────────────── */
-function showLoadingScreen() {
-  showScreen('loading');
-  const messages = [
-    'Mapping your financial DNA...',
-    'Matching you to your type...',
-    'Almost ready...',
   ];
-  let idx = 0;
-  const sub = $('loadingSub');
-  const interval = setInterval(() => {
-    idx = (idx + 1) % messages.length;
-    sub.style.opacity = '0';
+
+  const QUESTIONS = [
+    {
+      text: 'When you imagine your best financial life, what does it look like?',
+      options: [
+        { text: 'Top of the leaderboard, highest income in the room, recognized publicly for elite results',                              type: 0 },
+        { text: 'Full freedom: your own schedule, your own rules, no boss and no ceiling',                                               type: 1 },
+        { text: 'Your family fully protected, generational wealth, and a name that means something long after you',                      type: 2 },
+        { text: 'A thriving network where everyone around you is rising together',                                                        type: 3 },
+        { text: 'Multiple income streams and a portfolio growing in the background while you live your life',                             type: 4 }
+      ]
+    },
+    {
+      text: 'What is your biggest financial priority right now?',
+      options: [
+        { text: 'Growing my income as fast as possible: the ceiling does not exist',                                                      type: 0 },
+        { text: 'Taking back control of my time and getting out of the trap of trading hours for dollars',                               type: 1 },
+        { text: 'Protecting my family and building a long term financial foundation that lasts',                                          type: 2 },
+        { text: 'Building relationships and a network that creates mutual success for everyone involved',                                 type: 3 },
+        { text: 'Making the smartest moves with my money and compounding real lasting wealth',                                            type: 4 }
+      ]
+    },
+    {
+      text: 'When you set a financial goal, you tend to:',
+      options: [
+        { text: 'Set aggressive targets and push relentlessly until you blow past them, then set new ones',                              type: 0 },
+        { text: 'Define what enough looks like for your lifestyle and engineer your entire life around that number',                      type: 1 },
+        { text: 'Think in decades and stay the course regardless of short term noise or distractions',                                   type: 2 },
+        { text: 'Build alliances and partnerships that multiply your reach and results far beyond what you could do alone',               type: 3 },
+        { text: 'Run the numbers, stress test every scenario, and optimize for the best possible return',                                type: 4 }
+      ]
+    },
+    {
+      text: 'How do you feel about competition?',
+      options: [
+        { text: 'It energizes me. I want to be the best in the room, not just in the room',                                             type: 0 },
+        { text: 'I prefer setting my own benchmarks and competing with who I was yesterday',                                             type: 1 },
+        { text: 'I play the long game. I focus on the finish line, not the other runners',                                               type: 2 },
+        { text: 'I see others as potential collaborators far more than competitors',                                                      type: 3 },
+        { text: 'I stay focused on outcomes and let the data and results do the talking',                                                 type: 4 }
+      ]
+    },
+    {
+      text: 'When you think about money, you see it as:',
+      options: [
+        { text: 'A scoreboard. Earning more means winning more',                                                                         type: 0 },
+        { text: 'A tool. The more you have, the more freedom and options you get to live exactly how you want',                          type: 1 },
+        { text: 'A responsibility. Something to protect, grow wisely, and pass down to the people you love',                             type: 2 },
+        { text: 'Currency. It flows strongest when the relationships around you are strong',                                              type: 3 },
+        { text: 'An asset. Something to invest, compound systematically, and multiply over time',                                        type: 4 }
+      ]
+    },
+    {
+      text: 'What would motivate you most in a financial career or financial plan?',
+      options: [
+        { text: 'Top producer bonuses, leaderboard recognition, and unlimited earning based on my own performance',                      type: 0 },
+        { text: 'The flexibility to build passive income and work completely on my own terms and timeline',                               type: 1 },
+        { text: 'The ability to protect families and create a legacy that genuinely lasts for generations',                               type: 2 },
+        { text: 'Building a team and watching the people I mentor rise to real success',                                                  type: 3 },
+        { text: 'Understanding the products deeply and building serious long term compounding wealth',                                    type: 4 }
+      ]
+    },
+    {
+      text: 'How do others typically describe you?',
+      options: [
+        { text: 'Driven, competitive, high achiever: you consistently outperform expectations',                                          type: 0 },
+        { text: 'Independent, self directed, laid back: you do things your way on your own timeline',                                    type: 1 },
+        { text: 'Disciplined, patient, steady: you think long before you act and you always follow through',                             type: 2 },
+        { text: 'Well connected, generous, magnetic: people naturally gravitate toward you',                                             type: 3 },
+        { text: 'Strategic, analytical, financially sharp: you know your numbers better than anyone in the room',                        type: 4 }
+      ]
+    },
+    {
+      text: 'Your ideal version of success in 10 years looks like:',
+      options: [
+        { text: 'Top tier income, industry recognition, and a reputation built entirely on elite results',                               type: 0 },
+        { text: 'Working from anywhere, no alarm clock required, complete time and location freedom every single day',                   type: 1 },
+        { text: 'Generational wealth, family fully secure, and a legacy that outlives you by decades',                                   type: 2 },
+        { text: 'A strong organization of people you recruited, developed, and elevated to their own success',                           type: 3 },
+        { text: 'Multiple income streams, a growing investment portfolio, and total financial independence',                              type: 4 }
+      ]
+    }
+  ];
+
+  /* ════════════════════════════════════
+     QUIZ STATE
+  ════════════════════════════════════ */
+  let currentQ   = 0;
+  let answers    = [];        // array of type indices (0–4)
+  let selected   = null;      // type index of current selection
+
+  /* ── Show a screen ── */
+  function showScreen(id) {
+    document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('is-active'));
+    const el = document.getElementById(id);
+    el.classList.add('is-active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── Start ── */
+  function startQuiz() {
+    currentQ = 0;
+    answers  = [];
+    selected = null;
+    renderQuestion();
+    showScreen('screen-question');
+  }
+
+  /* ── Render current question ── */
+  function renderQuestion() {
+    const q       = QUESTIONS[currentQ];
+    const letters = ['A', 'B', 'C', 'D', 'E'];
+    const pct     = Math.round((currentQ / QUESTIONS.length) * 100);
+
+    document.getElementById('qNum').textContent        = String(currentQ + 1).padStart(2,'0') + ' / 0' + QUESTIONS.length;
+    document.getElementById('qNumDisplay').textContent = currentQ + 1;
+    document.getElementById('qText').textContent       = q.text;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('qPct').textContent        = pct + '%';
+
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.textContent = (currentQ === QUESTIONS.length - 1) ? 'See My Results →' : 'Next →';
+    nextBtn.classList.remove('enabled');
+
+    const backBtn = document.getElementById('backBtn');
+    backBtn.style.display = currentQ > 0 ? 'inline-block' : 'none';
+
+    const container = document.getElementById('qOptions');
+    container.innerHTML = '';
+    selected = null;
+
+    q.options.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.className  = 'quiz-option';
+      btn.innerHTML  = `<span class="quiz-option__letter">${letters[i]}</span><span class="quiz-option__text">${opt.text}</span>`;
+      btn.addEventListener('click', () => {
+        container.querySelectorAll('.quiz-option').forEach(b => b.classList.remove('selected'));
+        btn.classList.add('selected');
+        selected = opt.type;
+        nextBtn.classList.add('enabled');
+      });
+      container.appendChild(btn);
+    });
+  }
+
+  /* ── Next ── */
+  function nextQuestion() {
+    if (selected === null) return;
+    answers[currentQ] = selected;
+
+    if (currentQ < QUESTIONS.length - 1) {
+      currentQ++;
+      renderQuestion();
+      /* re-trigger animation */
+      const s = document.getElementById('screen-question');
+      s.classList.remove('is-active');
+      void s.offsetWidth;
+      s.classList.add('is-active');
+    } else {
+      showResults();
+    }
+  }
+
+  /* ── Back ── */
+  function prevQuestion() {
+    if (currentQ === 0) return;
+    currentQ--;
+    renderQuestion();
+    const s = document.getElementById('screen-question');
+    s.classList.remove('is-active');
+    void s.offsetWidth;
+    s.classList.add('is-active');
+  }
+
+  /* ── Calculate result and show ── */
+  function showResults() {
+    /* tally votes */
+    const counts = [0, 0, 0, 0, 0];
+    answers.forEach(a => counts[a]++);
+    const winnerIdx = counts.indexOf(Math.max(...counts));
+    const type      = TYPES[winnerIdx];
+
+    /* show loading first */
+    document.getElementById('loadingIcon').textContent = type.icon;
+    showScreen('screen-loading');
+
     setTimeout(() => {
-      sub.textContent = messages[idx];
-      sub.style.opacity = '1';
-    }, 200);
-  }, 900);
-
-  setTimeout(() => {
-    clearInterval(interval);
-    submitLead({ event: 'result', resultType: RESULTS[STATE.result].key, scores: JSON.stringify(STATE.scores) });
-    renderResult();
-    showScreen('result');
-  }, 3000);
-}
-
-/* ── RENDER RESULT ──────────────────────── */
-function renderResult() {
-  const r   = RESULTS[STATE.result];
-  const hero = $('resultHero');
-
-  // clear old type classes
-  hero.className = 'quiz-result-hero ' + r.typeClass;
-
-  $('resultTypeName').textContent    = r.name;
-  $('resultTagline').textContent     = r.tagline;
-  $('resultPillarBadge').textContent = r.pillar;
-  $('resultDescription').textContent = r.description;
-  $('resultFuture').textContent      = r.future;
-  $('resultPrimaryCta').textContent  = r.primaryCta;
-  $('resultSecondaryCta').textContent = r.secondaryCta;
-
-  // social share URLs
-  const shareUrl  = CONFIG.QUIZ_URL + '?result=' + r.key;
-  const shareText = encodeURIComponent(r.shareText + ' ' + shareUrl);
-  $('shareTwitter').href   = `https://twitter.com/intent/tweet?text=${shareText}&hashtags=${CONFIG.HASHTAGS.replace('%20','&hashtags=')}`;
-  $('shareFacebook').href  = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-}
-
-/* ── COPY LINK ──────────────────────────── */
-$('copyLinkBtn').addEventListener('click', () => {
-  const url = CONFIG.QUIZ_URL + '?result=' + (RESULTS[STATE.result]?.key || '');
-  navigator.clipboard.writeText(url).then(() => {
-    $('copyLinkBtn').textContent = 'Copied!';
-    setTimeout(() => {
-      $('copyLinkBtn').innerHTML = `
-        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        Copy Link`;
+      /* populate result */
+      document.getElementById('resultIcon').textContent    = type.icon;
+      document.getElementById('resultName').textContent    = type.name;
+      document.getElementById('resultTagline').textContent = '"' + type.tagline + '"';
+      document.getElementById('resultDesc').textContent    = type.desc;
+      document.getElementById('resultPaths').innerHTML     =
+        `<div class="result-path">
+          <div class="result-path__label">${type.agentTitle}</div>
+          <div class="result-path__text">${type.agentText}</div>
+        </div>
+        <div class="result-path">
+          <div class="result-path__label">${type.clientTitle}</div>
+          <div class="result-path__text">${type.clientText}</div>
+        </div>`;
+      showScreen('screen-result');
     }, 2000);
-  }).catch(() => {});
-});
-
-/* ── RETAKE ─────────────────────────────── */
-$('retakeBtn').addEventListener('click', resetQuiz);
-function resetQuiz() {
-  STATE.name    = '';
-  STATE.email   = '';
-  STATE.current = 1;
-  STATE.answers = {};
-  STATE.scores  = { P:0, B:0, Pi:0, F:0 };
-  STATE.result  = null;
-  $('inputName').value  = '';
-  $('inputEmail').value = '';
-  $('progressFill').style.width = '0%';
-  showScreen('intro');
-}
-
-/* ── LEAD CAPTURE ───────────────────────── */
-function submitLead(extra = {}) {
-  if (!CONFIG.WEBHOOK_URL || CONFIG.WEBHOOK_URL === 'YOUR_N8N_WEBHOOK_URL') {
-    if (CONFIG.DEBUG) console.log('Lead data:', { name: STATE.name, email: STATE.email, ...extra });
-    return;
-  }
-  fetch(CONFIG.WEBHOOK_URL, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name:      STATE.name,
-      email:     STATE.email,
-      source:    'prevail-quiz',
-      timestamp: new Date().toISOString(),
-      ...extra,
-    }),
-  }).catch(() => {});
-}
-
-/* ── INTRO FORM SUBMIT ──────────────────── */
-$('startBtn').addEventListener('click', handleStart);
-$('inputEmail').addEventListener('keydown', e => { if (e.key === 'Enter') handleStart(); });
-$('inputName').addEventListener('keydown',  e => { if (e.key === 'Enter') $('inputEmail').focus(); });
-
-function validateEmail(str) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(str);
-}
-
-function handleStart() {
-  const nameVal  = $('inputName').value.trim();
-  const emailVal = $('inputEmail').value.trim();
-  let valid = true;
-
-  if (!nameVal) {
-    $('inputName').classList.add('error');
-    $('nameError').style.display = 'block';
-    valid = false;
-  } else {
-    $('inputName').classList.remove('error');
-    $('nameError').style.display = 'none';
   }
 
-  if (!validateEmail(emailVal)) {
-    $('inputEmail').classList.add('error');
-    $('emailError').style.display = 'block';
-    valid = false;
-  } else {
-    $('inputEmail').classList.remove('error');
-    $('emailError').style.display = 'none';
+  /* ── Retake ── */
+  function retakeQuiz() {
+    showScreen('screen-intro');
   }
-
-  if (!valid) return;
-
-  STATE.name  = nameVal;
-  STATE.email = emailVal;
-  submitLead({ event: 'quiz-start' });
-  showQuestion(1);
-}
-
-/* ── URL PARAM — direct result link ─────── */
-(function checkURLParam() {
-  const params = new URLSearchParams(window.location.search);
-  const resultKey = params.get('result');
-  const typeMap = { protector:'P', builder:'B', pioneer:'Pi', freedom:'F' };
-  if (resultKey && typeMap[resultKey]) {
-    STATE.result = typeMap[resultKey];
-    STATE.name   = 'Guest';
-    STATE.email  = '';
-    renderResult();
-    showScreen('result');
-  }
-})();
-
-/* ── NAV SCROLL ─────────────────────────── */
-const nav = $('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-/* ── HAMBURGER ──────────────────────────── */
-const hamburger = $('hamburger');
-const mobileNav = $('mobileNav');
-hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  mobileNav.classList.toggle('open');
-});
-mobileNav.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    mobileNav.classList.remove('open');
-  });
-});
 </script>
 
 </body>

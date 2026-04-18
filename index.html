@@ -384,32 +384,33 @@
     .pillars-header .section-label { color: var(--crimson); }
     .pillars-header .section-title { color: #1a0810; }
 
+    /* ═══ PILLARS BENTO ═══ */
     .pillars-grid {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 20px;
+      padding: 0 0;
     }
     .pillar-c {
       background: #f7f2f4;
-      border: 1px solid #e8d8df;
+      border: 1px solid var(--white-border);
       border-radius: 10px;
-      padding: 40px 28px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      padding: 40px 36px;
+      transition: box-shadow 0.3s, transform 0.3s;
     }
     .pillar-c:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 48px rgba(90,14,30,0.1);
-      border-color: rgba(224,31,56,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(192,21,42,0.12);
     }
     .pillar-c__num {
       font-family: 'Bebas Neue', cursive;
-      font-size: 72px;
+      font-size: 56px;
       line-height: 1;
-      color: rgba(90,14,30,0.08);
-      margin-bottom: -8px;
+      color: rgba(90,14,30,0.1);
+      margin-bottom: -4px;
     }
     .pillar-c__title {
       font-family: 'Bebas Neue', cursive;
@@ -422,6 +423,50 @@
       font-size: 14px;
       color: #7a4055;
       line-height: 1.75;
+    }
+    .pillar-c--wide {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 48px;
+      background: linear-gradient(135deg, #1a0007 0%, #2d000e 100%);
+      border-color: rgba(224,31,56,0.3);
+    }
+    .pillar-c--wide .pillar-c__num { color: rgba(224,31,56,0.2); }
+    .pillar-c--wide .pillar-c__title { color: #fff; }
+    .pillar-c--wide .pillar-c__text { color: rgba(255,255,255,0.6); }
+    .pillar-c--wide:hover {
+      border-color: rgba(224,31,56,0.55);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .pillar-c__income-bar {
+      display: flex;
+      gap: 40px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .pillar-c__stat { text-align: center; }
+    .pillar-c__stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 36px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .pillar-c__stat-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+      margin-top: 4px;
+    }
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .pillar-c--wide { grid-template-columns: 1fr; gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .pillars-grid { grid-template-columns: 1fr; }
     }
 
     /* ═══════════════════════════════════════════════
@@ -442,7 +487,7 @@
       background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(140,14,40,0.18) 0%, transparent 70%);
       pointer-events: none;
     }
-    .yt-section__left { flex: 0 0 52%; }
+    .yt-section__left { flex: 0 0 44%; }
     .yt-section__label {
       font-size: 11px;
       font-weight: 700;
@@ -486,7 +531,7 @@
       align-items: center;
     }
     .yt-phone-img {
-      max-height: 1050px;
+      max-height: 1300px;
       width: auto;
       filter: drop-shadow(0 40px 100px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(140,14,40,0.15));
       animation: phoneFloat 5s ease-in-out infinite;
@@ -684,6 +729,48 @@
       .who__content { padding: 48px 24px; }
       .pillars-section, .team-preview { padding: 72px 24px; }
       .stats-section { padding: 44px 24px; }
+      /* Hero CTAs: stack vertically on small phones */
+      .hero__ctas { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .hero__ctas .btn { width: 100%; justify-content: center; }
+    }
+
+    /* Logo carousel — reduce logo height on mobile */
+    @media (max-width: 640px) {
+      .logo-carousel { padding: 36px 0; }
+      .lc-logo img { height: 72px; }
+      .lc-logo { padding: 0 28px; min-width: 120px; }
+      .lc-badge { padding: 0 28px; min-width: 140px; }
+      .lc-badge__name { font-size: 20px; }
+    }
+
+    /* Very small phone — ≤ 375px */
+    @media (max-width: 375px) {
+      .hero__content { padding: 0 18px 100px 18px !important; max-width: 100%; }
+      .hero__eyebrow { font-size: 9px; letter-spacing: 0.18em; gap: 6px; }
+      .hero__eyebrow::before, .hero__eyebrow::after { width: 16px; }
+      .hero__tagline { font-size: 10px; letter-spacing: 0.14em; }
+      .stats-section { padding: 32px 18px; }
+      .stat-num { font-size: 48px; }
+      .stat-label { font-size: 9px; }
+      .pillars-section { padding: 60px 18px; }
+      .pillars-header { margin-bottom: 40px; }
+      .pillar-c { padding: 28px 20px; }
+      .pillar-c__num { font-size: 52px; }
+      .who__content { padding: 36px 18px; }
+      .yt-section { padding: 48px 18px; }
+      .yt-section__headline { font-size: 52px; }
+      .quiz-cta-section { padding: 56px 18px; }
+      .quiz-cta__headline { font-size: 48px !important; }
+      .quiz-type-card { width: calc(50% - 6px); padding: 16px 8px 14px; }
+      .quiz-types { gap: 8px; }
+      .logo-carousel { padding: 28px 0; }
+      .lc-logo img { height: 56px; }
+      .lc-logo { padding: 0 18px; min-width: 90px; }
+      .lc-badge { padding: 0 18px; min-width: 110px; }
+      .lc-badge__name { font-size: 17px; }
+      .team-mosaic { grid-template-columns: 1fr; }
+      .team-mosaic__card { height: 200px; }
+      .wins-section { padding: 48px 18px; }
     }
 
     /* ═══════════════════════════════════════════════
@@ -1340,6 +1427,309 @@
       transition: background 0.2s, color 0.2s;
     }
     .bg-modal__close:hover { background: rgba(255,255,255,0.16); color: #fff; }
+
+    /* ═══════════════════════════════════════════════
+       INCOME CALCULATOR
+    ═══════════════════════════════════════════════ */
+    .calc-section {
+      background: #07010a;
+      padding: 110px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .calc-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(232,192,96,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .calc-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .calc-header { text-align: center; margin-bottom: 64px; }
+    .calc-header .section-label { color: var(--gold); }
+    .calc-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(232,192,96,0.2);
+      border-radius: 12px;
+      padding: 56px 60px;
+    }
+    .calc-slider-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .calc-slider-label {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.6);
+      white-space: nowrap;
+      min-width: 190px;
+    }
+    .calc-slider {
+      flex: 1;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 2px;
+      outline: none;
+      cursor: pointer;
+    }
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(232,192,96,0.5);
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .calc-slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
+    .calc-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(232,192,96,0.5);
+      cursor: pointer;
+      border: none;
+    }
+    .calc-slider-val {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      color: var(--gold);
+      min-width: 60px;
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+    .calc-outputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .calc-output {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .calc-output__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 12px;
+    }
+    .calc-output__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 52px;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .calc-output__unit {
+      font-size: 22px;
+      color: rgba(232,192,96,0.5);
+      margin-right: 2px;
+    }
+    .calc-disclaimer {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.22);
+      line-height: 1.65;
+      margin-bottom: 36px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .calc-cta { text-align: center; }
+    @media (max-width: 768px) {
+      .calc-card { padding: 36px 28px; }
+      .calc-slider-row { flex-wrap: wrap; gap: 16px; }
+      .calc-slider-label { min-width: unset; width: 100%; }
+      .calc-outputs { grid-template-columns: 1fr; }
+      .calc-output__num { font-size: 44px; }
+    }
+    @media (max-width: 480px) {
+      .calc-section { padding: 80px 20px; }
+      .calc-card { padding: 28px 20px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       90-DAY AGENT JOURNEY
+    ═══════════════════════════════════════════════ */
+    .journey-section {
+      background: #fff;
+      padding: 110px 40px;
+      overflow: hidden;
+    }
+    .journey-inner { max-width: 1200px; margin: 0 auto; }
+    .journey-header { text-align: center; margin-bottom: 72px; }
+    .journey-header .section-label { color: var(--crimson); }
+    .journey-header .section-title { color: var(--white-text); }
+    .journey-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+    }
+    .journey-track::before {
+      content: '';
+      position: absolute;
+      top: 27px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--crimson), rgba(192,21,42,0.15));
+      z-index: 0;
+    }
+    .journey-step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .journey-step__dot {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--crimson);
+      color: #fff;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 0 0 6px rgba(224,31,56,0.1);
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .journey-step:hover .journey-step__dot {
+      transform: scale(1.1);
+      box-shadow: 0 0 0 12px rgba(224,31,56,0.12);
+    }
+    .journey-step__timeframe {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      background: rgba(224,31,56,0.08);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+    .journey-step__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 20px;
+      letter-spacing: 0.04em;
+      color: var(--white-text);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+    .journey-step__desc {
+      font-size: 13px;
+      color: var(--white-muted);
+      line-height: 1.65;
+    }
+    .journey-step__body { width: 100%; }
+    @media (max-width: 900px) {
+      .journey-track { flex-direction: column; gap: 0; }
+      .journey-track::before { display: none; }
+      .journey-step {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 0 0 32px;
+        width: 100%;
+      }
+      .journey-step__dot { margin-bottom: 0; flex-shrink: 0; }
+      .journey-step__body { flex: 1; }
+    }
+    @media (max-width: 480px) {
+      .journey-section { padding: 80px 24px; }
+    }
+
+    /* ═══════════════════════════════════════════════
+       MOBILE FLOATING CTA
+    ═══════════════════════════════════════════════ */
+    .mobile-cta-bar {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(8,0,3,0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid rgba(224,31,56,0.35);
+      padding: 14px 20px;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      transform: translateY(100%);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-cta-bar.visible { transform: translateY(0); }
+    .mobile-cta-bar__main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mobile-cta-bar__eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .mobile-cta-bar__phone {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+    }
+    .mobile-cta-bar__btn {
+      display: inline-flex;
+      align-items: center;
+      background: var(--crimson);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .mobile-cta-bar__dismiss {
+      background: none;
+      border: none;
+      color: rgba(255,255,255,0.25);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) { .mobile-cta-bar { display: flex; } }
+
   </style>
 </head>
 <body>
@@ -1389,7 +1779,7 @@
   <img class="hero__eagle" src="88.png" alt="" id="heroEagle">
 
   <div class="hero__content">
-    <p class="hero__eyebrow" id="heroEyebrow">Austin, Texas &nbsp; PHP Agency Partner</p>
+    <p class="hero__eyebrow" id="heroEyebrow">Serving Clients Nationwide &nbsp; PHP Agency Partner</p>
     <h1 class="hero__title" id="heroTitle">
       THE<br><span class="accent">PREVAIL</span><br>MOVEMENT
     </h1>
@@ -1397,9 +1787,9 @@
       Honor God &nbsp;·&nbsp; Pursue Excellence &nbsp;·&nbsp; <span style="white-space:nowrap">Develop Leaders &nbsp;·&nbsp; Create Profits</span>
     </p>
     <div class="hero__ctas" id="heroCtas">
-      <a href="matchup.html" class="btn btn--crimson btn--lg magnetic">Join the Movement</a>
-      <a href="quiz.html"     class="btn btn--gold   btn--lg magnetic">Discover Your Financial Type</a>
-      <a href="founder.html"  class="btn btn--glass  btn--lg magnetic">Meet Our Founder</a>
+      <a href="matchup.html" class="btn btn--crimson btn--lg btn--shimmer magnetic">Join the Movement</a>
+      <a href="quiz.html"     class="btn btn--gold   btn--lg btn--shimmer magnetic">Discover Your Financial Type</a>
+      <a href="founder.html"  class="btn btn--glass  btn--lg btn--shimmer magnetic">Meet Our Founder</a>
     </div>
   </div>
 
@@ -1417,7 +1807,7 @@
       <div class="marquee-strip__item">Develop Leaders<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">Create Profits<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">PHP Agency Partner<span class="marquee-strip__dot"></span></div>
-      <div class="marquee-strip__item">Austin Texas<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Serving All 50 States<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">90,000+ Families Protected<span class="marquee-strip__dot"></span></div>
       <!-- SET B (duplicate for seamless loop) -->
       <div class="marquee-strip__item">Honor God<span class="marquee-strip__dot"></span></div>
@@ -1425,7 +1815,7 @@
       <div class="marquee-strip__item">Develop Leaders<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">Create Profits<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">PHP Agency Partner<span class="marquee-strip__dot"></span></div>
-      <div class="marquee-strip__item">Austin Texas<span class="marquee-strip__dot"></span></div>
+      <div class="marquee-strip__item">Serving All 50 States<span class="marquee-strip__dot"></span></div>
       <div class="marquee-strip__item">90,000+ Families Protected<span class="marquee-strip__dot"></span></div>
     </div>
   </div>
@@ -1526,12 +1916,30 @@
     <div class="pillar-c">
       <div class="pillar-c__num">03</div>
       <div class="pillar-c__title">Develop Leaders</div>
-      <p class="pillar-c__text">Leadership development is our mission. We build people who go on to build others.</p>
+      <p class="pillar-c__text">Leadership is our mission. We build people who go on to build others.</p>
     </div>
-    <div class="pillar-c">
-      <div class="pillar-c__num">04</div>
-      <div class="pillar-c__title">Create Profits</div>
-      <p class="pillar-c__text">Financial freedom is the goal. We give you the tools, training, and team to get there.</p>
+    <div class="pillar-c pillar-c--wide">
+      <div>
+        <div class="pillar-c__num">04</div>
+        <div class="pillar-c__title">Create Profits</div>
+      </div>
+      <div>
+        <p class="pillar-c__text" style="font-size:15px;line-height:1.75;margin-bottom:0;">Financial freedom is the goal. We give you the tools, training, and team to get there. Full-time income. Part-time optional. 100% yours to build.</p>
+        <div class="pillar-c__income-bar">
+          <div class="pillar-c__stat">
+            <div class="pillar-c__stat-num">$4K+</div>
+            <div class="pillar-c__stat-label">Avg First Month</div>
+          </div>
+          <div class="pillar-c__stat">
+            <div class="pillar-c__stat-num">60+</div>
+            <div class="pillar-c__stat-label">Licensed Agents</div>
+          </div>
+          <div class="pillar-c__stat">
+            <div class="pillar-c__stat-num">100%</div>
+            <div class="pillar-c__stat-label">Commission Based</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1697,8 +2105,118 @@
   </div>
 </section>
 
+<!-- ═══ INCOME CALCULATOR ═══ -->
+<section class="calc-section" id="calcSection">
+  <div class="calc-inner">
+    <div class="calc-header fade-in">
+      <p class="section-label">Your Potential</p>
+      <h2 class="section-title" style="color:#fff;margin:0 auto 16px;">WHAT COULD<br>YOU EARN?</h2>
+      <p style="font-size:15px;color:rgba(255,255,255,0.5);max-width:460px;margin:0 auto;">Adjust the slider to see projected income based on your weekly appointments.</p>
+    </div>
+    <div class="calc-card fade-in fade-in--delay-1">
+      <div class="calc-slider-row">
+        <span class="calc-slider-label">Appointments per week</span>
+        <input type="range" class="calc-slider" id="calcSlider" min="1" max="15" value="5" aria-label="Appointments per week">
+        <span class="calc-slider-val" id="calcSliderVal">5</span>
+      </div>
+      <div class="calc-outputs">
+        <div class="calc-output">
+          <div class="calc-output__label">Monthly Income</div>
+          <div class="calc-output__num"><span class="calc-output__unit">$</span><span id="calcMonthly">7,000</span></div>
+        </div>
+        <div class="calc-output">
+          <div class="calc-output__label">Annual Income</div>
+          <div class="calc-output__num"><span class="calc-output__unit">$</span><span id="calcAnnual">84,000</span></div>
+        </div>
+      </div>
+      <p class="calc-disclaimer">Based on average agent performance at approximately $500 per placed policy with a 70% placement rate. Individual results vary based on effort, market, and experience. These are estimates for illustration only.</p>
+      <div class="calc-cta">
+        <a href="matchup.html" class="btn btn--gold btn--lg magnetic">Book Your R.I. to Get Started →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 90-DAY JOURNEY ═══ -->
+<section class="journey-section" id="journeySection">
+  <div class="journey-inner">
+    <div class="journey-header fade-in">
+      <p class="section-label">What Happens When You Join</p>
+      <h2 class="section-title" style="margin:0 auto 16px;">YOUR FIRST<br>90 DAYS</h2>
+      <p style="font-size:15px;color:var(--white-muted);max-width:500px;margin:0 auto;">Here is exactly what the path looks like from your first conversation to your first commission check.</p>
+    </div>
+    <div class="journey-track" id="journeyTrack">
+      <div class="journey-step fade-in">
+        <div class="journey-step__dot">01</div>
+        <div class="journey-step__body">
+          <span class="journey-step__timeframe">Week 1</span>
+          <div class="journey-step__title">Your R.I. Call</div>
+          <p class="journey-step__desc">A 45-minute recruiting interview. No pressure. We walk you through the opportunity and answer every question.</p>
+        </div>
+      </div>
+      <div class="journey-step fade-in fade-in--delay-1">
+        <div class="journey-step__dot">02</div>
+        <div class="journey-step__body">
+          <span class="journey-step__timeframe">Weeks 1 to 4</span>
+          <div class="journey-step__title">Get Licensed</div>
+          <p class="journey-step__desc">Complete your pre-licensing course online, pass the Texas state exam, and receive your life insurance license.</p>
+        </div>
+      </div>
+      <div class="journey-step fade-in fade-in--delay-2">
+        <div class="journey-step__dot">03</div>
+        <div class="journey-step__body">
+          <span class="journey-step__timeframe">Week 4 to 5</span>
+          <div class="journey-step__title">Fast Start Session</div>
+          <p class="journey-step__desc">Your onboarding call with the Prevail team. Learn the script, set up your pipeline, and book your first appointments.</p>
+        </div>
+      </div>
+      <div class="journey-step fade-in fade-in--delay-2">
+        <div class="journey-step__dot">04</div>
+        <div class="journey-step__body">
+          <span class="journey-step__timeframe">Weeks 5 to 8</span>
+          <div class="journey-step__title">First Appointments</div>
+          <p class="journey-step__desc">Run your first family appointments with leadership support. Start building your warm market and earning commissions.</p>
+        </div>
+      </div>
+      <div class="journey-step fade-in fade-in--delay-3">
+        <div class="journey-step__dot">05</div>
+        <div class="journey-step__body">
+          <span class="journey-step__timeframe">Month 3</span>
+          <div class="journey-step__title">First Commission Check</div>
+          <p class="journey-step__desc">Consistent agents see their first significant commission by month three. This is where the system starts paying for itself.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:60px;" class="fade-in">
+      <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your R.I. Now →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ RECENT HIGHLIGHTS ═══ -->
 <section class="wins-section">
+
+  <!-- Achievement Ticker -->
+  <div class="wins-ticker" aria-hidden="true">
+    <div class="wins-ticker__track">
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Lorenzo G.</span><span class="wins-ticker__win">Promoted to Marketing Director</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Maria R.</span><span class="wins-ticker__win">First month income</span><span class="wins-ticker__amount">$4,200</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Pablo N.</span><span class="wins-ticker__win">15 appointments in 30 days</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Jaime D.</span><span class="wins-ticker__win">Promoted to Marketing Director</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Nicholas I.</span><span class="wins-ticker__win">Elevated to team leadership</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Prevail Movement</span><span class="wins-ticker__win">60+ licensed agents strong</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">DC Trip 2026</span><span class="wins-ticker__win">Representing PHP on the national stage</span></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Lorenzo G.</span><span class="wins-ticker__win">Promoted to Marketing Director</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Maria R.</span><span class="wins-ticker__win">First month income</span><span class="wins-ticker__amount">$4,200</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Pablo N.</span><span class="wins-ticker__win">15 appointments in 30 days</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Jaime D.</span><span class="wins-ticker__win">Promoted to Marketing Director</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Nicholas I.</span><span class="wins-ticker__win">Elevated to team leadership</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">Prevail Movement</span><span class="wins-ticker__win">60+ licensed agents strong</span></div>
+      <div class="wins-ticker__item"><div class="wins-ticker__dot"></div><span class="wins-ticker__name">DC Trip 2026</span><span class="wins-ticker__win">Representing PHP on the national stage</span></div>
+    </div>
+  </div>
+
   <div class="wins-header">
     <p class="section-label">What's Happening</p>
     <h2 class="section-title">RECENT HIGHLIGHTS</h2>
@@ -1754,6 +2272,38 @@
   <div class="bg-drag-wrap" id="bgDragWrap">
     <div class="bg-track" id="bgTrack">
 
+      <div class="bg-card bg-std" data-src="media/IMG_7875.jpg">
+        <img src="media/IMG_7875.jpg" alt="Prevail Team Night Out" style="object-position:center 30%;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Team Night Out</div>
+          <div class="bg-card__desc">Culture, community, and celebration.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-wide" data-src="media/IMG_7495.JPEG">
+        <img src="media/IMG_7495.JPEG" alt="Prevail Gala 2025" style="object-position:center 40%;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Annual Gala 2025</div>
+          <div class="bg-card__desc">The whole family, one room.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-narrow" data-src="media/IMG_7491.JPEG">
+        <img src="media/IMG_7491.JPEG" alt="Pelé Tribute Gala" style="object-position:center 30%;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">Pelé Tribute Gala</div>
+          <div class="bg-card__desc">PHP Agency Recognition Event.</div>
+        </div>
+      </div>
+
+      <div class="bg-card bg-std" data-src="media/IMG_2671.jpg">
+        <img src="media/IMG_2671.jpg" alt="The Prevail Team" style="object-position:center 30%;">
+        <div class="bg-card__overlay">
+          <div class="bg-card__title">The Prevail Team</div>
+          <div class="bg-card__desc">New milestones, new leaders.</div>
+        </div>
+      </div>
+
       <div class="bg-card bg-wide" data-src="media/IMG_8401.JPEG">
         <img src="media/IMG_8401.JPEG" alt="Prevail Movement Full Team" style="object-position:center 30%;">
         <div class="bg-card__overlay">
@@ -1783,14 +2333,6 @@
         <div class="bg-card__overlay">
           <div class="bg-card__title">Rising Leaders</div>
           <div class="bg-card__desc">The next generation of Prevail.</div>
-        </div>
-      </div>
-
-      <div class="bg-card bg-wide" data-src="media/_DSC4161.JPG">
-        <img src="media/_DSC4161.JPG" alt="Prevail Brokers" style="object-position:center top;">
-        <div class="bg-card__overlay">
-          <div class="bg-card__title">Prevail Brokers</div>
-          <div class="bg-card__desc">Building wealth and legacy together.</div>
         </div>
       </div>
 
@@ -1939,7 +2481,7 @@
         <span style="padding:0 28px;white-space:nowrap;">Develop Leaders</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">Create Profits</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">PHP Agency Partner</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
-        <span style="padding:0 28px;white-space:nowrap;">Austin Texas</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Serving All 50 States</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">90,000+ Families Protected</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <!-- SET B (duplicate) -->
         <span style="padding:0 28px;white-space:nowrap;">Honor God</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
@@ -1947,7 +2489,7 @@
         <span style="padding:0 28px;white-space:nowrap;">Develop Leaders</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">Create Profits</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">PHP Agency Partner</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
-        <span style="padding:0 28px;white-space:nowrap;">Austin Texas</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
+        <span style="padding:0 28px;white-space:nowrap;">Serving All 50 States</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
         <span style="padding:0 28px;white-space:nowrap;">90,000+ Families Protected</span><span style="color:var(--crimson);padding:0 4px;">✦</span>
       </div>
     </div>
@@ -2003,22 +2545,22 @@
         </a>
         <span class="cf-contact-item">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Austin, Texas
+          Serving Clients Nationwide
         </span>
       </div>
 
       <!-- Social links -->
       <div class="cf-social-row" style="opacity:0;" id="cfSocial">
-        <a href="#" class="cf-social-icon" aria-label="Instagram">
+        <a href="https://www.instagram.com/cindycobosg" target="_blank" rel="noopener" class="cf-social-icon" aria-label="Instagram">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
         </a>
-        <a href="#" class="cf-social-icon" aria-label="Facebook">
+        <a href="https://www.facebook.com/cindycobosonline" target="_blank" rel="noopener" class="cf-social-icon" aria-label="Facebook">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
         </a>
-        <a href="#" class="cf-social-icon" aria-label="TikTok">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.07a4.85 4.85 0 0 1-1-.38z"/></svg>
+        <a href="https://www.linkedin.com/in/cindy-cobos-79b2352a" target="_blank" rel="noopener" class="cf-social-icon" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
         </a>
-        <a href="#" class="cf-social-icon" aria-label="YouTube">
+        <a href="https://www.youtube.com/@cindycobos-nofilters" target="_blank" rel="noopener" class="cf-social-icon" aria-label="YouTube">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon fill="currentColor" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
         </a>
       </div>
@@ -2120,6 +2662,57 @@
 .win-card__text { font-size:14px; color:rgba(255,255,255,0.5); line-height:1.75; margin:0 0 18px; }
 .win-card__cta { font-size:10px; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--crimson,#e01f38); }
 .win-card:hover .win-card__cta { color:#ff4060; }
+
+/* ═══ WINS TICKER ═══ */
+.wins-ticker {
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 14px 0;
+  margin-bottom: 64px;
+  background: rgba(255,255,255,0.02);
+}
+.wins-ticker__track {
+  display: flex;
+  gap: 0;
+  animation: ticker-scroll 34s linear infinite;
+  width: max-content;
+}
+.wins-ticker__track:hover { animation-play-state: paused; }
+.wins-ticker__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 48px;
+  white-space: nowrap;
+}
+.wins-ticker__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--crimson);
+  flex-shrink: 0;
+}
+.wins-ticker__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.wins-ticker__win {
+  font-size: 13px;
+  color: rgba(255,255,255,0.42);
+}
+.wins-ticker__amount {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+}
+@keyframes ticker-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
 /* ── Footer Social + Contact + Email ── */
 .cf-social-row { display:flex; gap:12px; justify-content:center; margin:24px 0 16px; }
@@ -2372,6 +2965,60 @@
   gsap.fromTo('#quizCtaFooter', { y: 24, opacity: 0 }, {
     y: 0, opacity: 1, duration: 0.7, ease: 'power3.out',
     scrollTrigger: { trigger: '#quizCtaFooter', start: 'top 85%' }
+  });
+
+  /* ─────────────────────────────────────────
+     INCOME CALCULATOR
+  ───────────────────────────────────────── */
+  (function () {
+    const slider = document.getElementById('calcSlider');
+    const sliderVal = document.getElementById('calcSliderVal');
+    const monthlyEl = document.getElementById('calcMonthly');
+    const annualEl = document.getElementById('calcAnnual');
+    if (!slider) return;
+
+    function calcIncome(appts) {
+      const monthly = Math.round(appts * 4 * 0.7 * 500);
+      return { monthly, annual: monthly * 12 };
+    }
+
+    function animateNum(el, target) {
+      const current = parseInt(el.textContent.replace(/,/g, '')) || 0;
+      const obj = { val: current };
+      gsap.to(obj, {
+        val: target, duration: 0.55, ease: 'power2.out',
+        onUpdate: function () { el.textContent = Math.round(obj.val).toLocaleString('en-US'); }
+      });
+    }
+
+    slider.addEventListener('input', function () {
+      const appts = parseInt(this.value);
+      sliderVal.textContent = appts;
+      const { monthly, annual } = calcIncome(appts);
+      animateNum(monthlyEl, monthly);
+      animateNum(annualEl, annual);
+    });
+
+    gsap.fromTo('#calcSection .calc-header', { y: 32, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+      scrollTrigger: { trigger: '#calcSection', start: 'top 72%' }
+    });
+    gsap.fromTo('#calcSection .calc-card', { y: 44, opacity: 0 }, {
+      y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 0.14,
+      scrollTrigger: { trigger: '#calcSection', start: 'top 72%' }
+    });
+  })();
+
+  /* ─────────────────────────────────────────
+     90-DAY JOURNEY
+  ───────────────────────────────────────── */
+  gsap.fromTo('#journeySection .journey-header', { y: 32, opacity: 0 }, {
+    y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '#journeySection', start: 'top 74%' }
+  });
+  gsap.fromTo('#journeyTrack .journey-step', { y: 40, opacity: 0 }, {
+    y: 0, opacity: 1, stagger: 0.11, duration: 0.75, ease: 'power3.out',
+    scrollTrigger: { trigger: '#journeyTrack', start: 'top 78%' }
   });
 
   /* ─────────────────────────────────────────
@@ -2887,7 +3534,27 @@
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
+<!-- ═══ MOBILE FLOATING CTA ═══ -->
+<div class="mobile-cta-bar" id="mobileCta" role="complementary" aria-label="Quick booking">
+  <div class="mobile-cta-bar__main">
+    <span class="mobile-cta-bar__eyebrow">Ready to start?</span>
+    <a href="tel:+15755717057" class="mobile-cta-bar__phone">(575) 571-7057</a>
+  </div>
+  <a href="matchup.html" class="mobile-cta-bar__btn">Book a Call</a>
+  <button class="mobile-cta-bar__dismiss" id="mobileCtaDismiss" aria-label="Dismiss">×</button>
+</div>
+<script>
+  (function () {
+    var bar = document.getElementById('mobileCta');
+    var dismiss = document.getElementById('mobileCtaDismiss');
+    if (!bar) return;
+    setTimeout(function () { bar.classList.add('visible'); }, 3200);
+    dismiss.addEventListener('click', function () {
+      bar.style.transform = 'translateY(110%)';
+      bar.style.pointerEvents = 'none';
+    });
+  })();
+</script>
+
 </body>
 </html>

@@ -16,61 +16,147 @@
     }
     .license-actions .btn { min-width: 240px; }
 
-    .qr-section {
+    .portal-banner {
       max-width: 1200px;
       margin: 0 auto 70px;
+      background: linear-gradient(135deg, #1a0007 0%, #2d000e 60%, #1a0007 100%);
+      border: 1px solid rgba(224,31,56,0.3);
+      border-radius: 12px;
+      padding: 60px 64px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      grid-template-columns: 1fr auto;
+      gap: 48px;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
-    .qr-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 48px;
+    .portal-banner::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(224,31,56,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .portal-banner__stats {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .portal-banner__stat-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      color: var(--crimson);
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .portal-banner__stat-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-top: 5px;
+    }
+    .portal-banner__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 48px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .portal-banner__sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 520px;
+    }
+    .portal-banner__actions {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      text-align: center;
+      gap: 14px;
+      flex-shrink: 0;
+      min-width: 220px;
+      position: relative;
+      z-index: 1;
     }
-    .qr-box__frame {
-      width: 180px;
-      height: 180px;
-      background: #fff;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      color: #333;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    @media (max-width: 900px) {
+      .portal-banner { grid-template-columns: 1fr; padding: 44px 40px; }
+      .portal-banner__actions { flex-direction: row; flex-wrap: wrap; }
     }
-    .qr-box__label {
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-    .qr-box__title {
-      font-family: 'Bebas Neue', cursive;
-      font-size: 22px;
-      letter-spacing: 0.08em;
-      color: #fff;
+    @media (max-width: 480px) {
+      .portal-banner { padding: 36px 24px; }
+      .portal-banner__title { font-size: 36px; }
+      .portal-banner__stat-num { font-size: 32px; }
+      .portal-banner__actions .btn { width: 100%; text-align: center; justify-content: center; }
     }
 
     .steps-list {
-      max-width: 1200px;
+      max-width: 700px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
+    }
+    .step-link {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      padding: 18px 22px;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, transform 0.2s;
+      cursor: pointer;
+    }
+    .step-link:hover {
+      background: rgba(224,31,56,0.1);
+      border-color: rgba(224,31,56,0.4);
+      transform: translateY(-2px);
+    }
+    .step-link__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 22px;
+      color: var(--crimson);
+      min-width: 32px;
+      line-height: 1;
+    }
+    .step-link__title {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: 0.01em;
+    }
+    .step-link__sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      margin-top: 3px;
+      font-weight: 400;
+    }
+    .step-link__arrow {
+      color: rgba(255,255,255,0.3);
+      font-size: 18px;
+      line-height: 1;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .step-link:hover .step-link__arrow {
+      color: var(--crimson);
+      transform: translateX(4px);
     }
 
     @media (max-width: 768px) {
       .qr-section { grid-template-columns: 1fr; }
       .license-actions { flex-direction: column; align-items: center; }
+    }
+
+    /* ── Very small phone ≤ 375px ── */
+    @media (max-width: 375px) {
+      .license-actions .btn { width: 100%; justify-content: center; }
+      .qr-section { gap: 24px; }
     }
   </style>
 </head>
@@ -129,18 +215,29 @@
       <a href="#" class="btn btn--outline btn--lg">Newly Appointed Agents</a>
     </div>
 
-    <!-- QR Section -->
-    <div class="qr-section">
-      <div class="fade-in">
-        <p class="section-label">Scan to Get Started</p>
-        <h3 class="section-title" style="font-size:42px;">SCAN THE<br>QR CODE</h3>
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:28px;">Use your phone to scan the QR code and access your licensing portal on the go. Follow the steps, complete your training, and start booking appointments.</p>
-        <a href="matchup.html" class="btn btn--crimson">Book Your Fast Start →</a>
+    <!-- PORTAL ACCESS BANNER -->
+    <div class="portal-banner fade-in">
+      <div>
+        <div class="portal-banner__stats">
+          <div>
+            <div class="portal-banner__stat-num">30</div>
+            <div class="portal-banner__stat-label">Days to Licensed</div>
+          </div>
+          <div>
+            <div class="portal-banner__stat-num">7</div>
+            <div class="portal-banner__stat-label">Steps to Complete</div>
+          </div>
+          <div>
+            <div class="portal-banner__stat-num">100%</div>
+            <div class="portal-banner__stat-label">Online Process</div>
+          </div>
+        </div>
+        <h3 class="portal-banner__title">GET LICENSED.<br>START EARNING.</h3>
+        <p class="portal-banner__sub">Your path to a licensed insurance career starts with one click. Complete your pre-licensing course online, pass the state exam, and start booking appointments with the Prevail team.</p>
       </div>
-      <div class="qr-box fade-in fade-in--delay-1">
-        <p class="qr-box__title">PREVAIL LICENSING PORTAL</p>
-        <div class="qr-box__frame">QR CODE<br>PLACEHOLDER</div>
-        <p class="qr-box__label">Scan with your phone camera to access the licensing portal</p>
+      <div class="portal-banner__actions">
+        <a href="https://my.xcelsolutions.com/portal/phpinsuranceagency/detail/a0865cd7-632e-4121-b294-b898f7a4d650/required" target="_blank" rel="noopener" class="btn btn--crimson btn--lg">Begin Pre-Licensing →</a>
+        <a href="matchup.html" class="btn btn--outline btn--lg">Book Your Fast Start</a>
       </div>
     </div>
 
@@ -152,48 +249,70 @@
       </div>
 
       <div class="steps-list">
-        <div class="step-card fade-in">
-          <div class="step-card__num">01</div>
-          <div>
-            <h4 class="step-card__title">Book Your Recruiting Interview (R.I.)</h4>
-            <p class="step-card__text">Your first step is a 45-minute R.I. with one of our licensed brokers. This is where you learn about the opportunity, ask questions, and decide if Prevail is the right fit for you.</p>
+
+        <a href="https://my.xcelsolutions.com/portal/phpinsuranceagency/detail/a0865cd7-632e-4121-b294-b898f7a4d650/required" target="_blank" rel="noopener" class="step-link fade-in">
+          <div class="step-link__num">01</div>
+          <div style="flex:1;">
+            <div class="step-link__title">Xcel Testing Solutions</div>
+            <div class="step-link__sub">Login to take your pre-licensing classes</div>
           </div>
-        </div>
-        <div class="step-card fade-in fade-in--delay-1">
-          <div class="step-card__num">02</div>
-          <div>
-            <h4 class="step-card__title">Complete Your Pre-Licensing Education</h4>
-            <p class="step-card__text">Register for your state's pre-licensing insurance course. This is typically 20 to 40 hours of self-paced online content. We'll guide you to the right provider.</p>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://www.xcelsolutions.com/insurance-license/requirements" target="_blank" rel="noopener" class="step-link fade-in fade-in--delay-1">
+          <div class="step-link__num">02</div>
+          <div style="flex:1;">
+            <div class="step-link__title">XCEL Solutions</div>
+            <div class="step-link__sub">All State Requirement reference</div>
           </div>
-        </div>
-        <div class="step-card fade-in fade-in--delay-2">
-          <div class="step-card__num">03</div>
-          <div>
-            <h4 class="step-card__title">Pass Your State Licensing Exam</h4>
-            <p class="step-card__text">Schedule and pass your state's life insurance exam. Our team provides study resources and support to help you pass on your first attempt.</p>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://uenroll.identogo.com/workflows/11G6QF/appointment/bio" target="_blank" rel="noopener" class="step-link fade-in fade-in--delay-2">
+          <div class="step-link__num">03</div>
+          <div style="flex:1;">
+            <div class="step-link__title">IdentoGO</div>
+            <div class="step-link__sub">Fingerprints for Texas</div>
           </div>
-        </div>
-        <div class="step-card fade-in">
-          <div class="step-card__num">04</div>
-          <div>
-            <h4 class="step-card__title">Submit Your License Application</h4>
-            <p class="step-card__text">Apply for your official state license through the relevant regulatory body. We'll walk you through the paperwork and background check requirements.</p>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://www.pearsonvue.com/us/en/tx/insurance.html" target="_blank" rel="noopener" class="step-link fade-in">
+          <div class="step-link__num">04</div>
+          <div style="flex:1;">
+            <div class="step-link__title">Schedule Texas Exam</div>
+            <div class="step-link__sub">Pearson VUE testing portal</div>
           </div>
-        </div>
-        <div class="step-card fade-in fade-in--delay-1">
-          <div class="step-card__num">05</div>
-          <div>
-            <h4 class="step-card__title">Get Contracted with PHP Agency Carriers</h4>
-            <p class="step-card__text">Once licensed, get contracted with PHP's top carriers: National Life Group, AIG, Mutual of Omaha, North American, and more. You'll have access to products that protect families nationwide.</p>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://docs.google.com/presentation/d/1N6S4CkZibdqZBV9gjuEohhTa7EhaAZtkSDZScgeVSXo/edit#slide=id.ga03b2fe1b2_0_0" target="_blank" rel="noopener" class="step-link fade-in fade-in--delay-1">
+          <div class="step-link__num">05</div>
+          <div style="flex:1;">
+            <div class="step-link__title">Study Powerpoint</div>
+            <div class="step-link__sub">Review the exam study materials</div>
           </div>
-        </div>
-        <div class="step-card fade-in fade-in--delay-2">
-          <div class="step-card__num">06</div>
-          <div>
-            <h4 class="step-card__title">Book Your Fast Start Session</h4>
-            <p class="step-card__text">Your 1-hour Fast Start session is your official onboarding into the Prevail system. We cover your first appointment script, your pipeline, and your 90-day game plan.</p>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://www.sircon.com/landingPages/states/texas/content.jsp" target="_blank" rel="noopener" class="step-link fade-in fade-in--delay-2">
+          <div class="step-link__num">06</div>
+          <div style="flex:1;">
+            <div class="step-link__title">Apply for your License</div>
+            <div class="step-link__sub">Sircon Texas license application</div>
           </div>
-        </div>
+          <span class="step-link__arrow">›</span>
+        </a>
+
+        <a href="https://successce.com/php/" target="_blank" rel="noopener" class="step-link fade-in">
+          <div class="step-link__num">07</div>
+          <div style="flex:1;">
+            <div class="step-link__title">Welcome PHP Agents</div>
+            <div class="step-link__sub">Success CE continuing education portal</div>
+          </div>
+          <span class="step-link__arrow">›</span>
+        </a>
+
       </div>
 
       <div style="text-align:center;margin-top:56px;" class="fade-in">
@@ -234,7 +353,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -258,8 +377,6 @@
   }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
-<script>requireAuth();</script>
+
 </body>
 </html>

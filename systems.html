@@ -6,25 +6,210 @@
   <title>Systems | Prevail Movement</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .systems-placeholder {
-      max-width: 700px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .systems-icon {
-      font-size: 72px;
-      margin-bottom: 28px;
-      opacity: 0.6;
-    }
-    .systems-cards {
-      max-width: 1000px;
-      margin: 60px auto 0;
+    .sys-intro {
+      max-width: 1100px;
+      margin: 0 auto 72px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .sys-intro__text .section-title { text-align: left; margin: 0 0 20px; }
+    .sys-intro__text p { font-size: 15px; color: var(--text-muted); line-height: 1.8; margin-bottom: 28px; }
+    .sys-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sys-stat {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-left: 3px solid var(--crimson);
+      border-radius: 8px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
       gap: 20px;
     }
+    .sys-stat__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 40px;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 80px;
+    }
+    .sys-stat__label {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.5;
+    }
+    .sys-stat__sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      margin-top: 3px;
+    }
+
+    /* System blocks */
+    .sys-blocks {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .sys-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .sys-block__header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 28px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.02);
+    }
+    .sys-block__icon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    .sys-block__num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      color: var(--crimson);
+    }
+    .sys-block__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 26px;
+      letter-spacing: 0.04em;
+      color: #fff;
+      line-height: 1;
+    }
+    .sys-block__desc {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      margin-top: 4px;
+    }
+    .sys-block__body {
+      padding: 28px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .sys-block__body--single { grid-template-columns: 1fr; }
+    .sys-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+    }
+    .sys-step__dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(224,31,56,0.15);
+      border: 1px solid rgba(224,31,56,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--crimson);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .sys-step__content { flex: 1; }
+    .sys-step__title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .sys-step__text {
+      font-size: 12px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.6;
+    }
+
+    /* Tools strip */
+    .sys-tools {
+      max-width: 1100px;
+      margin: 56px auto 0;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 32px 36px;
+    }
+    .sys-tools__label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 20px;
+    }
+    .sys-tools__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .sys-tool-badge {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 7px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* CTA strip */
+    .sys-cta-strip {
+      max-width: 1100px;
+      margin: 48px auto 0;
+      background: linear-gradient(135deg, #1a0007 0%, #2d000e 100%);
+      border: 1px solid rgba(224,31,56,0.25);
+      border-radius: 10px;
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .sys-cta-strip__text h3 {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 30px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .sys-cta-strip__text p { font-size: 14px; color: rgba(255,255,255,0.5); }
+
+    @media (max-width: 900px) {
+      .sys-intro { grid-template-columns: 1fr; gap: 40px; }
+      .sys-block__body { grid-template-columns: 1fr; }
+      .sys-cta-strip { flex-direction: column; text-align: center; }
+    }
     @media (max-width: 640px) {
-      .systems-cards { grid-template-columns: 1fr; }
+      .sys-block__header { padding: 20px 20px; }
+      .sys-block__body { padding: 20px 20px; }
+      .sys-tools { padding: 24px 20px; }
+      .sys-cta-strip { padding: 28px 24px; }
+    }
+    @media (max-width: 375px) {
+      .sys-intro { padding: 0 18px; }
+      .sys-blocks { padding: 0 18px; }
     }
   </style>
 </head>
@@ -65,46 +250,299 @@
   <img class="page-hero__eagle" src="88.png" alt="">
   <p class="page-hero__label">How We Operate</p>
   <h1 class="page-hero__title">SYSTEMS</h1>
-  <p class="page-hero__sub">The proven systems behind every successful Prevail agent</p>
+  <p class="page-hero__sub">The proven playbooks behind every successful Prevail agent</p>
 </div>
 
 <!-- SYSTEMS CONTENT -->
 <section class="section section--dark">
-  <div class="systems-placeholder">
-    <div class="systems-icon fade-in">⚙️</div>
-    <p class="section-label fade-in">Coming Soon</p>
-    <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto 20px;">PREVAIL<br>SYSTEMS</h2>
-    <p style="font-size:16px;color:var(--text-muted);line-height:1.75;margin-bottom:36px;" class="fade-in fade-in--delay-2">
-      Our systems page is being built out with the full details of how Prevail agents operate, from daily prospecting schedules to follow-up frameworks and team leadership playbooks. Check back soon, or book a call to get a walkthrough directly from our team.
-    </p>
-    <div class="fade-in fade-in--delay-3">
-      <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Call →</a>
+
+  <!-- Intro + Stats -->
+  <div class="sys-intro">
+    <div class="sys-intro__text fade-in">
+      <p class="section-label">Built to Duplicate</p>
+      <h2 class="section-title">THE PREVAIL<br>PLAYBOOK</h2>
+      <p>These are the proven systems every Prevail agent uses to prospect, present, follow up, and build a team. They are not complicated. They are repeatable. And they work because thousands of agents across PHP Agency have proven them in the field.</p>
+      <a href="matchup.html" class="btn btn--crimson">Book a Fast Start to Learn These →</a>
+    </div>
+    <div class="sys-stats fade-in fade-in--delay-1">
+      <div class="sys-stat">
+        <div class="sys-stat__num">5</div>
+        <div>
+          <div class="sys-stat__label">Core Systems Every Agent Learns</div>
+          <div class="sys-stat__sub">Prospecting, presenting, follow-up, recruiting, and leadership</div>
+        </div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat__num">60+</div>
+        <div>
+          <div class="sys-stat__label">Agents Running These Systems</div>
+          <div class="sys-stat__sub">Across Texas and growing nationwide</div>
+        </div>
+      </div>
+      <div class="sys-stat">
+        <div class="sys-stat__num">90</div>
+        <div>
+          <div class="sys-stat__label">Days to First Commission Check</div>
+          <div class="sys-stat__sub">For consistent agents who follow the playbook</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Preview cards -->
-  <div class="systems-cards">
-    <div class="card fade-in">
-      <div class="card__body">
-        <div class="card__icon">📋</div>
-        <h4 class="card__title">Prospecting System</h4>
-        <p class="card__text">A repeatable daily system for building and working your warm market pipeline to keep appointments flowing.</p>
+  <!-- System Blocks -->
+  <div class="sys-blocks">
+
+    <!-- 01 Prospecting -->
+    <div class="sys-block fade-in">
+      <div class="sys-block__header">
+        <span class="sys-block__icon">📋</span>
+        <div>
+          <div class="sys-block__num">01 / PROSPECTING</div>
+          <div class="sys-block__title">Daily Prospecting System</div>
+          <div class="sys-block__desc">How to build and work your warm market every single day</div>
+        </div>
+      </div>
+      <div class="sys-block__body">
+        <div class="sys-step">
+          <div class="sys-step__dot">1</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Build Your Names List</div>
+            <p class="sys-step__text">Write down 100 people you know. Friends, family, neighbors, coworkers, church members, social media contacts. Everyone goes on the list first.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">2</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Daily Activity Goal</div>
+            <p class="sys-step__text">Minimum 5 contacts per day. Reach out by call, text, or social message. The goal is conversations, not appointments yet.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">3</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Set the Appointment</div>
+            <p class="sys-step__text">Use the approved Prevail script to set a 30-minute family protection review. You are not selling on the phone. You are scheduling a conversation.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">4</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Track Everything</div>
+            <p class="sys-step__text">Log every contact, every attempt, every appointment in your tracking sheet. Numbers do not lie. Your activity tells you where you will be in 30 days.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">5</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Expand Beyond Warm Market</div>
+            <p class="sys-step__text">Once your warm market is exhausted, move to referrals. Ask every appointment for two names. The pipeline never stops if you work the system.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">6</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Weekly Review with Leader</div>
+            <p class="sys-step__text">Every week your numbers go to your Prevail leader for coaching. Activity is reviewed, accountability is built, and your next week gets sharper.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card fade-in fade-in--delay-1">
-      <div class="card__body">
-        <div class="card__icon">📞</div>
-        <h4 class="card__title">Follow-Up Framework</h4>
-        <p class="card__text">Never let a prospect fall through the cracks. Our follow-up sequence keeps you top of mind and closes more deals.</p>
+
+    <!-- 02 Presentation -->
+    <div class="sys-block fade-in fade-in--delay-1">
+      <div class="sys-block__header">
+        <span class="sys-block__icon">📊</span>
+        <div>
+          <div class="sys-block__num">02 / PRESENTATION</div>
+          <div class="sys-block__title">The Family Protection Review</div>
+          <div class="sys-block__desc">A proven appointment structure that builds trust and closes business</div>
+        </div>
+      </div>
+      <div class="sys-block__body">
+        <div class="sys-step">
+          <div class="sys-step__dot">1</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Fact-Finding</div>
+            <p class="sys-step__text">Spend the first 10 minutes asking questions. What do they have in place? What are their goals? What worries them about their family's future?</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">2</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Present the Solution</div>
+            <p class="sys-step__text">Walk through the Field Training presentation based on their specific situation. Tailor the product to their need, not a generic pitch.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">3</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Handle Objections</div>
+            <p class="sys-step__text">Use the approved objection-handling scripts. The most common objections are covered in training. Confidence comes from repetition.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">4</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Close and Submit</div>
+            <p class="sys-step__text">Complete the application in the appointment when possible. Same-day submissions close at a significantly higher rate than callbacks.</p>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="card fade-in fade-in--delay-2">
-      <div class="card__body">
-        <div class="card__icon">🏆</div>
-        <h4 class="card__title">Leadership Pipeline</h4>
-        <p class="card__text">The roadmap for growing from agent to leader: how to recruit, train, and develop your own team inside Prevail.</p>
+
+    <!-- 03 Follow-Up -->
+    <div class="sys-block fade-in">
+      <div class="sys-block__header">
+        <span class="sys-block__icon">📞</span>
+        <div>
+          <div class="sys-block__num">03 / FOLLOW-UP</div>
+          <div class="sys-block__title">Follow-Up Framework</div>
+          <div class="sys-block__desc">How to stay top of mind without being pushy</div>
+        </div>
+      </div>
+      <div class="sys-block__body">
+        <div class="sys-step">
+          <div class="sys-step__dot">1</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Same-Day Thank You</div>
+            <p class="sys-step__text">Send a text or message within 2 hours of every appointment. Thank them for their time. Confirm any next steps discussed.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">2</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">72-Hour Check-In</div>
+            <p class="sys-step__text">For pending applications or unresolved conversations, follow up within 3 days. Keep it brief and value-driven, not desperate.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">3</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">30-Day Policy Delivery</div>
+            <p class="sys-step__text">When a policy is issued, deliver it personally when possible. This is also when you ask for referrals. Satisfied clients are your best source of new business.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">4</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Annual Review</div>
+            <p class="sys-step__text">Put every client on an annual review cycle. Life changes. Coverage needs change. A simple review call deepens trust and often opens new business.</p>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- 04 Recruiting -->
+    <div class="sys-block fade-in fade-in--delay-1">
+      <div class="sys-block__header">
+        <span class="sys-block__icon">🤝</span>
+        <div>
+          <div class="sys-block__num">04 / RECRUITING</div>
+          <div class="sys-block__title">Building Your Team</div>
+          <div class="sys-block__desc">How to identify, recruit, and bring people into the Prevail system</div>
+        </div>
+      </div>
+      <div class="sys-block__body">
+        <div class="sys-step">
+          <div class="sys-step__dot">1</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Identify Prospects</div>
+            <p class="sys-step__text">Look for people with drive, people skills, and a desire for more. The best recruits often already know you. People join people before they join companies.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">2</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Set the R.I.</div>
+            <p class="sys-step__text">Invite them to a Recruiting Interview. Do not try to fully explain the opportunity in a text or a casual conversation. Let the R.I. do the work.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">3</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Run the B.O.M.</div>
+            <p class="sys-step__text">Bring serious prospects to a Business Opportunity Meeting. Group exposure is more powerful than individual explanation. Let them see the room.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">4</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Support the Fast Start</div>
+            <p class="sys-step__text">Once licensed, hold a Fast Start session with your new recruit within 7 days. Speed of launch determines success rate. Do not let momentum die.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 05 Leadership -->
+    <div class="sys-block fade-in">
+      <div class="sys-block__header">
+        <span class="sys-block__icon">🏆</span>
+        <div>
+          <div class="sys-block__num">05 / LEADERSHIP</div>
+          <div class="sys-block__title">The Leadership Pipeline</div>
+          <div class="sys-block__desc">The path from new agent to Marketing Director and beyond</div>
+        </div>
+      </div>
+      <div class="sys-block__body">
+        <div class="sys-step">
+          <div class="sys-step__dot">1</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Agent</div>
+            <p class="sys-step__text">Licensed. Running appointments. Building a book of business. Focused on production and mastering the presentation system.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">2</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Senior Agent</div>
+            <p class="sys-step__text">Consistent production. Beginning to recruit and support newer agents. Starting to develop leadership habits and mentorship skills.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">3</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Marketing Director</div>
+            <p class="sys-step__text">Running a personal team. Overriding on team production. Operating as a leader who coaches, recruits, and drives team results independently.</p>
+          </div>
+        </div>
+        <div class="sys-step">
+          <div class="sys-step__dot">4</div>
+          <div class="sys-step__content">
+            <div class="sys-step__title">Senior Marketing Director and Beyond</div>
+            <p class="sys-step__text">Building a regional agency. Developing other Marketing Directors. Creating residual income through team overrides at multiple levels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tools Strip -->
+  <div class="sys-tools fade-in">
+    <div class="sys-tools__label">Tools and Platforms Used in the Prevail System</div>
+    <div class="sys-tools__grid">
+      <span class="sys-tool-badge">PHP Agency Portal</span>
+      <span class="sys-tool-badge">National Life Group</span>
+      <span class="sys-tool-badge">AIG</span>
+      <span class="sys-tool-badge">Mutual of Omaha</span>
+      <span class="sys-tool-badge">North American</span>
+      <span class="sys-tool-badge">Foresters Financial</span>
+      <span class="sys-tool-badge">John Hancock</span>
+      <span class="sys-tool-badge">Xcel Solutions (Pre-Licensing)</span>
+      <span class="sys-tool-badge">Sircon (License Application)</span>
+      <span class="sys-tool-badge">IdentoGO (Fingerprinting)</span>
+      <span class="sys-tool-badge">Success CE (Continuing Education)</span>
+    </div>
+  </div>
+
+  <!-- CTA Strip -->
+  <div class="sys-cta-strip fade-in">
+    <div class="sys-cta-strip__text">
+      <h3>WANT A WALKTHROUGH OF THESE SYSTEMS?</h3>
+      <p>Book your Fast Start session and we will walk you through every playbook live with your Prevail leader.</p>
+    </div>
+    <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Fast Start →</a>
   </div>
 
 </section>
@@ -139,7 +577,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -160,11 +598,8 @@
   const fadeEls = document.querySelectorAll('.fade-in');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
-<script>requireAuth();</script>
 </body>
 </html>

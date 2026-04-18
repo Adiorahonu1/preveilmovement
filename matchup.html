@@ -62,6 +62,14 @@
       .contact-strip { flex-direction: column; text-align: center; }
       .matchup-header-actions { justify-content: center; }
     }
+
+    /* ── Very small phone ≤ 375px ── */
+    @media (max-width: 375px) {
+      .appt-card { padding: 24px 20px; }
+      .appt-card__title { font-size: 28px; }
+      .matchup-header-actions { flex-direction: column; align-items: center; }
+      .matchup-header-actions .btn { width: 100%; text-align: center; justify-content: center; }
+    }
   </style>
 </head>
 <body>
@@ -116,7 +124,7 @@
     <p class="section-label fade-in">Select an Appointment</p>
     <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto 16px;">CHOOSE YOUR<br>SESSION TYPE</h2>
     <p style="font-size:15px;color:var(--text-muted);max-width:480px;margin:0 auto;" class="fade-in fade-in--delay-2">
-      Not sure which session is right for you? Start with an R.I. if you're new to the opportunity. Already licensed? Book a Fast Start or Field Training.
+      Not sure which session is right for you? Start with a Discovery Call if you're new to the opportunity. Already licensed? Book a Fast Start or Field Training.
     </p>
   </div>
 
@@ -124,8 +132,8 @@
 
     <div class="appt-card fade-in">
       <div class="appt-card__duration">45 Minutes</div>
-      <div class="appt-card__title">R.I.</div>
-      <p class="appt-card__desc">Recruiting Interview: Your first conversation with the Prevail team. We'll walk you through the business opportunity, answer your questions, and see if this is the right fit for you. No pressure, no commitment required.</p>
+      <div class="appt-card__title">DISCOVERY CALL</div>
+      <p class="appt-card__desc">Your first conversation with the Prevail team. We'll walk you through the business opportunity, answer your questions, and see if this is the right fit for you. No pressure, no commitment required.</p>
       <a href="#" class="btn btn--crimson btn--full">Book Now</a>
     </div>
 
@@ -186,7 +194,7 @@
     <div>
       <p class="footer__col-title">Contact</p>
       <ul class="footer__links">
-        <li><span>Austin, Texas</span></li>
+        <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
         <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
@@ -210,8 +218,6 @@
   }, { threshold: 0.1 });
   fadeEls.forEach(el => observer.observe(el));
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="auth.js"></script>
-<script>requireAuth();</script>
+
 </body>
 </html>
