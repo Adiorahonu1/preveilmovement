@@ -6,23 +6,73 @@
   <title>Book a Session | Prevail Movement</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .matchup-header-actions {
-      display: flex;
-      justify-content: flex-end;
-      gap: 20px;
+    /* ── Auth bar ── */
+    .auth-bar {
       max-width: 1000px;
-      margin: 0 auto 48px;
-      padding: 0;
+      margin: 0 auto 52px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 18px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    .matchup-header-actions a {
+    .auth-bar__label {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+    }
+    .auth-bar__label span {
+      color: #fff;
+      font-weight: 600;
+    }
+    .auth-bar__actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .auth-bar__login {
       font-size: 13px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
-      transition: color 0.2s;
+      color: rgba(255,255,255,0.7);
+      padding: 9px 22px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .matchup-header-actions a:hover { color: #fff; }
+    .auth-bar__login:hover {
+      color: #fff;
+      border-color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.06);
+    }
+    .auth-bar__signup {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      padding: 9px 22px;
+      background: var(--crimson);
+      border: 1px solid transparent;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .auth-bar__signup:hover {
+      background: var(--crimson-dark);
+      transform: translateY(-1px);
+    }
+    @media (max-width: 560px) {
+      .auth-bar { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .auth-bar__actions { width: 100%; }
+      .auth-bar__login, .auth-bar__signup { flex: 1; text-align: center; }
+    }
 
     .appt-grid {
       max-width: 1000px;
@@ -114,9 +164,13 @@
 <!-- BOOKING -->
 <section class="section section--dark">
 
-  <div class="matchup-header-actions fade-in">
-    <a href="#">Sign Up</a>
-    <a href="#">Login</a>
+  <!-- Auth bar -->
+  <div class="auth-bar fade-in">
+    <p class="auth-bar__label">Already a Prevail agent? <span>Access your portal here.</span></p>
+    <div class="auth-bar__actions">
+      <a href="#" class="auth-bar__login">Login</a>
+      <a href="#" class="auth-bar__signup">Sign Up</a>
+    </div>
   </div>
 
   <div style="text-align:center;margin-bottom:56px;">
