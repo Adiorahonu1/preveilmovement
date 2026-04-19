@@ -140,6 +140,12 @@
       padding: 0 24px 148px max(40px, calc((100vw - 1280px) / 2 + 48px));
       overflow: visible;
     }
+    /* CSS fallback: if GSAP never runs, animate elements visible after 3s */
+    @keyframes hero-reveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     .hero__eyebrow {
       display: inline-flex;
       align-items: center;
@@ -151,6 +157,7 @@
       color: rgba(255,255,255,0.55);
       margin-bottom: 24px;
       opacity: 0;
+      animation: hero-reveal 0.7s ease-out 3s forwards;
     }
     .hero__eyebrow::before,
     .hero__eyebrow::after {
@@ -167,6 +174,7 @@
       letter-spacing: 0.03em;
       margin-bottom: 30px;
       opacity: 0;
+      animation: hero-reveal 0.9s ease-out 3.1s forwards;
       overflow: visible;
       /* metallic text glow */
       background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.6) 100%);
@@ -191,6 +199,7 @@
       font-weight: 500;
       opacity: 0;
       max-width: 560px;
+      animation: hero-reveal 0.7s ease-out 3.25s forwards;
     }
     .hero__ctas {
       display: flex;
@@ -198,6 +207,7 @@
       justify-content: flex-start;
       flex-wrap: wrap;
       opacity: 0;
+      animation: hero-reveal 0.6s ease-out 3.4s forwards;
     }
 
     /* Glass pill button */
@@ -3193,6 +3203,25 @@
 }
 </style>
 
+<!-- Visibility fallback: if GSAP CDN fails, force all animated elements visible after 2.5s -->
+<script>
+  (function () {
+    var SELECTOR = '#heroEyebrow,#heroTitle,#heroTagline,#heroCtas,.fade-in,[data-gsap]';
+    var t = setTimeout(function () {
+      document.querySelectorAll(SELECTOR).forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+        el.classList.add('visible');
+      });
+      document.querySelectorAll('.stat-item,.pillar-c,.who__content *,.quiz-type-card').forEach(function (el) {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }, 2500);
+    window.__gsapFallbackTimer = t;
+  })();
+</script>
+
 <!-- Three.js for GLSL Hills -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
@@ -3201,6 +3230,10 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
 <script>
+  if (typeof gsap === 'undefined') { console.warn('GSAP failed to load'); }
+  else {
+
+  clearTimeout(window.__gsapFallbackTimer);
   gsap.registerPlugin(ScrollTrigger);
 
   /* ── Nav scroll ── */
@@ -3782,6 +3815,8 @@
       });
     });
   });
+
+  } // end gsap guard
 
 </script>
 
