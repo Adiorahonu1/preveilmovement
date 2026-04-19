@@ -1730,6 +1730,203 @@
     }
     @media (max-width: 768px) { .mobile-cta-bar { display: flex; } }
 
+    /* ═══ COMMISSION CALLOUT ═══ */
+    .commission-callout {
+      background: linear-gradient(135deg, #1a0007 0%, #2d000e 100%);
+      border-top: 1px solid rgba(224,31,56,0.2);
+      border-bottom: 1px solid rgba(224,31,56,0.2);
+      padding: 72px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .commission-callout::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(224,31,56,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .commission-callout__inner {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .commission-callout__label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 16px;
+    }
+    .commission-callout__q {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(32px, 4.5vw, 56px);
+      letter-spacing: 0.03em;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .commission-callout__q em {
+      background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-style: normal;
+    }
+    .commission-callout__a {
+      font-size: 16px;
+      line-height: 1.78;
+      color: rgba(255,255,255,0.58);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    @media (max-width: 600px) { .commission-callout { padding: 52px 24px; } }
+
+    /* ═══ TESTIMONIAL SECTION ═══ */
+    .testimonial-section {
+      background: #fff;
+      padding: 100px 40px;
+    }
+    .testimonial-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .testimonial-header .section-label { color: var(--crimson); }
+    .testimonial-header .section-title { color: #1a0409; margin: 0 auto 16px; }
+    .testimonial-header p { font-size: 15px; color: #b08895; max-width: 440px; margin: 0 auto; }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto 60px;
+    }
+    .testimonial-card {
+      background: #f7f2f4;
+      border: 1px solid #e8d8df;
+      border-radius: 12px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .testimonial-card:hover {
+      box-shadow: 0 12px 40px rgba(192,21,42,0.1);
+      transform: translateY(-4px);
+    }
+    .testimonial-card__stars {
+      display: flex;
+      gap: 5px;
+    }
+    .testimonial-card__star {
+      width: 13px; height: 13px;
+      background: var(--crimson);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+    .testimonial-card__quote {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #3a1020;
+      flex: 1;
+      font-style: italic;
+    }
+    .testimonial-card__author { border-top: 1px solid #e8d8df; padding-top: 20px; }
+    .testimonial-card__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 18px;
+      letter-spacing: 0.06em;
+      color: #1a0409;
+      margin-bottom: 3px;
+    }
+    .testimonial-card__role {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(192,21,42,0.6);
+    }
+    .testimonial-card__amount {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      color: var(--crimson);
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+    }
+    .testimonial-cta { text-align: center; }
+    @media (max-width: 900px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) {
+      .testimonial-section { padding: 72px 24px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ═══ FAQ SECTION ═══ */
+    .faq-section {
+      background: #07010a;
+      padding: 100px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(224,31,56,0.06) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .faq-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .faq-header .section-label { color: rgba(201,168,76,0.75); }
+    .faq-header .section-title { color: #fff; margin: 0 auto; }
+    .faq-header p { font-size: 15px; color: rgba(255,255,255,0.4); max-width: 440px; margin: 16px auto 0; }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .faq-item {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 36px 32px;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .faq-item:hover {
+      background: rgba(224,31,56,0.05);
+      border-color: rgba(224,31,56,0.18);
+    }
+    .faq-q {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 21px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .faq-a {
+      font-size: 14px;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.46);
+    }
+    .faq-cta {
+      text-align: center;
+      margin-top: 64px;
+    }
+    @media (max-width: 700px) {
+      .faq-section { padding: 72px 24px; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
   </style>
 </head>
 <body>
@@ -1747,7 +1944,7 @@
     <li><a href="videos.html">Videos</a></li>
     <li><a href="presentations.html">Presentations</a></li>
     <li><a href="systems.html">Systems</a></li>
-    <li><a href="matchup.html">Matchup</a></li>
+    <li><a href="matchup.html">Book a Call</a></li>
   </ul>
   <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
   <button class="nav__hamburger" id="hamburger" aria-label="Menu">
@@ -1762,7 +1959,6 @@
   <a href="videos.html">Videos</a>
   <a href="presentations.html">Presentations</a>
   <a href="systems.html">Systems</a>
-  <a href="matchup.html">Matchup</a>
   <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
 </div>
 
@@ -1779,17 +1975,16 @@
   <img class="hero__eagle" src="88.png" alt="" id="heroEagle">
 
   <div class="hero__content">
-    <p class="hero__eyebrow" id="heroEyebrow">Serving Clients Nationwide &nbsp; PHP Agency Partner</p>
+    <p class="hero__eyebrow" id="heroEyebrow">Life Insurance Career &nbsp;·&nbsp; PHP Agency Partner</p>
     <h1 class="hero__title" id="heroTitle">
-      THE<br><span class="accent">PREVAIL</span><br>MOVEMENT
+      PROTECT<br><span class="accent">FAMILIES.</span><br>BUILD WEALTH.
     </h1>
     <p class="hero__tagline" id="heroTagline">
-      Honor God &nbsp;·&nbsp; Pursue Excellence &nbsp;·&nbsp; <span style="white-space:nowrap">Develop Leaders &nbsp;·&nbsp; Create Profits</span>
+      No prior experience required &nbsp;·&nbsp; <span style="white-space:nowrap">Agents earning $4K+ their first month</span>
     </p>
     <div class="hero__ctas" id="heroCtas">
-      <a href="matchup.html" class="btn btn--crimson btn--lg btn--shimmer magnetic">Join the Movement</a>
-      <a href="quiz.html"     class="btn btn--gold   btn--lg btn--shimmer magnetic">Discover Your Financial Type</a>
-      <a href="founder.html"  class="btn btn--glass  btn--lg btn--shimmer magnetic">Meet Our Founder</a>
+      <a href="matchup.html" class="btn btn--crimson btn--lg btn--shimmer magnetic">Book a Discovery Call →</a>
+      <a href="#calcSection"  class="btn btn--glass  btn--lg btn--shimmer magnetic">See What Agents Earn</a>
     </div>
   </div>
 
@@ -1824,21 +2019,21 @@
 <!-- ═══ STATS ═══ -->
 <div class="stats-section" id="statsSection">
   <div class="stats-inner">
-    <div class="stat-item" data-target="14" data-prefix="" data-suffix="K+">
+    <div class="stat-item" data-target="60" data-prefix="" data-suffix="+">
       <div class="stat-num">0</div>
-      <div class="stat-label">Licensed Agents</div>
+      <div class="stat-label">Prevail Licensed Agents</div>
     </div>
-    <div class="stat-item" data-target="118" data-prefix="" data-suffix="K+">
+    <div class="stat-item" data-target="90" data-prefix="" data-suffix="K+">
       <div class="stat-num">0</div>
-      <div class="stat-label">Families Served</div>
+      <div class="stat-label">Families Protected</div>
     </div>
-    <div class="stat-item" data-target="80" data-prefix="" data-suffix="K+">
-      <div class="stat-num">0</div>
-      <div class="stat-label">New Business Partners</div>
+    <div class="stat-item" data-target="4" data-prefix="$" data-suffix="K+">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Avg First Month Income</div>
     </div>
     <div class="stat-item" data-target="127" data-prefix="$" data-suffix="M+">
       <div class="stat-num">$0</div>
-      <div class="stat-label">Submitted in Business</div>
+      <div class="stat-label">In Business (PHP Network)</div>
     </div>
   </div>
 </div>
@@ -1944,6 +2139,16 @@
   </div>
 </section>
 
+<!-- ═══ COMMISSION CALLOUT ═══ -->
+<div class="commission-callout fade-in">
+  <div class="commission-callout__inner">
+    <p class="commission-callout__label">Let's address the obvious question</p>
+    <h2 class="commission-callout__q">Yes, it's <em>100% commission.</em><br>Here is what that actually means.</h2>
+    <p class="commission-callout__a">No income ceiling. No salary cap. No one limiting what you can earn. Salaried jobs trade your potential for a guaranteed floor. Commission means you own your results. The agents in this movement earning $10K+ a month started exactly where you are right now. The only difference is they made the call.</p>
+    <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Discovery Call →</a>
+  </div>
+</div>
+
 <!-- ═══ FEATURE CAROUSEL — VERTICALS ═══ -->
 <section class="fc-section" id="verticalsSection">
   <div class="fc-wrap">
@@ -2048,21 +2253,6 @@
   </div>
 </section>
 
-<!-- ═══ YOUTUBE SECTION ═══ -->
-<div class="yt-section" id="ytSection">
-  <div class="yt-section__glow"></div>
-  <div class="yt-section__left">
-    <p class="yt-section__label" id="ytLabel">YouTube</p>
-    <h2 class="yt-section__headline" id="ytHeadline">REAL TALK.<br>REAL GROWTH.</h2>
-    <p class="yt-section__sub" id="ytSub">Building a life of success with purpose, leadership and class. No filters.</p>
-    <p class="yt-section__gain" id="ytStats">Learn how top agents build wealth, lead teams, and create a life of freedom on their terms.</p>
-    <a href="https://www.youtube.com/@cindycobos-nofilters" target="_blank" rel="noopener" class="btn btn--crimson btn--lg magnetic" id="ytBtn">Watch on YouTube</a>
-  </div>
-  <div class="yt-section__right" id="ytPhone">
-    <img src="media/cindy%20phone.png" alt="Cindy Cobos YouTube Channel" class="yt-phone-img" loading="lazy">
-  </div>
-</div>
-
 <!-- ═══ QUIZ CTA SECTION ═══ -->
 <section class="quiz-cta-section" id="quizCta">
   <canvas id="quizSilkCanvas" aria-hidden="true"></canvas>
@@ -2141,9 +2331,9 @@
 <section class="journey-section" id="journeySection">
   <div class="journey-inner">
     <div class="journey-header fade-in">
-      <p class="section-label">What Happens When You Join</p>
-      <h2 class="section-title" style="margin:0 auto 16px;">YOUR FIRST<br>30 DAYS</h2>
-      <p style="font-size:15px;color:var(--white-muted);max-width:500px;margin:0 auto;">Here is exactly what the path looks like from your first conversation to your first commission check.</p>
+      <p class="section-label">Your Path From Day One</p>
+      <h2 class="section-title" style="margin:0 auto 16px;">YOUR FIRST<br>60 DAYS</h2>
+      <p style="font-size:15px;color:var(--white-muted);max-width:500px;margin:0 auto;">Here is exactly what happens from your first conversation to your first commission check.</p>
     </div>
     <div class="journey-track" id="journeyTrack">
       <div class="journey-step fade-in">
@@ -2181,15 +2371,78 @@
       <div class="journey-step fade-in fade-in--delay-3">
         <div class="journey-step__dot">05</div>
         <div class="journey-step__body">
-          <span class="journey-step__timeframe">Month 1</span>
+          <span class="journey-step__timeframe">Days 45 to 60</span>
           <div class="journey-step__title">First Commission Check</div>
-          <p class="journey-step__desc">Consistent agents see their first commission within the first month. This is where the system starts paying for itself.</p>
+          <p class="journey-step__desc">Consistent agents run their first appointments by week 5 and typically see their first commission by day 45 to 60. This is where the system starts paying for itself.</p>
         </div>
       </div>
     </div>
     <div style="text-align:center;margin-top:60px;" class="fade-in">
       <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Discovery Call Now →</a>
     </div>
+  </div>
+</section>
+
+<!-- ═══ AGENT TESTIMONIALS ═══ -->
+<section class="testimonial-section">
+  <div class="testimonial-header fade-in">
+    <p class="section-label">Real Agents. Real Results.</p>
+    <h2 class="section-title">WHAT AGENTS<br>ARE SAYING</h2>
+    <p>These are the people who made the call. Now they lead the movement.</p>
+  </div>
+  <div class="testimonial-grid">
+
+    <div class="testimonial-card fade-in">
+      <div class="testimonial-card__stars">
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+      </div>
+      <p class="testimonial-card__quote">My first month I earned $4,200. I had never sold insurance before in my life. The training, the support, the system — it all works. I just had to show up and follow the process.</p>
+      <div class="testimonial-card__author">
+        <div class="testimonial-card__name">Maria R.</div>
+        <div class="testimonial-card__role">Prevail Agent</div>
+        <div class="testimonial-card__amount">$4,200 First Month</div>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in fade-in--delay-1">
+      <div class="testimonial-card__stars">
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+      </div>
+      <p class="testimonial-card__quote">15 appointments in my first 30 days. Nobody handed me that. The system works, the leaders support you, and the families you help make every call worth it. I wish I had started sooner.</p>
+      <div class="testimonial-card__author">
+        <div class="testimonial-card__name">Pablo N.</div>
+        <div class="testimonial-card__role">Prevail Agent</div>
+        <div class="testimonial-card__amount">15 Appts in 30 Days</div>
+      </div>
+    </div>
+
+    <div class="testimonial-card fade-in fade-in--delay-2">
+      <div class="testimonial-card__stars">
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+        <div class="testimonial-card__star"></div>
+      </div>
+      <p class="testimonial-card__quote">I came in with zero background in insurance. Within months I was promoted to Marketing Director. This organization develops you into a leader if you are willing to put in the work.</p>
+      <div class="testimonial-card__author">
+        <div class="testimonial-card__name">Lorenzo G.</div>
+        <div class="testimonial-card__role">Marketing Director</div>
+        <div class="testimonial-card__amount">Promoted in Under a Year</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="testimonial-cta fade-in">
+    <a href="matchup.html" class="btn btn--crimson btn--lg">Start Your Story →</a>
   </div>
 </section>
 
@@ -2240,6 +2493,53 @@
       <p class="win-card__text">Lorenzo Godinez, Pablo Negrete, Jaime Dominguez, and Nicholas Ingram elevated to Marketing Director. The next generation is leading.</p>
       <span class="win-card__cta">View Leadership</span>
     </a>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header fade-in">
+      <p class="section-label">Common Questions</p>
+      <h2 class="section-title">WE HEAR YOU</h2>
+      <p>The questions everyone has before they make the call.</p>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">Do I need prior experience to join?</div>
+        <div class="faq-a">No. We build licensed agents from the ground up. Most of our top performers came in with zero insurance background. What we look for is drive, coachability, and a willingness to serve people.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-in--delay-1">
+        <div class="faq-q">How long does licensing take?</div>
+        <div class="faq-a">Most agents complete their pre-licensing coursework and pass the state exam within 3 to 4 weeks. The course is fully online and self-paced. We walk you through every step of the process.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-in--delay-2">
+        <div class="faq-q">Is it really 100% commission?</div>
+        <div class="faq-a">Yes. That means no income ceiling. No salary cap. No one placing a lid on what you can build. Salaried jobs guarantee a floor and cap your ceiling. Commission means you own your results completely.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-in--delay-3">
+        <div class="faq-q">What support and training do I get?</div>
+        <div class="faq-a">You receive a full Fast Start onboarding session, a proven appointment script, access to warm leads, weekly team training, and ongoing one-on-one coaching from experienced Prevail leaders.</div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <div class="faq-q">Can I do this part-time?</div>
+        <div class="faq-a">Yes. Many agents start part-time while working another job. Once your commission income replaces your salary, going full-time becomes the easy decision. The flexibility is yours to design.</div>
+      </div>
+
+      <div class="faq-item fade-in fade-in--delay-1">
+        <div class="faq-q">When do I see my first commission?</div>
+        <div class="faq-a">Consistent agents run their first client appointments by week 5 and typically receive their first commission check within 45 to 60 days of starting. Your income starts when your actions do.</div>
+      </div>
+
+    </div>
+    <div class="faq-cta fade-in">
+      <a href="matchup.html" class="btn btn--crimson btn--lg">Still Have Questions? Book a Call →</a>
+    </div>
   </div>
 </section>
 
@@ -2365,6 +2665,21 @@
 
   <p class="bg-hint">Drag to explore</p>
 </section>
+
+<!-- ═══ YOUTUBE SECTION ═══ -->
+<div class="yt-section" id="ytSection">
+  <div class="yt-section__glow"></div>
+  <div class="yt-section__left">
+    <p class="yt-section__label" id="ytLabel">YouTube</p>
+    <h2 class="yt-section__headline" id="ytHeadline">REAL TALK.<br>REAL GROWTH.</h2>
+    <p class="yt-section__sub" id="ytSub">Building a life of success with purpose, leadership and class. No filters.</p>
+    <p class="yt-section__gain" id="ytStats">Learn how top agents build wealth, lead teams, and create a life of freedom on their terms.</p>
+    <a href="https://www.youtube.com/@cindycobos-nofilters" target="_blank" rel="noopener" class="btn btn--crimson btn--lg magnetic" id="ytBtn">Watch on YouTube</a>
+  </div>
+  <div class="yt-section__right" id="ytPhone">
+    <img src="media/cindy%20phone.png" alt="Cindy Cobos YouTube Channel" class="yt-phone-img" loading="lazy">
+  </div>
+</div>
 
 <!-- Bento Gallery Modal -->
 <div class="bg-modal" id="bgModal">
@@ -2535,7 +2850,7 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-      ">JOIN THE MOVEMENT?</span></h2>
+      ">START YOUR CAREER?</span></h2>
 
       <!-- Contact info -->
       <div class="cf-contact-row" style="opacity:0;" id="cfContact">
@@ -3537,10 +3852,10 @@
 <!-- ═══ MOBILE FLOATING CTA ═══ -->
 <div class="mobile-cta-bar" id="mobileCta" role="complementary" aria-label="Quick booking">
   <div class="mobile-cta-bar__main">
-    <span class="mobile-cta-bar__eyebrow">Ready to start?</span>
+    <span class="mobile-cta-bar__eyebrow">No experience required</span>
     <a href="tel:+15755717057" class="mobile-cta-bar__phone">(575) 571-7057</a>
   </div>
-  <a href="matchup.html" class="mobile-cta-bar__btn">Book a Call</a>
+  <a href="matchup.html" class="mobile-cta-bar__btn">Book a Discovery Call</a>
   <button class="mobile-cta-bar__dismiss" id="mobileCtaDismiss" aria-label="Dismiss">×</button>
 </div>
 <script>
