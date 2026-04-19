@@ -586,26 +586,44 @@
   </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="founder.html">Meet Our Founder</a></li>
-    <li><a href="brokers.html" class="active">Our Brokers</a></li>
+    <li class="nav__dropdown">
+      <button class="nav__dropdown-toggle" type="button">About <span class="nav__chevron">›</span></button>
+      <ul class="nav__dropdown-menu">
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html" class="active">Our Brokers</a></li>
+      </ul>
+    </li>
+    <li class="nav__dropdown">
+      <button class="nav__dropdown-toggle" type="button">Resources <span class="nav__chevron">›</span></button>
+      <ul class="nav__dropdown-menu">
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+      </ul>
+    </li>
     <li><a href="licensing.html">Licensing</a></li>
-    <li><a href="videos.html">Videos</a></li>
-    <li><a href="presentations.html">Presentations</a></li>
-    <li><a href="systems.html">Systems</a></li>
-    <li><a href="matchup.html">Matchup</a></li>
   </ul>
   <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
   <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav__mobile" id="mobileNav">
   <a href="index.html">Home</a>
-  <a href="founder.html">Meet Our Founder</a>
-  <a href="brokers.html" class="active">Our Brokers</a>
+  <div class="nav__mobile-group">
+    <button class="nav__mobile-group-toggle" type="button">About <span class="nav__mobile-group-chevron">›</span></button>
+    <div class="nav__mobile-group-items">
+      <a href="founder.html">Meet Our Founder</a>
+      <a href="brokers.html" class="active">Our Brokers</a>
+    </div>
+  </div>
+  <div class="nav__mobile-group">
+    <button class="nav__mobile-group-toggle" type="button">Resources <span class="nav__mobile-group-chevron">›</span></button>
+    <div class="nav__mobile-group-items">
+      <a href="videos.html">Videos</a>
+      <a href="presentations.html">Presentations</a>
+      <a href="systems.html">Systems</a>
+    </div>
+  </div>
   <a href="licensing.html">Licensing</a>
-  <a href="videos.html">Videos</a>
-  <a href="presentations.html">Presentations</a>
-  <a href="systems.html">Systems</a>
-  <a href="matchup.html">Matchup</a>
   <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
 </div>
 
@@ -1047,6 +1065,24 @@
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
   hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
+  // Dropdown — mark toggle active if a child link is active
+  document.querySelectorAll('.nav__dropdown').forEach(function(dd) {
+    if (dd.querySelector('.nav__dropdown-menu a.active')) {
+      dd.querySelector('.nav__dropdown-toggle').classList.add('active');
+    }
+  });
+  // Mobile accordion
+  document.querySelectorAll('.nav__mobile-group-toggle').forEach(function(btn) {
+    var group = btn.closest('.nav__mobile-group');
+    if (group.querySelector('.nav__mobile-group-items a.active')) {
+      btn.classList.add('open', 'active');
+      group.querySelector('.nav__mobile-group-items').classList.add('open');
+    }
+    btn.addEventListener('click', function() {
+      btn.classList.toggle('open');
+      group.querySelector('.nav__mobile-group-items').classList.toggle('open');
+    });
+  });
 
   // Marquee pause on hover
   const track = document.getElementById('marqueeTrack');
