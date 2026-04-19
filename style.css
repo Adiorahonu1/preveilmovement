@@ -54,7 +54,7 @@ img { display: block; max-width: 100%; }
   height: var(--nav-h);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 40px;
   transition: background 0.3s, box-shadow 0.3s;
 }
@@ -65,18 +65,23 @@ img { display: block; max-width: 100%; }
 }
 
 .nav__logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
+  width: 185px;
+  height: 115px;          /* nav is 80px — 35px bleeds below bottom edge */
+  overflow: hidden;
   flex-shrink: 0;
+  align-self: flex-start; /* anchored at top of nav so overflow goes downward */
 }
 .nav__logo svg { height: 40px; width: auto; }
+
+/* Logo: full Prevail wordmark image, zoomed past whitespace, bleeds below nav */
 .nav__logo img {
-  display: block;
-  width: 260px;
-  height: 64px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 42%;
+  object-position: center 49.8%;  /* content sits at vertical center of canvas */
+  transform: scale(1.2);   /* just enough to crop vertical whitespace, full wordmark visible */
+  transform-origin: center;
 }
 .nav__logo-text {
   font-family: 'Bebas Neue', cursive;
@@ -91,6 +96,7 @@ img { display: block; max-width: 100%; }
   align-items: center;
   gap: 6px;
   list-style: none;
+  margin-left: auto;
 }
 .nav__links a {
   font-size: 13px;
