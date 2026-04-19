@@ -318,8 +318,8 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    SECTIONS
    ============================================================ */
-.section { padding: 100px 40px; }
-.section--tight { padding: 60px 40px; }
+.section { padding: 72px 40px; }
+.section--tight { padding: 44px 40px; }
 .section--dark { background: var(--bg); }
 .section--surface { background: var(--surface); }
 /* White sections */
@@ -865,8 +865,8 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 768px) {
   .nav__logo img { width: 190px; height: 48px; }
-  .section { padding: 70px 24px; }
-  .section--tight { padding: 50px 24px; }
+  .section { padding: 52px 24px; }
+  .section--tight { padding: 36px 24px; }
   .nav { padding: 0 24px; }
   .stat-bar { padding: 30px 24px; }
   .stat-bar__inner { grid-template-columns: repeat(2, 1fr); }
@@ -894,8 +894,8 @@ img { display: block; max-width: 100%; }
    TABLET — 769px to 1024px only
    ───────────────────────────────────────────── */
 @media (max-width: 1024px) and (min-width: 769px) {
-  .section { padding: 80px 36px; }
-  .section--tight { padding: 52px 36px; }
+  .section { padding: 60px 36px; }
+  .section--tight { padding: 40px 36px; }
   .stat-bar { padding: 36px 36px; }
   .footer { padding: 52px 36px 36px; }
 }
@@ -907,8 +907,8 @@ img { display: block; max-width: 100%; }
    ───────────────────────────────────────────── */
 @media (min-width: 1920px) {
   .nav { padding: 0 max(40px, calc(50vw - 760px)); }
-  .section { padding: 120px max(40px, calc(50vw - 600px)); }
-  .section--tight { padding: 72px max(40px, calc(50vw - 600px)); }
+  .section { padding: 88px max(40px, calc(50vw - 600px)); }
+  .section--tight { padding: 52px max(40px, calc(50vw - 600px)); }
   .stat-bar { padding: 48px max(40px, calc(50vw - 600px)); }
   .footer { padding: 72px max(40px, calc(50vw - 640px)) 48px; }
 }
@@ -922,8 +922,8 @@ img { display: block; max-width: 100%; }
 @media (max-width: 375px) {
   .nav { padding: 0 16px; }
   .nav__logo img { width: 150px; height: 36px; }
-  .section { padding: 52px 18px; }
-  .section--tight { padding: 36px 18px; }
+  .section { padding: 40px 18px; }
+  .section--tight { padding: 28px 18px; }
   .footer { padding: 40px 18px 24px; }
   .footer__inner { gap: 20px; }
   .btn { padding: 12px 22px; font-size: 12px; }
