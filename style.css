@@ -970,6 +970,17 @@ img { display: block; max-width: 100%; }
 /* ============================================================
    RESPONSIVE
    ============================================================ */
+
+/* ── Compact desktop links (1025px–1200px) ── */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .nav { padding: 0 28px; }
+  .nav__links { gap: 2px; }
+  .nav__links a { padding: 6px 8px; font-size: 12px; }
+  .nav__dropdown-toggle { padding: 6px 8px; font-size: 12px; }
+  .nav__cta { padding: 9px 18px; font-size: 11px; }
+}
+
+/* ── Switch to hamburger (≤1024px) ── */
 @media (max-width: 1024px) {
   .nav__links { display: none; }
   .nav__cta.desktop { display: none; }
@@ -977,11 +988,23 @@ img { display: block; max-width: 100%; }
   .footer__inner { grid-template-columns: 1fr 1fr; gap: 36px; }
 }
 
+/* ── Tablet (769px–1024px) ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav { padding: 0 36px; }
+  .nav__logo { width: 172px; height: 102px; } /* ~22px bleed */
+  .section { padding: 60px 36px; }
+  .section--tight { padding: 40px 36px; }
+  .stat-bar { padding: 36px 36px; }
+  .footer { padding: 52px 36px 36px; }
+  .nav__hamburger span { width: 26px; height: 2.5px; }
+}
+
+/* ── Mobile (≤768px) ── */
 @media (max-width: 768px) {
-  .nav__logo img { width: 190px; height: 48px; }
+  .nav { padding: 0 24px; }
+  .nav__logo { width: 158px; height: 92px; }  /* ~12px bleed */
   .section { padding: 52px 24px; }
   .section--tight { padding: 36px 24px; }
-  .nav { padding: 0 24px; }
   .stat-bar { padding: 30px 24px; }
   .stat-bar__inner { grid-template-columns: repeat(2, 1fr); }
   .stat-bar__item { border-right: none; border-bottom: 1px solid var(--border); }
@@ -997,45 +1020,22 @@ img { display: block; max-width: 100%; }
   .footer { padding: 50px 24px 30px; }
 }
 
+/* ── Small phone (≤480px) ── */
 @media (max-width: 480px) {
+  .nav { padding: 0 16px; }
+  .nav__logo { width: 138px; height: 80px; }  /* flush with nav, no bleed */
+  .nav__hamburger span { width: 22px; }
   .card-grid--4 { grid-template-columns: 1fr; }
   .card-grid--3 { grid-template-columns: 1fr; }
   .stat-bar__inner { grid-template-columns: 1fr; }
   .stat-bar__item { border-right: none; }
 }
 
-/* ─────────────────────────────────────────────
-   TABLET — 769px to 1024px only
-   ───────────────────────────────────────────── */
-@media (max-width: 1024px) and (min-width: 769px) {
-  .section { padding: 60px 36px; }
-  .section--tight { padding: 40px 36px; }
-  .stat-bar { padding: 36px 36px; }
-  .footer { padding: 52px 36px 36px; }
-}
-
-/* ─────────────────────────────────────────────
-   ULTRA-WIDE — 4K / large monitors (≥ 1920px)
-   Keeps nav and section content from
-   sprawling edge-to-edge on huge screens.
-   ───────────────────────────────────────────── */
-@media (min-width: 1920px) {
-  .nav { padding: 0 max(40px, calc(50vw - 760px)); }
-  .section { padding: 88px max(40px, calc(50vw - 600px)); }
-  .section--tight { padding: 52px max(40px, calc(50vw - 600px)); }
-  .stat-bar { padding: 48px max(40px, calc(50vw - 600px)); }
-  .footer { padding: 72px max(40px, calc(50vw - 640px)) 48px; }
-}
-
-/* ─────────────────────────────────────────────
-   VERY SMALL PHONE — ≤ 375px
-   Prevents overflow and keeps
-   nav / buttons / type readable on
-   iPhone SE, Galaxy A03, etc.
-   ───────────────────────────────────────────── */
+/* ── Very small phone (≤375px) ── */
 @media (max-width: 375px) {
-  .nav { padding: 0 16px; }
-  .nav__logo img { width: 150px; height: 36px; }
+  .nav { padding: 0 14px; }
+  .nav__logo { width: 118px; height: 72px; }  /* compact, no overflow */
+  .nav__hamburger span { width: 20px; gap: 4px; }
   .section { padding: 40px 18px; }
   .section--tight { padding: 28px 18px; }
   .footer { padding: 40px 18px 24px; }
@@ -1048,4 +1048,43 @@ img { display: block; max-width: 100%; }
   .page-hero { height: 200px; }
   .page-hero__sub { font-size: 13px; padding: 0 10px; }
   .footer__bottom { font-size: 11px; gap: 8px; }
+}
+
+/* ── Large desktop (1440px–1919px) ── */
+@media (min-width: 1440px) {
+  :root { --nav-h: 88px; }
+  .nav { padding: 0 64px; }
+  .nav__logo { width: 210px; height: 132px; } /* ~44px bleed */
+  .nav__links { gap: 8px; }
+  .nav__links a { font-size: 13px; padding: 6px 12px; }
+  .nav__dropdown-toggle { font-size: 13px; padding: 6px 12px; }
+  .nav__cta { padding: 11px 26px; font-size: 12px; }
+}
+
+/* ── Wide screen (1920px–2559px) ── */
+@media (min-width: 1920px) {
+  :root { --nav-h: 96px; }
+  .nav { padding: 0 max(64px, calc(50vw - 800px)); }
+  .nav__logo { width: 244px; height: 154px; } /* ~58px bleed */
+  .nav__links { gap: 10px; }
+  .nav__links a { font-size: 14px; padding: 6px 14px; }
+  .nav__dropdown-toggle { font-size: 14px; padding: 6px 14px; }
+  .nav__cta { padding: 12px 30px; font-size: 13px; }
+  .section { padding: 88px max(40px, calc(50vw - 680px)); }
+  .section--tight { padding: 52px max(40px, calc(50vw - 680px)); }
+  .stat-bar { padding: 48px max(40px, calc(50vw - 680px)); }
+  .footer { padding: 72px max(40px, calc(50vw - 680px)) 48px; }
+}
+
+/* ── Ultra-wide (2560px+) ── */
+@media (min-width: 2560px) {
+  :root { --nav-h: 108px; }
+  .nav { padding: 0 max(80px, calc(50vw - 1000px)); }
+  .nav__logo { width: 292px; height: 184px; } /* ~76px bleed */
+  .nav__links { gap: 14px; }
+  .nav__links a { font-size: 15px; padding: 8px 16px; }
+  .nav__dropdown-toggle { font-size: 15px; padding: 8px 16px; }
+  .nav__cta { padding: 14px 36px; font-size: 14px; }
+  .section { padding: 110px max(80px, calc(50vw - 960px)); }
+  .section--tight { padding: 68px max(80px, calc(50vw - 960px)); }
 }
