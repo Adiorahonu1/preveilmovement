@@ -771,7 +771,7 @@
       .lc-badge__name { font-size: 17px; }
       .team-mosaic { grid-template-columns: 1fr; }
       .team-mosaic__card { height: 200px; }
-      .wins-section { padding: 36px 18px; }
+      .wins-section { padding: 0 18px; }
     }
 
     /* ═══════════════════════════════════════════════
@@ -3053,9 +3053,9 @@
 
 <style>
 /* ── Recent Wins Section ── */
-.wins-section { background:#08020a; padding:64px 40px; }
+.wins-section { background:#08020a; padding:0 40px; }
 .wins-header { text-align:center; margin-bottom:36px; }
-.wins-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px; max-width:1100px; margin:0 auto; }
+.wins-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:20px; max-width:1100px; margin:0 auto 40px; }
 .win-card { background:rgba(255,255,255,0.025); border:1px solid rgba(255,255,255,0.07); border-left:3px solid var(--crimson,#e01f38); border-radius:12px; padding:32px 28px; transition:background 0.3s,border-left-color 0.3s; text-decoration:none; display:block; }
 .win-card:hover { background:rgba(255,255,255,0.045); border-left-color:#ff4060; }
 .win-card__date { font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(201,168,76,0.75); margin-bottom:10px; }
@@ -3129,7 +3129,7 @@
 .cf-email-btn:hover { background:#ff3050; }
 
 @media (max-width:600px) {
-  .wins-section { padding:44px 20px; }
+  .wins-section { padding:0 20px; }
   .cf-email-form { max-width:100%; }
 }
 
