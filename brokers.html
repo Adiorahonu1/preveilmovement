@@ -534,6 +534,47 @@
       .brokers-cta__btns { flex-direction: column; align-items: center; }
       .brokers-cta__btns .btn { width: 100%; justify-content: center; text-align: center; }
     }
+
+    /* ── Clickable marquee frame ── */
+    a.broker-card-v2__frame {
+      display: block;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    a.broker-card-v2__frame::after {
+      content: '↓ View';
+      position: absolute;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%) translateY(6px);
+      background: rgba(224,31,56,0.92);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      pointer-events: none;
+    }
+    a.broker-card-v2__frame:hover::after {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ── Broker card target highlight ── */
+    .sg-card { scroll-margin-top: 88px; }
+    .sg-card.broker-flash {
+      border-color: rgba(224,31,56,0.85) !important;
+      animation: broker-flash 1.8s ease forwards;
+    }
+    @keyframes broker-flash {
+      0%   { box-shadow: 0 0 0 0 rgba(224,31,56,0.55), 0 28px 64px rgba(224,31,56,0.14); }
+      30%  { box-shadow: 0 0 0 18px rgba(224,31,56,0),  0 28px 64px rgba(224,31,56,0.45); }
+      100% { box-shadow: 0 28px 64px rgba(224,31,56,0.14); border-color: rgba(255,255,255,0.07); }
+    }
   </style>
 </head>
 <body>
@@ -630,73 +671,73 @@
 
         <!-- SET A -->
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-godinez" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/_DSC4161.JPG" alt="Lorenzo and Crystal Godinez">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Lorenzo &amp; Crystal Godinez</div>
           <div class="broker-card-v2__role">Senior Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-negrete" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Pablo &amp; Marissa Negrete</div>
           <div class="broker-card-v2__role">Marketing Directors · Waco, TX</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-dominguez" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_0667.JPEG" alt="Jaime and Kawena Dominguez">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Jaime &amp; Kawena Dominguez</div>
           <div class="broker-card-v2__role">Marketing Directors · Austin, TX</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-ingram" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_9347.jpg" alt="Nicholas Ingram">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Nicholas Ingram</div>
           <div class="broker-card-v2__role">Marketing Director · San Antonio, TX</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-taraghi" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Haydeh Taraghi</div>
           <div class="broker-card-v2__role">Marketing Director</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-elvira" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/2F57403E-AF14-4A13-823E-019BB186451A.PNG" alt="Angel Elvira">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Angel Elvira</div>
           <div class="broker-card-v2__role">Marketing Director</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-nelson" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_9319.jpg" alt="Don Rico and Dedra Nelson">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Don Rico &amp; Dedra Nelson</div>
           <div class="broker-card-v2__role">Marketing Directors</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-blocker" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_9336.jpg" alt="Christopher Blocker">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Christopher Blocker</div>
           <div class="broker-card-v2__role">Marketing Director</div>
         </div>
 
         <div class="broker-card-v2">
-          <div class="broker-card-v2__frame">
+          <a href="#broker-marsaglia" class="broker-card-v2__frame">
             <img class="broker-card-v2__img" src="media/IMG_3417.jpg" alt="Madison Marsaglia">
-          </div>
+          </a>
           <div class="broker-card-v2__name">Madison Marsaglia</div>
           <div class="broker-card-v2__role">Marketing Director</div>
         </div>
@@ -819,7 +860,7 @@
     </div>
     <div class="broker-grid">
 
-      <div class="sg-card fade-in">
+      <div class="sg-card fade-in" id="broker-godinez">
         <div class="sg-card__frame">
           <img src="media/_DSC4161.JPG" alt="Lorenzo and Crystal Godinez">
           <div class="sg-card__fade"></div>
@@ -832,7 +873,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-1">
+      <div class="sg-card fade-in fade-in--delay-1" id="broker-negrete">
         <div class="sg-card__frame">
           <img src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete">
           <div class="sg-card__fade"></div>
@@ -845,7 +886,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-2">
+      <div class="sg-card fade-in fade-in--delay-2" id="broker-dominguez">
         <div class="sg-card__frame">
           <img src="media/IMG_0667.JPEG" alt="Jaime and Kawena Dominguez">
           <div class="sg-card__fade"></div>
@@ -858,7 +899,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in">
+      <div class="sg-card fade-in" id="broker-ingram">
         <div class="sg-card__frame">
           <img src="media/IMG_9347.jpg" alt="Nicholas Ingram">
           <div class="sg-card__fade"></div>
@@ -871,7 +912,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-1">
+      <div class="sg-card fade-in fade-in--delay-1" id="broker-taraghi">
         <div class="sg-card__frame">
           <img src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
           <div class="sg-card__fade"></div>
@@ -884,7 +925,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-2">
+      <div class="sg-card fade-in fade-in--delay-2" id="broker-elvira">
         <div class="sg-card__frame">
           <img src="media/2F57403E-AF14-4A13-823E-019BB186451A.PNG" alt="Angel Elvira">
           <div class="sg-card__fade"></div>
@@ -897,7 +938,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in">
+      <div class="sg-card fade-in" id="broker-nelson">
         <div class="sg-card__frame">
           <img src="media/IMG_9319.jpg" alt="Don Rico and Dedra Nelson">
           <div class="sg-card__fade"></div>
@@ -910,7 +951,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-1">
+      <div class="sg-card fade-in fade-in--delay-1" id="broker-blocker">
         <div class="sg-card__frame">
           <img src="media/IMG_9336.jpg" alt="Christopher Blocker">
           <div class="sg-card__fade"></div>
@@ -923,7 +964,7 @@
         </div>
       </div>
 
-      <div class="sg-card fade-in fade-in--delay-2">
+      <div class="sg-card fade-in fade-in--delay-2" id="broker-marsaglia">
         <div class="sg-card__frame">
           <img src="media/IMG_3417.jpg" alt="Madison Marsaglia">
           <div class="sg-card__fade"></div>
@@ -1031,6 +1072,22 @@
     });
   }, { threshold: 0.4 });
   bsCounts.forEach(el => bsObs.observe(el));
+
+  // Marquee photo → scroll to broker card
+  document.querySelectorAll('a[href^="#broker-"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (!target) return;
+      const navH = (document.getElementById('nav') || {offsetHeight: 72}).offsetHeight;
+      const y = target.getBoundingClientRect().top + window.scrollY - navH - 24;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      target.classList.remove('broker-flash');
+      void target.offsetWidth;
+      target.classList.add('broker-flash');
+      target.addEventListener('animationend', () => target.classList.remove('broker-flash'), { once: true });
+    });
+  });
 
   // Fade-in on scroll
   const fadeEls = document.querySelectorAll('.fade-in');
