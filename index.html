@@ -183,13 +183,14 @@
       filter: drop-shadow(0 0 20px rgba(224,31,56,0.5));
     }
     .hero__tagline {
-      font-size: clamp(12px, 1.4vw, 15px);
-      letter-spacing: 0.22em;
+      font-size: clamp(11px, 1.2vw, 13px);
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.5);
       margin-bottom: 52px;
       font-weight: 500;
       opacity: 0;
+      max-width: 560px;
     }
     .hero__ctas {
       display: flex;
@@ -1732,42 +1733,55 @@
 
     /* ═══ COMMISSION CALLOUT ═══ */
     .commission-callout {
-      background: linear-gradient(135deg, #1a0007 0%, #2d000e 100%);
-      border-top: 1px solid rgba(224,31,56,0.2);
-      border-bottom: 1px solid rgba(224,31,56,0.2);
-      padding: 72px 40px;
-      text-align: center;
+      background: #060008;
+      border-top: 1px solid rgba(224,31,56,0.15);
+      border-bottom: 1px solid rgba(224,31,56,0.15);
+      padding: 108px 40px;
       position: relative;
       overflow: hidden;
     }
-    .commission-callout::before {
-      content: '';
+    .commission-callout__bg-num {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(224,31,56,0.1) 0%, transparent 65%);
+      right: -4vw;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 34vw;
+      line-height: 0.82;
+      letter-spacing: -0.05em;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(224,31,56,0.09);
+      background: linear-gradient(180deg, rgba(224,31,56,0.14) 0%, transparent 65%);
+      -webkit-background-clip: text;
+      background-clip: text;
       pointer-events: none;
+      user-select: none;
+      z-index: 0;
     }
     .commission-callout__inner {
       position: relative;
-      max-width: 780px;
+      max-width: 1100px;
       margin: 0 auto;
       z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 96px;
+      align-items: center;
     }
     .commission-callout__label {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.38);
-      margin-bottom: 16px;
+      color: rgba(255,255,255,0.28);
+      margin-bottom: 24px;
     }
     .commission-callout__q {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(32px, 4.5vw, 56px);
-      letter-spacing: 0.03em;
+      font-size: clamp(44px, 5.5vw, 76px);
+      letter-spacing: 0.02em;
       color: #fff;
-      line-height: 1.05;
-      margin-bottom: 20px;
+      line-height: 0.96;
     }
     .commission-callout__q em {
       background: linear-gradient(180deg, var(--crimson) 0%, #ff4060 100%);
@@ -1776,87 +1790,133 @@
       background-clip: text;
       font-style: normal;
     }
+    .commission-callout__rule {
+      width: 40px;
+      height: 3px;
+      background: var(--crimson);
+      margin-bottom: 28px;
+    }
     .commission-callout__a {
       font-size: 16px;
-      line-height: 1.78;
-      color: rgba(255,255,255,0.58);
-      max-width: 600px;
-      margin: 0 auto 40px;
+      line-height: 1.84;
+      color: rgba(255,255,255,0.52);
+      margin-bottom: 40px;
     }
-    @media (max-width: 600px) { .commission-callout { padding: 52px 24px; } }
+    @media (max-width: 860px) {
+      .commission-callout__inner { grid-template-columns: 1fr; gap: 40px; }
+      .commission-callout__bg-num { font-size: 56vw; right: -10vw; }
+    }
+    @media (max-width: 600px) { .commission-callout { padding: 72px 24px; } }
 
     /* ═══ TESTIMONIAL SECTION ═══ */
     .testimonial-section {
-      background: #fff;
-      padding: 100px 40px;
+      background: #030001;
+      padding: 108px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(224,31,56,0.06) 0%, transparent 65%);
+      pointer-events: none;
     }
     .testimonial-header {
       text-align: center;
-      margin-bottom: 60px;
+      margin-bottom: 72px;
+      position: relative;
+      z-index: 1;
     }
-    .testimonial-header .section-label { color: var(--crimson); }
-    .testimonial-header .section-title { color: #1a0409; margin: 0 auto 16px; }
-    .testimonial-header p { font-size: 15px; color: #b08895; max-width: 440px; margin: 0 auto; }
+    .testimonial-header .section-label { color: rgba(201,168,76,0.8); }
+    .testimonial-header .section-title { color: #fff; margin: 0 auto 16px; }
+    .testimonial-header p { font-size: 15px; color: rgba(255,255,255,0.36); max-width: 440px; margin: 0 auto; }
     .testimonial-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 20px;
       max-width: 1100px;
-      margin: 0 auto 60px;
+      margin: 0 auto 72px;
+      position: relative;
+      z-index: 1;
     }
     .testimonial-card {
-      background: #f7f2f4;
-      border: 1px solid #e8d8df;
-      border-radius: 12px;
-      padding: 36px 32px;
+      background: rgba(255,255,255,0.028);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--crimson);
+      border-radius: 0 0 12px 12px;
+      padding: 40px 32px 36px;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      transition: box-shadow 0.3s, transform 0.3s;
+      transition: background 0.35s, transform 0.4s cubic-bezier(0.22,1,0.36,1), border-top-color 0.3s;
     }
     .testimonial-card:hover {
-      box-shadow: 0 12px 40px rgba(192,21,42,0.1);
-      transform: translateY(-4px);
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-8px);
+      border-top-color: #ff4060;
     }
-    .testimonial-card__stars {
-      display: flex;
-      gap: 5px;
-    }
-    .testimonial-card__star {
-      width: 13px; height: 13px;
-      background: var(--crimson);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    .testimonial-card__mark {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 64px;
+      color: var(--crimson);
+      line-height: 0.65;
+      opacity: 0.35;
+      letter-spacing: 0;
+      margin-bottom: 4px;
     }
     .testimonial-card__quote {
       font-size: 15px;
-      line-height: 1.8;
-      color: #3a1020;
+      line-height: 1.84;
+      color: rgba(255,255,255,0.65);
       flex: 1;
-      font-style: italic;
     }
-    .testimonial-card__author { border-top: 1px solid #e8d8df; padding-top: 20px; }
+    .testimonial-card__author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+    }
+    .tc-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: rgba(224,31,56,0.15);
+      border: 1px solid rgba(224,31,56,0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      color: var(--crimson);
+      flex-shrink: 0;
+    }
+    .tc-author-info { flex: 1; }
     .testimonial-card__name {
       font-family: 'Bebas Neue', cursive;
-      font-size: 18px;
-      letter-spacing: 0.06em;
-      color: #1a0409;
-      margin-bottom: 3px;
+      font-size: 17px;
+      letter-spacing: 0.08em;
+      color: #fff;
+      line-height: 1.1;
     }
     .testimonial-card__role {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(192,21,42,0.6);
+      color: rgba(255,255,255,0.28);
+      margin-top: 2px;
     }
     .testimonial-card__amount {
       font-family: 'Bebas Neue', cursive;
-      font-size: 28px;
-      color: var(--crimson);
-      letter-spacing: 0.04em;
-      margin-top: 6px;
+      font-size: 15px;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      margin-top: 4px;
     }
-    .testimonial-cta { text-align: center; }
+    .testimonial-cta { text-align: center; position: relative; z-index: 1; }
     @media (max-width: 900px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 560px) {
       .testimonial-section { padding: 72px 24px; }
@@ -1866,65 +1926,88 @@
     /* ═══ FAQ SECTION ═══ */
     .faq-section {
       background: #07010a;
-      padding: 100px 40px;
+      padding: 108px 40px;
       position: relative;
       overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
     .faq-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(224,31,56,0.06) 0%, transparent 65%);
+      background: radial-gradient(ellipse 55% 45% at 50% 0%, rgba(224,31,56,0.05) 0%, transparent 65%);
       pointer-events: none;
     }
     .faq-inner {
-      max-width: 880px;
+      max-width: 960px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
     .faq-header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 72px;
     }
     .faq-header .section-label { color: rgba(201,168,76,0.75); }
     .faq-header .section-title { color: #fff; margin: 0 auto; }
-    .faq-header p { font-size: 15px; color: rgba(255,255,255,0.4); max-width: 440px; margin: 16px auto 0; }
+    .faq-header p { font-size: 15px; color: rgba(255,255,255,0.36); max-width: 440px; margin: 14px auto 0; }
     .faq-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 4px;
+      overflow: hidden;
     }
     .faq-item {
-      background: rgba(255,255,255,0.025);
-      border: 1px solid rgba(255,255,255,0.06);
-      padding: 36px 32px;
-      transition: background 0.3s, border-color 0.3s;
+      background: rgba(255,255,255,0.02);
+      border-right: 1px solid rgba(255,255,255,0.07);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 44px 40px;
+      position: relative;
+      transition: background 0.3s;
     }
-    .faq-item:hover {
-      background: rgba(224,31,56,0.05);
-      border-color: rgba(224,31,56,0.18);
+    .faq-item:nth-child(even) { border-right: none; }
+    .faq-item:nth-last-child(-n+2) { border-bottom: none; }
+    .faq-item::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: transparent;
+      transition: background 0.3s;
+    }
+    .faq-item:hover { background: rgba(224,31,56,0.04); }
+    .faq-item:hover::before { background: var(--crimson); }
+    .faq-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 11px;
+      letter-spacing: 0.32em;
+      color: rgba(224,31,56,0.45);
+      margin-bottom: 16px;
     }
     .faq-q {
       font-family: 'Bebas Neue', cursive;
-      font-size: 21px;
-      letter-spacing: 0.05em;
+      font-size: 23px;
+      letter-spacing: 0.04em;
       color: #fff;
-      margin-bottom: 14px;
-      line-height: 1.2;
+      margin-bottom: 16px;
+      line-height: 1.15;
     }
     .faq-a {
       font-size: 14px;
-      line-height: 1.85;
-      color: rgba(255,255,255,0.46);
+      line-height: 1.9;
+      color: rgba(255,255,255,0.42);
     }
     .faq-cta {
       text-align: center;
-      margin-top: 64px;
+      margin-top: 72px;
     }
     @media (max-width: 700px) {
       .faq-section { padding: 72px 24px; }
-      .faq-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; border-radius: 8px; }
+      .faq-item { border-right: none; }
+      .faq-item:nth-last-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .faq-item:last-child { border-bottom: none; }
     }
 
   </style>
@@ -1977,10 +2060,10 @@
   <div class="hero__content">
     <p class="hero__eyebrow" id="heroEyebrow">Life Insurance Career &nbsp;·&nbsp; PHP Agency Partner</p>
     <h1 class="hero__title" id="heroTitle">
-      PROTECT<br><span class="accent">FAMILIES.</span><br>BUILD WEALTH.
+      PROTECT<br><span class="accent">FAMILIES</span><br>BUILD WEALTH.
     </h1>
     <p class="hero__tagline" id="heroTagline">
-      No prior experience required &nbsp;·&nbsp; <span style="white-space:nowrap">Agents earning $4K+ their first month</span>
+      No prior experience required &nbsp;·&nbsp; Agents earning $4K+ their first month
     </p>
     <div class="hero__ctas" id="heroCtas">
       <a href="matchup.html" class="btn btn--crimson btn--lg btn--shimmer magnetic">Book a Discovery Call →</a>
@@ -2140,12 +2223,18 @@
 </section>
 
 <!-- ═══ COMMISSION CALLOUT ═══ -->
-<div class="commission-callout fade-in">
-  <div class="commission-callout__inner">
-    <p class="commission-callout__label">Let's address the obvious question</p>
-    <h2 class="commission-callout__q">Yes, it's <em>100% commission.</em><br>Here is what that actually means.</h2>
-    <p class="commission-callout__a">No income ceiling. No salary cap. No one limiting what you can earn. Salaried jobs trade your potential for a guaranteed floor. Commission means you own your results. The agents in this movement earning $10K+ a month started exactly where you are right now. The only difference is they made the call.</p>
-    <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Discovery Call →</a>
+<div class="commission-callout">
+  <div class="commission-callout__bg-num" aria-hidden="true">100%</div>
+  <div class="commission-callout__inner fade-in">
+    <div>
+      <p class="commission-callout__label">Let's address the obvious question</p>
+      <h2 class="commission-callout__q">Yes,<br>it's <em>100%</em><br>commission.</h2>
+    </div>
+    <div>
+      <div class="commission-callout__rule"></div>
+      <p class="commission-callout__a">No income ceiling. No salary cap. No one limiting what you can earn. Salaried jobs trade your potential for a guaranteed floor. Commission means you own your results completely. The agents in this movement earning $10K+ a month started exactly where you are right now. The only difference is they made the call.</p>
+      <a href="matchup.html" class="btn btn--crimson btn--lg">Book Your Discovery Call →</a>
+    </div>
   </div>
 </div>
 
@@ -2393,50 +2482,41 @@
   <div class="testimonial-grid">
 
     <div class="testimonial-card fade-in">
-      <div class="testimonial-card__stars">
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-      </div>
+      <div class="testimonial-card__mark">"</div>
       <p class="testimonial-card__quote">My first month I earned $4,200. I had never sold insurance before in my life. The training, the support, the system — it all works. I just had to show up and follow the process.</p>
       <div class="testimonial-card__author">
-        <div class="testimonial-card__name">Maria R.</div>
-        <div class="testimonial-card__role">Prevail Agent</div>
-        <div class="testimonial-card__amount">$4,200 First Month</div>
+        <div class="tc-avatar">MR</div>
+        <div class="tc-author-info">
+          <div class="testimonial-card__name">Maria R.</div>
+          <div class="testimonial-card__role">Prevail Agent</div>
+          <div class="testimonial-card__amount">$4,200 First Month</div>
+        </div>
       </div>
     </div>
 
     <div class="testimonial-card fade-in fade-in--delay-1">
-      <div class="testimonial-card__stars">
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-      </div>
+      <div class="testimonial-card__mark">"</div>
       <p class="testimonial-card__quote">15 appointments in my first 30 days. Nobody handed me that. The system works, the leaders support you, and the families you help make every call worth it. I wish I had started sooner.</p>
       <div class="testimonial-card__author">
-        <div class="testimonial-card__name">Pablo N.</div>
-        <div class="testimonial-card__role">Prevail Agent</div>
-        <div class="testimonial-card__amount">15 Appts in 30 Days</div>
+        <div class="tc-avatar">PN</div>
+        <div class="tc-author-info">
+          <div class="testimonial-card__name">Pablo N.</div>
+          <div class="testimonial-card__role">Prevail Agent</div>
+          <div class="testimonial-card__amount">15 Appts in 30 Days</div>
+        </div>
       </div>
     </div>
 
     <div class="testimonial-card fade-in fade-in--delay-2">
-      <div class="testimonial-card__stars">
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-        <div class="testimonial-card__star"></div>
-      </div>
+      <div class="testimonial-card__mark">"</div>
       <p class="testimonial-card__quote">I came in with zero background in insurance. Within months I was promoted to Marketing Director. This organization develops you into a leader if you are willing to put in the work.</p>
       <div class="testimonial-card__author">
-        <div class="testimonial-card__name">Lorenzo G.</div>
-        <div class="testimonial-card__role">Marketing Director</div>
-        <div class="testimonial-card__amount">Promoted in Under a Year</div>
+        <div class="tc-avatar">LG</div>
+        <div class="tc-author-info">
+          <div class="testimonial-card__name">Lorenzo G.</div>
+          <div class="testimonial-card__role">Marketing Director</div>
+          <div class="testimonial-card__amount">Promoted Under a Year</div>
+        </div>
       </div>
     </div>
 
@@ -2507,31 +2587,37 @@
     <div class="faq-grid">
 
       <div class="faq-item fade-in">
+        <div class="faq-num">01</div>
         <div class="faq-q">Do I need prior experience to join?</div>
         <div class="faq-a">No. We build licensed agents from the ground up. Most of our top performers came in with zero insurance background. What we look for is drive, coachability, and a willingness to serve people.</div>
       </div>
 
       <div class="faq-item fade-in fade-in--delay-1">
+        <div class="faq-num">02</div>
         <div class="faq-q">How long does licensing take?</div>
         <div class="faq-a">Most agents complete their pre-licensing coursework and pass the state exam within 3 to 4 weeks. The course is fully online and self-paced. We walk you through every step of the process.</div>
       </div>
 
       <div class="faq-item fade-in fade-in--delay-2">
+        <div class="faq-num">03</div>
         <div class="faq-q">Is it really 100% commission?</div>
         <div class="faq-a">Yes. That means no income ceiling. No salary cap. No one placing a lid on what you can build. Salaried jobs guarantee a floor and cap your ceiling. Commission means you own your results completely.</div>
       </div>
 
       <div class="faq-item fade-in fade-in--delay-3">
+        <div class="faq-num">04</div>
         <div class="faq-q">What support and training do I get?</div>
         <div class="faq-a">You receive a full Fast Start onboarding session, a proven appointment script, access to warm leads, weekly team training, and ongoing one-on-one coaching from experienced Prevail leaders.</div>
       </div>
 
       <div class="faq-item fade-in">
+        <div class="faq-num">05</div>
         <div class="faq-q">Can I do this part-time?</div>
         <div class="faq-a">Yes. Many agents start part-time while working another job. Once your commission income replaces your salary, going full-time becomes the easy decision. The flexibility is yours to design.</div>
       </div>
 
       <div class="faq-item fade-in fade-in--delay-1">
+        <div class="faq-num">06</div>
         <div class="faq-q">When do I see my first commission?</div>
         <div class="faq-a">Consistent agents run their first client appointments by week 5 and typically receive their first commission check within 45 to 60 days of starting. Your income starts when your actions do.</div>
       </div>
