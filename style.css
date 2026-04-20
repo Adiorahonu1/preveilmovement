@@ -163,7 +163,7 @@ img { display: block; max-width: 100%; }
   padding: 20px 0 30px;
   z-index: 999;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 4px;
 }
 .nav__mobile.open { display: flex; }
@@ -173,14 +173,14 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 12px 40px;
+  padding: 12px 28px;
   width: 100%;
-  text-align: center;
+  text-align: left;
   transition: color 0.2s;
 }
 .nav__mobile a:hover,
 .nav__mobile a.active { color: #fff; }
-.nav__mobile .nav__cta { margin-top: 12px; }
+.nav__mobile .nav__cta { margin-top: 12px; align-self: center; }
 
 /* ── Dropdown nav ── */
 .nav__dropdown { position: relative; }
@@ -257,7 +257,7 @@ img { display: block; max-width: 100%; }
 .nav__mobile-group-toggle {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 6px;
   width: 100%;
   font-size: 15px;
@@ -265,7 +265,7 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 12px 40px;
+  padding: 12px 28px;
   background: none;
   border: none;
   cursor: pointer;
@@ -283,12 +283,12 @@ img { display: block; max-width: 100%; }
 .nav__mobile-group-items {
   display: none;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   background: rgba(0,0,0,0.2);
   padding: 4px 0;
 }
 .nav__mobile-group-items.open { display: flex; }
-.nav__mobile-group-items a { font-size: 13px; padding: 10px 40px; }
+.nav__mobile-group-items a { font-size: 13px; padding: 10px 28px 10px 44px; text-align: left; }
 
 /* ============================================================
    PAGE HERO (inner pages)

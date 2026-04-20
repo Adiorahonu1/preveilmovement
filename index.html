@@ -2116,6 +2116,13 @@
 
     /* ── Large desktop (1440px–1919px) ── */
     @media (min-width: 1440px) {
+      /* Hero: switch to margin-based positioning so max-width doesn't fight padding-left */
+      .hero__content {
+        width: 760px;
+        max-width: none;
+        margin-left: max(64px, calc((100vw - 1280px) / 2 + 48px));
+        padding: 0 0 148px 0;
+      }
       .faq-section { padding: 100px 80px 96px; }
       .faq-inner { max-width: 1100px; }
       .faq-grid { gap: 14px; }
@@ -2129,6 +2136,11 @@
 
     /* ── Wide screen (1920px–2559px) ── */
     @media (min-width: 1920px) {
+      .hero__content {
+        width: 820px;
+        margin-left: max(64px, calc(50vw - 640px));
+        padding: 0 0 148px 0;
+      }
       .faq-section { padding: 120px 100px 112px; }
       .faq-inner { max-width: 1360px; }
       .faq-header-title { font-size: 82px; }
@@ -2143,6 +2155,11 @@
 
     /* ── Ultra-wide (2560px+) ── */
     @media (min-width: 2560px) {
+      .hero__content {
+        width: 900px;
+        margin-left: max(80px, calc(50vw - 1000px + 80px));
+        padding: 0 0 148px 0;
+      }
       .faq-section { padding: 140px 120px 128px; }
       .faq-inner { max-width: 1720px; }
       .faq-header-title { font-size: 100px; }
