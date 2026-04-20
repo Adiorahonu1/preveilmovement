@@ -214,14 +214,14 @@ img { display: block; max-width: 100%; }
 .nav__dropdown:focus-within .nav__chevron { transform: rotate(90deg); }
 .nav__dropdown-menu {
   position: absolute;
-  top: calc(100% + 10px);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(-6px);
   background: rgba(72,8,20,0.97);
   backdrop-filter: blur(14px);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: 10px;
-  padding: 8px;
+  padding: 18px 8px 8px; /* top padding bridges the visual gap without creating a hover dead-zone */
   min-width: 210px;
   z-index: 1001;
   box-shadow: 0 20px 48px rgba(0,0,0,0.5);
