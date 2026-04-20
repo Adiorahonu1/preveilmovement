@@ -27,7 +27,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── INTRO ── */
+    /* Ã¢ÂÂÃ¢ÂÂ INTRO Ã¢ÂÂÃ¢ÂÂ */
     .quiz-intro {
       position: relative;
       min-height: 100vh;
@@ -147,7 +147,7 @@
       color: rgba(255,255,255,0.22);
     }
 
-    /* ── QUESTION SCREEN ── */
+    /* Ã¢ÂÂÃ¢ÂÂ QUESTION SCREEN Ã¢ÂÂÃ¢ÂÂ */
     .quiz-question {
       min-height: 100vh;
       align-items: center;
@@ -299,7 +299,7 @@
     }
     .quiz-back-btn:hover { color: rgba(255,255,255,0.6); }
 
-    /* ── LOADING SCREEN ── */
+    /* Ã¢ÂÂÃ¢ÂÂ LOADING SCREEN Ã¢ÂÂÃ¢ÂÂ */
     .quiz-loading {
       min-height: 100vh;
       background: linear-gradient(160deg, #7d1a30 0%, #4a0c1a 55%, #5a1020 100%);
@@ -359,7 +359,7 @@
     }
     @keyframes loadFill { from { width: 0; } to { width: 100%; } }
 
-    /* ── RESULT SCREEN ── */
+    /* Ã¢ÂÂÃ¢ÂÂ RESULT SCREEN Ã¢ÂÂÃ¢ÂÂ */
     .quiz-result {
       min-height: 100vh;
       align-items: flex-start;
@@ -483,7 +483,7 @@
     }
     .quiz-result__retake:hover { color: rgba(255,255,255,0.5); }
 
-    /* ── RESPONSIVE ── */
+    /* Ã¢ÂÂÃ¢ÂÂ RESPONSIVE Ã¢ÂÂÃ¢ÂÂ */
     @media (max-width: 600px) {
       .types-grid { grid-template-columns: repeat(3, 1fr); }
       .quiz-result__paths { grid-template-columns: 1fr; }
@@ -504,34 +504,52 @@
   </a>
   <ul class="nav__links">
     <li><a href="index.html">Home</a></li>
-    <li><a href="founder.html">Meet Our Founder</a></li>
-    <li><a href="brokers.html">Our Brokers</a></li>
-    <li><a href="licensing.html">Licensing</a></li>
+    <li class="nav__dropdown">
+      <button class="nav__dropdown-toggle" type="button">About <span class="nav__chevron">âº</span></button>
+      <ul class="nav__dropdown-menu">
+        <li><a href="founder.html">Meet Our Founder</a></li>
+        <li><a href="brokers.html">Our Brokers</a></li>
+      </ul>
+    </li>
     <li><a href="videos.html">Videos</a></li>
-    <li><a href="presentations.html">Presentations</a></li>
-    <li><a href="systems.html">Systems</a></li>
-    <li><a href="matchup.html">Matchup</a></li>
+    <li class="nav__dropdown">
+      <button class="nav__dropdown-toggle" type="button">Resources <span class="nav__chevron">âº</span></button>
+      <ul class="nav__dropdown-menu">
+        <li><a href="presentations.html">Presentations</a></li>
+        <li><a href="systems.html">Systems</a></li>
+        <li><a href="licensing.html">Licensing</a></li>
+      </ul>
+    </li>
   </ul>
   <a href="matchup.html" class="nav__cta desktop btn btn--crimson btn--pill btn--sm">Book a Call</a>
   <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div class="nav__mobile" id="mobileNav">
   <a href="index.html">Home</a>
-  <a href="founder.html">Meet Our Founder</a>
-  <a href="brokers.html">Our Brokers</a>
-  <a href="licensing.html">Licensing</a>
+  <div class="nav__mobile-group">
+    <button class="nav__mobile-group-toggle" type="button">About <span class="nav__mobile-group-chevron">›</span></button>
+    <div class="nav__mobile-group-items">
+      <a href="founder.html">Meet Our Founder</a>
+      <a href="brokers.html">Our Brokers</a>
+    </div>
+  </div>
   <a href="videos.html">Videos</a>
-  <a href="presentations.html">Presentations</a>
-  <a href="systems.html">Systems</a>
-  <a href="matchup.html">Matchup</a>
+  <div class="nav__mobile-group">
+    <button class="nav__mobile-group-toggle" type="button">Resources <span class="nav__mobile-group-chevron">›</span></button>
+    <div class="nav__mobile-group-items">
+      <a href="presentations.html">Presentations</a>
+      <a href="systems.html">Systems</a>
+      <a href="licensing.html">Licensing</a>
+    </div>
+  </div>
   <a href="matchup.html" class="nav__cta btn btn--crimson btn--pill">Book a Call</a>
 </div>
 
 <div class="quiz-wrap">
 
-  <!-- ════════════════════════════════════
-       SCREEN 0 — INTRO
-  ════════════════════════════════════ -->
+  <!-- Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+       SCREEN 0 Ã¢ÂÂ INTRO
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ -->
   <div class="quiz-screen is-active" id="screen-intro">
     <div class="quiz-intro">
       <div class="quiz-intro__glow"></div>
@@ -544,38 +562,38 @@
 
         <div class="types-grid">
           <div class="type-chip type-chip--hot">
-            <span class="type-chip__icon">⚡</span>
+            <span class="type-chip__icon">Ã¢ÂÂ¡</span>
             <div class="type-chip__name">Achievement Driver</div>
             <span class="type-chip__badge">Most Common</span>
           </div>
           <div class="type-chip">
-            <span class="type-chip__icon">🔓</span>
+            <span class="type-chip__icon">Ã°ÂÂÂ</span>
             <div class="type-chip__name">Freedom Seeker</div>
           </div>
           <div class="type-chip">
-            <span class="type-chip__icon">🏛️</span>
+            <span class="type-chip__icon">Ã°ÂÂÂÃ¯Â¸Â</span>
             <div class="type-chip__name">Legacy Builder</div>
           </div>
           <div class="type-chip">
-            <span class="type-chip__icon">🤝</span>
+            <span class="type-chip__icon">Ã°ÂÂ¤Â</span>
             <div class="type-chip__name">Community Builder</div>
           </div>
           <div class="type-chip">
-            <span class="type-chip__icon">📈</span>
+            <span class="type-chip__icon">Ã°ÂÂÂ</span>
             <div class="type-chip__name">Wealth Creator</div>
           </div>
         </div>
 
-        <button class="btn btn--crimson btn--lg" onclick="startQuiz()">Start the Quiz →</button>
+        <button class="btn btn--crimson btn--lg" onclick="startQuiz()">Start the Quiz Ã¢ÂÂ</button>
         <p class="quiz-start-note">No email required. Results in under 2 minutes.</p>
 
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       SCREEN 1 — QUESTION
-  ════════════════════════════════════ -->
+  <!-- Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+       SCREEN 1 Ã¢ÂÂ QUESTION
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ -->
   <div class="quiz-screen" id="screen-question">
     <div class="quiz-question">
       <div class="quiz-question__inner">
@@ -596,29 +614,29 @@
         <div class="quiz-options" id="qOptions"></div>
 
         <div class="quiz-next-row">
-          <button class="btn btn--crimson btn--lg quiz-next-btn" id="nextBtn" onclick="nextQuestion()">Next →</button>
-          <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" style="display:none">← Back</button>
+          <button class="btn btn--crimson btn--lg quiz-next-btn" id="nextBtn" onclick="nextQuestion()">Next Ã¢ÂÂ</button>
+          <button class="quiz-back-btn" id="backBtn" onclick="prevQuestion()" style="display:none">Ã¢ÂÂ Back</button>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       SCREEN 2 — LOADING
-  ════════════════════════════════════ -->
+  <!-- Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+       SCREEN 2 Ã¢ÂÂ LOADING
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ -->
   <div class="quiz-screen" id="screen-loading">
     <div class="quiz-loading">
       <div class="quiz-loading__glow"></div>
-      <div class="quiz-loading__icon" id="loadingIcon">⚡</div>
+      <div class="quiz-loading__icon" id="loadingIcon">Ã¢ÂÂ¡</div>
       <div class="quiz-loading__title">ANALYZING YOUR RESULTS</div>
       <div class="quiz-loading__bar"><div class="quiz-loading__fill"></div></div>
     </div>
   </div>
 
-  <!-- ════════════════════════════════════
-       SCREEN 3 — RESULT
-  ════════════════════════════════════ -->
+  <!-- Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
+       SCREEN 3 Ã¢ÂÂ RESULT
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ -->
   <div class="quiz-screen" id="screen-result">
     <div class="quiz-result">
       <div class="quiz-result__glow"></div>
@@ -631,7 +649,7 @@
         <p class="quiz-result__desc" id="resultDesc"></p>
         <div class="quiz-result__paths" id="resultPaths"></div>
         <div class="quiz-result__ctas">
-          <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Free Consultation →</a>
+          <a href="matchup.html" class="btn btn--crimson btn--lg">Book a Free Consultation Ã¢ÂÂ</a>
           <a href="licensing.html" class="btn btn--outline btn--lg">Start Your Career</a>
         </div>
         <button class="quiz-result__retake" onclick="retakeQuiz()">Retake the quiz</button>
@@ -678,28 +696,28 @@
     </div>
   </div>
   <div class="footer__bottom">
-    <span>© 2025 The Prevail Movement. All rights reserved.</span>
+    <span>ÃÂ© 2025 The Prevail Movement. All rights reserved.</span>
     <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
   </div>
 </footer>
 
 <script>
-  /* ── Nav ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Nav Ã¢ÂÂÃ¢ÂÂ */
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20));
   const hamburger = document.getElementById('hamburger');
   const mobileNav = document.getElementById('mobileNav');
   hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileNav.classList.toggle('open'); });
 
-  /* ════════════════════════════════════
+  /* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
      QUIZ DATA
-  ════════════════════════════════════ */
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
 
   /* Type index: 0=Achievement 1=Freedom 2=Legacy 3=Connected 4=Wealth */
   const TYPES = [
     {
       id:      'achievement',
-      icon:    '⚡',
+      icon:    'Ã¢ÂÂ¡',
       name:    'Achievement Driver',
       tagline: 'You are built to lead and wired to win.',
       desc:    'You thrive on performance, recognition, and results. Whether you are building a career in financial services or protecting what you have earned, average is not in your vocabulary. You set aggressive targets, push until you exceed them, and then reset the bar higher. People around you either keep up or get inspired.',
@@ -710,7 +728,7 @@
     },
     {
       id:      'freedom',
-      icon:    '🔓',
+      icon:    'Ã°ÂÂÂ',
       name:    'Freedom Seeker',
       tagline: 'You build wealth to own your time.',
       desc:    'You are not just chasing income. You are engineering a life you own. Flexibility, autonomy, and freedom from obligation drive every decision you make. You measure success not in dollars alone but in options. The ability to work from anywhere, set your own schedule, and answer to no one is the goal.',
@@ -721,7 +739,7 @@
     },
     {
       id:      'legacy',
-      icon:    '🏛️',
+      icon:    'Ã°ÂÂÂÃ¯Â¸Â',
       name:    'Legacy Builder',
       tagline: 'You play the long game.',
       desc:    'You think in decades, not quarters. You are driven by what you leave behind more than what you accumulate today. Family, foundation, and long term protection are at the core of every financial decision you make. Consistency and patience are your greatest strengths and they compound over time.',
@@ -732,7 +750,7 @@
     },
     {
       id:      'connected',
-      icon:    '🤝',
+      icon:    'Ã°ÂÂ¤Â',
       name:    'Community Builder',
       tagline: 'You grow by growing others.',
       desc:    'Your greatest asset is your network. You build trust naturally and your sphere of influence expands because people know you deliver. You understand that relationships are the foundation of every great business and every great financial plan. When you win, you make sure the people around you win too.',
@@ -743,7 +761,7 @@
     },
     {
       id:      'wealth',
-      icon:    '📈',
+      icon:    'Ã°ÂÂÂ',
       name:    'Wealth Creator',
       tagline: 'You are in the game to build real lasting wealth.',
       desc:    'You approach money like an engineer. You want to understand the vehicles, optimize the returns, and build a system where your money works harder than you do. Strategy, data, and patience are your toolkit. You are not impressed by hype but you are very impressed by compounding returns and tax efficiency.',
@@ -837,14 +855,14 @@
     }
   ];
 
-  /* ════════════════════════════════════
+  /* Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ
      QUIZ STATE
-  ════════════════════════════════════ */
+  Ã¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂÃ¢ÂÂ */
   let currentQ   = 0;
-  let answers    = [];        // array of type indices (0–4)
+  let answers    = [];        // array of type indices (0Ã¢ÂÂ4)
   let selected   = null;      // type index of current selection
 
-  /* ── Show a screen ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Show a screen Ã¢ÂÂÃ¢ÂÂ */
   function showScreen(id) {
     document.querySelectorAll('.quiz-screen').forEach(s => s.classList.remove('is-active'));
     const el = document.getElementById(id);
@@ -852,7 +870,7 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /* ── Start ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Start Ã¢ÂÂÃ¢ÂÂ */
   function startQuiz() {
     currentQ = 0;
     answers  = [];
@@ -861,7 +879,7 @@
     showScreen('screen-question');
   }
 
-  /* ── Render current question ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Render current question Ã¢ÂÂÃ¢ÂÂ */
   function renderQuestion() {
     const q       = QUESTIONS[currentQ];
     const letters = ['A', 'B', 'C', 'D', 'E'];
@@ -874,7 +892,7 @@
     document.getElementById('qPct').textContent        = pct + '%';
 
     const nextBtn = document.getElementById('nextBtn');
-    nextBtn.textContent = (currentQ === QUESTIONS.length - 1) ? 'See My Results →' : 'Next →';
+    nextBtn.textContent = (currentQ === QUESTIONS.length - 1) ? 'See My Results Ã¢ÂÂ' : 'Next Ã¢ÂÂ';
     nextBtn.classList.remove('enabled');
 
     const backBtn = document.getElementById('backBtn');
@@ -898,7 +916,7 @@
     });
   }
 
-  /* ── Next ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Next Ã¢ÂÂÃ¢ÂÂ */
   function nextQuestion() {
     if (selected === null) return;
     answers[currentQ] = selected;
@@ -916,7 +934,7 @@
     }
   }
 
-  /* ── Back ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Back Ã¢ÂÂÃ¢ÂÂ */
   function prevQuestion() {
     if (currentQ === 0) return;
     currentQ--;
@@ -927,7 +945,7 @@
     s.classList.add('is-active');
   }
 
-  /* ── Calculate result and show ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Calculate result and show Ã¢ÂÂÃ¢ÂÂ */
   function showResults() {
     /* tally votes */
     const counts = [0, 0, 0, 0, 0];
@@ -958,7 +976,7 @@
     }, 2000);
   }
 
-  /* ── Retake ── */
+  /* Ã¢ÂÂÃ¢ÂÂ Retake Ã¢ÂÂÃ¢ÂÂ */
   function retakeQuiz() {
     showScreen('screen-intro');
   }
