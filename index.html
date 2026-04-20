@@ -2306,21 +2306,21 @@
 <!-- ═══ STATS ═══ -->
 <div class="stats-section" id="statsSection">
   <div class="stats-inner">
-    <div class="stat-item" data-target="60" data-prefix="" data-suffix="+">
+    <div class="stat-item" data-target="14519" data-prefix="" data-suffix="">
       <div class="stat-num">0</div>
-      <div class="stat-label">Prevail Licensed Agents</div>
+      <div class="stat-label">Total Licensed Agents</div>
     </div>
-    <div class="stat-item" data-target="90" data-prefix="" data-suffix="K+">
+    <div class="stat-item" data-target="81000" data-prefix="" data-suffix="">
       <div class="stat-num">0</div>
-      <div class="stat-label">Families Protected</div>
+      <div class="stat-label">Entrepreneurs</div>
     </div>
-    <div class="stat-item" data-target="4" data-prefix="$" data-suffix="K+">
-      <div class="stat-num">$0</div>
-      <div class="stat-label">Avg First Month Income</div>
+    <div class="stat-item" data-target="118000" data-prefix="" data-suffix="+">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Families</div>
     </div>
-    <div class="stat-item" data-target="127" data-prefix="$" data-suffix="M+">
+    <div class="stat-item" data-target="128" data-prefix="$" data-suffix="M">
       <div class="stat-num">$0</div>
-      <div class="stat-label">In Business (PHP Network)</div>
+      <div class="stat-label">Revenue</div>
     </div>
   </div>
 </div>
@@ -3590,14 +3590,15 @@
         if (!numEl) return;
         const duration = 1800;
         const startTime = performance.now();
+        function fmt(n) { return n >= 1000 ? n.toLocaleString() : n; }
         function step(now) {
           const elapsed  = Math.min(now - startTime, duration);
           const progress = elapsed / duration;
           const ease     = 1 - Math.pow(1 - progress, 3);
           const current  = Math.round(ease * target);
-          numEl.textContent = prefix + current + suffix;
+          numEl.textContent = prefix + fmt(current) + suffix;
           if (elapsed < duration) requestAnimationFrame(step);
-          else numEl.textContent = prefix + target + suffix;
+          else numEl.textContent = prefix + fmt(target) + suffix;
         }
         requestAnimationFrame(step);
       });
