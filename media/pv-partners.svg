@@ -1,12 +1,27 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 120" fill="none">
-  <!-- Shield outline -->
-  <path d="M52 12 L78 12 L78 58 L65 72 L52 58 Z" stroke="#C0152A" stroke-width="2.5" fill="none"/>
-  <!-- PV inside shield -->
-  <text x="65" y="50" text-anchor="middle" font-family="'Bebas Neue', 'Arial Black', sans-serif" font-size="30" font-weight="700" letter-spacing="2" fill="#C0152A">PV</text>
-  <!-- PARTNERS text -->
-  <text x="108" y="38" font-family="'Bebas Neue', 'Arial Black', sans-serif" font-size="38" font-weight="400" letter-spacing="6" fill="#1a0409">PARTNERS</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 130" fill="none">
+  <!-- Stylized Eagle / Bird -->
+  <g transform="translate(40, 18)" fill="#C0152A">
+    <!-- Left wing -->
+    <path d="M30 42 C20 30, 5 22, 0 18 C8 24, 16 28, 24 36 Z" opacity="0.9"/>
+    <path d="M28 38 C15 24, 2 16, -4 10 C6 18, 14 24, 22 34 Z" opacity="0.7"/>
+    <path d="M26 34 C12 18, -2 8, -8 2 C4 12, 12 20, 20 30 Z" opacity="0.5"/>
+    <!-- Right wing -->
+    <path d="M50 42 C60 30, 75 22, 80 18 C72 24, 64 28, 56 36 Z" opacity="0.9"/>
+    <path d="M52 38 C65 24, 78 16, 84 10 C74 18, 66 24, 58 34 Z" opacity="0.7"/>
+    <path d="M54 34 C68 18, 82 8, 88 2 C76 12, 68 20, 60 30 Z" opacity="0.5"/>
+    <!-- Body -->
+    <ellipse cx="40" cy="46" rx="12" ry="8" opacity="0.85"/>
+    <!-- Head -->
+    <circle cx="40" cy="34" r="6" opacity="0.9"/>
+    <!-- Beak -->
+    <path d="M46 33 L52 35 L46 36 Z" opacity="0.95"/>
+    <!-- Tail feathers -->
+    <path d="M34 54 L30 68 L40 58 L50 68 L46 54 Z" opacity="0.7"/>
+  </g>
+  <!-- PV PARTNERS text -->
+  <text x="140" y="46" font-family="'Bebas Neue', 'Impact', 'Arial Black', sans-serif" font-size="42" font-weight="400" letter-spacing="5" fill="#1a0409">PV PARTNERS</text>
+  <!-- Divider line -->
+  <line x1="140" y1="54" x2="340" y2="54" stroke="#C0152A" stroke-width="1.5" opacity="0.6"/>
   <!-- Subline -->
-  <text x="108" y="56" font-family="Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="4" fill="#b08895" text-transform="uppercase">BY THE PREVAIL MOVEMENT</text>
-  <!-- Accent line -->
-  <line x1="108" y1="62" x2="200" y2="62" stroke="#C0152A" stroke-width="1.5"/>
+  <text x="140" y="70" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" letter-spacing="4.5" fill="#997080">THE PREVAIL MOVEMENT</text>
 </svg>
