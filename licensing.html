@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Licensing | Prevail Movement</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Auth: preload Supabase + lock content before paint -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <style>body.auth-locked>*:not(.auth-gate){visibility:hidden!important;pointer-events:none!important}</style>
   <style>
     .license-actions {
       max-width: 700px;
@@ -414,9 +419,7 @@
   fadeEls.forEach(el => observer.observe(el));
 </script>
 
-<!-- Auth Guard -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
+<!-- Auth Guard (Supabase loaded in <head> for instant gate) -->
 <script src="auth-guard.js"></script>
 
 </body>
