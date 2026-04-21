@@ -303,6 +303,10 @@
   </div>
   <div class="footer__bottom">
     <span>© 2026 The Prevail Movement. All rights reserved.</span>
+    <div class="footer__legal">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
     <div class="footer__php"><span>Proudly affiliated with</span><span class="footer__php-badge">PHP AGENCY</span></div>
   </div>
 </footer>
@@ -337,6 +341,11 @@
   }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
 </script>
+
+<!-- Auth Guard -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="auth-guard.js"></script>
 
 </body>
 </html>
