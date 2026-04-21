@@ -290,7 +290,7 @@
       pointer-events: none;
     }
     .brokers-stats__inner {
-      max-width: 900px;
+      max-width: 1100px;
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -306,7 +306,7 @@
       line-height: 1;
       letter-spacing: 0.02em;
     }
-    .bs-stat__plus { color: var(--crimson); }
+    .bs-stat__plus, .bs-stat__prefix { color: var(--crimson); }
     .bs-stat__label {
       font-size: 10px;
       font-weight: 700;
@@ -649,18 +649,23 @@
 <section class="brokers-stats">
   <div class="brokers-stats__inner">
     <div class="bs-stat fade-in">
-      <div class="bs-stat__num"><span class="bs-count" data-target="13">0</span><span class="bs-stat__plus">+</span></div>
-      <div class="bs-stat__label">Licensed Brokers</div>
+      <div class="bs-stat__num"><span class="bs-count" data-target="14519">0</span></div>
+      <div class="bs-stat__label">Total Licensed Agents</div>
     </div>
     <div class="bs-divider"></div>
     <div class="bs-stat fade-in fade-in--delay-1">
-      <div class="bs-stat__num"><span class="bs-count" data-target="90000">0</span><span class="bs-stat__plus">+</span></div>
-      <div class="bs-stat__label">Families Protected</div>
+      <div class="bs-stat__num"><span class="bs-count" data-target="81000">0</span></div>
+      <div class="bs-stat__label">Entrepreneurs</div>
     </div>
     <div class="bs-divider"></div>
     <div class="bs-stat fade-in fade-in--delay-2">
-      <div class="bs-stat__num">PHP</div>
-      <div class="bs-stat__label">Agency Certified Partners</div>
+      <div class="bs-stat__num"><span class="bs-count" data-target="118000">0</span><span class="bs-stat__plus">+</span></div>
+      <div class="bs-stat__label">Families Protected</div>
+    </div>
+    <div class="bs-divider"></div>
+    <div class="bs-stat fade-in fade-in--delay-3">
+      <div class="bs-stat__num"><span class="bs-stat__prefix">$</span><span class="bs-count" data-target="128">0</span><span class="bs-stat__plus">M</span></div>
+      <div class="bs-stat__label">Revenue Generated</div>
     </div>
   </div>
 </section>
@@ -991,6 +996,45 @@
           <div class="sg-card__name">Madison Marsaglia</div>
           <div class="sg-card__role">Marketing Director</div>
           <div class="sg-card__location">&nbsp;</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in" id="broker-flores">
+        <div class="sg-card__frame">
+          <img src="media/B17FB3B1-1E08-4B37-A7D4-B183987F2EB6.PNG" alt="Jony and Blanca Flores">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Jony &amp; Blanca Flores</div>
+          <div class="sg-card__role">Marketing Directors</div>
+          <div class="sg-card__location">Austin, TX</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in fade-in--delay-1" id="broker-johnson">
+        <div class="sg-card__frame">
+          <img src="media/739A5CB7-DF2C-47C0-ABD2-237E202A047B.PNG" alt="Justin Johnson">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Justin Johnson</div>
+          <div class="sg-card__role">Marketing Director</div>
+          <div class="sg-card__location">Palmdale, CA</div>
+          <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
+        </div>
+      </div>
+
+      <div class="sg-card fade-in fade-in--delay-2" id="broker-tolley">
+        <div class="sg-card__frame">
+          <img src="media/0161085E-5D03-4A24-92A7-CDEFB324CF1D.PNG" alt="Drew Tolley">
+          <div class="sg-card__fade"></div>
+        </div>
+        <div class="sg-card__body">
+          <div class="sg-card__name">Drew Tolley</div>
+          <div class="sg-card__role">Marketing Director</div>
+          <div class="sg-card__location">LA, CA</div>
           <a href="matchup.html" class="sg-card__btn">Book a Call →</a>
         </div>
       </div>

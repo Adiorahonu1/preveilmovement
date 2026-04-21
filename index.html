@@ -2195,6 +2195,63 @@
       .faq-spiral-bg svg { transform: scale(3.2); }
     }
 
+
+    /* ═══════════════════════════════════════════════
+       3-PHASE OVERVIEW STRIP
+    ═══════════════════════════════════════════════ */
+    .phases-section {
+      background: #0d0003;
+      padding: 72px 40px;
+      border-top: 1px solid rgba(224,31,56,0.12);
+      border-bottom: 1px solid rgba(224,31,56,0.12);
+    }
+    .phases-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+    }
+    .phase-card {
+      flex: 1;
+      text-align: center;
+      padding: 0 32px;
+    }
+    .phase-num {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 80px;
+      line-height: 1;
+      color: rgba(224,31,56,0.13);
+      margin-bottom: 10px;
+      transition: color 0.3s ease;
+    }
+    .phase-card:hover .phase-num { color: rgba(224,31,56,0.35); }
+    .phase-title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 28px;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .phase-sub {
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .phase-arrow {
+      flex-shrink: 0;
+      width: 36px;
+      text-align: center;
+      color: var(--crimson);
+      font-size: 24px;
+      opacity: 0.4;
+    }
+    @media (max-width: 640px) {
+      .phases-inner { flex-direction: column; gap: 28px; }
+      .phase-arrow { transform: rotate(90deg); width: auto; }
+      .phase-card { padding: 0; }
+    }
+
   </style>
 </head>
 <body>
@@ -2620,6 +2677,26 @@
   </div>
 </section>
 
+<!-- ═══ 3-PHASE OVERVIEW ═══ -->
+<section class="phases-section">
+  <div class="phases-inner">
+    <div class="phase-card fade-in">
+      <div class="phase-num">01</div>
+      <div class="phase-title">Learn the snacks</div>
+    </div>
+    <div class="phase-arrow" aria-hidden="true">›</div>
+    <div class="phase-card fade-in fade-in--delay-1">
+      <div class="phase-num">02</div>
+      <div class="phase-title">Gain experience and exposure</div>
+    </div>
+    <div class="phase-arrow" aria-hidden="true">›</div>
+    <div class="phase-card fade-in fade-in--delay-2">
+      <div class="phase-num">03</div>
+      <div class="phase-title">Broker support start building your business</div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ 30-DAY JOURNEY ═══ -->
 <section class="journey-section" id="journeySection">
   <div class="journey-inner">
@@ -2634,7 +2711,7 @@
         <div class="journey-step__body">
           <span class="journey-step__timeframe">Week 1</span>
           <div class="journey-step__title">Discovery Session</div>
-          <p class="journey-step__desc">A 45-minute recruiting interview with no pressure. We walk you through the opportunity, answer every question, and make sure Prevail is the right fit for you.</p>
+          <p class="journey-step__desc">A focused conversation with no pressure. We show you the full picture and make sure Prevail is the right fit for you.</p>
         </div>
       </div>
       <div class="journey-step fade-in fade-in--delay-1">
@@ -2642,7 +2719,7 @@
         <div class="journey-step__body">
           <span class="journey-step__timeframe">Week 1 to 2</span>
           <div class="journey-step__title">Fast Start Session</div>
-          <p class="journey-step__desc">Your onboarding call with the Prevail team. Learn the script, set up your pipeline, and get everything in place to hit the ground running.</p>
+          <p class="journey-step__desc">Learn the snacks.</p>
         </div>
       </div>
       <div class="journey-step fade-in fade-in--delay-2">
@@ -2650,7 +2727,7 @@
         <div class="journey-step__body">
           <span class="journey-step__timeframe">Week 2 to 4</span>
           <div class="journey-step__title">First Appointment</div>
-          <p class="journey-step__desc">Attend your first family appointment alongside a licensed leader. See the process live, build your confidence, and experience the mission firsthand.</p>
+          <p class="journey-step__desc">Gain experience and exposure.</p>
         </div>
       </div>
       <div class="journey-step fade-in fade-in--delay-3">
@@ -2658,7 +2735,7 @@
         <div class="journey-step__body">
           <span class="journey-step__timeframe">Weeks 2 to 8</span>
           <div class="journey-step__title">Get Licensed</div>
-          <p class="journey-step__desc">Complete your pre-licensing course online, pass the state exam, and receive your life insurance license. Most agents are fully licensed within 60 days.</p>
+          <p class="journey-step__desc">Complete your pre-licensing course online, pass the state exam, and get your license. Most agents are fully licensed within 60 days.</p>
         </div>
       </div>
       <div class="journey-step fade-in fade-in--delay-3">
@@ -2666,7 +2743,7 @@
         <div class="journey-step__body">
           <span class="journey-step__timeframe">Days 45 to 60</span>
           <div class="journey-step__title">First Fruits</div>
-          <p class="journey-step__desc">Consistent agents run their first appointments by week 5 and earn their first income by day 45 to 60. This is where the mission starts paying for itself.</p>
+          <p class="journey-step__desc">Broker support start building your business.</p>
         </div>
       </div>
     </div>

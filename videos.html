@@ -195,6 +195,100 @@
       line-height: 1.1;
     }
 
+    /* ── Cindy Spotlight ── */
+    .cindy-spotlight {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .cindy-spotlight__link {
+      display: block;
+      position: relative;
+      aspect-ratio: 16/7;
+      min-height: 380px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .cindy-spotlight__thumb {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 25%;
+      transition: transform 0.6s cubic-bezier(0.22,1,0.36,1);
+    }
+    .cindy-spotlight__link:hover .cindy-spotlight__thumb {
+      transform: scale(1.04);
+    }
+    .cindy-spotlight__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(6,1,3,0.88) 0%,
+        rgba(6,1,3,0.45) 40%,
+        rgba(6,1,3,0.1) 70%,
+        transparent 100%
+      );
+      pointer-events: none;
+    }
+    .cindy-spotlight__content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      padding: 48px 40px 36px;
+      z-index: 2;
+    }
+    .cindy-spotlight__label {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
+    }
+    .cindy-spotlight__title {
+      font-family: 'Bebas Neue', cursive;
+      font-size: clamp(28px, 4vw, 48px);
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      margin: 0 0 8px;
+      color: #fff;
+    }
+    .cindy-spotlight__name {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 20px;
+    }
+    .cindy-spotlight__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+      background: var(--crimson);
+      padding: 10px 22px;
+      border-radius: 6px;
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+    }
+    .cindy-spotlight__link:hover .cindy-spotlight__cta {
+      box-shadow: 0 0 20px rgba(192,21,42,0.5);
+    }
+
+    @media (max-width: 640px) {
+      .cindy-spotlight__link { min-height: 280px; }
+      .cindy-spotlight__content { padding: 28px 20px 24px; }
+    }
+
   </style>
 </head>
 <body>
@@ -251,9 +345,9 @@
 <div class="page-hero">
   <div class="page-beams" id="pageBeams" aria-hidden="true"></div>
   <img class="page-hero__eagle" src="88.png" alt="">
-  <p class="page-hero__label">Education &amp; Inspiration</p>
-  <h1 class="page-hero__title">VIDEOS</h1>
-  <p class="page-hero__sub">Learn from the best in the financial services industry</p>
+  <p class="page-hero__label">Inside the Movement</p>
+  <h1 class="page-hero__title">WATCH. GROW. PREVAIL.</h1>
+  <p class="page-hero__sub">Training sessions, success stories, and real moments from agents building careers and protecting families.</p>
 </div>
 
 <!-- VIDEOS -->
@@ -277,11 +371,28 @@
       </div>
     </div>
 
-    <div class="dfl-grid fade-in" id="dflGrid">
+    <!-- Cindy Spotlight -->
+    <div class="cindy-spotlight fade-in">
+      <a href="https://www.youtube.com/watch?v=2pa76Yz2AoM" target="_blank" rel="noopener" class="cindy-spotlight__link">
+        <img class="cindy-spotlight__thumb" src="https://img.youtube.com/vi/2pa76Yz2AoM/maxresdefault.jpg" alt="Cindy — What I Wish I Knew About Business">
+        <div class="cindy-spotlight__overlay"></div>
+        <div class="cindy-spotlight__content">
+          <span class="cindy-spotlight__label">Featured Creator</span>
+          <h3 class="cindy-spotlight__title">What I Wish I Knew<br>About Business</h3>
+          <p class="cindy-spotlight__name">Cindy Deangelis</p>
+          <span class="cindy-spotlight__cta">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Watch on YouTube
+          </span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Additional videos — 3×2 grid -->
+    <div class="dfl-grid fade-in" id="dflGrid" style="grid-template-columns:4fr 4fr 4fr;grid-template-rows:5fr 5fr;height:620px;margin-top:6px;">
 
       <div class="dfl-cell" data-row="0" data-col="0" data-vid="tw3PEPLy6Wo">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/tw3PEPLy6Wo/hqdefault.jpg" alt="Winning the Everyday Battle">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -292,7 +403,6 @@
 
       <div class="dfl-cell" data-row="0" data-col="1" data-vid="JPt3taPWNro">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/JPt3taPWNro/hqdefault.jpg" alt="Real Estate vs Life Insurance">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -303,7 +413,6 @@
 
       <div class="dfl-cell" data-row="0" data-col="2" data-vid="EsRXXUWuENQ">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/EsRXXUWuENQ/hqdefault.jpg" alt="10 Reasons Why People Quit">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -314,7 +423,6 @@
 
       <div class="dfl-cell" data-row="1" data-col="0" data-vid="u1gzwxoCZwc">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/u1gzwxoCZwc/hqdefault.jpg" alt="PHP Agency: The Future of Financial Services">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -325,7 +433,6 @@
 
       <div class="dfl-cell" data-row="1" data-col="1" data-vid="HQEVbrh3nsc">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/HQEVbrh3nsc/hqdefault.jpg" alt="The Hidden Power of Life Insurance">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -336,7 +443,6 @@
 
       <div class="dfl-cell" data-row="1" data-col="2" data-vid="6132PKGRt4g">
         <img class="dfl-cell__thumb" src="https://img.youtube.com/vi/6132PKGRt4g/hqdefault.jpg" alt="PHP Campaign 2023">
-
         <div class="dfl-cell__gradient"></div>
         <div class="dfl-cell__play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         <div class="dfl-cell__info">
@@ -345,7 +451,7 @@
         </div>
       </div>
 
-    </div>
+    </div><!-- end dflGrid -->
 
   </div>
 </section>
@@ -423,32 +529,38 @@
   fadeEls.forEach(el => observer.observe(el));
 
   /* ── Dynamic Frame Layout ── */
-  (function () {
-    const grid = document.getElementById('dflGrid');
-    if (!grid) return;
-    const cells = Array.from(grid.querySelectorAll('.dfl-cell'));
+  function initDflGrid(gridEl, numCols) {
+    if (!gridEl) return;
+    const cells = Array.from(gridEl.querySelectorAll('.dfl-cell'));
     const HOVER = 7;
-    const COLS = 3;
+    const numRows = Math.max.apply(null, cells.map(function(c){ return +c.dataset.row; })) + 1;
+
+    /* Store the grid's own defaults so reset restores them correctly */
+    var defaultCols = gridEl.style.gridTemplateColumns;
+    var defaultRows = gridEl.style.gridTemplateRows;
 
     function setGrid(hRow, hCol) {
       const rowOther = 12 - HOVER;
-      const colOther = (12 - HOVER) / (COLS - 1);
-      grid.style.gridTemplateRows    = [0,1].map(r => r === hRow ? HOVER+'fr' : rowOther+'fr').join(' ');
-      grid.style.gridTemplateColumns = [0,1,2].map(c => c === hCol ? HOVER+'fr' : colOther+'fr').join(' ');
+      const colOther = numCols > 1 ? (12 - HOVER) / (numCols - 1) : 0;
+      var rowArr = [], colArr = [];
+      for (var r = 0; r < numRows; r++) rowArr.push((r === hRow ? HOVER : rowOther) + 'fr');
+      for (var c = 0; c < numCols; c++) colArr.push((c === hCol ? HOVER : colOther) + 'fr');
+      gridEl.style.gridTemplateRows    = rowArr.join(' ');
+      gridEl.style.gridTemplateColumns = colArr.join(' ');
     }
 
     function resetGrid() {
-      grid.style.gridTemplateRows    = '';
-      grid.style.gridTemplateColumns = '';
+      gridEl.style.gridTemplateRows    = defaultRows;
+      gridEl.style.gridTemplateColumns = defaultCols;
     }
 
     cells.forEach(function (cell) {
-      const row = +cell.dataset.row;
-      const col = +cell.dataset.col;
-      const vid = cell.dataset.vid;
+      var row = +cell.dataset.row;
+      var col = +cell.dataset.col;
+      var vid = cell.dataset.vid;
 
       cell.addEventListener('mouseenter', function () {
-        cells.forEach(c => c.classList.remove('is-hovered'));
+        cells.forEach(function(c){ c.classList.remove('is-hovered'); });
         cell.classList.add('is-hovered');
         setGrid(row, col);
       });
@@ -456,7 +568,7 @@
       cell.addEventListener('mouseleave', function () {
         cell.classList.remove('is-hovered');
         setTimeout(function () {
-          if (!grid.querySelector('.dfl-cell.is-hovered')) resetGrid();
+          if (!gridEl.querySelector('.dfl-cell.is-hovered')) resetGrid();
         }, 10);
       });
 
@@ -464,7 +576,9 @@
         window.open('https://www.youtube.com/watch?v=' + vid, '_blank', 'noopener');
       });
     });
-  })();
+  }
+
+  initDflGrid(document.getElementById('dflGrid'), 3);
 </script>
 
 <script>
