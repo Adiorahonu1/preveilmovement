@@ -752,6 +752,10 @@
       .lc-logo { padding: 0 28px; min-width: 120px; }
       .lc-badge { padding: 0 28px; min-width: 140px; }
       .lc-badge__name { font-size: 20px; }
+      .lc-pv { padding: 0 28px; min-width: 120px; gap: 5px; }
+      .lc-pv__eagle { height: 48px; }
+      .lc-pv__name { font-size: 14px; }
+      .lc-pv__sub { font-size: 6px; }
     }
 
     /* Very small phone — ≤ 375px */
@@ -779,6 +783,10 @@
       .lc-logo { padding: 0 18px; min-width: 90px; }
       .lc-badge { padding: 0 18px; min-width: 110px; }
       .lc-badge__name { font-size: 17px; }
+      .lc-pv { padding: 0 18px; min-width: 90px; gap: 4px; }
+      .lc-pv__eagle { height: 36px; }
+      .lc-pv__name { font-size: 12px; }
+      .lc-pv__sub { font-size: 5px; }
       .team-mosaic { grid-template-columns: 1fr; }
       .team-mosaic__card { height: 200px; }
       .wins-section { padding: 0 18px; }
@@ -986,6 +994,44 @@
       transition: opacity 0.2s;
     }
     .lc-logo:hover img { opacity: 1; }
+    /* PV Partners custom logo */
+    .lc-pv {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 52px;
+      border-right: 1px solid #e8d8df;
+      min-width: 220px;
+    }
+    .lc-pv__eagle {
+      height: 72px;
+      width: auto;
+      filter: brightness(0) saturate(100%) invert(15%) sepia(80%) saturate(4000%) hue-rotate(345deg) brightness(85%);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+    .lc-pv:hover .lc-pv__eagle { opacity: 1; }
+    .lc-pv__text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+    .lc-pv__name {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 18px;
+      letter-spacing: 0.12em;
+      color: #1a0409;
+      line-height: 1;
+    }
+    .lc-pv__sub {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #b08895;
+      margin-top: 3px;
+    }
 
     /* ═══════════════════════════════════════════════
        MISSION STATEMENT SECTION
@@ -2389,17 +2435,17 @@
       <!-- SET A -->
       <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
       <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-pv"><img class="lc-pv__eagle" src="88.png" alt=""><div class="lc-pv__text"><span class="lc-pv__name">PV PARTNERS</span><span class="lc-pv__sub">The Prevail Movement</span></div></div>
       <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
       <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
-      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
-      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-pv"><img class="lc-pv__eagle" src="88.png" alt=""><div class="lc-pv__text"><span class="lc-pv__name">PV PARTNERS</span><span class="lc-pv__sub">The Prevail Movement</span></div></div>
       <!-- SET B (seamless loop duplicate) -->
       <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
       <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-pv"><img class="lc-pv__eagle" src="88.png" alt=""><div class="lc-pv__text"><span class="lc-pv__name">PV PARTNERS</span><span class="lc-pv__sub">The Prevail Movement</span></div></div>
       <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
       <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
-      <div class="lc-logo"><img src="media/php.png" alt="PHP Agency"></div>
-      <div class="lc-logo"><img src="media/integrity.png" alt="Integrity"></div>
+      <div class="lc-pv"><img class="lc-pv__eagle" src="88.png" alt=""><div class="lc-pv__text"><span class="lc-pv__name">PV PARTNERS</span><span class="lc-pv__sub">The Prevail Movement</span></div></div>
     </div>
   </div>
 </div>
