@@ -7,43 +7,55 @@
   <link rel="stylesheet" href="style.css">
   <style>
     /* ═══════════════════════════════════════
-       BEAMS BACKGROUND HERO
+       SHUTTER TEXT HERO
     ═══════════════════════════════════════ */
     .page-hero {
-      height: 560px;
-      background: #07010a;
-    }
-    .page-hero::before {
-      background: radial-gradient(ellipse 75% 50% at 50% 100%, rgba(192,21,42,0.18) 0%, transparent 68%);
-    }
-    .page-beams {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
+      height: 580px;
+      background: #1a1525;
       overflow: hidden;
     }
-    @keyframes beamPulse {
-      0%, 100% { opacity: 0.05; }
-      50%       { opacity: 0.18; }
+    .page-hero::before {
+      background: radial-gradient(ellipse 60% 50% at 50% 80%, rgba(192,21,42,0.08) 0%, transparent 70%);
     }
-    .page-beam-overlay {
+
+    /* Wave grid canvas */
+    .wave-grid-canvas {
       position: absolute;
       inset: 0;
-      background: #060008;
-      animation: beamPulse 10s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 1;
+      z-index: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
     }
-    .page-hero__label { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.5s forwards; }
-    .page-hero__title { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.72s forwards; }
-    .page-hero__sub   { opacity: 0; animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.92s forwards; }
+    .wave-grid-vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 0%, #1a1525 100%);
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Hero text */
+    .page-hero__label {
+      opacity: 0;
+      animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;
+    }
+    .page-hero__title {
+      opacity: 0;
+      animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.55s forwards;
+    }
+    .page-hero__sub {
+      opacity: 0;
+      animation: fHeroUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.8s forwards;
+    }
     @keyframes fHeroUp {
       from { opacity: 0; transform: translateY(22px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    @media (max-width: 640px) { .page-hero { height: 420px; } }
-    @media (max-width: 375px) { .page-hero { height: 340px; } }
+
+    @media (max-width: 640px) { .page-hero { height: 440px; } }
+    @media (max-width: 375px) { .page-hero { height: 360px; } }
 
     /* ── Dynamic Frame Layout ── */
     .dfl-grid {
@@ -342,22 +354,18 @@
 </div>
 
 <!-- PAGE HERO -->
-<div class="page-hero">
-  <div class="page-beams" id="pageBeams" aria-hidden="true"></div>
+<div class="page-hero" id="waveHero">
+  <canvas class="wave-grid-canvas" id="waveCanvas"></canvas>
+  <div class="wave-grid-vignette"></div>
   <img class="page-hero__eagle" src="88.png" alt="">
   <p class="page-hero__label">Inside the Movement</p>
-  <h1 class="page-hero__title">WATCH. GROW. PREVAIL.</h1>
-  <p class="page-hero__sub">Training sessions, success stories, and real moments from agents building careers and protecting families.</p>
+  <h1 class="page-hero__title">LEARN FROM THE BEST</h1>
+  <p class="page-hero__sub">Watch. Grow. Prevail. Training sessions, success stories, and real moments from agents building careers and protecting families.</p>
 </div>
 
 <!-- VIDEOS -->
 <section class="section section--dark">
   <div style="max-width:1200px;margin:0 auto;">
-
-    <div style="text-align:center;margin-bottom:60px;">
-      <p class="section-label fade-in">Watch &amp; Learn</p>
-      <h2 class="section-title fade-in fade-in--delay-1" style="margin:0 auto;">LEARN FROM<br>THE BEST</h2>
-    </div>
 
     <!-- Featured video — autoplay background style matching home page hero -->
     <div class="featured-video fade-in">
@@ -586,91 +594,91 @@
 </script>
 
 <script>
-  /* ── BEAMS BACKGROUND ── */
+  /* ── ISOMETRIC WAVE GRID ── */
   (function () {
-    const wrap = document.getElementById('pageBeams');
-    if (!wrap) return;
+    var canvas = document.getElementById('waveCanvas');
+    var hero = document.getElementById('waveHero');
+    if (!canvas || !hero) return;
 
-    const canvas = document.createElement('canvas');
-    canvas.style.cssText = 'position:absolute;inset:0;filter:blur(15px);';
-    wrap.appendChild(canvas);
-
-    const overlay = document.createElement('div');
-    overlay.className = 'page-beam-overlay';
-    wrap.appendChild(overlay);
-
-    const ctx = canvas.getContext('2d');
+    var ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    let W, H, beams = [];
-    const TOTAL = 30;
-
-    function mkBeam() {
-      return {
-        x:          Math.random() * W * 1.5 - W * 0.25,
-        y:          Math.random() * H * 1.5 - H * 0.25,
-        w:          30 + Math.random() * 60,
-        len:        H * 2.5,
-        angle:      -35 + Math.random() * 10,
-        speed:      0.6 + Math.random() * 1.2,
-        opacity:    0.12 + Math.random() * 0.16,
-        hue:        340 + Math.random() * 25,
-        pulse:      Math.random() * Math.PI * 2,
-        pulseSpeed: 0.02 + Math.random() * 0.03,
-      };
-    }
-
-    function resetBeam(b, i) {
-      const col = i % 3, sp = W / 3;
-      b.y       = H + 100;
-      b.x       = col * sp + sp / 2 + (Math.random() - 0.5) * sp * 0.5;
-      b.w       = 100 + Math.random() * 100;
-      b.speed   = 0.5 + Math.random() * 0.4;
-      b.hue     = 340 + (i * 25) / TOTAL;
-      b.opacity = 0.2 + Math.random() * 0.1;
-    }
-
-    function drawBeam(b) {
-      const op = b.opacity * (0.8 + Math.sin(b.pulse) * 0.2);
-      ctx.save();
-      ctx.translate(b.x, b.y);
-      ctx.rotate(b.angle * Math.PI / 180);
-      const g = ctx.createLinearGradient(0, 0, 0, b.len);
-      g.addColorStop(0,   `hsla(${b.hue},85%,65%,0)`);
-      g.addColorStop(0.1, `hsla(${b.hue},85%,65%,${op * 0.5})`);
-      g.addColorStop(0.4, `hsla(${b.hue},85%,65%,${op})`);
-      g.addColorStop(0.6, `hsla(${b.hue},85%,65%,${op})`);
-      g.addColorStop(0.9, `hsla(${b.hue},85%,65%,${op * 0.5})`);
-      g.addColorStop(1,   `hsla(${b.hue},85%,65%,0)`);
-      ctx.fillStyle = g;
-      ctx.fillRect(-b.w / 2, 0, b.w, b.len);
-      ctx.restore();
-    }
+    var W, H;
+    var DENSITY = 45;
+    var SPEED = 1.2;
+    var COLOR = '192, 21, 42';
+    var time = 0;
+    var mouse = { x: -1000, y: -1000, tx: -1000, ty: -1000 };
 
     function resize() {
-      W = wrap.offsetWidth  || window.innerWidth;
-      H = wrap.offsetHeight || 560;
-      canvas.width  = W;
+      W = hero.offsetWidth;
+      H = hero.offsetHeight;
+      canvas.width = W;
       canvas.height = H;
-      beams = Array.from({ length: TOTAL }, mkBeam);
     }
 
-    function animate() {
+    hero.addEventListener('mousemove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      mouse.tx = e.clientX - r.left;
+      mouse.ty = e.clientY - r.top;
+    });
+    hero.addEventListener('mouseleave', function () {
+      mouse.tx = -1000;
+      mouse.ty = -1000;
+    });
+
+    function draw() {
       ctx.clearRect(0, 0, W, H);
-      ctx.filter = 'blur(35px)';
-      beams.forEach(function (b, i) {
-        b.y     -= b.speed;
-        b.pulse += b.pulseSpeed;
-        if (b.y + b.len < -100) resetBeam(b, i);
-        drawBeam(b);
-      });
-      requestAnimationFrame(animate);
+      mouse.x += (mouse.tx - mouse.x) * 0.1;
+      mouse.y += (mouse.ty - mouse.y) * 0.1;
+      time += 0.01 * SPEED;
+
+      var rows = Math.ceil(H / DENSITY) + 5;
+      var cols = Math.ceil(W / DENSITY) + 5;
+
+      ctx.beginPath();
+      for (var y = 0; y <= rows; y++) {
+        var first = true;
+        for (var x = 0; x <= cols; x++) {
+          var bx = x * DENSITY - DENSITY * 2;
+          var by = y * DENSITY - DENSITY * 2;
+
+          var wave = Math.sin(x * 0.2 + time) * Math.cos(y * 0.2 + time) * 15;
+
+          var dx = bx - mouse.x;
+          var dy = by - mouse.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          var maxDist = 280;
+          var force = Math.max(0, (maxDist - dist) / maxDist);
+          var push = -(force * force) * 70;
+
+          var fx = bx;
+          var fy = by + wave + push;
+
+          if (first) { ctx.moveTo(fx, fy); first = false; }
+          else { ctx.lineTo(fx, fy); }
+        }
+      }
+
+      var grad = ctx.createLinearGradient(0, 0, W, H);
+      grad.addColorStop(0,   'rgba(' + COLOR + ', 0)');
+      grad.addColorStop(0.3, 'rgba(' + COLOR + ', 0.45)');
+      grad.addColorStop(0.5, 'rgba(' + COLOR + ', 0.6)');
+      grad.addColorStop(0.7, 'rgba(' + COLOR + ', 0.45)');
+      grad.addColorStop(1,   'rgba(' + COLOR + ', 0)');
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      requestAnimationFrame(draw);
     }
 
     resize();
     window.addEventListener('resize', resize);
-    animate();
+    draw();
   })();
 </script>
+
 </body>
 </html>
