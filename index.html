@@ -1094,7 +1094,8 @@
     }
     @media (max-width: 900px) {
       .mission-inner { grid-template-columns: 1fr; }
-      .mission-shield { clip-path: none; min-height: 220px; }
+      .mission-shield { clip-path: none; padding: 40px; min-height: 220px; }
+      .mission-shield img { width: 200px; }
       .mission-text { padding: 48px 32px; }
     }
 
@@ -3382,7 +3383,7 @@
     </div>
 
     <!-- ── BOTTOM BAR ── -->
-    <div style="
+    <div id="cfBottomBar" style="
       position: relative;
       z-index: 20;
       width: 100%;
@@ -3522,6 +3523,20 @@
 @media (max-width:600px) {
   .wins-section { padding:0 20px; }
   .cf-email-form { max-width:100%; }
+  .cf-pill { padding: 11px 20px; font-size: 11px; }
+  .cf-contact-row { gap: 16px; }
+  #cfBottomBar { padding: 20px 20px 24px !important; flex-direction: column !important; align-items: center !important; text-align: center !important; gap: 12px !important; }
+  #cfCenter { margin-top: 50px !important; }
+  #cinematicFooterWrapper { height: auto !important; min-height: 100vh; }
+  #cinematicFooter { position: relative !important; height: auto !important; min-height: 100vh; }
+}
+
+@media (max-width:375px) {
+  .wins-section { padding:0 18px; }
+  .cf-pill { padding: 10px 16px; font-size: 10px; }
+  .cf-social-icon { width: 36px; height: 36px; }
+  #cfBottomBar { padding: 16px 16px 20px !important; }
+  #cfCenter { margin-top: 36px !important; }
 }
 
 /* Cinematic footer keyframes */

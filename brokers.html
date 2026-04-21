@@ -146,7 +146,8 @@
     @media (max-width: 600px) {
       .marquee-fade { width: 80px; }
       .team-header { padding: 0 24px; }
-      .join-cta { padding: 0 24px; }
+      .join-cta { padding: 0 24px; margin: 48px auto 0; }
+      .team-section { padding: 60px 0; }
     }
 
     /* ── ContainerScroll — 3D perspective tilt on scroll ── */
@@ -375,6 +376,7 @@
     @media (max-width: 768px) {
       .pillars-section { padding: 64px 24px; }
       .pillars-grid { grid-template-columns: 1fr; }
+      .pillar { padding: 36px 24px; }
     }
 
     /* ═══════════════════════════════════════
@@ -450,11 +452,11 @@
     }
     .sg-card__btn {
       display: inline-block;
-      padding: 10px 20px;
+      padding: 13px 20px;
       background: transparent;
       border: 1px solid rgba(224,31,56,0.45);
       color: #fff;
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -471,7 +473,7 @@
     }
     @media (max-width: 560px) {
       .broker-grid-section { padding: 64px 20px 80px; }
-      .sg-card { flex: 0 0 100%; max-width: 100%; }
+      .sg-card { flex: 0 0 100%; max-width: 100%; min-width: 0; }
     }
 
     /* ═══════════════════════════════════════
@@ -510,7 +512,7 @@
     }
     .brokers-cta__title {
       font-family: 'Bebas Neue', cursive;
-      font-size: clamp(52px, 8vw, 96px);
+      font-size: clamp(40px, 8vw, 96px);
       letter-spacing: 0.03em;
       color: #fff;
       line-height: 0.92;

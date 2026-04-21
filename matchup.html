@@ -107,10 +107,16 @@
       color: var(--text-muted);
     }
 
+    @media (max-width: 960px) {
+      .appt-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 720px) {
       .appt-grid { grid-template-columns: 1fr; }
       .contact-strip { flex-direction: column; text-align: center; }
       .matchup-header-actions { justify-content: center; }
+    }
+    @media (max-width: 480px) {
+      .contact-strip { padding: 28px 20px; }
     }
 
     /* ── Very small phone ≤ 375px ── */
