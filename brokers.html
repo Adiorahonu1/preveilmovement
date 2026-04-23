@@ -88,13 +88,23 @@
       height: 310px;
       border-radius: 18px;
       overflow: hidden;
-      background: #5a0e1e;
-      border: 1px solid rgba(255,255,255,0.12);
-      transition: border-color 0.3s, box-shadow 0.3s;
+      background: #141312;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.4s, box-shadow 0.4s;
+    }
+    .broker-card-v2__frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 85%, rgba(192,21,42,0.16) 0%, transparent 70%),
+        linear-gradient(to top, rgba(10,9,8,0.5) 0%, transparent 30%);
+      pointer-events: none;
+      z-index: 1;
     }
     .broker-card-v2:hover .broker-card-v2__frame {
-      border-color: rgba(255,255,255,0.45);
-      box-shadow: 0 20px 50px rgba(224,31,56,0.22);
+      border-color: rgba(224,31,56,0.5);
+      box-shadow: 0 20px 50px rgba(224,31,56,0.22), 0 0 0 1px rgba(224,31,56,0.12);
     }
     .broker-card-v2__img {
       width: 100%; height: 100%;
@@ -398,22 +408,23 @@
       flex: 0 0 calc(33.333% - 24px);
       max-width: 340px;
       min-width: 260px;
-      background: rgba(255,255,255,0.03);
+      background: #0e0d0c;
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 16px;
       overflow: hidden;
-      transition: border-color 0.3s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+      transition: border-color 0.4s, transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
     }
     .sg-card:hover {
-      border-color: rgba(224,31,56,0.38);
+      border-color: rgba(224,31,56,0.45);
       transform: translateY(-6px);
-      box-shadow: 0 28px 64px rgba(224,31,56,0.14);
+      box-shadow: 0 28px 64px rgba(224,31,56,0.16), 0 0 0 1px rgba(224,31,56,0.1);
     }
     .sg-card__frame {
       position: relative;
       width: 100%;
       aspect-ratio: 3/4;
       overflow: hidden;
+      background: #141312;
     }
     .sg-card__frame img {
       width: 100%; height: 100%;
@@ -426,7 +437,10 @@
     .sg-card__fade {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(8,2,10,0.7) 0%, transparent 50%);
+      background:
+        radial-gradient(ellipse 80% 45% at 50% 90%, rgba(192,21,42,0.14) 0%, transparent 70%),
+        linear-gradient(to top, rgba(10,9,8,0.6) 0%, transparent 45%);
+      pointer-events: none;
     }
     .sg-card__body { padding: 22px 24px 28px; }
     .sg-card__name {
@@ -721,7 +735,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-ingram" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9347.jpg" alt="Nicholas Ingram">
+            <img class="broker-card-v2__img" src="media/broker-ingram.png" alt="Nicholas Ingram">
           </a>
           <div class="broker-card-v2__name">Nicholas Ingram</div>
           <div class="broker-card-v2__role">Marketing Director · San Antonio, TX</div>
@@ -729,7 +743,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-taraghi" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
+            <img class="broker-card-v2__img" src="media/broker-taraghi.png" alt="Haydeh Taraghi">
           </a>
           <div class="broker-card-v2__name">Haydeh Taraghi</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -737,7 +751,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-elvira" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/2F57403E-AF14-4A13-823E-019BB186451A.PNG" alt="Angel Elvira">
+            <img class="broker-card-v2__img" src="media/broker-elvira.png" alt="Angel Elvira">
           </a>
           <div class="broker-card-v2__name">Angel Elvira</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -745,7 +759,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-nelson" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9319.jpg" alt="Don Rico and Dedra Nelson">
+            <img class="broker-card-v2__img" src="media/broker-nelsons.png" alt="Don Rico and Dedra Nelson">
           </a>
           <div class="broker-card-v2__name">Don Rico &amp; Dedra Nelson</div>
           <div class="broker-card-v2__role">Marketing Directors · Houston, TX</div>
@@ -753,7 +767,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-blocker" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9336.jpg" alt="Christopher Blocker">
+            <img class="broker-card-v2__img" src="media/broker-blocker.png" alt="Christopher Blocker">
           </a>
           <div class="broker-card-v2__name">Christopher Blocker</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -761,7 +775,7 @@
 
         <div class="broker-card-v2">
           <a href="#broker-marsaglia" class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_3417.jpg" alt="Madison Marsaglia">
+            <img class="broker-card-v2__img" src="media/broker-marsaglia.png" alt="Madison Marsaglia">
           </a>
           <div class="broker-card-v2__name">Madison Marsaglia</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -794,7 +808,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9347.jpg" alt="">
+            <img class="broker-card-v2__img" src="media/broker-ingram.png" alt="">
           </div>
           <div class="broker-card-v2__name">Nicholas Ingram</div>
           <div class="broker-card-v2__role">Marketing Director · San Antonio, TX</div>
@@ -802,7 +816,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_8193.PNG" alt="">
+            <img class="broker-card-v2__img" src="media/broker-taraghi.png" alt="">
           </div>
           <div class="broker-card-v2__name">Haydeh Taraghi</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -810,7 +824,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/2F57403E-AF14-4A13-823E-019BB186451A.PNG" alt="">
+            <img class="broker-card-v2__img" src="media/broker-elvira.png" alt="">
           </div>
           <div class="broker-card-v2__name">Angel Elvira</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -818,7 +832,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9319.jpg" alt="">
+            <img class="broker-card-v2__img" src="media/broker-nelsons.png" alt="">
           </div>
           <div class="broker-card-v2__name">Don Rico &amp; Dedra Nelson</div>
           <div class="broker-card-v2__role">Marketing Directors · Houston, TX</div>
@@ -826,7 +840,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_9336.jpg" alt="">
+            <img class="broker-card-v2__img" src="media/broker-blocker.png" alt="">
           </div>
           <div class="broker-card-v2__name">Christopher Blocker</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -834,7 +848,7 @@
 
         <div class="broker-card-v2" aria-hidden="true">
           <div class="broker-card-v2__frame">
-            <img class="broker-card-v2__img" src="media/IMG_3417.jpg" alt="">
+            <img class="broker-card-v2__img" src="media/broker-marsaglia.png" alt="">
           </div>
           <div class="broker-card-v2__name">Madison Marsaglia</div>
           <div class="broker-card-v2__role">Marketing Director · Austin, TX</div>
@@ -923,7 +937,7 @@
 
       <div class="sg-card fade-in" id="broker-ingram">
         <div class="sg-card__frame">
-          <img src="media/IMG_9347.jpg" alt="Nicholas Ingram">
+          <img src="media/broker-ingram.png" alt="Nicholas Ingram">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -935,7 +949,7 @@
 
       <div class="sg-card fade-in fade-in--delay-1" id="broker-taraghi">
         <div class="sg-card__frame">
-          <img src="media/IMG_8193.PNG" alt="Haydeh Taraghi">
+          <img src="media/broker-taraghi.png" alt="Haydeh Taraghi">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -947,7 +961,7 @@
 
       <div class="sg-card fade-in fade-in--delay-2" id="broker-elvira">
         <div class="sg-card__frame">
-          <img src="media/2F57403E-AF14-4A13-823E-019BB186451A.PNG" alt="Angel Elvira">
+          <img src="media/broker-elvira.png" alt="Angel Elvira">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -959,7 +973,7 @@
 
       <div class="sg-card fade-in" id="broker-nelson">
         <div class="sg-card__frame">
-          <img src="media/IMG_9319.jpg" alt="Don Rico and Dedra Nelson">
+          <img src="media/broker-nelsons.png" alt="Don Rico and Dedra Nelson">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -971,7 +985,7 @@
 
       <div class="sg-card fade-in fade-in--delay-1" id="broker-blocker">
         <div class="sg-card__frame">
-          <img src="media/IMG_9336.jpg" alt="Christopher Blocker">
+          <img src="media/broker-blocker.png" alt="Christopher Blocker">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -983,7 +997,7 @@
 
       <div class="sg-card fade-in fade-in--delay-2" id="broker-marsaglia">
         <div class="sg-card__frame">
-          <img src="media/IMG_3417.jpg" alt="Madison Marsaglia">
+          <img src="media/broker-marsaglia.png" alt="Madison Marsaglia">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -1007,7 +1021,7 @@
 
       <div class="sg-card fade-in fade-in--delay-1" id="broker-johnson">
         <div class="sg-card__frame">
-          <img src="media/739A5CB7-DF2C-47C0-ABD2-237E202A047B.PNG" alt="Justin Johnson">
+          <img src="media/broker-johnson.png" alt="Justin Johnson">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">
@@ -1019,7 +1033,7 @@
 
       <div class="sg-card fade-in fade-in--delay-2" id="broker-tolley">
         <div class="sg-card__frame">
-          <img src="media/0161085E-5D03-4A24-92A7-CDEFB324CF1D.PNG" alt="Drew Tolley">
+          <img src="media/broker-tolley.png" alt="Drew Tolley">
           <div class="sg-card__fade"></div>
         </div>
         <div class="sg-card__body">

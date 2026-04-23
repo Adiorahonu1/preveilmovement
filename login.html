@@ -162,6 +162,36 @@
     }
     .auth-view { display: none; }
     .auth-view.is-active { display: block; }
+    .auth-exit {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: rgba(255,255,255,0.12);
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s, border-color 0.3s, transform 0.2s;
+      text-decoration: none;
+      z-index: 9999;
+    }
+    .auth-exit svg {
+      width: 22px;
+      height: 22px;
+      stroke: #fff;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      fill: none;
+    }
+    .auth-exit:hover {
+      background: rgba(255,255,255,0.25);
+      border-color: #fff;
+      transform: scale(1.1);
+    }
 
     @media (max-width: 480px) {
       .auth-card { padding: 36px 24px 32px; }
@@ -221,6 +251,10 @@
 <!-- AUTH PAGE -->
 <div class="auth-page">
   <div class="auth-page__glow"></div>
+
+  <a href="index.html" class="auth-exit" aria-label="Exit">
+    <svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+  </a>
 
   <div class="auth-card">
     <img src="99.png" alt="Prevail Movement" class="auth-card__logo">

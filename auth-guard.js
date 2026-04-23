@@ -36,7 +36,10 @@
     '.ag-btn:hover:not(:disabled) { opacity:.9; transform:translateY(-1px); box-shadow:0 10px 32px rgba(224,31,56,.38); }',
     '.ag-btn:disabled { opacity:.5; cursor:not-allowed; }',
     '.ag-note { text-align:center; font-size:10.5px; color:rgba(255,255,255,.18); margin-top:22px; letter-spacing:.06em; line-height:1.6; }',
-    '@media (max-width:480px) { .ag-card { padding:36px 22px 32px; } .ag-title { font-size:26px; } }'
+    '.ag-exit { position:fixed; top:24px; right:24px; display:flex; align-items:center; justify-content:center; width:48px; height:48px; background:rgba(255,255,255,.12); border:2px solid rgba(255,255,255,.5); border-radius:50%; cursor:pointer; text-decoration:none; z-index:100000; transition:background .3s,border-color .3s,transform .2s; }',
+    '.ag-exit svg { width:22px; height:22px; stroke:#fff; stroke-width:2.5; stroke-linecap:round; fill:none; }',
+    '.ag-exit:hover { background:rgba(255,255,255,.25); border-color:#fff; transform:scale(1.1); }',
+    '@media (max-width:480px) { .ag-card { padding:36px 22px 32px; } .ag-title { font-size:26px; } .ag-exit { top:16px; right:16px; width:42px; height:42px; } .ag-exit svg { width:20px; height:20px; } }'
   ].join('\n');
   document.head.appendChild(css);
 
@@ -45,6 +48,7 @@
   gate.className = 'auth-gate';
   gate.id = 'authGate';
   gate.innerHTML =
+    '<a href="index.html" class="ag-exit" aria-label="Exit"><svg viewBox="0 0 24 24"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg></a>' +
     '<div class="ag-card">' +
       '<img class="ag-logo" src="99.png" alt="Prevail Movement" onerror="this.style.display=\'none\'">' +
       '<h2 class="ag-title">AGENT PORTAL</h2>' +
