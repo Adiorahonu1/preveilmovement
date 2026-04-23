@@ -482,6 +482,60 @@
       background: var(--crimson);
       border-color: var(--crimson);
     }
+
+    /* ── Testimonial overlay ── */
+    .sg-card__testimonial {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 100%;
+      background: linear-gradient(to top, rgba(3,0,1,0.97) 40%, rgba(3,0,1,0.88) 65%, rgba(3,0,1,0.55) 85%, transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 20px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s cubic-bezier(0.22,1,0.36,1), transform 0.4s cubic-bezier(0.22,1,0.36,1);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .sg-card:hover .sg-card__testimonial,
+    .sg-card.testimonial-active .sg-card__testimonial {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .sg-card__testimonial-mark {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 48px;
+      color: var(--crimson);
+      opacity: 0.5;
+      line-height: 0.7;
+      margin-bottom: 10px;
+    }
+    .sg-card__testimonial-quote {
+      font-size: 12.5px;
+      line-height: 1.72;
+      color: rgba(255,255,255,0.82);
+    }
+    .sg-card__quote-hint {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      width: 28px; height: 28px;
+      background: rgba(224,31,56,0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', cursive;
+      font-size: 16px;
+      color: #fff;
+      z-index: 1;
+      transition: opacity 0.3s;
+    }
+    .sg-card:hover .sg-card__quote-hint,
+    .sg-card.testimonial-active .sg-card__quote-hint { opacity: 0; }
+
     @media (max-width: 900px) {
       .sg-card { flex: 0 0 calc(50% - 24px); }
     }
@@ -903,6 +957,11 @@
         <div class="sg-card__frame">
           <img src="media/_DSC4161.JPG" alt="Lorenzo and Crystal Godinez">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">There's power and wisdom in proximity. When you're in the right rooms, with the right people, and reading the right things, your life changes. This business has taught me that. And because of this I have become a leader that's built other leaders. It's changed my life and my families.</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Lorenzo &amp; Crystal Godinez</div>
@@ -915,6 +974,11 @@
         <div class="sg-card__frame">
           <img src="media/IMG_9349.JPEG" alt="Pablo and Marissa Negrete">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">This industry has done something powerful in my life. From being very lost in life to finding my purpose of who I am as a man, husband, father and leader. From being lost to leading myself and multiple lives. This business gave me hope again, and the belief of wanting to be a successful man.</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Pablo &amp; Marissa Negrete</div>
@@ -927,6 +991,11 @@
         <div class="sg-card__frame">
           <img src="media/C229257B-3CC5-4B34-9AE6-8A7E67CA9B91.PNG" alt="Jaime and Kawena Dominguez">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">This business was truly an answered prayer. My husband and I first started because we wanted to make some extra income not knowing we'd build the foundation of our families future! We've built a multiple six figure business and have been able to build others who are doing the same!</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Jaime &amp; Kawena Dominguez</div>
@@ -963,6 +1032,11 @@
         <div class="sg-card__frame">
           <img src="media/broker-elvira.png" alt="Angel Elvira">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">This business has completely changed my life because it gave me the opportunity to hope again. Coming from 2 jobs I had no vision or purpose but when I was exposed to a great opportunity with great leaders, it gave me exposure and experience. Now I'm blessed to be one of the youngest brokers in the company.</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Angel Elvira</div>
@@ -987,6 +1061,11 @@
         <div class="sg-card__frame">
           <img src="media/broker-blocker.png" alt="Christopher Blocker">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">Coming onboard truly changed my life. I went from being a barber to becoming a life insurance broker and now a six figure earner as an entrepreneur. I chose to bet on my future and because I took the leap of faith, I've been able to put my family in a better position!</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Christopher Blocker</div>
@@ -1011,6 +1090,11 @@
         <div class="sg-card__frame">
           <img src="media/B17FB3B1-1E08-4B37-A7D4-B183987F2EB6.PNG" alt="Jony and Blanca Flores">
           <div class="sg-card__fade"></div>
+          <div class="sg-card__quote-hint">"</div>
+          <div class="sg-card__testimonial">
+            <div class="sg-card__testimonial-mark">"</div>
+            <p class="sg-card__testimonial-quote">Becoming more financially literate, and being more financial literacy to the community, breaking curses in the families legacies. Becoming a better person for myself, my wife, my parents and family in general. Clarity when it comes to knowing your worth and what value you can bring to the marketplace.</p>
+          </div>
         </div>
         <div class="sg-card__body">
           <div class="sg-card__name">Jony &amp; Blanca Flores</div>
@@ -1218,6 +1302,22 @@
     window.addEventListener('resize', update, { passive: true });
     update();
   })();
+
+  /* ── Mobile tap toggle for testimonial overlays ── */
+  document.querySelectorAll('.sg-card').forEach(function(card) {
+    if (card.querySelector('.sg-card__testimonial')) {
+      card.addEventListener('click', function(e) {
+        if (window.innerWidth <= 960) {
+          e.preventDefault();
+          // Close other open cards
+          document.querySelectorAll('.sg-card.testimonial-active').forEach(function(c) {
+            if (c !== card) c.classList.remove('testimonial-active');
+          });
+          card.classList.toggle('testimonial-active');
+        }
+      });
+    }
+  });
 </script>
 </body>
 </html>
