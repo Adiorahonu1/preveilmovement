@@ -225,65 +225,20 @@
   <div class="auth-card">
     <img src="99.png" alt="Prevail Movement" class="auth-card__logo">
 
-    <!-- ── LOGIN VIEW ── -->
-    <div class="auth-view is-active" id="loginView">
-      <h1 class="auth-card__title">AGENT PORTAL</h1>
-      <p class="auth-card__sub">Sign in to access resources, training, and systems.</p>
+    <h1 class="auth-card__title">AGENT PORTAL</h1>
+    <p class="auth-card__sub">Enter your access code to view resources, training, and systems.</p>
 
-      <div id="loginMsg" class="auth-msg"></div>
+    <div id="loginMsg" class="auth-msg"></div>
 
-      <form id="loginForm" onsubmit="return false;">
-        <div class="auth-field">
-          <label for="loginEmail">Email</label>
-          <input type="email" id="loginEmail" placeholder="you@example.com" required>
-        </div>
-        <div class="auth-field">
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" placeholder="Your password" required>
-        </div>
-        <button type="submit" class="auth-btn" id="loginBtn">Sign In</button>
-      </form>
+    <form id="loginForm" onsubmit="return false;">
+      <div class="auth-field">
+        <label for="loginCode">Access Code</label>
+        <input type="text" id="loginCode" placeholder="Enter your code" required autocomplete="off" style="text-transform:uppercase;letter-spacing:.1em;text-align:center;">
+      </div>
+      <button type="submit" class="auth-btn" id="loginBtn">Enter</button>
+    </form>
 
-      <p class="auth-toggle">Don't have an account? <a id="showSignup">Create one</a></p>
-    </div>
-
-    <!-- ── SIGNUP VIEW ── -->
-    <div class="auth-view" id="signupView">
-      <h1 class="auth-card__title">CREATE ACCOUNT</h1>
-      <p class="auth-card__sub">Join the Prevail agent portal to access exclusive resources.</p>
-
-      <div id="signupMsg" class="auth-msg"></div>
-
-      <form id="signupForm" onsubmit="return false;">
-        <div class="auth-field">
-          <label for="signupName">Full Name</label>
-          <input type="text" id="signupName" placeholder="Your full name" required>
-        </div>
-        <div class="auth-field">
-          <label for="signupEmail">Email</label>
-          <input type="email" id="signupEmail" placeholder="you@example.com" required>
-        </div>
-        <div class="auth-field">
-          <label for="signupPhone">Phone Number</label>
-          <input type="tel" id="signupPhone" placeholder="(555) 123-4567" required>
-        </div>
-        <div class="auth-field">
-          <label for="signupPassword">Password</label>
-          <input type="password" id="signupPassword" placeholder="Minimum 6 characters" required minlength="6">
-        </div>
-
-        <div class="auth-consent">
-          <input type="checkbox" id="smsConsent">
-          <label for="smsConsent">
-            I agree to receive text messages from The Prevail Movement regarding my account, appointments, and updates. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for assistance. View our <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
-          </label>
-        </div>
-
-        <button type="submit" class="auth-btn" id="signupBtn">Create Account</button>
-      </form>
-
-      <p class="auth-toggle">Already have an account? <a id="showLogin">Sign in</a></p>
-    </div>
+    <p class="auth-toggle" style="color:rgba(255,255,255,0.3);font-size:12px;">Contact your director for the access code.</p>
 
   </div>
 </div>
@@ -334,10 +289,6 @@
   </div>
 </footer>
 
-<!-- Supabase -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="supabase-config.js"></script>
-
 <script>
   /* ── Nav ── */
   var nav = document.getElementById('nav');
@@ -360,111 +311,39 @@
     });
   });
 
-  /* ── View toggle ── */
-  var loginView = document.getElementById('loginView');
-  var signupView = document.getElementById('signupView');
-  document.getElementById('showSignup').addEventListener('click', function () {
-    loginView.classList.remove('is-active');
-    signupView.classList.add('is-active');
-  });
-  document.getElementById('showLogin').addEventListener('click', function () {
-    signupView.classList.remove('is-active');
-    loginView.classList.add('is-active');
-  });
+  /* ── Code auth ── */
+  var ACCESS_CODE = 'PVBC';
+  var STORAGE_KEY = 'prevail_access';
 
-  /* ── Helpers ── */
   function getRedirect() {
     var params = new URLSearchParams(window.location.search);
     return params.get('redirect') || 'index.html';
   }
 
-  function showMsg(el, text, type) {
-    el.textContent = text;
-    el.className = 'auth-msg auth-msg--' + type;
-  }
-
-  /* ── Handle logout action ── */
+  /* Handle logout */
   if (new URLSearchParams(window.location.search).get('action') === 'logout') {
-    _supabase.auth.signOut().then(function () {
-      window.location.href = 'index.html';
-    });
+    sessionStorage.removeItem(STORAGE_KEY);
   }
 
-  /* ── If already logged in, redirect ── */
-  _supabase.auth.getSession().then(function (res) {
-    if (res.data && res.data.session) {
-      window.location.href = getRedirect();
-    }
-  });
+  /* Already authenticated? Redirect. */
+  if (sessionStorage.getItem(STORAGE_KEY) === ACCESS_CODE) {
+    window.location.href = getRedirect();
+  }
 
-  /* ── Login ── */
-  document.getElementById('loginForm').addEventListener('submit', async function () {
+  /* Login */
+  document.getElementById('loginForm').addEventListener('submit', function () {
     var btn = document.getElementById('loginBtn');
     var msg = document.getElementById('loginMsg');
-    var email = document.getElementById('loginEmail').value.trim();
-    var password = document.getElementById('loginPassword').value;
+    var code = document.getElementById('loginCode').value.trim().toUpperCase();
 
-    btn.disabled = true;
-    btn.textContent = 'Signing in...';
-    msg.className = 'auth-msg';
-
-    var result = await _supabase.auth.signInWithPassword({ email: email, password: password });
-
-    if (result.error) {
-      showMsg(msg, result.error.message, 'error');
-      btn.disabled = false;
-      btn.textContent = 'Sign In';
-      return;
-    }
-
-    window.location.href = getRedirect();
-  });
-
-  /* ── Sign Up ── */
-  document.getElementById('signupForm').addEventListener('submit', async function () {
-    var btn = document.getElementById('signupBtn');
-    var msg = document.getElementById('signupMsg');
-    var fullName = document.getElementById('signupName').value.trim();
-    var email = document.getElementById('signupEmail').value.trim();
-    var phone = document.getElementById('signupPhone').value.trim();
-    var password = document.getElementById('signupPassword').value;
-    var consent = document.getElementById('smsConsent').checked;
-
-    btn.disabled = true;
-    btn.textContent = 'Creating account...';
-    msg.className = 'auth-msg';
-
-    /* Sign up with Supabase Auth */
-    var result = await _supabase.auth.signUp({
-      email: email,
-      password: password,
-      options: { data: { full_name: fullName } }
-    });
-
-    if (result.error) {
-      showMsg(msg, result.error.message, 'error');
-      btn.disabled = false;
-      btn.textContent = 'Create Account';
-      return;
-    }
-
-    /* Insert profile row */
-    if (result.data && result.data.user) {
-      await _supabase.from('profiles').insert({
-        id: result.data.user.id,
-        full_name: fullName,
-        phone: phone,
-        sms_consent: consent
-      });
-    }
-
-    /* Check if email confirmation is required */
-    if (result.data.session) {
+    if (code === ACCESS_CODE) {
+      sessionStorage.setItem(STORAGE_KEY, ACCESS_CODE);
       window.location.href = getRedirect();
     } else {
-      showMsg(msg, 'Account created. Please check your email to confirm your account, then sign in.', 'success');
-      btn.disabled = false;
-      btn.textContent = 'Create Account';
+      msg.textContent = 'Incorrect code. Please try again.';
+      msg.className = 'auth-msg auth-msg--error';
+      document.getElementById('loginCode').value = '';
+      document.getElementById('loginCode').focus();
     }
   });
 </script>
