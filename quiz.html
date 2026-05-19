@@ -242,10 +242,26 @@
       transform: translateY(-2px);
     }
     .quiz-option.selected {
-      background: rgba(224,31,56,0.14);
+      background: rgba(224,31,56,0.22);
       border-color: var(--crimson);
-      box-shadow: 0 0 0 1px rgba(224,31,56,0.25);
+      border-width: 2px;
+      padding: 17px 19px 17px 23px; /* compensate for 1px border increase so layout doesn't shift */
+      box-shadow: 0 0 0 4px rgba(224,31,56,0.12), 0 8px 24px rgba(224,31,56,0.18);
     }
+    .quiz-option.selected::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 22px;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--crimson);
+      background-image: linear-gradient(135deg, transparent 35%, #fff 35%, #fff 42%, transparent 42%, transparent 50%, #fff 50%, #fff 65%, transparent 65%);
+      box-shadow: 0 4px 12px rgba(224,31,56,0.4);
+    }
+    .quiz-option { position: relative; }
     .quiz-option__letter {
       font-family: 'Bebas Neue', cursive;
       font-size: 18px;

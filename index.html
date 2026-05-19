@@ -4,6 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prevail Movement | Honor God. Pursue Excellence. Develop Leaders. Create Profits.</title>
+  <meta name="description" content="The Prevail Movement is a life insurance organization developing the next generation of financial leaders. Agents earn $4K+ their first month with no prior experience required.">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="The Prevail Movement">
+  <meta property="og:title" content="Prevail Movement | Protect Families. Build Wealth.">
+  <meta property="og:description" content="A life insurance organization developing the next generation of financial leaders. Agents earn $4K+ their first month with no prior experience required.">
+  <meta property="og:image" content="99.png">
+  <meta property="og:image:alt" content="The Prevail Movement crest">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Prevail Movement | Protect Families. Build Wealth.">
+  <meta name="twitter:description" content="A life insurance organization developing the next generation of financial leaders. Agents earn $4K+ their first month with no prior experience required.">
+  <meta name="twitter:image" content="99.png">
+
   <link rel="stylesheet" href="style.css">
   <style>
 
@@ -1073,6 +1089,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      max-width: 720px;
     }
     .mission-text .section-label { color: #b08895; margin-bottom: 12px; }
     .mission-heading {
@@ -1786,12 +1803,24 @@
     .mobile-cta-bar__dismiss {
       background: none;
       border: none;
-      color: rgba(255,255,255,0.25);
-      font-size: 20px;
+      color: rgba(255,255,255,0.45);
+      font-size: 22px;
       cursor: pointer;
-      padding: 4px;
+      width: 48px;
+      height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1;
       flex-shrink: 0;
+      border-radius: 50%;
+      transition: background 0.2s, color 0.2s;
+    }
+    .mobile-cta-bar__dismiss:hover,
+    .mobile-cta-bar__dismiss:focus-visible {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.9);
+      outline: none;
     }
     @media (max-width: 768px) { .mobile-cta-bar { display: flex; } }
 
@@ -2355,7 +2384,8 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
-  <video class="hero__video" autoplay muted loop playsinline preload="auto">
+  <video class="hero__video" autoplay muted loop playsinline preload="metadata" poster="media/IMG_7875.jpg">
+    <source src="media/cindy-unity-hero.mp4" type="video/mp4">
     <source src="media/Cindy Unity Event SFC 06 - Final.MOV" type="video/quicktime">
   </video>
   <div class="hero__video-overlay"></div>
@@ -2468,8 +2498,10 @@
 
 <!-- ═══ WHO WE ARE ═══ -->
 <section class="who-section" id="whoSection">
-  <video class="who__video-bg" autoplay muted loop playsinline
-    src="media/Cindy Unity Event SFC 06 - Final.MOV"></video>
+  <video class="who__video-bg" autoplay muted loop playsinline preload="metadata">
+    <source src="media/cindy-unity-hero.mp4" type="video/mp4">
+    <source src="media/Cindy Unity Event SFC 06 - Final.MOV" type="video/quicktime">
+  </video>
   <div class="who__video-overlay"></div>
   <div class="who__content">
     <p class="section-label" id="whoLabel">Who We Are</p>
