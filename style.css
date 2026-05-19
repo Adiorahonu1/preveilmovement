@@ -139,6 +139,7 @@ img { display: block; max-width: 100%; }
   border: none;
   cursor: pointer;
   padding: 4px;
+  margin-left: auto;
 }
 .nav__hamburger span {
   display: block;
