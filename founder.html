@@ -741,11 +741,23 @@
       flex-shrink: 0;
     }
     @media (max-width: 600px) {
-      .stats-strip { padding: 48px 24px; }
+      .stats-strip { padding: 48px 20px; }
       .stat-divider { display: none; }
-      .stats-strip__inner { gap: 12px; justify-content: center; }
-      .stat-item { min-width: 0; }
-      .stat-num { font-size: clamp(36px, 10vw, 56px); }
+      .stats-strip__inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 16px;
+        row-gap: 36px;
+        align-items: start;
+        justify-items: center;
+      }
+      .stat-item { min-width: 0; width: 100%; }
+      .stat-num { font-size: clamp(34px, 9vw, 52px); }
+      .stat-label { font-size: 9px; letter-spacing: 0.18em; margin-top: 8px; line-height: 1.4; }
+    }
+    @media (max-width: 360px) {
+      .stat-num { font-size: 30px; }
+      .stats-strip__inner { column-gap: 12px; }
     }
 
     /* ═══════════════════════════════════════
@@ -1445,7 +1457,6 @@
       <ul class="footer__links">
         <li><span>Serving Clients Nationwide</span></li>
         <li><a href="matchup.html">Book a Call</a></li>
-        <li><a href="tel:+15755717057">(575) 571-7057</a></li>
       </ul>
     </div>
   </div>
