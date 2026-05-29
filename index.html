@@ -155,7 +155,7 @@
       z-index: 3;
       max-width: 760px;
       width: 100%;
-      padding: 0 24px 148px max(40px, calc((100vw - 1280px) / 2 + 48px));
+      padding: 0 24px 148px 40px;
       overflow: visible;
     }
     /* CSS fallback: if GSAP never runs, animate elements visible after 3s */
@@ -2194,11 +2194,11 @@
 
     /* ── Large desktop (1440px–1919px) ── */
     @media (min-width: 1440px) {
-      /* Hero: switch to margin-based positioning so max-width doesn't fight padding-left */
+      /* Hero: align with nav padding (64px at ≥1440px) so headline lines up with logo */
       .hero__content {
         width: 760px;
         max-width: none;
-        margin-left: max(64px, calc((100vw - 1280px) / 2 + 48px));
+        margin-left: 64px;
         padding: 0 0 148px 0;
       }
       /* YT section: cap content width so flex columns don't stretch to full viewport */
@@ -2224,7 +2224,7 @@
     @media (min-width: 1920px) {
       .hero__content {
         width: 820px;
-        margin-left: max(64px, calc(50vw - 640px));
+        margin-left: max(64px, calc(50vw - 800px));
         padding: 0 0 148px 0;
       }
       /* YT section: same centering formula as other sections */
@@ -2251,7 +2251,7 @@
     @media (min-width: 2560px) {
       .hero__content {
         width: 900px;
-        margin-left: max(80px, calc(50vw - 1000px + 80px));
+        margin-left: max(80px, calc(50vw - 1000px));
         padding: 0 0 148px 0;
       }
       .yt-section { padding: 108px max(80px, calc(50vw - 680px)); }
