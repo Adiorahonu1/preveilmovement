@@ -101,6 +101,91 @@
       .pres-row__title { font-size: 18px; }
       .pres-row__actions { gap: 8px; }
     }
+
+    /* ── Make thumbnail clickable to launch presentation ── */
+    .pres-row__thumb { cursor: pointer; }
+    .pres-row__play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.35);
+      opacity: 0;
+      transition: opacity 0.2s;
+      z-index: 2;
+    }
+    .pres-row__thumb:hover .pres-row__play-overlay { opacity: 1; }
+    .pres-row__play-badge {
+      width: 54px;
+      height: 54px;
+      background: #c0152a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(192,21,42,0.45);
+    }
+    .pres-row__play-badge svg { width: 22px; height: 22px; fill: white; margin-left: 3px; }
+
+    /* ── Presentation modal ── */
+    .pres-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    .pres-modal.open { display: flex; }
+    .pres-modal__frame {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+    }
+    .pres-modal__frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .pres-modal__close {
+      position: absolute;
+      top: -44px;
+      right: 0;
+      background: transparent;
+      color: #fff;
+      border: 0;
+      font-size: 28px;
+      cursor: pointer;
+      padding: 4px 10px;
+      line-height: 1;
+      opacity: 0.85;
+      transition: opacity 0.15s;
+    }
+    .pres-modal__close:hover { opacity: 1; }
+    .pres-modal__title {
+      position: absolute;
+      top: -38px;
+      left: 4px;
+      color: rgba(255,255,255,0.85);
+      font-family: 'Bebas Neue', cursive;
+      font-size: 18px;
+      letter-spacing: 0.08em;
+    }
+    @media (max-width: 768px) {
+      .pres-modal { padding: 64px 12px 12px; }
+      .pres-modal__title { top: -32px; font-size: 14px; }
+      .pres-modal__close { top: -38px; font-size: 24px; }
+    }
   </style>
 </head>
 <body>
@@ -176,96 +261,114 @@
 
       <!-- Recruiting Interview -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb">
-          <img src="media/Screenshot 2026-04-18 at 01.16.32.png" alt="Recruiting Interview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div class="pres-row__thumb" data-pres-id="1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ" data-pres-title="Recruiting Interview">
+          <img src="media/Screenshot 2026-05-30 at 00.06.30.png" alt="Recruiting Interview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Recruiting Interview</p>
           <div class="pres-row__actions">
-            <a href="PHP%20RI%20For%20Cindy.pdf" download class="btn btn--crimson btn--sm">↓ Download Recruiting Interview</a>
-            <a href="https://docs.google.com/presentation/d/1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ/export/pdf" class="btn btn--outline btn--sm">↓ Download Recruiting Interview (Spanish)</a>
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ" data-pres-title="Recruiting Interview">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+            <a href="PHP%20RI%20For%20Cindy.pdf" download class="btn btn--outline btn--sm">↓ Download PDF</a>
           </div>
         </div>
       </div>
 
       <!-- Field Training -->
       <div class="pres-row fade-in fade-in--delay-1">
-        <div class="pres-row__thumb">
+        <div class="pres-row__thumb" data-pres-id="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training Presentation">
           <img src="https://img.youtube.com/vi/r3FOfgdOMBM/hqdefault.jpg" alt="Field Training Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
-          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Field Training Presentation</p>
           <div class="pres-row__actions">
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training Presentation">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/19jchLtukIea-RDybIoLWb6hsDCaF1ns0/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
             <a href="https://www.youtube.com/watch?v=r3FOfgdOMBM&t=6s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="https://docs.google.com/presentation/d/19jchLtukIea-RDybIoLWb6hsDCaF1ns0/export/pdf" class="btn btn--crimson btn--sm">↓ Download Field Training</a>
-            <a href="https://docs.google.com/presentation/d/1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE/export/pdf" class="btn btn--outline btn--sm">↓ Download (Spanish)</a>
+            <a href="https://docs.google.com/presentation/d/1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX (Spanish)</a>
           </div>
         </div>
       </div>
 
       <!-- Fast Start -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb">
+        <div class="pres-row__thumb" data-pres-id="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start Presentation">
           <img src="https://img.youtube.com/vi/1j8ueRV-p-4/hqdefault.jpg" alt="Fast Start Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
-          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Fast Start Presentation</p>
           <div class="pres-row__actions">
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start Presentation">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
             <a href="https://www.youtube.com/watch?v=1j8ueRV-p-4&t=1s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="https://docs.google.com/presentation/d/1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA/export/pdf" class="btn btn--crimson btn--sm">↓ Download Fast Start</a>
           </div>
         </div>
       </div>
 
       <!-- Annuities -->
       <div class="pres-row fade-in fade-in--delay-1">
-        <div class="pres-row__thumb">
+        <div class="pres-row__thumb" data-pres-id="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities Presentation">
           <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="Annuities Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Annuities Presentation</p>
           <div class="pres-row__actions">
-            <a href="https://docs.google.com/presentation/d/1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i/export/pdf" class="btn btn--crimson btn--sm">↓ Download Annuities</a>
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities Presentation">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
           </div>
         </div>
       </div>
 
       <!-- B.O.M. -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb">
+        <div class="pres-row__thumb" data-pres-id="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting">
           <img src="https://img.youtube.com/vi/GlLo6x72Klc/hqdefault.jpg" alt="Business Opportunity Meeting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
-          <div class="pres-row__yt" style="position:relative;z-index:1;"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Business Opportunity Meeting (B.O.M.)</p>
           <div class="pres-row__actions">
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
             <a href="https://www.youtube.com/watch?v=GlLo6x72Klc&t=8s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="https://docs.google.com/presentation/d/1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus/export/pdf" class="btn btn--crimson btn--sm">↓ Download B.O.M.</a>
           </div>
         </div>
       </div>
 
       <!-- ABCs -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb">
+        <div class="pres-row__thumb" data-pres-id="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs Presentation">
           <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="ABCs Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
+          <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">ABCs Presentation</p>
           <div class="pres-row__actions">
-            <a href="https://docs.google.com/presentation/d/1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ/export/pdf" class="btn btn--crimson btn--sm">↓ Download ABCs</a>
+            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs Presentation">▶ View Presentation</button>
+            <a href="https://docs.google.com/presentation/d/1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
           </div>
         </div>
       </div>
 
+    </div>
+
+    <!-- Presentation Modal -->
+    <div class="pres-modal" id="presModal" role="dialog" aria-modal="true" aria-labelledby="presModalTitle">
+      <div class="pres-modal__frame">
+        <span class="pres-modal__title" id="presModalTitle"></span>
+        <button type="button" class="pres-modal__close" id="presModalClose" aria-label="Close">×</button>
+        <iframe id="presModalIframe" src="" allowfullscreen mozallowfullscreen webkitallowfullscreen></iframe>
+      </div>
     </div>
 
     <!-- PHP Affiliation callout -->
@@ -362,6 +465,39 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
   }, { threshold: 0.08 });
   fadeEls.forEach(el => observer.observe(el));
+
+  // ── Presentation modal: embed Google Slides on demand ──
+  const presModal = document.getElementById('presModal');
+  const presModalIframe = document.getElementById('presModalIframe');
+  const presModalTitle = document.getElementById('presModalTitle');
+  const presModalClose = document.getElementById('presModalClose');
+
+  function openPres(id, title) {
+    if (!id) return;
+    presModalIframe.src = 'https://docs.google.com/presentation/d/' + id + '/embed?start=false&loop=false&delayms=3000';
+    presModalTitle.textContent = title || '';
+    presModal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePres() {
+    presModal.classList.remove('open');
+    presModalIframe.src = '';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-pres-open]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      openPres(btn.getAttribute('data-pres-open'), btn.getAttribute('data-pres-title'));
+    });
+  });
+  document.querySelectorAll('.pres-row__thumb[data-pres-id]').forEach(function(thumb) {
+    thumb.addEventListener('click', function() {
+      openPres(thumb.getAttribute('data-pres-id'), thumb.getAttribute('data-pres-title'));
+    });
+  });
+  presModalClose.addEventListener('click', closePres);
+  presModal.addEventListener('click', function(e) { if (e.target === presModal) closePres(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && presModal.classList.contains('open')) closePres(); });
 </script>
 
 <script src="auth-guard.js"></script>
