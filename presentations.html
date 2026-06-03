@@ -80,6 +80,39 @@
       letter-spacing: 0.04em;
       color: #fff;
     }
+    .pres-row__langs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 28px;
+    }
+    .pres-row__lang-col {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+    .pres-row__lang-col + .pres-row__lang-col {
+      border-left: 1px solid var(--border);
+      padding-left: 28px;
+    }
+    .pres-row__lang-label {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #f3b8c1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pres-row__lang-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #c0152a;
+    }
     .pres-row__actions {
       display: flex;
       flex-wrap: wrap;
@@ -88,6 +121,13 @@
 
     @media (max-width: 768px) {
       .pres-row { grid-template-columns: 1fr !important; }
+      .pres-row__langs { grid-template-columns: 1fr; gap: 20px; }
+      .pres-row__lang-col + .pres-row__lang-col {
+        border-left: 0;
+        padding-left: 0;
+        border-top: 1px solid var(--border);
+        padding-top: 20px;
+      }
     }
     @media (max-width: 640px) {
       .pres-row { grid-template-columns: 1fr; }
@@ -259,103 +299,146 @@
 
     <div class="pres-list">
 
-      <!-- Recruiting Interview -->
+      <!-- 1. Recruiting Interview -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb" data-pres-id="1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ" data-pres-title="Recruiting Interview">
+        <div class="pres-row__thumb" data-pres-id="1mw1RykTUjo6myYn-LJIM6HOPQfv3kz8h" data-pres-title="Recruiting Interview (English)">
           <img src="media/Screenshot 2026-05-30 at 00.06.30.png" alt="Recruiting Interview" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Recruiting Interview</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ" data-pres-title="Recruiting Interview">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
-            <a href="PHP%20RI%20For%20Cindy.pdf" download class="btn btn--outline btn--sm">↓ Download PDF</a>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1mw1RykTUjo6myYn-LJIM6HOPQfv3kz8h" data-pres-title="Recruiting Interview (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1mw1RykTUjo6myYn-LJIM6HOPQfv3kz8h/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+                <a href="PHP%20RI%20For%20Cindy.pdf" download class="btn btn--outline btn--sm">↓ Download PDF</a>
+              </div>
+            </div>
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">Español</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ" data-pres-title="Recruiting Interview (Español)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1dICe_FT_qCJwiNPLbRyQsBSnK7VM44tJ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Field Training -->
+      <!-- 2. Field Training -->
       <div class="pres-row fade-in fade-in--delay-1">
-        <div class="pres-row__thumb" data-pres-id="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training Presentation">
-          <img src="https://img.youtube.com/vi/r3FOfgdOMBM/hqdefault.jpg" alt="Field Training Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div class="pres-row__thumb" data-pres-id="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training (English)">
+          <img src="https://img.youtube.com/vi/r3FOfgdOMBM/hqdefault.jpg" alt="Field Training" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
-          <p class="pres-row__title">Field Training Presentation</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training Presentation">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/19jchLtukIea-RDybIoLWb6hsDCaF1ns0/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
-            <a href="https://www.youtube.com/watch?v=r3FOfgdOMBM&t=6s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
-            <a href="https://docs.google.com/presentation/d/1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX (Spanish)</a>
+          <p class="pres-row__title">Field Training</p>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="19jchLtukIea-RDybIoLWb6hsDCaF1ns0" data-pres-title="Field Training (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/19jchLtukIea-RDybIoLWb6hsDCaF1ns0/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+                <a href="https://www.youtube.com/watch?v=r3FOfgdOMBM&t=6s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+              </div>
+            </div>
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">Español</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE" data-pres-title="Field Training (Español)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1zD8KtJCcCgmSI9H0SwNqJyjXcBEIgNzE/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Fast Start -->
+      <!-- 3. Fast Start -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb" data-pres-id="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start Presentation">
-          <img src="https://img.youtube.com/vi/1j8ueRV-p-4/hqdefault.jpg" alt="Fast Start Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div class="pres-row__thumb" data-pres-id="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start (English)">
+          <img src="https://img.youtube.com/vi/1j8ueRV-p-4/hqdefault.jpg" alt="Fast Start" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
-          <p class="pres-row__title">Fast Start Presentation</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start Presentation">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
-            <a href="https://www.youtube.com/watch?v=1j8ueRV-p-4&t=1s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+          <p class="pres-row__title">Fast Start</p>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA" data-pres-title="Fast Start (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1XN-4g0I8WEa8-3BRRgIRfrsf4CiKZPiUcvbSoGL6eyA/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+                <a href="https://www.youtube.com/watch?v=1j8ueRV-p-4&t=1s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Annuities -->
+      <!-- 4. Annuities -->
       <div class="pres-row fade-in fade-in--delay-1">
-        <div class="pres-row__thumb" data-pres-id="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities Presentation">
-          <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="Annuities Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div class="pres-row__thumb" data-pres-id="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities (English)">
+          <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="Annuities" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
-          <p class="pres-row__title">Annuities Presentation</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities Presentation">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+          <p class="pres-row__title">Annuities</p>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i" data-pres-title="Annuities (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1jmDGd9698pgKfQ3yoefbffCiIzEcSV2i/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- B.O.M. -->
+      <!-- 5. Business Opportunity Meeting (B.O.M.) -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb" data-pres-id="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting">
+        <div class="pres-row__thumb" data-pres-id="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting (English)">
           <img src="https://img.youtube.com/vi/GlLo6x72Klc/hqdefault.jpg" alt="Business Opportunity Meeting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.4);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
           <p class="pres-row__title">Business Opportunity Meeting (B.O.M.)</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
-            <a href="https://www.youtube.com/watch?v=GlLo6x72Klc&t=8s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus" data-pres-title="Business Opportunity Meeting (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1ZWIu9LhRA5xOPeumXWqTMi1J18UX1jus/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+                <a href="https://www.youtube.com/watch?v=GlLo6x72Klc&t=8s" target="_blank" rel="noopener" class="btn btn--outline btn--sm">▶ Watch on YouTube</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ABCs -->
+      <!-- 6. ABCs -->
       <div class="pres-row fade-in">
-        <div class="pres-row__thumb" data-pres-id="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs Presentation">
-          <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="ABCs Presentation" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+        <div class="pres-row__thumb" data-pres-id="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs (English)">
+          <img src="media/Screenshot 2026-04-18 at 01.21.03.png" alt="ABCs" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <div style="position:absolute;inset:0;background:rgba(0,0,0,0.25);"></div>
           <div class="pres-row__play-overlay"><div class="pres-row__play-badge"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
         </div>
         <div class="pres-row__body">
-          <p class="pres-row__title">ABCs Presentation</p>
-          <div class="pres-row__actions">
-            <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs Presentation">▶ View Presentation</button>
-            <a href="https://docs.google.com/presentation/d/1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+          <p class="pres-row__title">ABCs</p>
+          <div class="pres-row__langs">
+            <div class="pres-row__lang-col">
+              <span class="pres-row__lang-label">English</span>
+              <div class="pres-row__actions">
+                <button type="button" class="btn btn--crimson btn--sm" data-pres-open="1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ" data-pres-title="ABCs (English)">▶ View Presentation</button>
+                <a href="https://docs.google.com/presentation/d/1dqlnDYxYMAPJmt_86PoJ3joL4fneQMlMsaC5uMk8toQ/export/pptx" class="btn btn--outline btn--sm">↓ Download PPTX</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
